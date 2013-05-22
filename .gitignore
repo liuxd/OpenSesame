@@ -1,0 +1,13 @@
+*.swp
+*.php~
+*.tpl~
+*.inc~
+*.js~
+*.css~
+*.ini~
+*.tmp
+*.db
+*.ini
+*.settings
+*.buildpath
+*.project
