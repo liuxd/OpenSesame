@@ -5,6 +5,7 @@
  * @author liuxd
  */
 class Page extends Base {
+    private $history_table = 'view'; //记录浏览历史的表名。
 
     /**
      * 首页
@@ -32,7 +33,7 @@ class Page extends Base {
 
         //帐号推荐
         $this->connect_history_db();
-        $history_query = ConfDB::get('view');
+        $history_query = ConfDB::get($this->history_table);
 
         if ($history_query['stat']) {
             if ($history_query['response']) {
@@ -61,6 +62,12 @@ class Page extends Base {
 
                 $data['recomm'] = $recomm;
             }
+        }
+
+        $error = $this->get('error');
+
+        if ($error and isset($this->msg_map[$error])){
+            $data['error'] = $this->msg_map[$error];
         }
 
         return $data;
@@ -118,7 +125,13 @@ class Page extends Base {
         $site_list = ConfDB::get(Const_PAC::SITE_LIST);
 
         if ($site_list['stat']) {
-            $app_url = 'http://' . $site_list['response'][$site_name];
+            if (!isset($site_list['response'][$site_name])){
+                $this->connect_history_db();
+                ConfDB::del($this->history_table, $site_name);
+                Router::redirect(Router::gen_url('index', Router::OP_PAGE, array('error' => 'error_not_found')));
+            } else {
+                $app_url = 'http://' . $site_list['response'][$site_name];
+            }
         }
 
         if ($site_info['stat']) {

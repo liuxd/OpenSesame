@@ -49,6 +49,7 @@ th_name="Name"
 th_value="Value"
 th_op="Operation"
 pop_title="Content"
+error_not_found="Not Found"
 
 [msg_js_default]
 pop_del_head="Delete"
