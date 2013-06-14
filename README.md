@@ -1,16 +1,15 @@
 # Open Seseame #
 
-## Summary ##
-
+```
 My password search engine.
+```
 
 ## Dependence ##
-### 1.WebServer ###
-any
-
-### 2.PHP ###
-* Version：5.3+
-* Extension：zlib
++ WebServer
+    + any
++ PHP
+    + Version：5.3+
+    + Extension：zlib
 
 ## Install ##
 
