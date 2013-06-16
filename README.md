@@ -1,12 +1,9 @@
 # Open Seseame #
 
-<div>
-<img src="www/img/web.png" width=90 height=90 style="display:block;float:left" />
-<p style="float:left;padding: 30px;font-size: 14px">
+<img src="www/img/web.png" />
+<p>
 It's my <b>PSE</b> —— <b>P</b>assword <b>S</b>earch <b>E</b>ngine.
 </p>
-<div style="clear:both"></div>
-</div>
 
 ## Dependence ##
 + OS
