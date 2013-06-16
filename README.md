@@ -1,7 +1,7 @@
 # Open Seseame #
 
 <div>
-<img src="https://github.com/liuxd/open-sasame/blob/master/www/img/web.png" width=90 height=90 style="display:block;float:left" />
+<img src="www/img/web.png" width=90 height=90 style="display:block;float:left" />
 <p style="float:left;padding: 30px;font-size: 14px">
 It's my <b>PSE</b> —— <b>P</b>assword <b>S</b>earch <b>E</b>ngine.
 </p>
