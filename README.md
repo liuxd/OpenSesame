@@ -1,10 +1,16 @@
 # Open Seseame #
 
-```
-My password search engine.
-```
+<div>
+<img src="https://github.com/liuxd/open-sasame/blob/master/www/img/web.png" width=90 height=90 style="display:block;float:left" />
+<p style="float:left;padding: 30px;font-size: 14px">
+It's my <b>PSE</b> —— <b>P</b>assword <b>S</b>earch <b>E</b>ngine.
+</p>
+<div style="clear:both"></div>
+</div>
 
 ## Dependence ##
++ OS
+    + *nix
 + WebServer
     + any
 + PHP
@@ -23,7 +29,8 @@ cp web.ini.sample web.ini
 
 * Step 2:
 ```
-Configure the [db].Make sure the path is writable.
+Configure the [db] section in web.ini.
+Make sure the path is writable.
 ```
 
 ## Tech ##
