@@ -1,9 +1,8 @@
 # Open Seseame #
 
 <img src="www/img/web.png" />
-<p>
-It's my <b>PSE</b> —— <b>P</b>assword <b>S</b>earch <b>E</b>ngine.
-</p>
+
+It's my __PSE__ —— __P__assword __S__earch __E__ngine.
 
 ## Dependence ##
 + OS
