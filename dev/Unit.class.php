@@ -13,13 +13,11 @@ class Util_Unit {
 
     public function __construct() {
         $methods = get_class_methods($this);
-        $test_methods = array();
-
-        foreach ($methods as $v) {
+        $test_methods = array_filter($methods, function($v){
             if (substr($v, 0, 5) === 'test_') {
-                $test_methods[] = $v;
-            }
-        }
+                return $v;
+            }       
+        });
 
         foreach ($test_methods as $v) {
             $this->test_sum++;
@@ -151,6 +149,21 @@ class Util_Unit {
         $r = TRUE;
 
         if (mb_strlen($str, 'utf8') < $len) {
+            $r = FALSE;
+        }
+
+        $this->handle($r, __METHOD__);
+    }
+
+    /**
+     * 判断字符串是否包含某个特定字符串。
+     * @param string $str
+     * @param string $target
+     */
+    public function str_have($str, $target){
+        $r = TRUE;
+
+        if (strpos($str, $target) === FALSE){
             $r = FALSE;
         }
 
