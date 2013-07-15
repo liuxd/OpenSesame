@@ -3,7 +3,7 @@
  * 单元测试工具。用法类似phpunit。
  * 用法：测试用例继承本类，每个测试方法以"test_"为前缀。实例化测试用例即可。
  */
-class Unit {
+class Util_Unit {
 
     public $test_sum = 0;
     public $assert_sum = 0;
@@ -30,6 +30,11 @@ class Unit {
         $this->myecho();
     }
 
+    /**
+     * 判断两个值是否相当。
+     * @param mix $a
+     * @param mix $b
+     */
     public function equal($a, $b) {
         $r = TRUE;
 
@@ -40,6 +45,11 @@ class Unit {
         $this->handle($r, __METHOD__);
     }
 
+    /**
+     * 判断数值下边界。
+     * @param mix $a
+     * @param mix $b
+     */
     public function bigger($a, $b) {
         $r = TRUE;
 
@@ -50,6 +60,11 @@ class Unit {
         $this->handle($r, __METHOD__);
     }
 
+    /**
+     * 判断数值上边界。
+     * @param mix $a
+     * @param mix $b
+     */
     public function smaller($a, $b) {
         $r = TRUE;
 
@@ -60,14 +75,26 @@ class Unit {
         $this->handle($r, __METHOD__);
     }
 
+    /**
+     * 判断是否整型。
+     * @param mix $v
+     */
     public function be_int($v) {
         $this->handle(is_int($v), __METHOD__);
     }
 
+    /**
+     * 判断是否数组。
+     * @param mix $v
+     */
     public function be_array($v) {
         $this->handle(is_array($v), __METHOD__);
     }
 
+    /**
+     * 判断是否为true。
+     * @param mix $v
+     */
     public function be_TRUE($v) {
         $r = TRUE;
 
@@ -78,6 +105,10 @@ class Unit {
         $this->handle($r, __METHOD__);
     }
 
+    /**
+     * 判断是否为false。
+     * @param mix $v
+     */
     public function be_FALSE($v) {
         $r = TRUE;
 
@@ -88,10 +119,19 @@ class Unit {
         $this->handle($r, __METHOD__);
     }
 
+    /**
+     * 判断非空。
+     * @param mix $v
+     */
     public function not_empty($v) {
         $this->handle(!empty($v), __METHOD__);
     }
 
+    /**
+     * 判断字符串最大长度是否超过某个上限。
+     * @param string $str
+     * @param int $len
+     */
     public function str_maxlen($str, $len) {
         $r = TRUE;
 
@@ -102,6 +142,11 @@ class Unit {
         $this->handle($r, __METHOD__);
     }
 
+    /**
+     * 判断字符串最大长度是否超过某个下限。
+     * @param string $str
+     * @param int $len
+     */
     public function str_minlen($str, $len) {
         $r = TRUE;
 
@@ -112,6 +157,9 @@ class Unit {
         $this->handle($r, __METHOD__);
     }
 
+    /**
+     * 输出测试结果。
+     */
     protected function myecho() {
         $t = $this;
         $result = function($r) use ($t) {
@@ -138,6 +186,9 @@ class Unit {
         exit;
     }
 
+    /**
+     * 一个测试方法完成的处理流程。
+     */
     protected function handle($r, $assert) {
         $this->assert_sum++;
 
