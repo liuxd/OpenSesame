@@ -11,9 +11,12 @@ class Page extends Base {
      * 首页
      */
     public function index() {
+        $site_list = ConfDB::get(Const_PAC::SITE_LIST);
+
         $data = array(
             'page_title' => $this->msg_map['title_index'],
             'form_action_add' => Router::gen_url('add_app', Router::OP_FORM),
+            'site_total' => count($site_list['response']),
         );
 
         $msg_list = array(
@@ -78,7 +81,7 @@ class Page extends Base {
      */
     public function app_list() {
         $key = trim($this->get('key'));
-        
+
         if ($key === ''){
             Router::redirect(Router::gen_url('index'));
         }

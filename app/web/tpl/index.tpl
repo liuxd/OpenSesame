@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="<?=$css_host;?>/css/index.css" ></link> 
+<link rel="stylesheet" type="text/css" href="<?=$css_host;?>/css/index.css" ></link>
 
 <!-- 报错信息 -->
 <?php if (isset($error)):?>
@@ -21,7 +21,7 @@
         <div style="margin:10%">
 
             <!-- logo -->
-            <h1 class="form-signin-heading span5 offset4 cw" style="font-family: 'Risque', cursive" title="<?=$title_search;?>">
+            <h1 class="form-signin-heading span5 offset4 cw" style="font-family: 'Risque', cursive" title="<?=$site_total;?>">
                 <img src='<?=$img_host;?>/img/web.png' width=90 height=90>
                 Open Sesame
             </h1>
