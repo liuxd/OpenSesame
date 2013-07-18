@@ -42,7 +42,7 @@
             <div class="controls-row span8 offset3">
                 <?php foreach($recomm as $key => $value):?>
                 <div class="span2">
-                    <a href="<?=$value['url'];?>" id="recomm_<?=$key + 1;?>" target="_blank"><?=$value['name'];?></a>
+                    <a href="<?=$value['url'];?>" target="_blank"><?=$value['name'];?></a>
                 </div>
                 <?php endforeach;?>
             </div>
