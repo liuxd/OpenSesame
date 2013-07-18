@@ -12,11 +12,12 @@ class Page extends Base {
      */
     public function index() {
         $site_list = ConfDB::get(Const_PAC::SITE_LIST);
+        $total = count($site_list['response']);
 
         $data = array(
             'page_title' => $this->msg_map['title_index'],
             'form_action_add' => Router::gen_url('add_app', Router::OP_FORM),
-            'site_total' => count($site_list['response']),
+            'site_total' => $total,
         );
 
         $msg_list = array(
@@ -32,6 +33,18 @@ class Page extends Base {
 
         foreach ($msg_list as $v) {
             $data[$v] = $this->msg_map[$v];
+        }
+
+        if ($total > 0){
+            $no = 1;
+            while($no <= Const_PAC::RECOMMAND_ACCOUNT_NUM){
+                $tmp['name'] = array_rand($site_list['response']);
+                $tmp['url'] = Router::gen_url('app_info', Router::OP_PAGE, array('site_name' => $tmp['name']));
+                $random_account_keys[] = $tmp;
+                $no++;
+            }
+
+            $data['random'] = $random_account_keys;
         }
 
         //帐号推荐

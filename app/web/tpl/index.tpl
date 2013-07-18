@@ -34,11 +34,11 @@
                 </div>
             </div>
 
-            <!-- 推荐帐号 -->
-            <?php if (isset($recomm)):?>
             <h4 class="controls-row span9 offset3 cw" style="margin-top: 30px">
                 <?=$msg_recomm;?>
             </h4>
+            <!-- 推荐帐号 -->
+            <?php if (isset($recomm)):?>
             <div class="controls-row span8 offset3">
                 <?php foreach($recomm as $key => $value):?>
                 <div class="span2">
@@ -48,6 +48,16 @@
             </div>
             <?php endif;?>
 
+            <!-- 随机帐号 -->
+            <?php if (isset($random)):?>
+            <div class="controls-row span8 offset3">
+                <?php foreach($random as $key => $value):?>
+                <div class="span2">
+                    <a href="<?=$value['url'];?>" target="_blank"><?=$value['name'];?></a>
+                </div>
+                <?php endforeach;?>
+            </div>
+            <?php endif;?>
         </div>
     </div>
 </div>
