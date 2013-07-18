@@ -117,14 +117,24 @@
             keys: '`',
             on_keydown: function() {
                 l.replace(url_index);
-            },
+            }
         },
         {
             keys: 'enter',
             on_keydown: function() {
                 $('#search_bt').click();
-            },
+            }
         },
+        {
+            keys: 'alt w',
+            on_keydown: function() {
+                var url = $('#home_url').attr('href');
+
+                if (url){
+                    w.open(url);
+                }
+            }
+        }
     ];
     keypress.register_many(key_combo);
 
