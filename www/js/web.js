@@ -125,56 +125,6 @@
                 $('#search_bt').click();
             },
         },
-        {
-            keys: 'alt w',
-            on_keydown: function() {
-                var url = $('#home_url').attr('href');
-
-                if (url){
-                    w.open(url);
-                }
-            },
-        },
-        {
-            keys: 'alt z',
-            on_keydown: function() {
-                var url = $('#recomm_1').attr('href');
-
-                if (url) {
-                    w.open(url);
-                }
-            },
-        },
-        {
-            keys: 'alt x',
-            on_keydown: function() {
-                var url = $('#recomm_2').attr('href');
-
-                if (url) {
-                    w.open(url);
-                }
-            },
-        },
-        {
-            keys: 'alt c',
-            on_keydown: function() {
-                var url = $('#recomm_3').attr('href');
-
-                if (url) {
-                    w.open(url);
-                }
-            },
-        },
-        {
-            keys: 'alt v',
-            on_keydown: function() {
-                var url = $('#recomm_4').attr('href');
-
-                if (url) {
-                    w.open(url);
-                }
-            },
-        },
     ];
     keypress.register_many(key_combo);
 
