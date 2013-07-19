@@ -1,5 +1,10 @@
 body{
     background: #444 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAB9JREFUeNpi/P//PwM6YGLAAuCCmpqacC2MRGsHCDAA+fIHfeQbO8kAAAAASUVORK5CYII=);
+    font-family: 'Gorditas', cursive;
+}
+
+input, button, select, textarea {
+    font-family: 'Gorditas', cursive;
 }
 
 .cw, a {
@@ -58,13 +63,13 @@ a:hover {
     width: 330px;
     height: 20px;
     padding: 10px 5px;
-    float: left;    
-    font: bold 15px 'Lucida sans', Arial, Helvetica;
+    float: left;
+    font: bold 15px 'Gorditas', cursive;
     border: 0;
     background: #eee;
     -moz-border-radius: 3px 0 0 3px;
     -webkit-border-radius: 3px 0 0 3px;
-    border-radius: 3px 0 0 3px;      
+    border-radius: 3px 0 0 3px;
 }
 
 .form-wrapper input:focus {
@@ -91,7 +96,7 @@ a:hover {
     color: #999;
     font-weight: normal;
     font-style: italic;
-}    
+}
 
 .form-wrapper button {
     overflow: visible;
@@ -102,23 +107,23 @@ a:hover {
     cursor: pointer;
     height: 40px;
     width: 110px;
-    font: bold 15px/40px 'Lucida sans', Arial, Helvetica;
+    font: bold 15px/40px 'Gorditas', cursive;
     color: #fff;
     text-transform: uppercase;
     background: #d83c3c;
     -moz-border-radius: 0 3px 3px 0;
     -webkit-border-radius: 0 3px 3px 0;
-    border-radius: 0 3px 3px 0;      
+    border-radius: 0 3px 3px 0;
     text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
-}   
+}
 
-.form-wrapper button:hover{		
+.form-wrapper button:hover{
     background: #e54040;
-}	
+}
 
 .form-wrapper button:active,
-.form-wrapper button:focus{   
-    background: #c42f2f;    
+.form-wrapper button:focus{
+    background: #c42f2f;
 }
 
 .form-wrapper button:before {
@@ -137,7 +142,7 @@ a:hover {
 
 .form-wrapper button:focus:before{
     border-right-color: #c42f2f;
-}    
+}
 
 .form-wrapper button::-moz-focus-inner {
     border: 0;

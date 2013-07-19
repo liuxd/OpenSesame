@@ -1,9 +1,13 @@
 body {
     padding-top: 60px;
     padding-bottom: 40px;
-    font: 14px 'Lucida sans', Arial, Helvetica;
+    font-family: 'Gorditas', cursive;
 }
 
 .bt {
     width: 150px;
+}
+
+input, button, select, textarea {
+    font-family: 'Gorditas', cursive;
 }
