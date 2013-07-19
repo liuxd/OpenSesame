@@ -1,7 +1,7 @@
 body {
     padding-top: 60px;
     padding-bottom: 40px;
-    font-family: 'Gorditas', cursive;
+    font-family: Monaco, Arial;
 }
 
 .bt {
@@ -9,5 +9,5 @@ body {
 }
 
 input, button, select, textarea {
-    font-family: 'Gorditas', cursive;
+    font-family: 'Monaco', cursive;
 }

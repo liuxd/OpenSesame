@@ -18,18 +18,3 @@
 <script language="javascript" src="<?=$js_host;?>/bootstrap/js/plugin/bootstrap-modal.js"></script>
 <script language="javascript" src="<?=$js_host;?>/bootstrap/js/plugin/bootstrap-confirm.js"></script>
 <script language="javascript" src="<?=$js_host;?>/js/web.js"></script>
-
-<script type="text/javascript">
-  WebFontConfig = {
-    google: { families: [ 'Gorditas::latin' ] }
-  };
-  (function() {
-    var wf = document.createElement('script');
-    wf.src = '<?=$js_host;?>/js/webfont.js';
-    wf.type = 'text/javascript';
-    wf.async = 'true';
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(wf, s);
-  })(); </script>
-</body>
-</html>
