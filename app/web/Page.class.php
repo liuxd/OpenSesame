@@ -20,7 +20,7 @@ class Page extends Base {
             'page_title' => $this->msg_map['title_index'],
             'form_action_add' => Router::gen_url('add_app', Router::OP_FORM),
             'site_total' => $total,
-            'gravata' => $this->get_gravata_url($email),
+            'gravatar' => Gravatar::get_gravatar_url($email, 30),
         );
 
         $msg_list = array(
@@ -231,18 +231,6 @@ class Page extends Base {
     private function connect_history_db() {
         $history_db = Config::get('db');
         ConfDB::connect($history_db['data']['history']);
-    }
-
-    /**
-     * 获得gravata.com上的头像url。
-     * @param string $email
-     * @return string
-     */
-    private function get_gravata_url($email){
-        $key = md5($email);
-        $url = 'http://www.gravatar.com/avatar/'.$key.'?s=30&d=&r=G';
-
-        return $url;
     }
 
 }

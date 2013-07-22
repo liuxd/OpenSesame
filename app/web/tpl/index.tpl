@@ -8,7 +8,7 @@
 <!-- 头部表单 -->
 <div class="navbar-fixed-top">
     <form class="well form-inline" action="<?=$form_action_add?>" method="post" autocomplete="off" >
-        <img src="<?=$gravata;?>" alt="liuxd" width="30" height="30" />
+        <img src="<?=$gravatar;?>" alt="liuxd" width="30" height="30" />
         <input type="text" class="input-large" placeholder="<?=$input_site;?>" name="name">
         <input type="text" class="input-large" placeholder="<?=$input_url;?>" name="url">
         <button type="submit" class="btn btn-success"><?=$bt_commit;?></button>
