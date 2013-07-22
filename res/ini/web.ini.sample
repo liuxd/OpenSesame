@@ -62,3 +62,6 @@ confirm_enter="Enter"
 confirm_close="Close"
 msg_pwd="密码"
 msg_not_empty="Key can not be empty."
+
+[user]
+email=example@test.com

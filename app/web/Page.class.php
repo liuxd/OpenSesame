@@ -13,11 +13,14 @@ class Page extends Base {
     public function index() {
         $site_list = ConfDB::get(Const_PAC::SITE_LIST);
         $total = count($site_list['response']);
+        $user_config = Config::get('user');
+        $email = $user_config['data']['email'];
 
         $data = array(
             'page_title' => $this->msg_map['title_index'],
             'form_action_add' => Router::gen_url('add_app', Router::OP_FORM),
             'site_total' => $total,
+            'gravata' => $this->get_gravata_url($email),
         );
 
         $msg_list = array(
@@ -228,6 +231,18 @@ class Page extends Base {
     private function connect_history_db() {
         $history_db = Config::get('db');
         ConfDB::connect($history_db['data']['history']);
+    }
+
+    /**
+     * 获得gravata.com上的头像url。
+     * @param string $email
+     * @return string
+     */
+    private function get_gravata_url($email){
+        $key = md5($email);
+        $url = 'http://www.gravatar.com/avatar/'.$key.'?s=30&d=&r=G';
+
+        return $url;
     }
 
 }
