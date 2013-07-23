@@ -35,3 +35,4 @@ Make sure the path is writable.
 * [jQuery](http://jquery.com/)
 * [keypress.js](http://dmauro.github.io/Keypress/)
 * [Google Font API](http://www.google.com/fonts/)
+* [Gravatar](http://cn.gravatar.com/)
