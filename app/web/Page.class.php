@@ -38,19 +38,20 @@ class Page extends Base {
             $data[$v] = $this->msg_map[$v];
         }
 
+        //随机推荐帐号
         if ($total > 0){
-            $no = 1;
-            while($no <= Const_PAC::RECOMMAND_ACCOUNT_NUM){
-                $tmp['name'] = array_rand($site_list['response']);
-                $tmp['url'] = Router::gen_url('app_info', Router::OP_PAGE, array('site_name' => $tmp['name']));
+            $rand_keys = array_rand($site_list['response'], Const_PAC::RECOMMAND_ACCOUNT_NUM);
+
+            foreach ($rand_keys as $key){
+                $tmp['name'] = $key;
+                $tmp['url'] = Router::gen_url('app_info', Router::OP_PAGE, array('site_name' => $key));
                 $random_account_keys[] = $tmp;
-                $no++;
             }
 
             $data['random'] = $random_account_keys;
         }
 
-        //帐号推荐
+        //按点击量推荐帐号
         $this->connect_history_db();
         $history_query = ConfDB::get($this->history_table);
 
