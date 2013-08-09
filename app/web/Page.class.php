@@ -39,7 +39,8 @@ class Page extends Base {
         }
 
         //随机推荐帐号
-        if ($total > 0){
+        if ($total > Const_PAC::RECOMMAND_ACCOUNT_NUM){
+            see($site_list['response']);exit;
             $rand_keys = array_rand($site_list['response'], Const_PAC::RECOMMAND_ACCOUNT_NUM);
 
             foreach ($rand_keys as $key){
