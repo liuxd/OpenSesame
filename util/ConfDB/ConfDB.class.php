@@ -69,6 +69,8 @@ class ConfDB {
         //如果输入的数据表不存在则报错。
         if (!isset($all[$table])) {
             self::$result['error'] = self::ERR_TABLE_NOT_EXISTS;
+            self::$result['response'] = array();
+
             return self::$result;
         }
 
