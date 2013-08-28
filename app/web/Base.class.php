@@ -10,6 +10,11 @@ class Base {
     public function init() {
         Config::$app = Router::$app;
         $msg = Config::get('msg_default');
+
+        if (!$msg['result']){
+            echo $msg['msg'];exit;
+        }
+
         $this->msg_map = $msg['data'];
         $op = $this->get('op', 'index');
         $this->anti_robot();
