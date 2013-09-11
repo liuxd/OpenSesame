@@ -1,9 +1,20 @@
 <?php
+/**
+ * 封装RDBMS的访问操作。
+ */
 
 class DB {
 
     public static $db = null;
 
+    /**
+     * 连接数据库
+     * @param type $dsn
+     * @param type $username
+     * @param type $password
+     * @param type $options
+     * @return PDO
+     */
     public static function get_instance($dsn, $username, $password, $options = array()) {
         if (is_null(self::$db)){
             self::$db = new PDO($dsn, $username, $password, $options);
@@ -14,6 +25,12 @@ class DB {
         return self::$db;
     }
 
+    /**
+     * 查询一个列表的数据。
+     * @param type $sql
+     * @param type $p
+     * @return type
+     */
     public static function get_list($sql, $p = array()) {
         $dbh = self::$db->prepare($sql);
         $dbh->execute($p);
@@ -22,6 +39,12 @@ class DB {
         return $ret;
     }
 
+    /**
+     * 插入数据。
+     * @param type $info
+     * @param type $table
+     * @return type
+     */
     public static function add($info, $table) {
         $ret = self::parse_arr($info);
         $sql = "insert into $table (" . $ret['keys'] . ") values (" . $ret['marks'] . ")";
@@ -32,6 +55,12 @@ class DB {
         return $id;
     }
 
+    /**
+     * 获得单条数据。
+     * @param type $sql
+     * @param type $p
+     * @return type
+     */
     public static function get_one($sql, $p = array()) {
         $dbh = self::$db->prepare($sql);
         $dbh->execute($p);
@@ -40,6 +69,13 @@ class DB {
         return $ret;
     }
 
+    /**
+     * 更新数据。
+     * @param type $table
+     * @param type $where
+     * @param type $info
+     * @return type
+     */
     public static function update($table, $where, $info) {
         $tmp = array();
         foreach ($info as $key => $value) {
@@ -53,6 +89,11 @@ class DB {
         return $ret;
     }
 
+    /**
+     * 解析插入数据时的数组。
+     * @param type $info
+     * @return type
+     */
     private static function parse_arr($info) {
         //keys
         $keys_origin = array_map(function($v) {
