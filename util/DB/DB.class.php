@@ -7,6 +7,8 @@ class DB {
     public static function get_instance($dsn, $username, $password, $options = array()) {
         if (is_null(self::$db)){
             self::$db = new PDO($dsn, $username, $password, $options);
+            self::$db->query('set names utf8');
+            self::$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
 
         return self::$db;
