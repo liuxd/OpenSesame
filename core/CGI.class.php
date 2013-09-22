@@ -29,15 +29,27 @@ class CGI {
         extract($o->res);
 
         $o->tpls = array(
-            'header.tpl',
-            $o->op . '.tpl',
-            'footer.tpl',
+            'header' => 'header.tpl',
+            'body' => $o->op . '.tpl',
+            'footer' =>  'footer.tpl',
         );
+
+        if (isset($header)){
+            $o->tpls['header'] = $header;
+        }
+
+        if (isset($footer)){
+            $o->tpls['footer'] = $footer;
+        }
 
         ob_start('ob_gzhandler');
 
-        foreach ($o->tpls as $tpl_file) {
-            require $o->tpl_path . DS . $tpl_file;
+        foreach ($o->tpls as $key => $tpl_file) {
+            $real_file = $o->tpl_path . DS . $tpl_file;
+
+            if (file_exists($real_file)){
+                require $real_file;
+            }
         }
     }
 

@@ -18,3 +18,5 @@
 <script language="javascript" src="<?=$js_host;?>/bootstrap/js/plugin/bootstrap-modal.js"></script>
 <script language="javascript" src="<?=$js_host;?>/bootstrap/js/plugin/bootstrap-confirm.js"></script>
 <script language="javascript" src="<?=$js_host;?>/js/web.js"></script>
+</body>
+</html>
