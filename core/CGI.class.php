@@ -22,6 +22,8 @@ class CGI {
 
             default:break;
         }
+
+        fastcgi_finish_request();
     }
 
     //页面请求处理
