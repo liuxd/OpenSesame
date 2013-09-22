@@ -1,35 +1,35 @@
-# Open Seseame #
+Open Seseame
+============
 
 <img src="www/img/web.png" />
 
-It's my __PSE__ —— __P__assword __S__earch __E__ngine.
+##简介
++ __基于Web__的密码管理系统。
++ __独特的身份验证__，让暴力破解无效。
++ __原创的DB封装__，完全屏蔽SQL注入u。
 
-## Dependence ##
-+ OS
-    + *nix
-+ WebServer
-    + any
-+ PHP
-    + Version：5.3+
-    + Extension：zlib
+##需求
++ LNMP环境
++ PHP要求
+    + 版本：5.3+
+    + 扩展：zlib
 
-## Install ##
+##安装
 
-* Step 1:
+###下载
 ```
 cd $document_root
-git clone git@bitbucket.org:liuxd/open-sesame.git
-cd open-sesame/res/ini/
+git clone git@github.com:liuxd/open-sesame.git
+```
+
+###配置
+```
+cd open-sesame/ini/
 cp web.ini.sample web.ini
 ```
+配置web.ini中的[db]栏，确保路径可写。
 
-* Step 2:
-```
-Configure the [db] section in web.ini.
-Make sure the path is writable.
-```
-
-## Tech ##
+##技术
 * [PHP](http://php.net/)
 * [Twitter Bootstrap](http://twitter.github.io/bootstrap/)
 * [jQuery](http://jquery.com/)
