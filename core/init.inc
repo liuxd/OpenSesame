@@ -9,9 +9,7 @@ define('ROOT_PATH', __DIR__ . DS . '..' . DS);
 define('UTIL_PATH', ROOT_PATH . 'util' . DS);
 define('APP_PATH', ROOT_PATH . 'app' . DS);
 define('WWW_PATH', ROOT_PATH . 'www' . DS);
-define('RES_PATH', ROOT_PATH . 'res' . DS);
-define('DB_PATH', RES_PATH . 'db' . DS);
-define('INI_PATH', RES_PATH . 'ini' . DS);
+define('INI_PATH', ROOT_PATH . 'ini' . DS);
 define('DEFAULT_APP', 'web');
 
 error_reporting(-1);
