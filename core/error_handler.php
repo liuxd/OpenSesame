@@ -10,18 +10,23 @@
 defined('ROOT_PATH') or die('Visit unavailable!');
 
 function err($errno, $errstr, $errfile, $errline) {
-    $msg = 'errno       : ' . $errno . PHP_EOL;
-    $msg .= 'errstr      : ' . strip_tags($errstr) . PHP_EOL;
-    $msg .= 'errfile     : ' . $errfile . PHP_EOL;
-    $msg .= 'errline     : ' . $errline . PHP_EOL;
-    $msg .= 'time        : ' . date('Y-m-d H:i:s') . PHP_EOL;
+    $msg[] = '编号： ' . $errno . PHP_EOL;
+    $msg[] = '提示：' . strip_tags($errstr) . PHP_EOL;
+    $msg[] = '文件：' . $errfile . PHP_EOL;
+    $msg[] = '行号：' . $errline . PHP_EOL;
+    $msg[] = '时间：' . date('Y-m-d H:i:s') . PHP_EOL;
 
     if (isset($_SERVER['REQUEST_URI'])) {
-        $msg .= 'request_url : ' . $_SERVER['REQUEST_URI'] . PHP_EOL;
+        $msg[] = '请求：' . $_SERVER['REQUEST_URI'] . PHP_EOL;
     }
 
-    see(explode(PHP_EOL, substr($msg, 0, -1)));
-    error_log($msg . PHP_EOL, 3, '/tmp/bh-account.err');
+    header('Content-type: text/html; charset=utf-8'); 
+
+    foreach ($msg as $m){
+        echo '<div style="color: red"><b>', $m, '</b></div>';
+    }
+
+    error_log('|'.implode('|', $msg).PHP_EOL, 3, '/tmp/open-sesame.err.log');
     exit;
 }
 
