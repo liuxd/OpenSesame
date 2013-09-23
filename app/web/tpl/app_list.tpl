@@ -16,16 +16,22 @@
         <thead>
             <tr>
                 <th width="20%"><?=$input_site;?></th>
-                <th width="80%"><?=$input_url;?></th>
+                <th width="20%"><?=$input_op;?></th>
+                <th width="60%"><?=$input_url;?></th>
             </tr>
         </thead>
 
         <tbody>
         <?php foreach ($site_list as $k => $v):?>
         <tr>
-            <th><a href="<?=$v['info_url'];?>" class="btn btn-primary bt"><?=$k;?></a></th>
+            <th>
+                <a href="<?=$v['info_url'];?>"><?=$k;?></a>
+            </th>
             <td>
+                <a href="<?=$v['info_url'];?>" class="btn"><?=$bt_info;?></a>
                 <button class="btn btn-danger list_del_bt" id="<?=$k;?>"><?=$bt_del;?></button>
+            </td>
+            <td>
                 <a href="<?=$v['goto_url'];?>" target='_blank'><?=$v['goto_url'];?></a>
             </td>
         </tr>
