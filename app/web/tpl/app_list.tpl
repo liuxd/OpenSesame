@@ -28,8 +28,8 @@
                 <a href="<?=$v['info_url'];?>"><?=$k;?></a>
             </th>
             <td>
-                <a href="<?=$v['info_url'];?>" class="btn"><?=$bt_info;?></a>
-                <button class="btn btn-danger list_del_bt" id="<?=$k;?>"><?=$bt_del;?></button>
+                <a href="<?=$v['info_url'];?>" class="btn bt" target="_blank"><?=$bt_info;?></a>
+                <button class="btn btn-danger list_del_bt bt" id="<?=$k;?>"><?=$bt_del;?></button>
             </td>
             <td>
                 <a href="<?=$v['goto_url'];?>" target='_blank'><?=$v['goto_url'];?></a>
