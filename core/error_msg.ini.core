@@ -1,0 +1,3 @@
+APP_NOT_VALID='app is not valid!'
+OP_NOT_VALID='op is not valid!'
+TPL_NOT_VALID='tpl is not valid!'

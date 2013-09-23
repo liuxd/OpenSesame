@@ -28,7 +28,7 @@ class CGI {
 
     //页面请求处理
     private static function page_handler($o) {
-        extract($o->res);
+        extract($o->ret);
 
         $o->tpls = array(
             'header' => 'header.tpl',
@@ -57,8 +57,8 @@ class CGI {
 
     //表单请求处理
     private static function form_handler($o) {
-        $op = $o->res['op'];
-        $params = (isset($o->res['params'])) ? $o->res['params'] : array();
+        $op = $o->ret['op'];
+        $params = (isset($o->ret['params'])) ? $o->ret['params'] : array();
         $url = Router::gen_url($op, Router::OP_PAGE, $params);
         Router::redirect($url);
     }
@@ -66,7 +66,7 @@ class CGI {
     //ajax请求
     private static function ajax_handler($o) {
         header('Content-Type: application/json; charset=utf-8');
-        echo json_encode($o->res);
+        echo json_encode($o->ret);
     }
 }
 

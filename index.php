@@ -10,23 +10,31 @@ require __DIR__ . '/core/init.inc';
 $o = new stdClass;
 
 # 解析URL。
+# app
 $o->app = Router::app(DEFAULT_APP);
 $o->app_path = APP_PATH . $o->app;
+is_dir($o->app_path) or die($msgs['APP_NOT_VALID']);
+
+# op
 $o->op = Router::op('index');
 $o->op_type = Router::op_type();
 $o->op_class_name = Router::get_op_class_name($o->op_type);
 $o->op_file = $o->app_path . DS . $o->op_class_name . '.class.php';
+file_exists($o->op_file) or die($msgs['OP_NOT_VALID']);
+
+# tpl
 $o->tpl_path = $o->app_path . DS . 'tpl';
+file_exists($o->tpl_path) or die($msgs['TPL_NOT_VALID']);
 
 # 执行动作代码。
 require $o->app_path . DS . 'Base.class.php';
 require $o->op_file;
 
 $o->op_obj = new $o->op_class_name;
-$o->res_app = $o->op_obj->init();
+$o->ret_app = $o->op_obj->init();
 $op_name = $o->op;
-$o->res_op = $o->op_obj->$op_name();
-$o->res = array_merge($o->res_app, $o->res_op);
+$o->ret_op = $o->op_obj->$op_name();
+$o->ret = (is_array($o->ret_app)) ? array_merge($o->ret_app, $o->ret_op) : $o->ret_op;
 
 # 根据请求类型进行不同的处理。
 CGI::run($o);
