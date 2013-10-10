@@ -117,6 +117,7 @@
             keys: '`',
             on_keydown: function() {
                 l.replace(url_index);
+                ('#search').val('');
             }
         },
         {
@@ -140,7 +141,4 @@
 
     //首页搜索框自动获得焦点。
     $('#search').focus();
-
-    //单页name框自动获得焦点。
-    $('#field_name').focus();
 })();
