@@ -30,7 +30,7 @@
             <!-- 搜索框+按钮 -->
             <div class="controls-row span9 offset3">
                 <div class="form-wrapper cf">
-                    <input type="text" name="site" id="search" autocomplete="off" placeholder="<?=$input_search;?>" x-webkit-speech>
+                    <input type="text" name="site" id="search" autocomplete="off" placeholder="<?=$input_search;?>" x-webkit-speech lang="zh-CN" x-webkit-grammar="bUIltin:search" />
                     <button id="search_bt"><?=$bt_search;?></button>
                 </div>
             </div>
