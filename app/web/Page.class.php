@@ -120,6 +120,7 @@ class Page extends Base {
         $error = ($site_total == 0) ? $this->msg_map['msg_no_result'] . '<b>' . $key . '</b>' : '';
 
         $data = array(
+            'keyword' => $key,
             'page_title' => $this->msg_map['title_list'] . $site_total,
             'total' => $site_total,
             'msg_total' => $this->msg_map['msg_total'],

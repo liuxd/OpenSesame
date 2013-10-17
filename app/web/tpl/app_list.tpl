@@ -1,7 +1,7 @@
 <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container">
-            <a class="brand" href="?"><?=$msg_total?><b><?=$total;?></b></a>
+            <a class="brand" href="?"><?=$msg_total?> "<?=$keyword;?>" : <?=$total;?></a>
         </div>
     </div>
 </div>
