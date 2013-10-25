@@ -1,3 +1,8 @@
+<!-- footer -->
+<footer class="footer">
+    &COPY; <a href="https://github.com/liuxd?tab=repositories" target="_blank">刘喜东</a>
+</footer>
+
 <!--普通内容弹出框-->
 <div class="modal" id="popup" style="display:none">
     <div class="modal-header">

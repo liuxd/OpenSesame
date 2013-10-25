@@ -1,4 +1,4 @@
-body{
+body, .footer {
     background: #444 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAB9JREFUeNpi/P//PwM6YGLAAuCCmpqacC2MRGsHCDAA+fIHfeQbO8kAAAAASUVORK5CYII=);
     font-family: Monaco, Arial;
 }
@@ -16,6 +16,10 @@ a:hover {
     text-decoration: none;
 }
 
+.footer, .footer a {
+    color: #ccc;
+}
+
 .well {
     padding: 5px;
     background: #ddd;
@@ -23,10 +27,10 @@ a:hover {
 }
 
 @font-face {
-  font-family: 'Risque';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Risque'), local('Risque-Regular'), url(../google-font/risque/a8AGA5XaSxGdEu0gkNB0cg.woff) format('woff');
+    font-family: 'Risque';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Risque'), local('Risque-Regular'), url(../google-font/risque/a8AGA5XaSxGdEu0gkNB0cg.woff) format('woff');
 }
 
 .cf:before, .cf:after{
