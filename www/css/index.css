@@ -20,6 +20,11 @@ a:hover {
     color: #ccc;
 }
 
+.recommand {
+    white-space: nowrap;
+    overflow:hidden;
+}
+
 .well {
     padding: 5px;
     background: #ddd;

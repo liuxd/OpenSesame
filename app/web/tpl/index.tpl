@@ -42,8 +42,8 @@
             <?php if (isset($recomm)):?>
             <div class="controls-row span8 offset3">
                 <?php foreach($recomm as $key => $value):?>
-                <div class="span2">
-                    <a href="<?=$value['url'];?>" target="_blank"><?=$value['name'];?></a>
+                <div class="span2 recommand">
+                    <a href="<?=$value['url'];?>" title="<?=$value['name'];?>" target="_blank"><?=$value['name'];?></a>
                 </div>
                 <?php endforeach;?>
             </div>
@@ -53,8 +53,8 @@
             <?php if (isset($random)):?>
             <div class="controls-row span8 offset3">
                 <?php foreach($random as $key => $value):?>
-                <div class="span2">
-                    <a href="<?=$value['url'];?>" target="_blank"><?=$value['name'];?></a>
+                <div class="span2 recommand">
+                    <a href="<?=$value['url'];?>" title="<?=$value['name'];?>" target="_blank"><?=$value['name'];?></a>
                 </div>
                 <?php endforeach;?>
             </div>
