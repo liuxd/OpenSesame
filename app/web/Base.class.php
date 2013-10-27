@@ -19,6 +19,12 @@ class Base {
         $op = $this->get('op', 'index');
         $this->anti_robot();
         $this->auth($op);
+
+        if (Router::op_type() !== Router::OP_PAGE){
+            return array();
+        }
+
+        $data = array();
         $db_con = $this->connect_master();
 
         if (!$db_con['result']) {
