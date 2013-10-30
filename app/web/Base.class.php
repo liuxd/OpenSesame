@@ -11,8 +11,9 @@ class Base {
         Config::$app = Router::$app;
         $msg = Config::get('msg_default');
 
-        if (!$msg['result']){
-            echo $msg['msg'];exit;
+        if (!$msg['result']) {
+            echo $msg['msg'];
+            exit;
         }
 
         $this->msg_map = $msg['data'];
@@ -20,15 +21,15 @@ class Base {
         $this->anti_robot();
         $this->auth($op);
 
-        if (Router::op_type() !== Router::OP_PAGE){
-            return array();
-        }
-
         $data = array();
         $db_con = $this->connect_master();
 
         if (!$db_con['result']) {
             $data['error'] = $this->msg_map[$db_con['msg']];
+        }
+
+        if (Router::op_type() !== Router::OP_PAGE) {
+            return array();
         }
 
         $site_name = $this->get('site_name', '');
@@ -81,13 +82,13 @@ class Base {
         $ip_check = Config::get('ip_check');
 
         //检查cookie是否OK。
-        $check_cookie = function(){
+        $check_cookie = function() {
             $cookie_name = md5(date('Y-m-d'));
             return isset($_COOKIE[$cookie_name]);
         };
 
         //身份验证后的跳转处理。
-        $redirect = function($auth)use($op){
+        $redirect = function($auth)use($op) {
             //检验cookie
             if (!$auth and $op != 'welcome') {
                 Router::redirect(Router::gen_url('welcome'));
@@ -101,20 +102,19 @@ class Base {
         $auth = $check_cookie();
 
         //IP检查
-        if ($ip_check['data'] == 'on'){
-            if ($op == 'deny'){
+        if ($ip_check['data'] == 'on') {
+            if ($op == 'deny') {
                 return TRUE;
             } else {
                 $allow_ip = Config::get('allow_ip');
                 $is_auth = in_array(ip(), $allow_ip['data']);
 
-                if (!$is_auth){
+                if (!$is_auth) {
                     Router::redirect(Router::gen_url('deny'));
                 } else {
                     return $redirect($auth);
                 }
             }
-
         } else {
             return $redirect($auth);
         }
@@ -133,7 +133,7 @@ class Base {
     /**
      * 反爬虫
      */
-    private function anti_robot(){
+    private function anti_robot() {
         //反爬虫
         $ua = $_SERVER['HTTP_USER_AGENT'];
 
@@ -141,8 +141,9 @@ class Base {
             header("HTTP/1.1 404 Not Found");
             header("Status: 404 Not Found");
             exit;
-        }   
+        }
     }
+
 }
 
 # end of this file
