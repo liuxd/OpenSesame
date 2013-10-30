@@ -25,6 +25,4 @@ foreach (glob(__DIR__ . DS . '*.php') as $key => $file) {
     require $file;
 }
 
-require ROOT_PATH . DS . 'dev' . DS . 'debug.function.php';
-
 # end of this file
