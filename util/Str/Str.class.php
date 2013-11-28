@@ -10,12 +10,17 @@ class Str {
      * @param int $length 字符串长度。
      * @return string
      */
-    public static function random($length) {
+    public static function random($length, $queue = '') {
         if ($length < 1) {
             return FALSE;
         }
 
-        $all = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        if ($queue) {
+            $all = $queue;
+        } else {
+            $all = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        }
+
         $i = 0;
         $output = '';
 
