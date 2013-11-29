@@ -1,3 +1,4 @@
+<script language="javascript" src="<?=$js_host;?>/js/jquery.jrumble.1.3.min.js"></script>
 <link rel="stylesheet" type="text/css" href="<?=$css_host;?>/css/index.css" ></link>
 
 <!-- 报错信息 -->
@@ -22,7 +23,7 @@
         <div style="margin:10%">
 
             <!-- logo -->
-            <h1 class="form-signin-heading span5 offset4 cw" style="font-family: 'Risque', cursive" title="<?=$site_total;?>">
+            <h1 class="form-signin-heading span5 offset4 cw" style="font-family: 'Risque', cursive" title="<?=$site_total;?>" id="logo">
                 <img src='<?=$img_host;?>/img/web.png' width=90 height=90>
                 Open Sesame
             </h1>
@@ -62,3 +63,23 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+$('#logo').jrumble().hover(
+    function(){
+        $(this).trigger('startRumble');
+    },
+    function(){
+        $(this).trigger('stopRumble');
+    }
+);
+
+$('#search_bt').jrumble().hover(
+    function(){
+        $(this).trigger('startRumble');
+    },
+    function(){
+        $(this).trigger('stopRumble');
+    }
+);
+</script>
