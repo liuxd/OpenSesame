@@ -6,7 +6,6 @@
 </style>
 <script type="text/javascript" src="<?=$css_host;?>/js/Vector.js"></script>
 <script language="javascript">
-$("#footer").hide();
 
 var textSize = 6;
 var text0 = "<?=$msg_welcome_1;?>";

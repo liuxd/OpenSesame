@@ -1,6 +1,6 @@
 <!-- footer -->
 <footer class="footer" id="footer">
-    &COPY; <a href="https://github.com/liuxd?tab=repositories" target="_blank">刘喜东</a>
+    Powered By <a href="https://github.com/liuxd?tab=repositories" target="_blank">刘喜东</a>
 </footer>
 
 <!--普通内容弹出框-->
