@@ -18,7 +18,7 @@
 </div>
 
 <div class="navbar-fixed-top" style="width : 50px">
-    <button type="button" class="btn" id="add_pull" ><?=$bt_add;?></button>
+    <button type="button" class="btn btn-danger btn-small" id="add_pull" ><?=$bt_add;?></button>
 </div>
 
 <!-- 搜索区 -->
