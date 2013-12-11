@@ -3,6 +3,9 @@
         margin:0;
         padding:0;
     }
+    footer {
+        display: none;
+    }
 </style>
 <script type="text/javascript" src="<?=$css_host;?>/js/Vector.js"></script>
 <script language="javascript">
