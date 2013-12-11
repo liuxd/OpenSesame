@@ -7,7 +7,7 @@
 <?php endif;?>
 
 <!-- 头部表单 -->
-<div class="navbar-fixed-top">
+<div class="navbar-fixed-top" id="add_input" style="display : none">
     <form class="well form-inline" action="<?=$form_action_add?>" method="post" autocomplete="off" >
         <a href="http://cn.gravatar.com/emails/" target="__blank"><img src="<?=$gravatar;?>" alt="liuxd" width="30" height="30" /></a>
         <input type="text" class="input-large" placeholder="<?=$input_site;?>" name="name">
@@ -15,6 +15,10 @@
         <button type="submit" class="btn btn-success"><?=$bt_commit;?></button>
         <a class="btn btn-danger" href="javascript:void(0)" id="logout_bt"><?=$bt_logout?></a>
     </form>
+</div>
+
+<div class="navbar-fixed-top" style="width : 50px">
+    <button type="button" class="btn" id="add_pull" ><?=$bt_add;?></button>
 </div>
 
 <!-- 搜索区 -->

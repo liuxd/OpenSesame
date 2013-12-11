@@ -30,6 +30,7 @@ class Page extends Base {
             'bt_commit',
             'bt_logout',
             'bt_search',
+            'bt_add',
             'title_search',
             'msg_recomm',
         );

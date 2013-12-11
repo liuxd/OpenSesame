@@ -122,6 +122,12 @@
         });
     });
 
+    //显示添加网站的表单
+    $('#add_pull').bind('click', function() {
+        $(this).hide();
+        $('#add_input').show();
+    });
+
     //键盘事件
     var key_combo = [
         {
