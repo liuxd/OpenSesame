@@ -6,6 +6,13 @@
 
 require __DIR__ . '/core/init.inc';
 
+$www = substr($_SERVER['REQUEST_URI'], 0, 8);
+
+if ($www === '/static/') {
+    FrontEnd::handle(WWW_PATH, 8);
+    die;
+}
+
 # 创建数据对象。保存响应请求过程中需要的各种参数。
 $o = new stdClass;
 

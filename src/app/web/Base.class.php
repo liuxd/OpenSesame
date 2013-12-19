@@ -37,18 +37,8 @@ class Base {
         $data['index_url'] = Router::gen_url('index');
         $data['app'] = Router::$app;
         $data['pop_title'] = $this->msg_map['pop_title'];
-
         $msg_js = Config::get('msg_js_default');
         $data['msg_js'] = $msg_js['data'];
-
-        $cdn_host = Config::get('cdn_host');
-
-        if ($cdn_host['result']) {
-            $data['css_host'] = $cdn_host['data']['css'];
-            $data['js_host'] = $cdn_host['data']['js'];
-            $data['img_host'] = $cdn_host['data']['img'];
-        }
-
         $data['title_url'] = '';
 
         if (!empty($site_name)) {

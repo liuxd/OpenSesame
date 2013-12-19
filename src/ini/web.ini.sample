@@ -3,11 +3,6 @@ ip_check='on'
 [allow_ip]
 1=127.0.0.1
 
-[cdn_host]
-css=www
-js=www
-img=www
-
 [db]
 history=/home/liuxd/www/pac_history.db
 master=/var/www/key-box/password.db
