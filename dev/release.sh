@@ -10,7 +10,7 @@ do
     ret=`php -l $php_file`
     msg="$base_str$php_file"
 
-    if [ "$msg" != $base_str ];then
+    if [ "$msg" != "$base_str" ]; then
         echo $msg
         git reset --hard
         exit
