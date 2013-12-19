@@ -9,7 +9,7 @@ mb_internal_encoding("UTF-8");
 
 # 路径常量定义
 define('DS', DIRECTORY_SEPARATOR);
-define('ROOT_PATH', realpath(__DIR__ . DS . '..') . DS);
+define('ROOT_PATH', __DIR__ . DS . '..' . DS);
 define('UTIL_PATH', ROOT_PATH . 'util' . DS);
 define('APP_PATH', ROOT_PATH . 'app' . DS);
 define('WWW_PATH', ROOT_PATH . 'www' . DS);
