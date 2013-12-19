@@ -9,7 +9,7 @@ require __DIR__ . '/core/init.inc';
 $www = substr($_SERVER['REQUEST_URI'], 0, 8);
 
 if ($www === '/static/') {
-    FrontEnd::handle($www);
+    FrontEnd::handle(WWW_PATH, 8);
     die;
 }
 
