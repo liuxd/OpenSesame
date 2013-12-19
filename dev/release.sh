@@ -21,6 +21,8 @@ done
 
 git clean -df
 
+cp $cur/web.ini ./ini/web.ini
+
 #打包
 cd /Users/liuxd/Documents/github.com/phar-packer
 php phar-packer.php --name=open-sesame --path=/Users/liuxd/Documents/github.com/open-sesame/src --init=index.php
@@ -30,3 +32,4 @@ mv open-sesame.phar /Users/liuxd/Documents/web/
 
 cd $cur/../src/
 git reset --hard
+cp ini/web.ini.sample ini/web.ini

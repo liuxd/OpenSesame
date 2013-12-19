@@ -4,8 +4,8 @@ ip_check='on'
 1=127.0.0.1
 
 [db]
-history=/home/liuxd/www/pac_history.db
-master=/var/www/key-box/password.db
+history=/Users/liuxd/pac_history.db
+master=/Users/liuxd/password_dev.db
 
 [msg_default]
 1="Table name must be string."
