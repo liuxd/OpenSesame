@@ -24,8 +24,9 @@ git clean -df
 #打包
 cd /Users/liuxd/Documents/github.com/phar-packer
 php phar-packer.php --name=open-sesame --path=/Users/liuxd/Documents/github.com/open-sesame/src --init=index.php
-cd $cur/../src/
-git reset --hard
 
 #部署
 mv open-sesame.phar /Users/liuxd/Documents/web/
+
+cd $cur/../src/
+git reset --hard
