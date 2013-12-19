@@ -21,11 +21,17 @@ define('DEFAULT_APP', 'web');
 $msgs = parse_ini_file(__DIR__ . DS . 'error_msg.ini.core', true);
 
 # 框架核心文件
-require_once __DIR__ . DS . 'CGI.class.php';
-require_once __DIR__ . DS . 'ClassLoader.class.php';
-require_once __DIR__ . DS . 'Router.class.php';
-require_once __DIR__ . DS . 'Config.class.php';
-require_once __DIR__ . DS . 'error_handler.php';
-require_once __DIR__ . DS . 'Func.php';
+$core_files = array(
+    'Func.php',
+    'error_handler.php',
+    'Config.class.php',
+    'CGI.class.php',
+    'Router.class.php',
+    'ClassLoader.class.php',
+);
+
+foreach ($core_files as $core_file) {
+    require __DIR__ . DS . $core_file;
+}
 
 # end of this file
