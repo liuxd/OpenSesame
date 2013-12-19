@@ -1,0 +1,9 @@
+{
+    "name": "open-sesame",
+    "decription": "account manager",
+    "license": "MIT",
+    "require": {
+        "php": ">=5.4.17",
+        "zlib": "1.2.5"
+    }
+}
