@@ -7,7 +7,7 @@
         display: none;
     }
 </style>
-<script type="text/javascript" src="<?=$css_host;?>/js/Vector.js"></script>
+<script type="text/javascript" src="static/js/Vector.js"></script>
 <script language="javascript">
 
 var textSize = 6;
