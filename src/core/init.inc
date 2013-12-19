@@ -21,8 +21,11 @@ define('DEFAULT_APP', 'web');
 $msgs = parse_ini_file(__DIR__ . DS . 'error_msg.ini.core', true);
 
 # 框架核心文件
-foreach (glob(__DIR__ . DS . '*.php') as $key => $file) {
-    require $file;
-}
+require_once __DIR__ . DS . 'CGI.class.php';
+require_once __DIR__ . DS . 'ClassLoader.class.php';
+require_once __DIR__ . DS . 'Router.class.php';
+require_once __DIR__ . DS . 'Config.class.php';
+require_once __DIR__ . DS . 'error_handler.php';
+require_once __DIR__ . DS . 'Func.php';
 
 # end of this file
