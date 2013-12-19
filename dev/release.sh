@@ -12,12 +12,14 @@ do
 
     if [ "$msg" != "$ret" ]; then
         echo $msg
-        git reset --hard
         exit
     fi
 
-    php -w $php_file > $php_file
+    cp -R $php_file{,.bak}
+    php -w $php_file.bak > $php_file
 done
+
+git clean -df
 
 #打包
 cd /Users/liuxd/Documents/github.com/phar-packer
