@@ -30,11 +30,11 @@ class CGI {
     private static function page_handler($o) {
         extract($o->ret);
 
-        $o->tpls = array(
+        $o->tpls = [
             'header' => 'header.tpl',
             'body' => $o->op . '.tpl',
             'footer' =>  'footer.tpl',
-        );
+        ];
 
         if (isset($header)){
             $o->tpls['header'] = $header;
@@ -58,7 +58,7 @@ class CGI {
     //表单请求处理
     private static function form_handler($o) {
         $op = $o->ret['op'];
-        $params = (isset($o->ret['params'])) ? $o->ret['params'] : array();
+        $params = (isset($o->ret['params'])) ? $o->ret['params'] : [];
         $url = Router::gen_url($op, Router::OP_PAGE, $params);
         Router::redirect($url);
     }

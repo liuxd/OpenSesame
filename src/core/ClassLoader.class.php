@@ -11,7 +11,7 @@ class ClassLoader {
         unset($loader_list[0]);
 
         foreach ($loader_list as $method) {
-            spl_autoload_register(array(__CLASS__, $method));
+            spl_autoload_register([__CLASS__, $method]);
         }
     }
 

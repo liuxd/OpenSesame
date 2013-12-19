@@ -17,7 +17,7 @@ class Upload {
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, array('file' => '@' . $file));
+        curl_setopt($ch, CURLOPT_POSTFIELDS, ['file' => '@' . $file]);
         curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.65 Safari/537.36");
         $ret = curl_exec($ch);
         $error = curl_error($ch);

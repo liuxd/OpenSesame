@@ -9,10 +9,10 @@ class Order {
      * 二维数组按两个字段进行排序。使用冒泡排序。
      * @param array $arr 待排序数组。
      * @param array $ord 排序因子。
-     *                   例子：array(
+     *                   例子：[
      *                              0 => 'field1:asc',
      *                              1 => 'field2:desc',
-     *                         );
+     *                         ];
      *                         表示按field1升序排序之后，在field1的值相等的情况下，再按field2降序排序。
      *                         asc,desc是固定的值，没有其他可能值。
      * @return string

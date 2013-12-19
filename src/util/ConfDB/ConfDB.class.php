@@ -32,14 +32,14 @@ class ConfDB {
      * @param string $table 数据表。
      * @param string $key 数据项的键。
      * @param boolen $table_list 是否只列出数据表。
-     * @return array 形如：array('stat' => TRUE,'error' => '数据表不能为空','response' => 123);
+     * @return array 形如：['stat' => TRUE,'error' => '数据表不能为空','response' => 123];
      */
     public static function get($table = '', $key = '', $table_list = FALSE) {
         $table = trim($table);
         $key = trim($key);
 
         //返回值初始化。格式固定。
-        self::$result = array('stat' => FALSE, 'error' => '', 'response' => '');
+        self::$result = ['stat' => FALSE, 'error' => '', 'response' => ''];
 
         if (empty($table)) {
             $table = self::$db_info;
@@ -69,7 +69,7 @@ class ConfDB {
         //如果输入的数据表不存在则报错。
         if (!isset($all[$table])) {
             self::$result['error'] = self::ERR_TABLE_NOT_EXISTS;
-            self::$result['response'] = array();
+            self::$result['response'] = [];
 
             return self::$result;
         }
@@ -101,7 +101,7 @@ class ConfDB {
     public static function up($table, $key, $value) {
         $table = trim($table);
         $key = trim($key);
-        $result = array('stat' => FALSE, 'error' => '');
+        $result = ['stat' => FALSE, 'error' => ''];
 
         if (empty($table) || empty($key) || empty($value)) {
             $result['error'] = self::ERR_NOT_EMPTY;
@@ -142,7 +142,7 @@ class ConfDB {
         $table = trim($table);
         $key = trim($key);
 
-        $result = array('stat' => FALSE, 'error' => '');
+        $result = ['stat' => FALSE, 'error' => ''];
 
         if (empty($table)) {
             $result['error'] = self::ERR_TABLENAME_NOT_EMPTY;
@@ -204,10 +204,10 @@ class ConfDB {
      * @return array
      */
     public static function connect($db_file = '') {
-        $ret = array(
+        $ret = [
             'result' => FALSE,
             'msg' => '',
-        );
+        ];
 
         if ($db_file) {
             self::$file_path = $db_file;
@@ -255,12 +255,12 @@ class ConfDB {
         $result = FALSE;
 
         if (!file_exists(self::$file_path)) {
-            $db_info = array(
-                self::$db_info => array(
+            $db_info = [
+                self::$db_info => [
                     '创建时间' => date('Y-m-d H:i:s', $_SERVER['REQUEST_TIME']),
                     '版本信息' => self::$version,
-                ),
-            );
+                ],
+            ];
 
             $result = self::write($db_info);
         }
@@ -273,7 +273,7 @@ class ConfDB {
      * @return array
      */
     private static function get_all() {
-        $result = array('stat' => FALSE, 'response' => '');
+        $result = ['stat' => FALSE, 'response' => ''];
         $result['response'] = self::read();
         $result['stat'] = TRUE;
 
@@ -320,7 +320,7 @@ class ConfDB {
             return $decode;
         }
 
-        return array();
+        return [];
     }
 
 }

@@ -15,7 +15,7 @@ class DB {
      * @param type $options
      * @return PDO
      */
-    public static function get_instance($dsn, $username, $password, $options = array()) {
+    public static function get_instance($dsn, $username, $password, $options = []) {
         if (is_null(self::$db)){
             self::$db = new PDO($dsn, $username, $password, $options);
             self::$db->query('set names utf8');
@@ -31,7 +31,7 @@ class DB {
      * @param type $p
      * @return type
      */
-    public static function get_list($sql, $p = array()) {
+    public static function get_list($sql, $p = []) {
         $dbh = self::$db->prepare($sql);
         $dbh->execute($p);
         $ret = $dbh->fetchall(PDO::FETCH_ASSOC);
@@ -61,7 +61,7 @@ class DB {
      * @param type $p
      * @return type
      */
-    public static function get_one($sql, $p = array()) {
+    public static function get_one($sql, $p = []) {
         $dbh = self::$db->prepare($sql);
         $dbh->execute($p);
         $ret = $dbh->fetch(PDO::FETCH_ASSOC);
@@ -77,7 +77,7 @@ class DB {
      * @return type
      */
     public static function update($table, $where, $info) {
-        $tmp = array();
+        $tmp = [];
         foreach ($info as $key => $value) {
             $tmp[] = "$key=$value";
         }
@@ -107,11 +107,11 @@ class DB {
 
         //values
         $values = array_values($info);
-        $ret = array(
+        $ret = [
             'keys' => $keys,
             'marks' => $marks,
             'values' => $values
-        );
+        ];
 
         return $ret;
     }

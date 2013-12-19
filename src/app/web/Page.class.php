@@ -16,14 +16,14 @@ class Page extends Base {
         $user_config = Config::get('user');
         $email = $user_config['data']['email'];
 
-        $data = array(
+        $data = [
             'page_title' => $this->msg_map['title_index'],
             'form_action_add' => Router::gen_url('add_app', Router::OP_FORM),
             'site_total' => $total,
             'gravatar' => Gravatar::get_gravatar_url($email, 30),
-        );
+        ];
 
-        $msg_list = array(
+        $msg_list = [
             'input_site',
             'input_url',
             'input_search',
@@ -33,7 +33,7 @@ class Page extends Base {
             'bt_add',
             'title_search',
             'msg_recomm',
-        );
+        ];
 
         foreach ($msg_list as $v) {
             $data[$v] = $this->msg_map[$v];
@@ -45,7 +45,7 @@ class Page extends Base {
 
             foreach ($rand_keys as $key){
                 $tmp['name'] = $key;
-                $tmp['url'] = Router::gen_url('app_info', Router::OP_PAGE, array('site_name' => $key));
+                $tmp['url'] = Router::gen_url('app_info', Router::OP_PAGE, ['site_name' => $key]);
                 $random_account_keys[] = $tmp;
             }
 
@@ -68,15 +68,15 @@ class Page extends Base {
 
                 $keys = array_keys($history_query['response']);
                 $count = 0;
-                $recomm = array();
-                $tmp = array(
+                $recomm = [];
+                $tmp = [
                     'name' => '',
                     'url' => ''
-                );
+                ];
 
                 while ($count < Const_PAC::RECOMMAND_ACCOUNT_NUM and $keys) {
                     $tmp['name'] = array_shift($keys);
-                    $tmp['url'] = Router::gen_url('app_info', Router::OP_PAGE, array('site_name' => $tmp['name']));
+                    $tmp['url'] = Router::gen_url('app_info', Router::OP_PAGE, ['site_name' => $tmp['name']]);
                     $recomm[] = $tmp;
                     $count++;
                 }
@@ -105,12 +105,12 @@ class Page extends Base {
         }
 
         $site_list = ConfDB::get(Const_PAC::SITE_LIST);
-        $result = array();
+        $result = [];
 
         if ($site_list['stat']) {
             foreach ($site_list['response'] as $k => $v) {
                 if (empty($key) || strpos($k, $key) !== FALSE || strpos($v, $key) !== FALSE) {
-                    $tmp['info_url'] = Router::gen_url('app_info', Router::OP_PAGE, array('site_name' => $k));
+                    $tmp['info_url'] = Router::gen_url('app_info', Router::OP_PAGE, ['site_name' => $k]);
                     $tmp['goto_url'] = 'http://' . $v;
                     $result[$k] = $tmp;
                 }
@@ -120,7 +120,7 @@ class Page extends Base {
         $site_total = count($result);
         $error = ($site_total == 0) ? $this->msg_map['msg_no_result'] . '<b>' . $key . '</b>' : '';
 
-        $data = array(
+        $data = [
             'keyword' => $key,
             'page_title' => $this->msg_map['title_list'] . $site_total,
             'total' => $site_total,
@@ -135,7 +135,7 @@ class Page extends Base {
             'table' => Const_PAC::SITE_LIST,
             'form_action_add' => Router::gen_url('add_site', Router::OP_FORM),
             'form_action_del' => Router::gen_url('del', Router::OP_FORM),
-        );
+        ];
 
         return $data;
     }
@@ -152,7 +152,7 @@ class Page extends Base {
             if (!isset($site_list['response'][$site_name])){
                 $this->connect_history_db();
                 ConfDB::del($this->history_table, $site_name);
-                Router::redirect(Router::gen_url('index', Router::OP_PAGE, array('error' => 'error_not_found')));
+                Router::redirect(Router::gen_url('index', Router::OP_PAGE, ['error' => 'error_not_found']));
             } else {
                 $app_url = 'http://' . $site_list['response'][$site_name];
             }
@@ -161,10 +161,10 @@ class Page extends Base {
         if ($site_info['stat']) {
             foreach ($site_info['response'] as $k => $v) {
                 $v = base64_decode($v);
-                $tmp = array(
+                $tmp = [
                     'display' => Str::part_cover($v, 2, 1),
                     'real' => $v,
-                );
+                ];
 
                 $site_info['response'][$k] = $tmp;
             }
@@ -176,7 +176,7 @@ class Page extends Base {
             ConfDB::up('view', $site_name, $count + 1);
         }
 
-        $data = array(
+        $data = [
             'page_title' => $site_name,
             'site_name' => $site_name,
             'error' => isset($this->msg_map[$site_info['error']]) ? $this->msg_map[$site_info['error']] : '',
@@ -184,9 +184,9 @@ class Page extends Base {
             'form_action_add' => Router::gen_url('add_site_info', Router::OP_FORM),
             'form_action_del' => Router::gen_url('del', Router::OP_FORM),
             'app_url' => $app_url,
-        );
+        ];
 
-        $msg_list = array(
+        $msg_list = [
             'input_key',
             'input_value',
             'bt_commit',
@@ -197,7 +197,7 @@ class Page extends Base {
             'bt_del',
             'bt_modify',
             'bt_copy',
-        );
+        ];
 
         foreach ($msg_list as $v) {
             $data[$v] = $this->msg_map[$v];
@@ -210,22 +210,22 @@ class Page extends Base {
      * 无访问权限。
      */
     public function deny() {
-        return array(
+        return [
             'page_title' => $this->msg_map['title_deny'],
             'msg_deny' => $this->msg_map['msg_deny']
-        );
+        ];
     }
 
     /**
      * 登录页。
      */
     public function welcome() {
-        $data = array(
+        $data = [
             'page_title' => $this->msg_map['title_welcome'],
             'msg_welcome_1' => $this->msg_map['msg_welcome_1'],
             'msg_welcome_2' => $this->msg_map['msg_welcome_2'],
             'auth_url' => Router::gen_url('login_auth', Router::OP_AJAX)
-        );
+        ];
 
         return $data;
     }

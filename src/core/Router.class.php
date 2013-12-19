@@ -35,11 +35,11 @@ class Router {
      */
     public static function op_type() {
         $type = (int) self::get('type');
-        $type_list = array(
+        $type_list = [
             self::OP_PAGE,
             self::OP_FORM,
             self::OP_AJAX,
-        );
+        ];
 
         if (!in_array($type, $type_list) or empty($type)) {
             return self::OP_PAGE;
@@ -71,8 +71,8 @@ class Router {
             return (isset($_GET[$name])) ? $_GET[$name] : $default;
         }
 
-        $r = array();
-        $framework_url_param = array('app', 'type', 'op');
+        $r = [];
+        $framework_url_param = ['app', 'type', 'op'];
 
         foreach ($_GET as $k => $v) {
             if (!in_array($k, $framework_url_param)) {
@@ -90,7 +90,7 @@ class Router {
      * @param string $op 请求动作。
      * @param array $params 传递的参数。
      */
-    public static function gen_url($op, $type = FALSE, $params = array()) {
+    public static function gen_url($op, $type = FALSE, $params = []) {
         if (!self::$is_default) {
             $params['app'] = self::$app;
         }
@@ -114,11 +114,11 @@ class Router {
      * @return string
      */
     public static function get_op_class_name($op_type) {
-        $type_list = array(
+        $type_list = [
             self::OP_PAGE => 'Page',
             self::OP_FORM => 'Form',
             self::OP_AJAX => 'Ajax',
-        );
+        ];
 
         $class_name = ($type_list[$op_type]) ? $type_list[$op_type] : 'Page';
 

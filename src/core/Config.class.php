@@ -2,22 +2,22 @@
 /**
  * 配置信息管理。
  * 接口规范：所有对外接口统一格式：
- * array(
+ * [
  *     'result' => FALSE, //接口执行是否成功。
  *     'msg' => '', //接口执行失败的原因。
- *     'data' => array(), //接口返回数据。
- * );
+ *     'data' => [], //接口返回数据。
+ * ];
  */
 defined('ROOT_PATH') or die('Visit unavailable!');
 
 class Config {
 
     public static $app;
-    public static $ret = array(
+    public static $ret = [
         'result' => FALSE,
         'msg' => '',
-        'data' => array()
-    );
+        'data' => []
+    ];
 
     /**
      * 获得配置项。
@@ -47,11 +47,11 @@ class Config {
             return self::$ret;
         }
 
-        self::$ret = array(
+        self::$ret = [
             'result' => TRUE,
             'msg' => '',
             'data' => $config_info[$key]
-        );
+        ];
 
         return self::$ret;
     }

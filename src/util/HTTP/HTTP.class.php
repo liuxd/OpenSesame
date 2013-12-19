@@ -9,7 +9,7 @@ class HTTP {
      * @return array
      */
     public static function getheaders(){
-        $headers = array();
+        $headers = [];
 
         if (isset($_SERVER['PHP_AUTH_DIGEST'])) {
             $headers['AUTHORIZATION'] = $_SERVER['PHP_AUTH_DIGEST'];

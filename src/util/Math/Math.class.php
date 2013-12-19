@@ -16,7 +16,7 @@ class Math {
             return false;
         }
 
-        $res = array();
+        $res = [];
         $res[] = 1;
 
         for ($i = 1; $i <= $n; $i++) {

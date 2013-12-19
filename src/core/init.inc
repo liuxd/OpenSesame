@@ -21,7 +21,7 @@ define('DEFAULT_APP', 'web');
 $msgs = parse_ini_file(__DIR__ . DS . 'error_msg.ini.core', true);
 
 # 框架核心文件
-$core_files = array(
+$core_files = [
     'Func.php',
     'error_handler.php',
     'Config.class.php',
@@ -29,7 +29,7 @@ $core_files = array(
     'Router.class.php',
     'ClassLoader.class.php',
     'FrontEnd.class.php'
-);
+];
 
 foreach ($core_files as $core_file) {
     require __DIR__ . DS . $core_file;
