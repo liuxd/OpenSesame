@@ -30,6 +30,7 @@ php phar-packer.php --name=open-sesame --path=/Users/liuxd/Documents/github.com/
 #部署
 mv open-sesame.phar /Users/liuxd/Documents/web/
 
+#恢复开发环境
 cd $cur/../src/
 git reset --hard
 cp ini/web.ini.sample ini/web.ini
