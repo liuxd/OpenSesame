@@ -3,8 +3,11 @@
 # 正式环境使用的web.ini。
 config_path=`pwd`
 
-# 代码所在的路径
+# 代码(phar包)要部署到的路径
 release_path=/Users/liuxd/Documents/web/
+
+# 原始代码路径
+code_path=/Users/liuxd/Documents/github.com/open-sesame/src
 
 ############# 以上是配置区 #############
 
@@ -33,7 +36,7 @@ cp $config_path/web.ini ./ini/web.ini
 
 # 打包
 cd $cur
-php phar-packer.php --name=open-sesame --path=/Users/liuxd/Documents/github.com/open-sesame/src --init=index.php
+php phar-packer.php --name=open-sesame --path=$code_path --init=index.php
 
 # 部署
 mv open-sesame.phar $release_path
