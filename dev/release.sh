@@ -1,8 +1,14 @@
 #!/bin/bash
-#
-# 正式环境使用的web.ini应该放在本目录下。
 
-#检查 & 过滤
+# 正式环境使用的web.ini。
+config_path=`pwd`
+
+# 代码所在的路径
+release_path=/Users/liuxd/Documents/web/
+
+############# 以上是配置区 #############
+
+# 检查 & 过滤
 base_str='No syntax errors detected in '
 cur=`pwd`
 cd ../src/
@@ -23,18 +29,16 @@ done
 
 git clean -df
 
-cp $cur/web.ini ./ini/web.ini
+cp $config_path/web.ini ./ini/web.ini
 
-#打包
+# 打包
 cd $cur
 php phar-packer.php --name=open-sesame --path=/Users/liuxd/Documents/github.com/open-sesame/src --init=index.php
 
-#部署
-mv open-sesame.phar /Users/liuxd/Documents/web/
+# 部署
+mv open-sesame.phar $release_path
 
-#恢复开发环境
+# 恢复开发环境
 cd $cur/../src/
 git reset --hard
 cp ini/web.ini.sample ini/web.ini
-
-#EOF
