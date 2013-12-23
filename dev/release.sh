@@ -1,4 +1,6 @@
 #!/bin/bash
+#
+# 正式环境使用的web.ini应该放在本目录下。
 
 #检查 & 过滤
 base_str='No syntax errors detected in '
@@ -34,3 +36,5 @@ mv open-sesame.phar /Users/liuxd/Documents/web/
 cd $cur/../src/
 git reset --hard
 cp ini/web.ini.sample ini/web.ini
+
+#EOF
