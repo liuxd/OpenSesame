@@ -93,14 +93,18 @@
 
     //生成密码按钮
     $('#pwd_bt').bind('click', function() {
-        var l = 15;
-        var x = '0123456789abcdefghijklmnopqrstuvwxyz()', s = '';
+        var l = 14;
+        var x = '23456789abcdefghijkmnpqrstuvwxyz()', s = '';
+        var field_name = $('#field_name');
 
         for (var i = 0; i < l; i++) {
             s += x.charAt(Math.ceil(Math.random() * 100000) % x.length);
         }
 
-        $('#field_name').attr('value', msg_pwd);
+        if (field_name.val() === '') {
+            field_name.attr('value', msg_pwd);
+        }
+
         $('#field_value').attr('value', s);
     });
 
