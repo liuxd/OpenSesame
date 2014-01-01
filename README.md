@@ -4,6 +4,7 @@ Open Sesame
 [![Build Status](https://drone.io/github.com/liuxd/open-sesame/status.png)](https://drone.io/github.com/liuxd/open-sesame/latest)
 [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/liuxd/open-sesame/badges/quality-score.png?s=65cc2a7d85c497d689c86d5770734f4be7cdf4d5)](https://scrutinizer-ci.com/g/liuxd/open-sesame/)
 [![Code Coverage](https://scrutinizer-ci.com/g/liuxd/open-sesame/badges/coverage.png?s=b79796d6b11e16ff0101c37b85db2c3cd2b8ddfa)](https://scrutinizer-ci.com/g/liuxd/open-sesame/)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/d152c96f-dd40-465c-9ea3-0e34a1be3add/mini.png)](https://insight.sensiolabs.com/projects/d152c96f-dd40-465c-9ea3-0e34a1be3add)
 
 ## 功能
 基于Web的帐号管理工具。
