@@ -8,7 +8,6 @@
  *     'data' => [], //接口返回数据。
  * ];
  */
-defined('ROOT_PATH') or die('Visit unavailable!');
 
 class Config {
 

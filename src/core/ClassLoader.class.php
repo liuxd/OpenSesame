@@ -2,17 +2,12 @@
 /**
  * 设置自定义类加载器
  */
-defined('ROOT_PATH') or die('Visit unavailable!');
 
 class ClassLoader {
 
     public function __construct() {
-        $loader_list = get_class_methods(__CLASS__);
-        unset($loader_list[0]);
-
-        foreach ($loader_list as $method) {
-            spl_autoload_register([__CLASS__, $method]);
-        }
+        spl_autoload_register([__CLASS__, 'util']);
+        spl_autoload_register([__CLASS__, 'model']);
     }
 
     /**

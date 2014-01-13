@@ -2,7 +2,6 @@
 /**
  * 路由操作。实现URL地址与解析与封装。
  */
-defined('ROOT_PATH') or die('Visit unavailable!');
 
 class Router {
 

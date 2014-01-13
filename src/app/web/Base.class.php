@@ -8,17 +8,22 @@ class Base {
     protected $msg_map = '';
 
     public function init() {
+        $is_robot = $this->anti_robot();
+
+        if ($is_robot){
+            return array();
+        }
+
         Config::$app = Router::$app;
         $msg = Config::get('msg_default');
 
         if (!$msg['result']) {
             echo $msg['msg'];
-            exit;
+            return array();
         }
 
         $this->msg_map = $msg['data'];
         $op = $this->get('op', 'index');
-        $this->anti_robot();
         $this->auth($op);
 
         $data = array();
@@ -133,8 +138,10 @@ class Base {
         if (empty($ua) or strpos($ua, 'bot') !== FALSE or strpos($ua, 'curl') !== FALSE) {
             header("HTTP/1.1 404 Not Found");
             header("Status: 404 Not Found");
-            exit;
+            return true;
         }
+
+        return false;
     }
 
 }

@@ -7,7 +7,6 @@
  * @param int $errline 发生错误的行号
  * @return null
  */
-defined('ROOT_PATH') or die('Visit unavailable!');
 
 function err($errno, $errstr, $errfile, $errline) {
     $msg[] = '编号： ' . $errno . PHP_EOL;
@@ -27,7 +26,6 @@ function err($errno, $errstr, $errfile, $errline) {
     }
 
     error_log('|'.implode('|', $msg).PHP_EOL, 3, '/tmp/open-sesame.err.log');
-    exit;
 }
 
 # 设置自定义错误处理函数

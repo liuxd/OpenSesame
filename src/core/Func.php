@@ -3,15 +3,8 @@
  * 格式化输出变量。
  */
 
-$see_run = FALSE;
-
 function see() {
-    global $see_run;
-
-    if (!$see_run){
-        header('Conten-Type: text/html;charset=utf-8;');
-        $see_run = TRUE;
-    }
+    header('Conten-Type: text/html;charset=utf-8;');
 
     $cnt = func_num_args();
     $values = func_get_args();
@@ -27,59 +20,59 @@ function see() {
     }
 
     $echo = function ($value, $color, $type) {
-                $len = '';
+        $len = '';
 
-                if ($type === 'string') {
-                    $len = '(' . mb_strlen($value, 'UTF-8') . ')';
-                }
+        if ($type === 'string') {
+            $len = '(' . mb_strlen($value, 'UTF-8') . ')';
+        }
 
-                echo '<font color="',
-                $color,
-                '" style="font-family: arial;word-wrap: break-word;word-break: normal;"><b>',
-                $type,
-                $len,
-                '</b> : ',
-                $value,
-                '</font><br>';
-            };
+        echo '<font color="',
+            $color,
+            '" style="font-family: arial;word-wrap: break-word;word-break: normal;"><b>',
+            $type,
+            $len,
+            '</b> : ',
+            $value,
+            '</font><br>';
+    };
 
     switch (TRUE) {
-        case is_string($value) :
-            $echo($value, 'red', 'string');
-            break;
+    case is_string($value) :
+        $echo($value, 'red', 'string');
+        break;
 
-        case is_float($value) :
-            $echo($value, 'BlueViolet', 'float');
-            break;
+    case is_float($value) :
+        $echo($value, 'BlueViolet', 'float');
+        break;
 
-        case is_int($value) :
-            $echo($value, 'blue', 'int');
-            break;
+    case is_int($value) :
+        $echo($value, 'blue', 'int');
+        break;
 
-        case is_null($value) :
-            $echo('null', 'Coral ', 'null');
-            break;
+    case is_null($value) :
+        $echo('null', 'Coral ', 'null');
+        break;
 
-        case is_bool($value) :
-            $v = ($value) ? 'TRUE' : 'FALSE';
-            $echo($v, 'green', 'bool');
-            break;
+    case is_bool($value) :
+        $v = ($value) ? 'TRUE' : 'FALSE';
+        $echo($v, 'green', 'bool');
+        break;
 
-        case is_array($value) :
-            echo '<b style="font-family:arial">array</b>(', count($value), ')<div style="margin:10px 20px;font-family:arial">';
+    case is_array($value) :
+        echo '<b style="font-family:arial">array</b>(', count($value), ')<div style="margin:10px 20px;font-family:arial">';
 
-            foreach ($value as $kk => $vv) {
-                echo '<font color="#555">', $kk, '</font> => ', see($vv);
-            }
+        foreach ($value as $kk => $vv) {
+            echo '<font color="#555">', $kk, '</font> => ', see($vv);
+        }
 
-            echo '</div>';
-            break;
+        echo '</div>';
+        break;
 
-        default :
-            echo "<pre>";
-            var_export($value);
-            echo "</pre>";
-            break;
+    default :
+        echo "<pre>";
+        print_r($value);
+        echo "</pre>";
+        break;
     }
 }
 
