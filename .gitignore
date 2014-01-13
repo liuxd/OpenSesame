@@ -11,4 +11,6 @@
 *.settings
 *.buildpath
 *.project
+*.lock
+src/vendor/
 nbproject/
