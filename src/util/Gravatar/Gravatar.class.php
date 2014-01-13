@@ -2,7 +2,6 @@
 /**
  * Gravatar头像操作类。
  */
-defined('ROOT_PATH') or die('Visit unavailable!');
 
 class Gravatar {
 
