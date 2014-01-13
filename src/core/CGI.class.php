@@ -63,9 +63,11 @@ class CGI {
     }
 
     //ajax请求
-    private static function ajax_handler($o) {
+    private static function ajax_handler(stdClass $o) {
         header('Content-Type: application/json; charset=utf-8');
         echo json_encode($o->ret);
+
+        return array();
     }
 }
 

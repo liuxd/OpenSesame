@@ -137,7 +137,7 @@ class Router {
             header('Location:' . $url);
         }
 
-        exit;
+        return;
     }
 
 }

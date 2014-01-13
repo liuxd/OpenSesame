@@ -27,11 +27,13 @@ eg : php phar-packer.php --name=test --path=/project/to/ --init=index.php
  
  
 HELP;
-die;
+echo PHP_EOL;
+return;
 }
  
 if (empty($name) or empty($path) or empty($init)) {
-    die('Options invalid!' . PHP_EOL);
+    echo 'Options invalid!' . PHP_EOL;
+    return;
 }
  
 $phar = new Phar($name, 0);

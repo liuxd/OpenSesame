@@ -22,7 +22,6 @@ $msgs = parse_ini_file(__DIR__ . DS . 'error_msg.ini.core', true);
 
 # 框架核心文件
 $core_files = [
-    'Func.php',
     'error_handler.php',
     'Config.class.php',
     'CGI.class.php',

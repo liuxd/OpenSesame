@@ -11,7 +11,7 @@ $www = substr($_SERVER['REQUEST_URI'], 0, 8);
 
 if ($www === '/static/') {
     FrontEnd::handle(WWW_PATH, 8);
-    die;
+    return;
 }
 
 # 创建数据对象。保存响应请求过程中需要的各种参数。
@@ -21,18 +21,15 @@ $o = new stdClass;
 # app
 $o->app = Router::app(DEFAULT_APP);
 $o->app_path = APP_PATH . $o->app;
-is_dir($o->app_path) or die($msgs['APP_NOT_VALID']);
 
 # op
 $o->op = Router::op('index');
 $o->op_type = Router::op_type();
 $o->op_class_name = Router::get_op_class_name($o->op_type);
 $o->op_file = $o->app_path . DS . $o->op_class_name . '.class.php';
-file_exists($o->op_file) or die($msgs['OP_NOT_VALID']);
 
 # tpl
 $o->tpl_path = $o->app_path . DS . 'tpl';
-file_exists($o->tpl_path) or die($msgs['TPL_NOT_VALID']);
 
 # 执行动作代码。
 require $o->app_path . DS . 'Base.class.php';
