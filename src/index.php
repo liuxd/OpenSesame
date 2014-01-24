@@ -5,7 +5,6 @@
  */
 
 require __DIR__ . '/core/init.inc';
-require __DIR__ . '/vendor/autoload.php';
 
 $www = substr($_SERVER['REQUEST_URI'], 0, 8);
 
