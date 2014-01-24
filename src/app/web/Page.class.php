@@ -154,6 +154,13 @@ class Page extends Base
             $default_password = $default_password_query['data'];
         }
 
+        $emails_query = Config::get('emails');
+        $emails = [];
+
+        if ($emails_query['result']) {
+            $emails = $emails_query['data'];
+        }
+
         $data = [
             'page_title' => $site_name,
             'site_name' => $site_name,
@@ -162,7 +169,8 @@ class Page extends Base
             'form_action_add' => Router::gen_url('addSiteInfo', Router::OP_FORM),
             'form_action_del' => Router::gen_url('del', Router::OP_FORM),
             'app_url' => $app_url,
-            'default_password' => $default_password
+            'default_password' => $default_password,
+            'emails' => $emails
         ];
 
         return $data;

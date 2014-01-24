@@ -31,6 +31,16 @@
         });
     });
 
+    //单页选择邮箱
+    $('.emails').each(function() {
+        var email = $(this).attr('data');
+
+        $($(this)).bind('click', function() {
+            $('#field_name').attr('value', '邮箱');
+            $('#field_value').attr('value', email);
+        });
+    });
+
     //单页copy按钮
     $('.info_copy_bt').each(function() {
         var value = $(this).attr('id');
@@ -103,7 +113,7 @@
 
     //生成默认密码按钮
     $('#pwd_bt_default').bind('click', function() {
-        var v = $('#pwd_bt_default').attr('data');
+        var v = $(this).attr('data');
         $('#field_name').attr('value', '密码');
         $('#field_value').attr('value', v);
     });

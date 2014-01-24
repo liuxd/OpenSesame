@@ -22,6 +22,20 @@
         <?php if($default_password):?>
         <input type="button" value="生成默认密码" class="btn btn-info" id="pwd_bt_default" data="<?=$default_password?>" />
         <?php endif;?>
+
+        <?php if($emails):?>
+        <div class="btn-group">
+            <a class="btn btn-success dropdown-toggle" data-toggle="dropdown" href="#">
+                选择邮箱
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <?php foreach ($emails as $email):?>
+                <li><a class="emails" href="#" data="<?=$email?>"><?=$email?></a></li>
+                <?php endforeach;?>
+            </ul>
+        </div>
+        <?php endif;?>
     </form>
 
     <?php if ($site_info['stat'] === TRUE):?>
