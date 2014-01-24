@@ -19,7 +19,7 @@ define('DEFAULT_APP', 'web');
 
 # 框架核心文件
 $core_files = [
-    'error_handler.php',
+    'ErrorHandler.php',
     'Config.class.php',
     'CGI.class.php',
     'Function.php',
