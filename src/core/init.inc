@@ -17,9 +17,6 @@ define('INI_PATH', ROOT_PATH . 'ini' . DS);
 
 define('DEFAULT_APP', 'web');
 
-# 错误提示常量定义
-$msgs = parse_ini_file(__DIR__ . DS . 'error_msg.ini.core', true);
-
 # 框架核心文件
 $core_files = [
     'error_handler.php',
