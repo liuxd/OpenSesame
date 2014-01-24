@@ -89,17 +89,7 @@ class Page extends Base {
         }
 
         $site_list = ConfDB::get(ConstCommon::SITE_LIST);
-        $result = [];
-
-        if ($site_list['stat']) {
-            foreach ($site_list['response'] as $k => $v) {
-                if (empty($key) || strpos($k, $key) !== FALSE || strpos($v, $key) !== FALSE) {
-                    $tmp['info_url'] = Router::gen_url('app_info', Router::OP_PAGE, ['site_name' => $k]);
-                    $tmp['goto_url'] = 'http://' . $v;
-                    $result[$k] = $tmp;
-                }
-            }
-        }
+        $result = Search::get($key);
 
         $site_total = count($result);
         $error = ($site_total == 0) ? '没有关于<b>' . $key . '</b>的结果' : '';
