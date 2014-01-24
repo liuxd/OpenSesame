@@ -22,20 +22,20 @@
         </thead>
 
         <tbody>
-        <?php foreach ($site_list as $k => $v):?>
-        <tr>
-            <th>
-                <a href="<?=$v['info_url'];?>"><?=$k;?></a>
-            </th>
-            <td>
-                <a href="<?=$v['info_url'];?>" class="btn bt" target="_blank">查看</a>
-                <button class="btn btn-danger list_del_bt bt" id="<?=$k;?>">删除</button>
-            </td>
-            <td>
-                <a href="<?=$v['goto_url'];?>" target='_blank'><?=$v['goto_url'];?></a>
-            </td>
-        </tr>
-        <?php endforeach;?>
+            <?php foreach ($site_list as $k => $v):?>
+            <tr>
+                <th>
+                    <a href="<?=$v['info_url'];?>"><?=$k;?></a>
+                </th>
+                <td>
+                    <a href="<?=$v['info_url'];?>" class="btn bt" target="_blank">查看</a>
+                    <button class="btn btn-danger list_del_bt bt" id="<?=$k;?>">删除</button>
+                </td>
+                <td>
+                    <a href="<?=$v['goto_url'];?>" target='_blank'><?=$v['goto_url'];?></a>
+                </td>
+            </tr>
+            <?php endforeach;?>
         </tbody>
     </table>
 </div>

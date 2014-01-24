@@ -67,21 +67,21 @@
 </div>
 
 <script type="text/javascript">
-$('#logo').jrumble().hover(
-    function(){
-        $(this).trigger('startRumble');
-    },
-    function(){
-        $(this).trigger('stopRumble');
-    }
-);
+    $('#logo').jrumble().hover(
+            function() {
+                $(this).trigger('startRumble');
+            },
+            function() {
+                $(this).trigger('stopRumble');
+            }
+    );
 
-$('#search_bt').jrumble().hover(
-    function(){
-        $(this).trigger('startRumble');
-    },
-    function(){
-        $(this).trigger('stopRumble');
-    }
-);
+    $('#search_bt').jrumble().hover(
+            function() {
+                $(this).trigger('startRumble');
+            },
+            function() {
+                $(this).trigger('stopRumble');
+            }
+    );
 </script>

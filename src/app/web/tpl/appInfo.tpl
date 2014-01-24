@@ -30,17 +30,17 @@
             </tr>
         </thead>
         <tbody>
-        <?php foreach ($site_info['response'] as $k => $v):?>
-        <tr>
-            <td><?=$k;?></td>
-            <td>
-                <span class="btn btn-danger info_del_bt" title='<?=$k;?>'>删除</span>
-                <span class="btn btn-info info_up_bt"  title='<?=$k;?>' id='<?=$v['real'];?>'>修改</span>
-                <span class="btn btn-success info_copy_bt" id='<?=$v['real'];?>'>复制</span>
-            </td>
-            <td><?=$v['display'];?></td>
-        </tr>
-        <?php endforeach;?>
+            <?php foreach ($site_info['response'] as $k => $v):?>
+            <tr>
+                <td><?=$k;?></td>
+                <td>
+                    <span class="btn btn-danger info_del_bt" title='<?=$k;?>'>删除</span>
+                    <span class="btn btn-info info_up_bt"  title='<?=$k;?>' id='<?=$v['real'];?>'>修改</span>
+                    <span class="btn btn-success info_copy_bt" id='<?=$v['real'];?>'>复制</span>
+                </td>
+                <td><?=$v['display'];?></td>
+            </tr>
+            <?php endforeach;?>
         </tbody>
     </table>
     <?php endif;?>
