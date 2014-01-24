@@ -36,30 +36,7 @@ class Page extends Base
 
         if ($history_query['stat']) {
             if ($history_query['response']) {
-                uasort($history_query['response'], function($a, $b) {
-                            if ($a == $b) {
-                                return 0;
-                            }
-
-                            return ($a < $b) ? 1 : -1;
-                        });
-
-                $keys = array_keys($history_query['response']);
-                $count = 0;
-                $recomm = [];
-                $tmp = [
-                    'name' => '',
-                    'url' => ''
-                ];
-
-                while ($count < ConstCommon::RECOMMAND_ACCOUNT_NUM && $keys) {
-                    $tmp['name'] = array_shift($keys);
-                    $tmp['url'] = Router::gen_url('appInfo', Router::OP_PAGE, ['site_name' => $tmp['name']]);
-                    $recomm[] = $tmp;
-                    $count++;
-                }
-
-                $data['recomm'] = $recomm;
+                $data['recomm'] = Recommand::getRecommand($history_query['response']);
             }
         }
 
