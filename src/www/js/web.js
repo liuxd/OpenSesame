@@ -95,7 +95,7 @@
         }
 
         if (field_name.val() === '') {
-            field_name.attr('value', msg_pwd);
+            field_name.attr('value', '名称');
         }
 
         $('#field_value').attr('value', s);
