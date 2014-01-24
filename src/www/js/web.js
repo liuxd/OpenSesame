@@ -101,6 +101,13 @@
         $('#field_value').attr('value', s);
     });
 
+    //生成默认密码按钮
+    $('#pwd_bt_default').bind('click', function() {
+        var v = $('#pwd_bt_default').attr('data');
+        $('#field_name').attr('value', '密码');
+        $('#field_value').attr('value', v);
+    });
+
     //退出按钮
     $('#logout_bt').bind('click', function() {
         $('#pop_confirm').confirmModal({
@@ -111,7 +118,7 @@
             callback: function() {
                 $.ajax({
                     url: url_logout,
-                    success: function(){
+                    success: function() {
                         l.reload();
                     }
                 });
@@ -145,7 +152,7 @@
             on_keydown: function() {
                 var url = $('#home_url').attr('href');
 
-                if (url){
+                if (url) {
                     w.open(url);
                 }
             }

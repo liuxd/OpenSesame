@@ -147,6 +147,13 @@ class Page extends Base
             ConfDB::up('view', $site_name, $count + 1);
         }
 
+        $default_password_query = Config::get('default_password');
+        $default_password = '';
+
+        if ($default_password_query['result']) {
+            $default_password = $default_password_query['data'];
+        }
+
         $data = [
             'page_title' => $site_name,
             'site_name' => $site_name,
@@ -155,6 +162,7 @@ class Page extends Base
             'form_action_add' => Router::gen_url('addSiteInfo', Router::OP_FORM),
             'form_action_del' => Router::gen_url('del', Router::OP_FORM),
             'app_url' => $app_url,
+            'default_password' => $default_password
         ];
 
         return $data;

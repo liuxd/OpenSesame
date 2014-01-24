@@ -18,6 +18,10 @@
         <input type="password" name="value" id="field_value" class="input_text" placeholder="内容" />
         <input type="submit" value="确定" class="btn btn-primary" />
         <input type="button" value="生成随机密码" class="btn btn-inverse" id="pwd_bt" />
+
+        <?php if($default_password):?>
+        <input type="button" value="生成默认密码" class="btn btn-info" id="pwd_bt_default" data="<?=$default_password?>" />
+        <?php endif;?>
     </form>
 
     <?php if ($site_info['stat'] === TRUE):?>
