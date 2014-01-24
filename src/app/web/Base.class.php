@@ -47,7 +47,7 @@ class Base {
         $data['title_url'] = '';
 
         if (!empty($site_name)) {
-            $tmp = ConfDB::get(Const_PAC::SITE_LIST, $site_name);
+            $tmp = ConfDB::get(ConstCommon::SITE_LIST, $site_name);
 
             if ($tmp['stat']) {
                 $data['title_url'] = 'http://' . $tmp['response'];

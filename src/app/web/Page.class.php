@@ -11,7 +11,7 @@ class Page extends Base {
      * 首页
      */
     public function index() {
-        $site_list = ConfDB::get(Const_PAC::SITE_LIST);
+        $site_list = ConfDB::get(ConstCommon::SITE_LIST);
         $total = count($site_list['response']);
         $user_config = Config::get('user');
         $email = $user_config['data']['email'];
@@ -40,8 +40,8 @@ class Page extends Base {
         }
 
         //随机推荐帐号
-        if ($total > Const_PAC::RECOMMAND_ACCOUNT_NUM){
-            $rand_keys = array_rand($site_list['response'], Const_PAC::RECOMMAND_ACCOUNT_NUM);
+        if ($total > ConstCommon::RECOMMAND_ACCOUNT_NUM){
+            $rand_keys = array_rand($site_list['response'], ConstCommon::RECOMMAND_ACCOUNT_NUM);
 
             foreach ($rand_keys as $key){
                 $tmp['name'] = $key;
@@ -74,7 +74,7 @@ class Page extends Base {
                     'url' => ''
                 ];
 
-                while ($count < Const_PAC::RECOMMAND_ACCOUNT_NUM and $keys) {
+                while ($count < ConstCommon::RECOMMAND_ACCOUNT_NUM and $keys) {
                     $tmp['name'] = array_shift($keys);
                     $tmp['url'] = Router::gen_url('app_info', Router::OP_PAGE, ['site_name' => $tmp['name']]);
                     $recomm[] = $tmp;
@@ -104,7 +104,7 @@ class Page extends Base {
             Router::redirect(Router::gen_url('index'));
         }
 
-        $site_list = ConfDB::get(Const_PAC::SITE_LIST);
+        $site_list = ConfDB::get(ConstCommon::SITE_LIST);
         $result = [];
 
         if ($site_list['stat']) {
@@ -132,7 +132,7 @@ class Page extends Base {
             'input_op' => $this->msg_map['input_op'],
             'error' => $error,
             'site_list' => $result,
-            'table' => Const_PAC::SITE_LIST,
+            'table' => ConstCommon::SITE_LIST,
             'form_action_add' => Router::gen_url('add_site', Router::OP_FORM),
             'form_action_del' => Router::gen_url('del', Router::OP_FORM),
         ];
@@ -146,7 +146,7 @@ class Page extends Base {
     public function app_info() {
         $site_name = $this->get('site_name');
         $site_info = ConfDB::get($site_name);
-        $site_list = ConfDB::get(Const_PAC::SITE_LIST);
+        $site_list = ConfDB::get(ConstCommon::SITE_LIST);
 
         if ($site_list['stat']) {
             if (!isset($site_list['response'][$site_name])){

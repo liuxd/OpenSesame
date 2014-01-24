@@ -25,7 +25,7 @@ class Form extends Base {
             $url_value = substr($url_value, 0, -1);
         }
 
-        ConfDB::up(Const_PAC::SITE_LIST, $name, $url_value);
+        ConfDB::up(ConstCommon::SITE_LIST, $name, $url_value);
 
         return array('op' => 'app_info', 'params' => array('site_name' => $name));
     }
@@ -61,7 +61,7 @@ class Form extends Base {
 
         ConfDB::del($table, $key);
 
-        $op = ($table == Const_PAC::SITE_LIST) ? 'index' : 'app_info';
+        $op = ($table == ConstCommon::SITE_LIST) ? 'index' : 'app_info';
 
         return array('op' => $op, 'params' => array('site_name' => $table));
     }
