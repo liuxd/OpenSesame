@@ -25,6 +25,7 @@ $core_files = [
     'error_handler.php',
     'Config.class.php',
     'CGI.class.php',
+    'Function.php',
     'Router.class.php',
     'ClassLoader.class.php',
     'FrontEnd.class.php'
