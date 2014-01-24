@@ -1,4 +1,5 @@
 ip_check='on'
+default_password=123456
 
 [allow_ip]
 1=127.0.0.1
@@ -20,3 +21,7 @@ master=/Users/liuxd/password_dev.db
 
 [user]
 email=example@test.com
+
+[emails]
+1=email1@gmail.com
+2=email2@163.com
