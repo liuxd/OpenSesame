@@ -18,7 +18,7 @@ class Ajax extends Base
      * 身份验证。
      */
 
-    public function login_auth()
+    public function loginAuth()
     {
         $data = array(
             'result' => self::AUTH_FAILED,
@@ -56,7 +56,7 @@ class Ajax extends Base
 
             if ($key == $today_key) {
                 $data['result'] = self::AUTH_SUCCESS;
-                setcookie($cookie_name, 'liuxd', $this->get_login_expire(), '/');
+                setcookie($cookie_name, 'liuxd', $this->getLoginExpire(), '/');
             }
         }
 
@@ -92,7 +92,7 @@ class Ajax extends Base
      * 获得登录状态有效时间。
      * @return int
      */
-    private function get_login_expire()
+    private function getLoginExpire()
     {
         $today = getdate();
         $tomorrow = mktime(0, 0, 0, $today['mon'], $today['mday'] + 1, $today['year']);

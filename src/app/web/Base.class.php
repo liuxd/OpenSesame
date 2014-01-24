@@ -6,7 +6,7 @@ class Base {
 
     public function init()
     {
-        $is_robot = $this->anti_robot();
+        $is_robot = $this->antiRobot();
 
         if ($is_robot){
             return array();
@@ -25,7 +25,7 @@ class Base {
         $this->auth($op);
 
         $data = array();
-        $db_con = $this->connect_master();
+        $db_con = $this->connectMaster();
 
         if (!$db_con['result']) {
             $data['error'] = $this->msg_map[$db_con['msg']];
@@ -70,7 +70,7 @@ class Base {
     private function auth($op)
     {
         //放过身份验证
-        if ($op == 'login_auth') {
+        if ($op == 'loginAuth') {
             return TRUE;
         }
 
@@ -118,7 +118,7 @@ class Base {
     /**
      * 链接主数据库。
      */
-    protected function connect_master()
+    protected function connectMaster()
     {
         $db = Config::get('db');
         $this->db_file = $db['data']['master'];
@@ -129,7 +129,7 @@ class Base {
     /**
      * 反爬虫
      */
-    private function anti_robot()
+    private function antiRobot()
     {
         //反爬虫
         $ua = $_SERVER['HTTP_USER_AGENT'];

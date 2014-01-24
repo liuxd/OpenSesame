@@ -9,7 +9,7 @@ class Form extends Base
     /**
      * 添加一条网站信息。
      */
-    public function add_app()
+    public function addApp()
     {
         $name = $this->post('name');
         $url = $this->post('url');
@@ -33,7 +33,7 @@ class Form extends Base
     /**
      * 添加某网站的一个属性。
      */
-    public function add_site_info()
+    public function addSiteInfo()
     {
         $table = $this->post('table');
         $key = $this->post('key');

@@ -11,8 +11,8 @@
 <script language="javascript">
 
 var textSize = 6;
-var text0 = "<?=$msg_welcome_1;?>";
-var text1 = "<?=$msg_welcome_2;?>";
+var text0 = "Open";
+var text1 = "Sesame";
 
 var width = document.body.scrollWidth;
 var height = document.body.scrollHeight;

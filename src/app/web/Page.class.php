@@ -20,7 +20,7 @@ class Page extends Base
 
         $data = [
             'page_title' => 'Open Sesame',
-            'form_action_add' => Router::gen_url('add_app', Router::OP_FORM),
+            'form_action_add' => Router::gen_url('addApp', Router::OP_FORM),
             'site_total' => $total,
             'gravatar' => Gravatar::get_gravatar_url($email, 30),
         ];
@@ -104,7 +104,6 @@ class Page extends Base
             'error' => $error,
             'site_list' => $result,
             'table' => ConstCommon::SITE_LIST,
-            'form_action_add' => Router::gen_url('add_site', Router::OP_FORM),
             'form_action_del' => Router::gen_url('del', Router::OP_FORM),
         ];
 
@@ -153,7 +152,7 @@ class Page extends Base
             'site_name' => $site_name,
             'error' => isset($this->msg_map[$site_info['error']]) ? $this->msg_map[$site_info['error']] : '',
             'site_info' => $site_info,
-            'form_action_add' => Router::gen_url('add_site_info', Router::OP_FORM),
+            'form_action_add' => Router::gen_url('addSiteInfo', Router::OP_FORM),
             'form_action_del' => Router::gen_url('del', Router::OP_FORM),
             'app_url' => $app_url,
         ];
@@ -177,7 +176,7 @@ class Page extends Base
     public function welcome()
     {
         $data = [
-            'auth_url' => Router::gen_url('login_auth', Router::OP_AJAX)
+            'auth_url' => Router::gen_url('loginAuth', Router::OP_AJAX)
         ];
 
         return $data;
