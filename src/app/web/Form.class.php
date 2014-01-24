@@ -27,7 +27,7 @@ class Form extends Base
 
         ConfDB::up(ConstCommon::SITE_LIST, $name, $url_value);
 
-        return array('op' => 'app_info', 'params' => array('site_name' => $name));
+        return array('op' => 'appInfo', 'params' => array('site_name' => $name));
     }
 
     /**
@@ -40,13 +40,13 @@ class Form extends Base
         $value = $this->post('value');
 
         if (empty($table) || empty($key) || empty($value)) {
-            return array('op' => 'app_info', 'params' => array('site_name' => $table));
+            return array('op' => 'appInfo', 'params' => array('site_name' => $table));
         }
 
         $value = base64_encode($value);
         ConfDB::up($table, $key, $value);
 
-        return array('op' => 'app_info', 'params' => array('site_name' => $table));
+        return array('op' => 'appInfo', 'params' => array('site_name' => $table));
     }
 
     /**
@@ -63,7 +63,7 @@ class Form extends Base
 
         ConfDB::del($table, $key);
 
-        $op = ($table == ConstCommon::SITE_LIST) ? 'index' : 'app_info';
+        $op = ($table == ConstCommon::SITE_LIST) ? 'index' : 'appInfo';
 
         return array('op' => $op, 'params' => array('site_name' => $table));
     }
