@@ -10,15 +10,15 @@
 <div class="navbar-fixed-top" id="add_input" style="display : none">
     <form class="well form-inline" action="<?=$form_action_add?>" method="post" autocomplete="off" >
         <a href="http://cn.gravatar.com/emails/" target="__blank"><img src="<?=$gravatar;?>" alt="liuxd" width="30" height="30" /></a>
-        <input type="text" class="input-large" placeholder="<?=$input_site;?>" name="name">
-        <input type="text" class="input-large" placeholder="<?=$input_url;?>" name="url">
-        <button type="submit" class="btn btn-success"><?=$bt_commit;?></button>
-        <a class="btn btn-danger" href="javascript:void(0)" id="logout_bt"><?=$bt_logout?></a>
+        <input type="text" class="input-large" placeholder="网站名称" name="name">
+        <input type="text" class="input-large" placeholder="网址" name="url">
+        <button type="submit" class="btn btn-success">提交</button>
+        <a class="btn btn-danger" href="javascript:void(0)" id="logout_bt">退出</a>
     </form>
 </div>
 
 <div class="navbar-fixed-top" style="width : 50px">
-    <button type="button" class="btn btn-danger btn-small" id="add_pull" ><?=$bt_add;?></button>
+    <button type="button" class="btn btn-danger btn-small" id="add_pull" >添加</button>
 </div>
 
 <!-- 搜索区 -->
@@ -35,14 +35,12 @@
             <!-- 搜索框+按钮 -->
             <div class="controls-row span9 offset3">
                 <div class="form-wrapper cf">
-                    <input type="text" name="site" id="search" autocomplete="off" placeholder="<?=$input_search;?>" x-webkit-speech lang="zh-CN" x-webkit-grammar="bUIltin:search" />
-                    <button id="search_bt"><?=$bt_search;?></button>
+                    <input type="text" name="site" id="search" autocomplete="off" placeholder="骚年，你想知道什么？" x-webkit-speech lang="zh-CN" x-webkit-grammar="bUIltin:search" />
+                    <button id="search_bt">芝麻开门</button>
                 </div>
             </div>
 
-            <h4 class="controls-row span9 offset3 cw" style="margin-top: 30px">
-                <?=$msg_recomm;?>
-            </h4>
+            <h4 class="controls-row span9 offset3 cw" style="margin-top: 30px">推荐</h4>
             <!-- 推荐帐号 -->
             <?php if (isset($recomm)):?>
             <div class="controls-row span8 offset3">

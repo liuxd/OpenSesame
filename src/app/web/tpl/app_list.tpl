@@ -1,7 +1,7 @@
 <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container">
-            <a class="brand" href="?"><?=$msg_total?> "<?=$keyword;?>" : <?=$total;?></a>
+            <a class="brand" href="?">搜索 "<?=$keyword;?>" 的结果数为 : <?=$total;?></a>
         </div>
     </div>
 </div>
@@ -15,9 +15,9 @@
     <table class="table table-striped table-bordered table-hover">
         <thead>
             <tr>
-                <th width="20%"><?=$input_site;?></th>
-                <th width="20%"><?=$input_op;?></th>
-                <th width="60%"><?=$input_url;?></th>
+                <th width="20%">帐号</th>
+                <th width="20%">操作</th>
+                <th width="60%">网址</th>
             </tr>
         </thead>
 
@@ -28,8 +28,8 @@
                 <a href="<?=$v['info_url'];?>"><?=$k;?></a>
             </th>
             <td>
-                <a href="<?=$v['info_url'];?>" class="btn bt" target="_blank"><?=$bt_info;?></a>
-                <button class="btn btn-danger list_del_bt bt" id="<?=$k;?>"><?=$bt_del;?></button>
+                <a href="<?=$v['info_url'];?>" class="btn bt" target="_blank">查看</a>
+                <button class="btn btn-danger list_del_bt bt" id="<?=$k;?>">删除</button>
             </td>
             <td>
                 <a href="<?=$v['goto_url'];?>" target='_blank'><?=$v['goto_url'];?></a>

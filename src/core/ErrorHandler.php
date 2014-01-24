@@ -26,6 +26,7 @@ function err($errno, $errstr, $errfile, $errline) {
     }
 
     error_log('|'.implode('|', $msg).PHP_EOL, 3, '/tmp/open-sesame.err.log');
+    header('location: /');
 }
 
 # 设置自定义错误处理函数

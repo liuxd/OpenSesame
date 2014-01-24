@@ -41,9 +41,6 @@ class Base {
         $data['op'] = $op;
         $data['index_url'] = Router::gen_url('index');
         $data['app'] = Router::$app;
-        $data['pop_title'] = $this->msg_map['pop_title'];
-        $msg_js = Config::get('msg_js_default');
-        $data['msg_js'] = $msg_js['data'];
         $data['title_url'] = '';
 
         if (!empty($site_name)) {

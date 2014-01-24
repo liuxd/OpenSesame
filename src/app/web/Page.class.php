@@ -17,27 +17,11 @@ class Page extends Base {
         $email = $user_config['data']['email'];
 
         $data = [
-            'page_title' => $this->msg_map['title_index'],
+            'page_title' => 'Open Sesame',
             'form_action_add' => Router::gen_url('add_app', Router::OP_FORM),
             'site_total' => $total,
             'gravatar' => Gravatar::get_gravatar_url($email, 30),
         ];
-
-        $msg_list = [
-            'input_site',
-            'input_url',
-            'input_search',
-            'bt_commit',
-            'bt_logout',
-            'bt_search',
-            'bt_add',
-            'title_search',
-            'msg_recomm',
-        ];
-
-        foreach ($msg_list as $v) {
-            $data[$v] = $this->msg_map[$v];
-        }
 
         //随机推荐帐号
         if ($total > ConstCommon::RECOMMAND_ACCOUNT_NUM){
@@ -118,18 +102,12 @@ class Page extends Base {
         }
 
         $site_total = count($result);
-        $error = ($site_total == 0) ? $this->msg_map['msg_no_result'] . '<b>' . $key . '</b>' : '';
+        $error = ($site_total == 0) ? '没有关于<b>' . $key . '</b>的结果' : '';
 
         $data = [
             'keyword' => $key,
-            'page_title' => $this->msg_map['title_list'] . $site_total,
+            'page_title' => '记录总数：'. $site_total,
             'total' => $site_total,
-            'msg_total' => $this->msg_map['msg_total'],
-            'bt_del' => $this->msg_map['bt_del'],
-            'bt_info' => $this->msg_map['bt_info'],
-            'input_site' => $this->msg_map['input_site'],
-            'input_url' => $this->msg_map['input_url'],
-            'input_op' => $this->msg_map['input_op'],
             'error' => $error,
             'site_list' => $result,
             'table' => ConstCommon::SITE_LIST,
@@ -186,23 +164,6 @@ class Page extends Base {
             'app_url' => $app_url,
         ];
 
-        $msg_list = [
-            'input_key',
-            'input_value',
-            'bt_commit',
-            'bt_pwd',
-            'th_name',
-            'th_value',
-            'th_op',
-            'bt_del',
-            'bt_modify',
-            'bt_copy',
-        ];
-
-        foreach ($msg_list as $v) {
-            $data[$v] = $this->msg_map[$v];
-        }
-
         return $data;
     }
 
@@ -211,8 +172,7 @@ class Page extends Base {
      */
     public function deny() {
         return [
-            'page_title' => $this->msg_map['title_deny'],
-            'msg_deny' => $this->msg_map['msg_deny']
+            'page_title' => '闭门羹',
         ];
     }
 
@@ -221,9 +181,6 @@ class Page extends Base {
      */
     public function welcome() {
         $data = [
-            'page_title' => $this->msg_map['title_welcome'],
-            'msg_welcome_1' => $this->msg_map['msg_welcome_1'],
-            'msg_welcome_2' => $this->msg_map['msg_welcome_2'],
             'auth_url' => Router::gen_url('login_auth', Router::OP_AJAX)
         ];
 

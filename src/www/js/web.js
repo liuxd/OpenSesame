@@ -2,23 +2,16 @@
     var w = window, l = location;
     var url_index = '?', url_logout = '?type=3&op=logout', url_list = '?op=app_list';
 
-    //UI文本
-    var pop_del_head = $('#pop_del_head').val(), pop_del_body = $('#pop_del_body').val();
-    var pop_del_info_head = $('#pop_del_info_head').val(), pop_del_info_body = $('#pop_del_info_body').val();
-    var pop_logout_head = $('#pop_logout_head').val(), pop_logout_body = $('#pop_logout_body').val();
-    var confirm_enter = $('#confirm_enter').val(), confirm_close = $('#confirm_close').val();
-    var msg_pwd = $('#msg_pwd').val(), msg_not_empty = $('#msg_not_empty').val();
-
     //列表页删除按钮
     $('.list_del_bt').each(function() {
         var value = $(this).attr('id');
 
         $($(this)).bind('click', function() {
             $('#pop_confirm').confirmModal({
-                heading: pop_del_head,
-                body: pop_del_body,
-                enter: confirm_enter,
-                close: confirm_close,
+                heading: '主人',
+                body: '您想清楚了吗？',
+                enter: '是的',
+                close: '手抖了',
                 callback: function() {
                     $('#key').attr('value', value);
                     $('#del').submit();
@@ -57,10 +50,10 @@
 
         $($(this)).bind('click', function() {
             $('#pop_confirm').confirmModal({
-                heading: pop_del_info_head,
-                body: pop_del_info_body,
-                enter: confirm_enter,
-                close: confirm_close,
+                heading: '主人',
+                body: '您三思啊！',
+                enter: '删除',
+                close: '我再想想',
                 callback: function() {
                     $('#key').attr('value', value);
                     $('#del').submit();
@@ -111,10 +104,10 @@
     //退出按钮
     $('#logout_bt').bind('click', function() {
         $('#pop_confirm').confirmModal({
-            heading: pop_logout_head,
-            body: pop_logout_body,
-            enter: confirm_enter,
-            close: confirm_close,
+            heading: '主人',
+            body: '您慢走。',
+            enter: '好',
+            close: '等等吧',
             callback: function() {
                 $.ajax({
                     url: url_logout,
