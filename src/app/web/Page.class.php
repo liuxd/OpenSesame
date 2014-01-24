@@ -60,7 +60,7 @@ class Page extends Base
                     'url' => ''
                 ];
 
-                while ($count < ConstCommon::RECOMMAND_ACCOUNT_NUM and $keys) {
+                while ($count < ConstCommon::RECOMMAND_ACCOUNT_NUM && $keys) {
                     $tmp['name'] = array_shift($keys);
                     $tmp['url'] = Router::gen_url('app_info', Router::OP_PAGE, ['site_name' => $tmp['name']]);
                     $recomm[] = $tmp;
@@ -73,7 +73,7 @@ class Page extends Base
 
         $error = $this->get('error');
 
-        if ($error and isset($this->msg_map[$error])){
+        if ($error && isset($this->msg_map[$error])){
             $data['error'] = $this->msg_map[$error];
         }
 

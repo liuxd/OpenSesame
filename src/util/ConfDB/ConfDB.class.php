@@ -235,7 +235,7 @@ class ConfDB
                 }
             }
         } else {
-            if (!empty(self::$db_list) and is_writable(self::$db_list[0])) {
+            if (!empty(self::$db_list) && is_writable(self::$db_list[0])) {
                 self::$file_path = self::$db_list[0];
                 $ret['result'] = TRUE;
                 $ret['msg'] = self::MSG_CONNECT_SUCCESS;

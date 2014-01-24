@@ -14,7 +14,7 @@ class Form extends Base
         $name = $this->post('name');
         $url = $this->post('url');
 
-        if (empty($name) or empty($url)) {
+        if (empty($name) || empty($url)) {
             return array('op' => 'index');
         }
 
@@ -39,7 +39,7 @@ class Form extends Base
         $key = $this->post('key');
         $value = $this->post('value');
 
-        if (empty($table) or empty($key) or empty($value)) {
+        if (empty($table) || empty($key) || empty($value)) {
             return array('op' => 'app_info', 'params' => array('site_name' => $table));
         }
 
@@ -57,7 +57,7 @@ class Form extends Base
         $table = $this->post('table');
         $key = $this->post('key');
 
-        if (empty($table) or empty($key)) {
+        if (empty($table) || empty($key)) {
             return array('op' => $op, 'params' => array('site_name' => $table));
         }
 

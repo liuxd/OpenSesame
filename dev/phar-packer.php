@@ -15,7 +15,7 @@ $name = (isset($opts['name'])) ? $opts['name'] . '.phar' : '';
 $path = (isset($opts['path'])) ? $opts['path'] : '';
 $init = (isset($opts['init'])) ? $opts['init'] : '';
  
-if (empty($name) and empty($path) and empty($init)) {
+if (empty($name) && empty($path) && empty($init)) {
 echo <<<HELP
 phar packer 1.0
  
@@ -31,7 +31,7 @@ echo PHP_EOL;
 return;
 }
  
-if (empty($name) or empty($path) or empty($init)) {
+if (empty($name) || empty($path) || empty($init)) {
     echo 'Options invalid!' . PHP_EOL;
     return;
 }

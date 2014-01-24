@@ -85,9 +85,9 @@ class Base {
         //身份验证后的跳转处理。
         $redirect = function($auth)use($op) {
             //检验cookie
-            if (!$auth and $op != 'welcome') {
+            if (!$auth && $op != 'welcome') {
                 Router::redirect(Router::gen_url('welcome'));
-            } else if ($auth and $op == 'deny') {
+            } else if ($auth && $op == 'deny') {
                 Router::redirect(Router::gen_url('index'));
             } else {
                 return TRUE;
@@ -134,7 +134,7 @@ class Base {
         //反爬虫
         $ua = $_SERVER['HTTP_USER_AGENT'];
 
-        if (empty($ua) or strpos($ua, 'bot') !== FALSE or strpos($ua, 'curl') !== FALSE) {
+        if (empty($ua) || strpos($ua, 'bot') !== FALSE || strpos($ua, 'curl') !== FALSE) {
             header("HTTP/1.1 404 Not Found");
             header("Status: 404 Not Found");
             return true;

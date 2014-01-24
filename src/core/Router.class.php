@@ -43,7 +43,7 @@ class Router
             self::OP_AJAX,
         ];
 
-        if (!in_array($type, $type_list) or empty($type)) {
+        if (!in_array($type, $type_list) || empty($type)) {
             return self::OP_PAGE;
         } else {
             return $type;
@@ -100,7 +100,7 @@ class Router
             $params['app'] = self::$app;
         }
 
-        if ($type and $type !== self::OP_PAGE) {
+        if ($type && $type !== self::OP_PAGE) {
             $params['type'] = $type;
         }
 
