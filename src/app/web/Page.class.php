@@ -60,7 +60,6 @@ class Page extends Base
             Router::redirect(Router::gen_url('index'));
         }
 
-        $site_list = ConfDB::get(ConstCommon::SITE_LIST);
         $result = Search::get($key);
 
         $site_total = count($result);
