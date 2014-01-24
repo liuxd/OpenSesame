@@ -22,7 +22,7 @@ class Base
         }
 
         $this->msg_map = $msg['data'];
-        $op = $this->get('op', 'index');
+        $op = Router::op('index');
         $this->auth($op);
 
         $data = array();
