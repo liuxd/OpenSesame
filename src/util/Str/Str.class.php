@@ -48,7 +48,7 @@ class Str
         if (!isset($str{$limit})) {
             $ret = '';
 
-            foreach(range(1,$star_limit) as $v){
+            foreach (range(1, $star_limit) as $v) {
                 $ret .= $symbol;
             }
 

@@ -4,7 +4,7 @@
  * 所有页面请求方法的返回值都是json。
  * @author liuxd
  */
-class Ajax extends Base 
+class Ajax extends Base
 {
 
     const AUTH_FILE = '/tmp/pac.auth'; //身份验证的缓存文件路径。

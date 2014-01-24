@@ -2,7 +2,6 @@
 /**
  * 作为CGI时的处理逻辑。
  */
-
 class CGI
 {
 
@@ -35,14 +34,14 @@ class CGI
         $o->tpls = [
             'header' => 'header.tpl',
             'body' => $o->op . '.tpl',
-            'footer' =>  'footer.tpl',
+            'footer' => 'footer.tpl',
         ];
 
-        if (isset($header)){
+        if (isset($header)) {
             $o->tpls['header'] = $header;
         }
 
-        if (isset($footer)){
+        if (isset($footer)) {
             $o->tpls['footer'] = $footer;
         }
 
@@ -51,7 +50,7 @@ class CGI
         foreach ($o->tpls as $key => $tpl_file) {
             $real_file = $o->tpl_path . DS . $tpl_file;
 
-            if (file_exists($real_file)){
+            if (file_exists($real_file)) {
                 require $real_file;
             }
         }
@@ -74,6 +73,7 @@ class CGI
 
         return array();
     }
+
 }
 
 # end of this file

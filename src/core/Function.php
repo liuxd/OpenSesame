@@ -1,6 +1,10 @@
 <?php
+/**
+ * 自定义函数
+ */
 
-function see() {
+function see()
+{
     $cnt = func_num_args();
     $values = func_get_args();
 
@@ -71,7 +75,8 @@ function see() {
     }
 }
 
-function ip() {
+function ip()
+{
     if (isset($HTTP_SERVER_VARS["HTTP_X_FORWARDED_FOR"])) {
         $ip = $HTTP_SERVER_VARS["HTTP_X_FORWARDED_FOR"];
     } elseif (isset($HTTP_SERVER_VARS["HTTP_CLIENT_IP"])) {

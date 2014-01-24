@@ -2,7 +2,6 @@
 /**
  * 框架初始化。
  */
-
 date_default_timezone_set('Asia/Shanghai');
 error_reporting(-1);
 mb_internal_encoding("UTF-8");
@@ -14,7 +13,6 @@ define('UTIL_PATH', ROOT_PATH . 'util' . DS);
 define('APP_PATH', ROOT_PATH . 'app' . DS);
 define('WWW_PATH', ROOT_PATH . 'www' . DS);
 define('INI_PATH', ROOT_PATH . 'ini' . DS);
-
 define('DEFAULT_APP', 'web');
 
 # 框架核心文件

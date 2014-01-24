@@ -2,7 +2,6 @@
 /**
  * 响应前端文件请求。
  */
-
 class FrontEnd
 {
 
@@ -28,16 +27,17 @@ class FrontEnd
     private static function getMimeTypes($ext)
     {
         $mime_types = [
-                'js' => 'application/x-javascript',
-                'css' => 'text/css',
-                'jpg' => 'image/jpeg',
-                'png' => 'image/png',
-            ];
+            'js' => 'application/x-javascript',
+            'css' => 'text/css',
+            'jpg' => 'image/jpeg',
+            'png' => 'image/png',
+        ];
 
         if (isset($mime_types[$ext])) {
             return $mime_types[$ext];
         }
     }
+
 }
 
 # end of this file

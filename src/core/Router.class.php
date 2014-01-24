@@ -2,7 +2,6 @@
 /**
  * 路由操作。实现URL地址与解析与封装。
  */
-
 class Router
 {
 
@@ -106,8 +105,8 @@ class Router
 
         $params['op'] = $op;
         array_map(function($v) {
-                    return urlencode($v);
-                }, $params);
+            return urlencode($v);
+        }, $params);
         $url = '?' . http_build_query($params);
 
         return $url;

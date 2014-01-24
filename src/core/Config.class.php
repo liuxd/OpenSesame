@@ -8,17 +8,18 @@
  *     'data' => [], //接口返回数据。
  * ];
  */
-class Config {
+class Config
+{
 
     public static $app;
-
     public static $ret = [];
 
     /**
      * 获得配置项。
      * @param string $key
      */
-    public static function get($key) {
+    public static function get($key)
+    {
         self::$ret = [
             'result' => FALSE,
             'msg' => '',

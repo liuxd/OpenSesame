@@ -2,7 +2,6 @@
 /**
  * Gravatar头像操作类。
  */
-
 class Gravatar
 {
 
@@ -15,10 +14,11 @@ class Gravatar
     public static function getGravatarURL($email, $size)
     {
         $key = md5($email);
-        $url = 'http://www.gravatar.com/avatar/'.$key.'?s='.(int)$size.'&d=&r=G';
+        $url = 'http://www.gravatar.com/avatar/' . $key . '?s=' . (int) $size . '&d=&r=G';
 
         return $url;
     }
+
 }
 
 # end of this file

@@ -2,9 +2,9 @@
 /**
  * 帐号搜索逻辑。
  */
-
 class Search
 {
+
     public static function get($key)
     {
         $site_list = ConfDB::get(ConstCommon::SITE_LIST);
@@ -22,6 +22,7 @@ class Search
 
         return $result;
     }
+
 }
 
 # end of this file

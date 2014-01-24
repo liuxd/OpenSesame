@@ -2,13 +2,14 @@
 /**
  * 密码管理器。
  */
-class Base {
+class Base
+{
 
     public function init()
     {
         $is_robot = $this->antiRobot();
 
-        if ($is_robot){
+        if ($is_robot) {
             return array();
         }
 
@@ -142,6 +143,7 @@ class Base {
 
         return false;
     }
+
 }
 
 # end of this file

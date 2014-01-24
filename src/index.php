@@ -1,9 +1,7 @@
 <?php
 /**
  * 框架入口。
- * @author liuxd
  */
-
 require __DIR__ . '/core/init.inc';
 
 $www = substr($_SERVER['REQUEST_URI'], 0, 8);

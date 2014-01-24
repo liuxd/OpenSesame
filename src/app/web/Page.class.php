@@ -6,11 +6,13 @@
  */
 class Page extends Base
 {
+
     private $history_table = 'view'; //记录浏览历史的表名。
 
     /**
      * 首页
      */
+
     public function index()
     {
         $site_list = ConfDB::get(ConstCommon::SITE_LIST);
@@ -26,7 +28,7 @@ class Page extends Base
         ];
 
         //随机推荐帐号
-        if ($total > ConstCommon::RECOMMAND_ACCOUNT_NUM){
+        if ($total > ConstCommon::RECOMMAND_ACCOUNT_NUM) {
             $data['random'] = Recommand::getRandom($site_list['response']);
         }
 
@@ -42,7 +44,7 @@ class Page extends Base
 
         $error = $this->get('error');
 
-        if ($error && isset($this->msg_map[$error])){
+        if ($error && isset($this->msg_map[$error])) {
             $data['error'] = $this->msg_map[$error];
         }
 
@@ -56,7 +58,7 @@ class Page extends Base
     {
         $key = trim($this->get('key'));
 
-        if ($key === ''){
+        if ($key === '') {
             Router::redirect(Router::gen_url('index'));
         }
 
@@ -67,7 +69,7 @@ class Page extends Base
 
         $data = [
             'keyword' => $key,
-            'page_title' => '记录总数：'. $site_total,
+            'page_title' => '记录总数：' . $site_total,
             'total' => $site_total,
             'error' => $error,
             'site_list' => $result,
@@ -88,7 +90,7 @@ class Page extends Base
         $site_list = ConfDB::get(ConstCommon::SITE_LIST);
 
         if ($site_list['stat']) {
-            if (!isset($site_list['response'][$site_name])){
+            if (!isset($site_list['response'][$site_name])) {
                 $this->connectHistoryDB();
                 ConfDB::del($this->history_table, $site_name);
                 Router::redirect(Router::gen_url('index', Router::OP_PAGE, ['error' => 'error_not_found']));

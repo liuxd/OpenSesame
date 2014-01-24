@@ -127,7 +127,7 @@ class ConfDB
         $all[$table][$key] = $value;
         $r = self::write($all);
         $result['stat'] = ($r) ? TRUE : FALSE;
-        
+
         if (!$r) {
             $result['error'] = self::ERR_DB_NOT_WRITE;
         }
