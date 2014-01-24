@@ -56,8 +56,8 @@ class Router
      */
     public static function op($default_op)
     {
-        $op = self::get('op');
-        $r = (empty($op)) ? $default_op : $op;
+        $info = parse_url($_SERVER['REQUEST_URI']);
+        $r = ($info['path'] === '/') ? $default_op : trim($info['path'], '/');
 
         return $r;
     }
@@ -103,11 +103,11 @@ class Router
             $params['type'] = $type;
         }
 
-        $params['op'] = $op;
         array_map(function($v) {
             return urlencode($v);
         }, $params);
-        $url = '?' . http_build_query($params);
+
+        $url = 'http://' . $_SERVER['HTTP_HOST'] . '/' . $op . '/?' . http_build_query($params);
 
         return $url;
     }

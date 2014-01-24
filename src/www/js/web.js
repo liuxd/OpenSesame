@@ -1,6 +1,6 @@
 (function() {
     var w = window, l = location;
-    var url_index = '?', url_logout = '?type=3&op=logout', url_list = '?op=appList';
+    var url_index = '/', url_logout = '/logout/?type=3', url_list = '/appList/?';
 
     //列表页删除按钮
     $('.list_del_bt').each(function() {
@@ -78,7 +78,7 @@
         var url = url_list;
 
         if (key) {
-            url += '&key=' + key;
+            url += 'key=' + key;
             l.href = url;
         }
     });

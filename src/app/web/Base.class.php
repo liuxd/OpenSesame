@@ -41,6 +41,7 @@ class Base
         $data['index_url'] = Router::genURL('index');
         $data['app'] = Router::$app;
         $data['title_url'] = '';
+        $data['host'] = 'http://' . $_SERVER['HTTP_HOST'] . '/';
 
         if (!empty($site_name)) {
             $tmp = ConfDB::get(ConstCommon::SITE_LIST, $site_name);
