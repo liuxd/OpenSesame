@@ -27,15 +27,7 @@ class Page extends Base
 
         //随机推荐帐号
         if ($total > ConstCommon::RECOMMAND_ACCOUNT_NUM){
-            $rand_keys = array_rand($site_list['response'], ConstCommon::RECOMMAND_ACCOUNT_NUM);
-
-            foreach ($rand_keys as $key){
-                $tmp['name'] = $key;
-                $tmp['url'] = Router::gen_url('appInfo', Router::OP_PAGE, ['site_name' => $key]);
-                $random_account_keys[] = $tmp;
-            }
-
-            $data['random'] = $random_account_keys;
+            $data['random'] = Recommand::getRandom($site_list['response']);
         }
 
         //按点击量推荐帐号
