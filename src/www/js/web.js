@@ -95,7 +95,7 @@
         }
 
         if (field_name.val() === '') {
-            field_name.attr('value', '名称');
+            field_name.attr('value', '密码');
         }
 
         $('#field_value').attr('value', s);
