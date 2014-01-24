@@ -98,15 +98,7 @@ class Page extends Base
         }
 
         if ($site_info['stat']) {
-            foreach ($site_info['response'] as $k => $v) {
-                $v = base64_decode($v);
-                $tmp = [
-                    'display' => Str::partCover($v, 2, 1),
-                    'real' => $v,
-                ];
-
-                $site_info['response'][$k] = $tmp;
-            }
+            $site_info['response'] = Site::parseInfo($site_info['response']);
 
             //记录浏览记录
             $this->connectHistoryDB();
