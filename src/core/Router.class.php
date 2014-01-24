@@ -3,7 +3,8 @@
  * 路由操作。实现URL地址与解析与封装。
  */
 
-class Router {
+class Router
+{
 
     const OP_PAGE = 1;
     const OP_FORM = 2;
@@ -17,7 +18,8 @@ class Router {
      * @param string $default_app 默认的app。
      * @return string
      */
-    public static function app($default = 'index') {
+    public static function app($default = 'index')
+    {
         if (self::get('app')) {
             self::$app = self::get('app');
         } else {
@@ -32,7 +34,8 @@ class Router {
      * 获得动作文件的类型。可能的类型：1=页面请求，2=表单请求，3=ajax请求。
      * @return int
      */
-    public static function op_type() {
+    public static function op_type()
+    {
         $type = (int) self::get('type');
         $type_list = [
             self::OP_PAGE,
@@ -52,7 +55,8 @@ class Router {
      * @param string $default_op 默认页面。
      * @return string
      */
-    public static function op($default_op) {
+    public static function op($default_op)
+    {
         $op = self::get('op');
         $r = (empty($op)) ? $default_op : $op;
 
@@ -65,7 +69,8 @@ class Router {
      * @param unknown $default 指定参数名时，该参数的默认值。
      * @return array or mix
      */
-    public static function get($name = '', $default = '') {
+    public static function get($name = '', $default = '')
+    {
         if (isset($name[1])) {
             return (isset($_GET[$name])) ? $_GET[$name] : $default;
         }
@@ -89,7 +94,8 @@ class Router {
      * @param string $op 请求动作。
      * @param array $params 传递的参数。
      */
-    public static function gen_url($op, $type = FALSE, $params = []) {
+    public static function gen_url($op, $type = FALSE, $params = [])
+    {
         if (!self::$is_default) {
             $params['app'] = self::$app;
         }
@@ -112,7 +118,8 @@ class Router {
      * @params int $op_type 控制器类型。
      * @return string
      */
-    public static function get_op_class_name($op_type) {
+    public static function get_op_class_name($op_type)
+    {
         $type_list = [
             self::OP_PAGE => 'Page',
             self::OP_FORM => 'Form',
@@ -130,7 +137,8 @@ class Router {
      * @param int status_code
      * @return
      */
-    public static function redirect($url, $status_code = null) {
+    public static function redirect($url, $status_code = null)
+    {
         if ($status_code) {
             header('Location:' . $url, TRUE, $status_code);
         } else {

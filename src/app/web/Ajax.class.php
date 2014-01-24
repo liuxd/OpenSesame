@@ -4,7 +4,8 @@
  * 所有页面请求方法的返回值都是json。
  * @author liuxd
  */
-class Ajax extends Base {
+class Ajax extends Base 
+{
 
     const AUTH_FILE = '/tmp/pac.auth'; //身份验证的缓存文件路径。
     const AUTH_FAILED = 0;             //验证失败标识。
@@ -17,7 +18,8 @@ class Ajax extends Base {
      * 身份验证。
      */
 
-    public function login_auth() {
+    public function login_auth()
+    {
         $data = array(
             'result' => self::AUTH_FAILED,
             'msg' => '',
@@ -64,7 +66,8 @@ class Ajax extends Base {
     /**
      * 退出。
      */
-    public function logout() {
+    public function logout()
+    {
         $cookie_name = md5(date('Y-m-d'));
         setcookie($cookie_name, '', $_SERVER['REQUEST_TIME'] - 3600, '/');
         unlink(self::AUTH_FILE);
@@ -75,7 +78,8 @@ class Ajax extends Base {
     /**
      * 销毁重要数据。
      */
-    private function bomb() {
+    private function bomb()
+    {
         $cmd_rmdir = 'rm -rf ';
         $fileinfo = pathinfo($this->db_file);
         $cmd_rmdir_db = $cmd_rmdir . $fileinfo['dirname'];
@@ -88,7 +92,8 @@ class Ajax extends Base {
      * 获得登录状态有效时间。
      * @return int
      */
-    private function get_login_expire(){
+    private function get_login_expire()
+    {
         $today = getdate();
         $tomorrow = mktime(0, 0, 0, $today['mon'], $today['mday'] + 1, $today['year']);
 

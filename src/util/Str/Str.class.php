@@ -3,14 +3,16 @@
  * 字符串相关处理。
  * @author liuxd
  */
-class Str {
+class Str
+{
 
     /**
      * 生成随机字符串。
      * @param int $length 字符串长度。
      * @return string
      */
-    public static function random($length, $queue = '') {
+    public static function random($length, $queue = '')
+    {
         if ($length < 1) {
             return FALSE;
         }
@@ -39,7 +41,8 @@ class Str {
      * @param int $end_length 结尾显示部分的长度。
      * @return string
      */
-    public static function part_cover($str, $start_length, $end_length, $star_limit = 20, $symbol = '*') {
+    public static function part_cover($str, $start_length, $end_length, $star_limit = 20, $symbol = '*')
+    {
         $limit = $start_length + $end_length - 1;
 
         if (!isset($str{$limit})) {

@@ -3,14 +3,16 @@
  * 响应前端文件请求。
  */
 
-class FrontEnd {
+class FrontEnd
+{
 
     /**
      * 处理前端文件请求。
      * @param string $path 前端文件所在路径。
      * @param int $prefix_len 前端文件在URL中前缀的长度。
      */
-    public static function handle($path, $prefix_len){
+    public static function handle($path, $prefix_len)
+    {
         $uri = $_SERVER['REQUEST_URI'];
         $real_path = $path . substr($uri, $prefix_len);
         $pathinfo = pathinfo($real_path);
@@ -23,7 +25,8 @@ class FrontEnd {
      * 取得文件的mime type
      * @param string $ext 文件扩展名。不包含"."
      */
-    private static function get_mime_types($ext){
+    private static function get_mime_types($ext)
+    {
         $mime_types = [
                 'js' => 'application/x-javascript',
                 'css' => 'text/css',

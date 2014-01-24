@@ -4,7 +4,8 @@
  * 以JSON格式保存数据。
  * @author liuxd
  */
-class ConfDB {
+class ConfDB
+{
 
     const ERR_TABLENAME_MUST_STRING = 1;
     const ERR_TABLE_NOT_EXISTS = 2;
@@ -34,7 +35,8 @@ class ConfDB {
      * @param boolen $table_list 是否只列出数据表。
      * @return array 形如：['stat' => TRUE,'error' => '数据表不能为空','response' => 123];
      */
-    public static function get($table = '', $key = '', $table_list = FALSE) {
+    public static function get($table = '', $key = '', $table_list = FALSE)
+    {
         $table = trim($table);
         $key = trim($key);
 
@@ -98,7 +100,8 @@ class ConfDB {
      * @param string $value 数据项的值。
      * @return array
      */
-    public static function up($table, $key, $value) {
+    public static function up($table, $key, $value)
+    {
         $table = trim($table);
         $key = trim($key);
         $result = ['stat' => FALSE, 'error' => ''];
@@ -138,7 +141,8 @@ class ConfDB {
      * @param string $key 数据项的键。
      * @return array
      */
-    public static function del($table, $key = '') {
+    public static function del($table, $key = '')
+    {
         $table = trim($table);
         $key = trim($key);
 
@@ -190,7 +194,8 @@ class ConfDB {
      * @param string $db_path 数据库文件所在路径。
      * @return array
      */
-    public static function db_list($db_path) {
+    public static function db_list($db_path)
+    {
         if (self::$db_list === null) {
             self::$db_list = glob($db_path . '*.db');
         }
@@ -203,7 +208,8 @@ class ConfDB {
      * @param string $db_file 数据库绝对路径。
      * @return array
      */
-    public static function connect($db_file = '') {
+    public static function connect($db_file = '')
+    {
         $ret = [
             'result' => FALSE,
             'msg' => '',
@@ -251,7 +257,8 @@ class ConfDB {
      * 创建空数据库。
      * @return bool
      */
-    public static function create() {
+    public static function create()
+    {
         $result = FALSE;
 
         if (!file_exists(self::$file_path)) {
@@ -272,7 +279,8 @@ class ConfDB {
      * 查询数据全部信息。
      * @return array
      */
-    private static function get_all() {
+    private static function get_all()
+    {
         $result = ['stat' => FALSE, 'response' => ''];
         $result['response'] = self::read();
         $result['stat'] = TRUE;
@@ -285,7 +293,8 @@ class ConfDB {
      * @param array $data
      * @return bool
      */
-    private static function write($data) {
+    private static function write($data)
+    {
         if (is_writable(self::$file_path)) {
             $encode = json_encode($data);
             $compress = gzdeflate($encode, 9);
@@ -311,7 +320,8 @@ class ConfDB {
      * 读数据全部。
      * @return array
      */
-    private static function read() {
+    private static function read()
+    {
         if (is_writable(self::$file_path)) {
             $origin = file_get_contents(self::$file_path);
             $uncompress = gzinflate($origin);

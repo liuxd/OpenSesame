@@ -1,13 +1,11 @@
 <?php
 /**
  * 密码管理器。
- * @author liuxd
  */
 class Base {
 
-    protected $msg_map = '';
-
-    public function init() {
+    public function init()
+    {
         $is_robot = $this->anti_robot();
 
         if ($is_robot){
@@ -60,7 +58,8 @@ class Base {
      * @param unknown $default 指定参数名时，该参数的默认值。
      * @return array or mix
      */
-    public function get($name = '', $default = '') {
+    public function get($name = '', $default = '')
+    {
         return Router::get($name, $default);
     }
 
@@ -68,7 +67,8 @@ class Base {
      * 身份验证。
      * @param string $op
      */
-    private function auth($op) {
+    private function auth($op)
+    {
         //放过身份验证
         if ($op == 'login_auth') {
             return TRUE;
@@ -118,7 +118,8 @@ class Base {
     /**
      * 链接主数据库。
      */
-    protected function connect_master() {
+    protected function connect_master()
+    {
         $db = Config::get('db');
         $this->db_file = $db['data']['master'];
         $r = ConfDB::connect($this->db_file);
@@ -128,7 +129,8 @@ class Base {
     /**
      * 反爬虫
      */
-    private function anti_robot() {
+    private function anti_robot()
+    {
         //反爬虫
         $ua = $_SERVER['HTTP_USER_AGENT'];
 

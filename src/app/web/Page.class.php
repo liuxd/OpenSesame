@@ -4,13 +4,15 @@
  * 所有页面请求方法的返回值都是数组。
  * @author liuxd
  */
-class Page extends Base {
+class Page extends Base
+{
     private $history_table = 'view'; //记录浏览历史的表名。
 
     /**
      * 首页
      */
-    public function index() {
+    public function index()
+    {
         $site_list = ConfDB::get(ConstCommon::SITE_LIST);
         $total = count($site_list['response']);
         $user_config = Config::get('user');
@@ -81,7 +83,8 @@ class Page extends Base {
     /**
      * 搜索列表页。
      */
-    public function app_list() {
+    public function app_list()
+    {
         $key = trim($this->get('key'));
 
         if ($key === ''){
@@ -111,7 +114,8 @@ class Page extends Base {
     /**
      * 某个网站帐号信息。
      */
-    public function app_info() {
+    public function app_info()
+    {
         $site_name = $this->get('site_name');
         $site_info = ConfDB::get($site_name);
         $site_list = ConfDB::get(ConstCommon::SITE_LIST);
@@ -160,7 +164,8 @@ class Page extends Base {
     /**
      * 无访问权限。
      */
-    public function deny() {
+    public function deny()
+    {
         return [
             'page_title' => '闭门羹',
         ];
@@ -169,7 +174,8 @@ class Page extends Base {
     /**
      * 登录页。
      */
-    public function welcome() {
+    public function welcome()
+    {
         $data = [
             'auth_url' => Router::gen_url('login_auth', Router::OP_AJAX)
         ];
@@ -180,7 +186,8 @@ class Page extends Base {
     /**
      * 连接浏览历史数据库。
      */
-    private function connect_history_db() {
+    private function connect_history_db()
+    {
         $history_db = Config::get('db');
         ConfDB::connect($history_db['data']['history']);
     }

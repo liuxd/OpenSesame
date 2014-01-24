@@ -1,16 +1,16 @@
 <?php
-
 /**
  * 处理页面请求。
  * 所有页面请求方法的返回值都是数组。
- * @author liuxd
  */
-class Form extends Base {
+class Form extends Base
+{
 
     /**
      * 添加一条网站信息。
      */
-    public function add_app() {
+    public function add_app()
+    {
         $name = $this->post('name');
         $url = $this->post('url');
 
@@ -33,7 +33,8 @@ class Form extends Base {
     /**
      * 添加某网站的一个属性。
      */
-    public function add_site_info() {
+    public function add_site_info()
+    {
         $table = $this->post('table');
         $key = $this->post('key');
         $value = $this->post('value');
@@ -51,7 +52,8 @@ class Form extends Base {
     /**
      * 删除操作。
      */
-    public function del() {
+    public function del()
+    {
         $table = $this->post('table');
         $key = $this->post('key');
 
@@ -72,7 +74,8 @@ class Form extends Base {
      * @param unknown $default 默认值。
      * @return unknown
      */
-    private function post($name, $default = '') {
+    private function post($name, $default = '')
+    {
         return isset($_POST[$name]) ? $_POST[$name] : $default;
     }
 

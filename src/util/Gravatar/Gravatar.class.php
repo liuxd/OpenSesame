@@ -3,7 +3,8 @@
  * Gravatar头像操作类。
  */
 
-class Gravatar {
+class Gravatar
+{
 
     /**
      * 获得gravata.com上的头像url。
@@ -11,7 +12,8 @@ class Gravatar {
      * @param int $size 图片大小。
      * @return string
      */
-    public static function get_gravatar_url($email, $size){
+    public static function get_gravatar_url($email, $size)
+    {
         $key = md5($email);
         $url = 'http://www.gravatar.com/avatar/'.$key.'?s='.(int)$size.'&d=&r=G';
 

@@ -9,7 +9,8 @@
  * ];
  */
 
-class Config {
+class Config
+{
 
     public static $app;
     public static $ret = [
@@ -22,7 +23,8 @@ class Config {
      * 获得配置项。
      * @param string $key
      */
-    public static function get($key) {
+    public static function get($key)
+    {
         if (!isset(self::$app)) {
             self::$ret['msg'] = 'App unconfigured!';
             return self::$ret;

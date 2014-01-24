@@ -3,9 +3,11 @@
  * 作为CGI时的处理逻辑。
  */
 
-class CGI {
+class CGI
+{
 
-    public static function run(stdClass $o) {
+    public static function run(stdClass $o)
+    {
         switch ($o->op_type) {
             case Router::OP_PAGE: //渲染页面。
                 self::page_handler($o);
@@ -26,7 +28,8 @@ class CGI {
     }
 
     //页面请求处理
-    private static function page_handler(stdClass $o) {
+    private static function page_handler(stdClass $o)
+    {
         extract($o->ret);
 
         $o->tpls = [
@@ -55,7 +58,8 @@ class CGI {
     }
 
     //表单请求处理
-    private static function form_handler(stdClass $o) {
+    private static function form_handler(stdClass $o)
+    {
         $op = $o->ret['op'];
         $params = (isset($o->ret['params'])) ? $o->ret['params'] : [];
         $url = Router::gen_url($op, Router::OP_PAGE, $params);
@@ -63,7 +67,8 @@ class CGI {
     }
 
     //ajax请求
-    private static function ajax_handler(stdClass $o) {
+    private static function ajax_handler(stdClass $o)
+    {
         header('Content-Type: application/json; charset=utf-8');
         echo json_encode($o->ret);
 
