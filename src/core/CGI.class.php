@@ -10,15 +10,15 @@ class CGI
     {
         switch ($o->op_type) {
             case Router::OP_PAGE: //渲染页面。
-                self::page_handler($o);
+                self::pageHandler($o);
                 break;
 
             case Router::OP_FORM: //表单处理。
-                self::form_handler($o);
+                self::formHandler($o);
                 break;
 
             case Router::OP_AJAX: //ajax请求。
-                self::ajax_handler($o);
+                self::ajaxHandler($o);
                 break;
 
             default:break;
@@ -28,7 +28,7 @@ class CGI
     }
 
     //页面请求处理
-    private static function page_handler(stdClass $o)
+    private static function pageHandler(stdClass $o)
     {
         extract($o->ret);
 
@@ -58,7 +58,7 @@ class CGI
     }
 
     //表单请求处理
-    private static function form_handler(stdClass $o)
+    private static function formHandler(stdClass $o)
     {
         $op = $o->ret['op'];
         $params = (isset($o->ret['params'])) ? $o->ret['params'] : [];
@@ -67,7 +67,7 @@ class CGI
     }
 
     //ajax请求
-    private static function ajax_handler(stdClass $o)
+    private static function ajaxHandler(stdClass $o)
     {
         header('Content-Type: application/json; charset=utf-8');
         echo json_encode($o->ret);

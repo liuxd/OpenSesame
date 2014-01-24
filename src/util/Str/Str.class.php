@@ -41,7 +41,7 @@ class Str
      * @param int $end_length 结尾显示部分的长度。
      * @return string
      */
-    public static function part_cover($str, $start_length, $end_length, $star_limit = 20, $symbol = '*')
+    public static function partCover($str, $start_length, $end_length, $star_limit = 20, $symbol = '*')
     {
         $limit = $start_length + $end_length - 1;
 

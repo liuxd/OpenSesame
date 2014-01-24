@@ -22,7 +22,7 @@ class Page extends Base
             'page_title' => 'Open Sesame',
             'form_action_add' => Router::gen_url('addApp', Router::OP_FORM),
             'site_total' => $total,
-            'gravatar' => Gravatar::get_gravatar_url($email, 30),
+            'gravatar' => Gravatar::getGravatarURL($email, 30),
         ];
 
         //随机推荐帐号
@@ -31,7 +31,7 @@ class Page extends Base
 
             foreach ($rand_keys as $key){
                 $tmp['name'] = $key;
-                $tmp['url'] = Router::gen_url('app_info', Router::OP_PAGE, ['site_name' => $key]);
+                $tmp['url'] = Router::gen_url('appInfo', Router::OP_PAGE, ['site_name' => $key]);
                 $random_account_keys[] = $tmp;
             }
 
@@ -39,7 +39,7 @@ class Page extends Base
         }
 
         //按点击量推荐帐号
-        $this->connect_history_db();
+        $this->connectHistoryDB();
         $history_query = ConfDB::get($this->history_table);
 
         if ($history_query['stat']) {
@@ -62,7 +62,7 @@ class Page extends Base
 
                 while ($count < ConstCommon::RECOMMAND_ACCOUNT_NUM && $keys) {
                     $tmp['name'] = array_shift($keys);
-                    $tmp['url'] = Router::gen_url('app_info', Router::OP_PAGE, ['site_name' => $tmp['name']]);
+                    $tmp['url'] = Router::gen_url('appInfo', Router::OP_PAGE, ['site_name' => $tmp['name']]);
                     $recomm[] = $tmp;
                     $count++;
                 }
@@ -83,7 +83,7 @@ class Page extends Base
     /**
      * 搜索列表页。
      */
-    public function app_list()
+    public function appList()
     {
         $key = trim($this->get('key'));
 
@@ -113,7 +113,7 @@ class Page extends Base
     /**
      * 某个网站帐号信息。
      */
-    public function app_info()
+    public function appInfo()
     {
         $site_name = $this->get('site_name');
         $site_info = ConfDB::get($site_name);
@@ -121,7 +121,7 @@ class Page extends Base
 
         if ($site_list['stat']) {
             if (!isset($site_list['response'][$site_name])){
-                $this->connect_history_db();
+                $this->connectHistoryDB();
                 ConfDB::del($this->history_table, $site_name);
                 Router::redirect(Router::gen_url('index', Router::OP_PAGE, ['error' => 'error_not_found']));
             } else {
@@ -133,7 +133,7 @@ class Page extends Base
             foreach ($site_info['response'] as $k => $v) {
                 $v = base64_decode($v);
                 $tmp = [
-                    'display' => Str::part_cover($v, 2, 1),
+                    'display' => Str::partCover($v, 2, 1),
                     'real' => $v,
                 ];
 
@@ -141,7 +141,7 @@ class Page extends Base
             }
 
             //记录浏览记录
-            $this->connect_history_db();
+            $this->connectHistoryDB();
             $count_query = ConfDB::get('view', $site_name);
             $count = ($count_query['stat']) ? $count_query['response'] : 0;
             ConfDB::up('view', $site_name, $count + 1);
@@ -185,7 +185,7 @@ class Page extends Base
     /**
      * 连接浏览历史数据库。
      */
-    private function connect_history_db()
+    private function connectHistoryDB()
     {
         $history_db = Config::get('db');
         ConfDB::connect($history_db['data']['history']);

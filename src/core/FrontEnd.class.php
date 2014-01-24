@@ -16,7 +16,7 @@ class FrontEnd
         $uri = $_SERVER['REQUEST_URI'];
         $real_path = $path . substr($uri, $prefix_len);
         $pathinfo = pathinfo($real_path);
-        $mime_type = self::get_mime_types($pathinfo['extension']);
+        $mime_type = self::getMimeTypes($pathinfo['extension']);
         header('Content-Type: ' . $mime_type);
         readfile($real_path);
     }
@@ -25,7 +25,7 @@ class FrontEnd
      * 取得文件的mime type
      * @param string $ext 文件扩展名。不包含"."
      */
-    private static function get_mime_types($ext)
+    private static function getMimeTypes($ext)
     {
         $mime_types = [
                 'js' => 'application/x-javascript',

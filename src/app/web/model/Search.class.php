@@ -13,7 +13,7 @@ class Search
         if ($site_list['stat']) {
             foreach ($site_list['response'] as $k => $v) {
                 if (empty($key) || strpos($k, $key) !== FALSE || strpos($v, $key) !== FALSE) {
-                    $tmp['info_url'] = Router::gen_url('app_info', Router::OP_PAGE, ['site_name' => $k]);
+                    $tmp['info_url'] = Router::gen_url('appInfo', Router::OP_PAGE, ['site_name' => $k]);
                     $tmp['goto_url'] = 'http://' . $v;
                     $result[$k] = $tmp;
                 }

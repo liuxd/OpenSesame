@@ -12,7 +12,7 @@ class Gravatar
      * @param int $size 图片大小。
      * @return string
      */
-    public static function get_gravatar_url($email, $size)
+    public static function getGravatarURL($email, $size)
     {
         $key = md5($email);
         $url = 'http://www.gravatar.com/avatar/'.$key.'?s='.(int)$size.'&d=&r=G';
