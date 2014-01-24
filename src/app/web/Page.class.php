@@ -154,6 +154,7 @@ class Page extends Base
     public function welcome()
     {
         $data = [
+            'page_title' => '你中毒了！',
             'auth_url' => Router::gen_url('loginAuth', Router::OP_AJAX)
         ];
 

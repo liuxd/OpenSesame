@@ -4,9 +4,6 @@
         <div class="span2">
             &copy;<a href="https://github.com/liuxd?tab=repositories" target="_blank">刘喜东</a>
         </div>
-        <div class="span2">
-            <iframe src="http://ghbtns.com/github-btn.html?user=liuxd&repo=open-sesame&type=fork" allowtransparency="true" frameborder="0" scrolling="0" width="53" height="20"></iframe>
-        </div>
     </div>
 </footer>
 
