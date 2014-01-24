@@ -61,7 +61,7 @@ class CGI
     {
         $op = $o->ret['op'];
         $params = (isset($o->ret['params'])) ? $o->ret['params'] : [];
-        $url = Router::gen_url($op, Router::OP_PAGE, $params);
+        $url = Router::genURL($op, Router::OP_PAGE, $params);
         Router::redirect($url);
     }
 

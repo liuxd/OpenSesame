@@ -22,7 +22,7 @@ class Page extends Base
 
         $data = [
             'page_title' => 'Open Sesame',
-            'form_action_add' => Router::gen_url('addApp', Router::OP_FORM),
+            'form_action_add' => Router::genURL('addApp', Router::OP_FORM),
             'site_total' => $total,
             'gravatar' => Gravatar::getGravatarURL($email, 30),
         ];
@@ -59,7 +59,7 @@ class Page extends Base
         $key = trim($this->get('key'));
 
         if ($key === '') {
-            Router::redirect(Router::gen_url('index'));
+            Router::redirect(Router::genURL('index'));
         }
 
         $result = Search::get($key);
@@ -74,7 +74,7 @@ class Page extends Base
             'error' => $error,
             'site_list' => $result,
             'table' => ConstCommon::SITE_LIST,
-            'form_action_del' => Router::gen_url('del', Router::OP_FORM),
+            'form_action_del' => Router::genURL('del', Router::OP_FORM),
         ];
 
         return $data;
@@ -93,7 +93,7 @@ class Page extends Base
             if (!isset($site_list['response'][$site_name])) {
                 $this->connectHistoryDB();
                 ConfDB::del($this->history_table, $site_name);
-                Router::redirect(Router::gen_url('index', Router::OP_PAGE, ['error' => 'error_not_found']));
+                Router::redirect(Router::genURL('index', Router::OP_PAGE, ['error' => 'error_not_found']));
             } else {
                 $app_url = 'http://' . $site_list['response'][$site_name];
             }
@@ -128,8 +128,8 @@ class Page extends Base
             'site_name' => $site_name,
             'error' => isset($this->msg_map[$site_info['error']]) ? $this->msg_map[$site_info['error']] : '',
             'site_info' => $site_info,
-            'form_action_add' => Router::gen_url('addSiteInfo', Router::OP_FORM),
-            'form_action_del' => Router::gen_url('del', Router::OP_FORM),
+            'form_action_add' => Router::genURL('addSiteInfo', Router::OP_FORM),
+            'form_action_del' => Router::genURL('del', Router::OP_FORM),
             'app_url' => $app_url,
             'default_password' => $default_password,
             'emails' => $emails
@@ -155,7 +155,7 @@ class Page extends Base
     {
         $data = [
             'page_title' => '你中毒了！',
-            'auth_url' => Router::gen_url('loginAuth', Router::OP_AJAX)
+            'auth_url' => Router::genURL('loginAuth', Router::OP_AJAX)
         ];
 
         return $data;

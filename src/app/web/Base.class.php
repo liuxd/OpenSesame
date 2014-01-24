@@ -32,13 +32,13 @@ class Base
             $data['error'] = $this->msg_map[$db_con['msg']];
         }
 
-        if (Router::op_type() !== Router::OP_PAGE) {
+        if (Router::opType() !== Router::OP_PAGE) {
             return array();
         }
 
         $site_name = $this->get('site_name', '');
         $data['op'] = $op;
-        $data['index_url'] = Router::gen_url('index');
+        $data['index_url'] = Router::genURL('index');
         $data['app'] = Router::$app;
         $data['title_url'] = '';
 
@@ -87,9 +87,9 @@ class Base
         $redirect = function($auth)use($op) {
             //检验cookie
             if (!$auth && $op != 'welcome') {
-                Router::redirect(Router::gen_url('welcome'));
+                Router::redirect(Router::genURL('welcome'));
             } else if ($auth && $op == 'deny') {
-                Router::redirect(Router::gen_url('index'));
+                Router::redirect(Router::genURL('index'));
             } else {
                 return TRUE;
             }
@@ -106,7 +106,7 @@ class Base
                 $is_auth = in_array(ip(), $allow_ip['data']);
 
                 if (!$is_auth) {
-                    Router::redirect(Router::gen_url('deny'));
+                    Router::redirect(Router::genURL('deny'));
                 } else {
                     return $redirect($auth);
                 }

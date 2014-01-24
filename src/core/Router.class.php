@@ -33,7 +33,7 @@ class Router
      * 获得动作文件的类型。可能的类型：1=页面请求，2=表单请求，3=ajax请求。
      * @return int
      */
-    public static function op_type()
+    public static function opType()
     {
         $type = (int) self::get('type');
         $type_list = [
@@ -93,7 +93,7 @@ class Router
      * @param string $op 请求动作。
      * @param array $params 传递的参数。
      */
-    public static function gen_url($op, $type = FALSE, $params = [])
+    public static function genURL($op, $type = FALSE, $params = [])
     {
         if (!self::$is_default) {
             $params['app'] = self::$app;
@@ -117,7 +117,7 @@ class Router
      * @params int $op_type 控制器类型。
      * @return string
      */
-    public static function get_op_class_name($op_type)
+    public static function getOpClassName($op_type)
     {
         $type_list = [
             self::OP_PAGE => 'Page',
@@ -145,6 +145,34 @@ class Router
         }
 
         return;
+    }
+
+    /**
+     * 解析URL
+     * @return stdClass
+     */
+    public static function route()
+    {
+        $o = new stdClass;
+        $o->app = self::app(DEFAULT_APP);
+        $o->app_path = APP_PATH . $o->app;
+
+        $o->op = self::op('index');
+        $o->op_type = self::opType();
+        $o->op_class_name = self::getOpClassName($o->op_type);
+        $o->op_file = $o->app_path . DS . $o->op_class_name . '.class.php';
+        $o->tpl_path = $o->app_path . DS . 'tpl';
+
+        require $o->app_path . DS . 'Base.class.php';
+        require $o->op_file;
+
+        $o->op_obj = new $o->op_class_name;
+        $o->ret_app = $o->op_obj->init();
+        $op_name = $o->op;
+        $o->ret_op = $o->op_obj->$op_name();
+        $o->ret = (is_array($o->ret_app)) ? array_merge($o->ret_app, $o->ret_op) : $o->ret_op;
+
+        return $o;
     }
 
 }
