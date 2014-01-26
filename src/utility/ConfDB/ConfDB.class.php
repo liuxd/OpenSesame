@@ -18,7 +18,7 @@ class ConfDB
     const MSG_CONNECT_SUCCESS = 9;
 
     //数据库文件列表。
-    public static $db_list = null;
+    public static $dbList = null;
     //数据文件保存路径。
     public static $file_path = '';
     //数据库基本信息表的表名。
@@ -53,7 +53,7 @@ class ConfDB
             return self::$result;
         }
 
-        $r = self::get_all();
+        $r = self::getAll();
 
         if (!$r['stat']) {
             return $r;
@@ -116,7 +116,7 @@ class ConfDB
             return $result;
         }
 
-        $tmp = self::get_all();
+        $tmp = self::getAll();
 
         if (!$tmp['stat']) {
             unset($tmp['response']);
@@ -158,7 +158,7 @@ class ConfDB
             return $result;
         }
 
-        $tmp = self::get_all();
+        $tmp = self::getAll();
 
         if (!$tmp['stat']) {
             unset($tmp['response']);
@@ -194,13 +194,13 @@ class ConfDB
      * @param string $db_path 数据库文件所在路径。
      * @return array
      */
-    public static function db_list($db_path)
+    public static function dbList($db_path)
     {
-        if (self::$db_list === null) {
-            self::$db_list = glob($db_path . '*.db');
+        if (self::$dbList === null) {
+            self::$dbList = glob($db_path . '*.db');
         }
 
-        return self::$db_list;
+        return self::$dbList;
     }
 
     /**
@@ -235,8 +235,8 @@ class ConfDB
                 }
             }
         } else {
-            if (!empty(self::$db_list) && is_writable(self::$db_list[0])) {
-                self::$file_path = self::$db_list[0];
+            if (!empty(self::$dbList) && is_writable(self::$dbList[0])) {
+                self::$file_path = self::$dbList[0];
                 $ret['result'] = TRUE;
                 $ret['msg'] = self::MSG_CONNECT_SUCCESS;
             } else {
@@ -279,7 +279,7 @@ class ConfDB
      * 查询数据全部信息。
      * @return array
      */
-    private static function get_all()
+    private static function getAll()
     {
         $result = ['stat' => FALSE, 'response' => ''];
         $result['response'] = self::read();
