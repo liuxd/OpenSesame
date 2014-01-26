@@ -32,7 +32,7 @@ done
 
 git clean -df
 
-cp $config_path/web.ini ./ini/web.ini
+cp $config_path/web.ini ./config/web.ini
 
 # 打包
 cd $cur
@@ -44,4 +44,4 @@ mv open-sesame.phar $release_path
 # 恢复开发环境
 cd $cur/../src/
 git reset --hard
-cp ini/web.ini.sample ini/web.ini
+cp config/web.ini.sample config/web.ini
