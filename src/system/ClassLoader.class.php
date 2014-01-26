@@ -7,14 +7,14 @@ class ClassLoader
 
     public function __construct()
     {
-        spl_autoload_register([__CLASS__, 'util']);
+        spl_autoload_register([__CLASS__, 'utility']);
         spl_autoload_register([__CLASS__, 'model']);
     }
 
     /**
      * 加载框架工具类。
      */
-    private function util($class)
+    private function utility($class)
     {
         $class_filename = UTIL_PATH . $class . DS . $class . '.class.php';
 
