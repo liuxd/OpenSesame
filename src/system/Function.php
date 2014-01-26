@@ -66,12 +66,6 @@ function see()
 
             echo '</div>';
             break;
-
-        default :
-            echo "<pre>";
-            var_export($value);
-            echo "</pre>";
-            break;
     }
 }
 
