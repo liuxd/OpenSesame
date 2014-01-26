@@ -103,7 +103,7 @@ class Router
             $params['type'] = $type;
         }
 
-        array_map(function($v) {
+        array_map(function ($v){
             return urlencode($v);
         }, $params);
 
