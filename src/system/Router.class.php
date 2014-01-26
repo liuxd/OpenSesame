@@ -160,10 +160,10 @@ class Router
         $o->op = self::op('index');
         $o->op_type = self::opType();
         $o->op_class_name = self::getOpClassName($o->op_type);
-        $o->op_file = $o->app_path . DS . $o->op_class_name . '.class.php';
-        $o->tpl_path = $o->app_path . DS . 'tpl';
+        $o->op_file = $o->app_path . DS . 'controller' . DS . $o->op_class_name . '.class.php';
+        $o->tpl_path = $o->app_path . DS . 'view';
 
-        require $o->app_path . DS . 'Base.class.php';
+        require $o->app_path . DS . 'controller/Base.class.php';
         require $o->op_file;
 
         $o->op_obj = new $o->op_class_name;
