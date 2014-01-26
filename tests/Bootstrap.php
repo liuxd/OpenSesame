@@ -1,2 +1,2 @@
 <?php
-require __DIR__ . '/../src/core/init.inc';
+require __DIR__ . '/../src/system/init.inc';
