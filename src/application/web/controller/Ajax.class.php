@@ -26,7 +26,7 @@ class Ajax extends Base
         );
 
         $cookie_name = md5(date('Y-m-d'));
-        $key = FALSE;
+        $key = false;
         $now = $_SERVER['REQUEST_TIME'];
 
         if (is_readable(self::AUTH_FILE)) {

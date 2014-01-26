@@ -10,7 +10,7 @@ class Router
     const OP_AJAX = 3;
 
     public static $app = '';
-    private static $is_default = FALSE;
+    private static $is_default = false;
 
     /**
      * 获得进入的app
@@ -23,7 +23,7 @@ class Router
             self::$app = self::get('app');
         } else {
             self::$app = $default;
-            self::$is_default = TRUE;
+            self::$is_default = true;
         }
 
         return self::$app;
@@ -93,7 +93,7 @@ class Router
      * @param string $op 请求动作。
      * @param array $params 传递的参数。
      */
-    public static function genURL($op, $type = FALSE, $params = [])
+    public static function genURL($op, $type = false, $params = [])
     {
         if (!self::$is_default) {
             $params['app'] = self::$app;
@@ -139,7 +139,7 @@ class Router
     public static function redirect($url, $status_code = null)
     {
         if ($status_code) {
-            header('Location:' . $url, TRUE, $status_code);
+            header('Location:' . $url, true, $status_code);
         } else {
             header('Location:' . $url);
         }

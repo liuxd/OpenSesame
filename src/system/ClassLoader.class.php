@@ -21,7 +21,7 @@ class ClassLoader
         if (file_exists($class_filename)) {
             require $class_filename;
         } else {
-            return FALSE;
+            return false;
         }
     }
 
@@ -36,7 +36,7 @@ class ClassLoader
         if (file_exists($class_filename)) {
             require $class_filename;
         } else {
-            return FALSE;
+            return false;
         }
     }
 

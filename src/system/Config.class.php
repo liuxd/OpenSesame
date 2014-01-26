@@ -3,7 +3,7 @@
  * 配置信息管理。
  * 接口规范：所有对外接口统一格式：
  * [
- *     'result' => FALSE, //接口执行是否成功。
+ *     'result' => false, //接口执行是否成功。
  *     'msg' => '', //接口执行失败的原因。
  *     'data' => [], //接口返回数据。
  * ];
@@ -21,7 +21,7 @@ class Config
     public static function get($key)
     {
         self::$ret = [
-            'result' => FALSE,
+            'result' => false,
             'msg' => '',
             'data' => []
         ];
@@ -42,7 +42,7 @@ class Config
             return self::$ret;
         }
 
-        $config_info = parse_ini_file($config_file, TRUE);
+        $config_info = parse_ini_file($config_file, true);
 
         if (!isset($config_info[$key])) {
             self::$ret['msg'] = "Config option doesn't exist!";
@@ -50,7 +50,7 @@ class Config
         }
 
         self::$ret = [
-            'result' => TRUE,
+            'result' => true,
             'msg' => '',
             'data' => $config_info[$key]
         ];

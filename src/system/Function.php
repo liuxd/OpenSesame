@@ -35,7 +35,7 @@ function see()
         '</font><br>';
     };
 
-    switch (TRUE) {
+    switch (true) {
         case is_string($value) :
             $echo($value, 'red', 'string');
             break;
@@ -53,7 +53,7 @@ function see()
             break;
 
         case is_bool($value) :
-            $v = ($value) ? 'TRUE' : 'FALSE';
+            $v = ($value) ? 'true' : 'false';
             $echo($v, 'green', 'bool');
             break;
 

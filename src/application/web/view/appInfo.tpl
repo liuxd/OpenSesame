@@ -38,7 +38,7 @@
         <?php endif;?>
     </form>
 
-    <?php if ($site_info['stat'] === TRUE):?>
+    <?php if ($site_info['stat'] === true):?>
     <table class="table table-striped table-bordered table-hover">
         <thead>
             <tr>

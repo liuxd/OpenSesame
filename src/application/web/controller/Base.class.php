@@ -73,7 +73,7 @@ class Base
     {
         //放过身份验证
         if ($op == 'loginAuth') {
-            return TRUE;
+            return true;
         }
 
         $ip_check = Config::get('ip_check');
@@ -92,7 +92,7 @@ class Base
             } else if ($auth && $op == 'deny') {
                 Router::redirect(Router::genURL('index'));
             } else {
-                return TRUE;
+                return true;
             }
         };
 
@@ -101,7 +101,7 @@ class Base
         //IP检查
         if ($ip_check['data'] == 'on') {
             if ($op == 'deny') {
-                return TRUE;
+                return true;
             } else {
                 $allow_ip = Config::get('allow_ip');
                 $is_auth = in_array(ip(), $allow_ip['data']);
@@ -136,7 +136,7 @@ class Base
         //反爬虫
         $ua = $_SERVER['HTTP_USER_AGENT'];
 
-        if (empty($ua) || strpos($ua, 'bot') !== FALSE || strpos($ua, 'curl') !== FALSE) {
+        if (empty($ua) || strpos($ua, 'bot') !== false || strpos($ua, 'curl') !== false) {
             header("HTTP/1.1 404 Not Found");
             header("Status: 404 Not Found");
             return true;

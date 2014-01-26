@@ -14,7 +14,7 @@ class Str
     public static function random($length, $queue = '')
     {
         if ($length < 1) {
-            return FALSE;
+            return false;
         }
 
         if ($queue) {

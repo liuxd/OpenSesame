@@ -33,15 +33,15 @@ class ConfDB
      * @param string $table 数据表。
      * @param string $key 数据项的键。
      * @param boolen $table_list 是否只列出数据表。
-     * @return array 形如：['stat' => TRUE,'error' => '数据表不能为空','response' => 123];
+     * @return array 形如：['stat' => true,'error' => '数据表不能为空','response' => 123];
      */
-    public static function get($table = '', $key = '', $table_list = FALSE)
+    public static function get($table = '', $key = '', $table_list = false)
     {
         $table = trim($table);
         $key = trim($key);
 
         //返回值初始化。格式固定。
-        self::$result = ['stat' => FALSE, 'error' => '', 'response' => ''];
+        self::$result = ['stat' => false, 'error' => '', 'response' => ''];
 
         if (empty($table)) {
             $table = self::$db_info;
@@ -63,7 +63,7 @@ class ConfDB
 
         if ($table_list) {
             self::$result['response'] = array_keys($all);
-            self::$result['stat'] = TRUE;
+            self::$result['stat'] = true;
 
             return self::$result;
         }
@@ -88,7 +88,7 @@ class ConfDB
             self::$result['response'] = self::$result['response'][$key];
         }
 
-        self::$result['stat'] = TRUE;
+        self::$result['stat'] = true;
 
         return self::$result;
     }
@@ -104,7 +104,7 @@ class ConfDB
     {
         $table = trim($table);
         $key = trim($key);
-        $result = ['stat' => FALSE, 'error' => ''];
+        $result = ['stat' => false, 'error' => ''];
 
         if (empty($table) || empty($key) || empty($value)) {
             $result['error'] = self::ERR_NOT_EMPTY;
@@ -126,7 +126,7 @@ class ConfDB
         $all = $tmp['response'];
         $all[$table][$key] = $value;
         $r = self::write($all);
-        $result['stat'] = ($r) ? TRUE : FALSE;
+        $result['stat'] = ($r) ? true : false;
 
         if (!$r) {
             $result['error'] = self::ERR_DB_NOT_WRITE;
@@ -146,7 +146,7 @@ class ConfDB
         $table = trim($table);
         $key = trim($key);
 
-        $result = ['stat' => FALSE, 'error' => ''];
+        $result = ['stat' => false, 'error' => ''];
 
         if (empty($table)) {
             $result['error'] = self::ERR_TABLENAME_NOT_EMPTY;
@@ -184,7 +184,7 @@ class ConfDB
         }
 
         $r = self::write($all);
-        $result['stat'] = ($r) ? TRUE : FALSE;
+        $result['stat'] = ($r) ? true : false;
 
         return $result;
     }
@@ -211,7 +211,7 @@ class ConfDB
     public static function connect($db_file = '')
     {
         $ret = [
-            'result' => FALSE,
+            'result' => false,
             'msg' => '',
         ];
 
@@ -219,7 +219,7 @@ class ConfDB
             self::$file_path = $db_file;
 
             if (is_writable($db_file)) {
-                $ret['result'] = TRUE;
+                $ret['result'] = true;
                 $ret['msg'] = self::MSG_CONNECT_SUCCESS;
             } else {
                 if (file_exists($db_file)) {
@@ -228,7 +228,7 @@ class ConfDB
                     $r = self::create();
 
                     if ($r) {
-                        $ret['result'] = TRUE;
+                        $ret['result'] = true;
                     } else {
                         $ret['msg'] = self::ERR_DB_NOT_WRITE;
                     }
@@ -237,7 +237,7 @@ class ConfDB
         } else {
             if (!empty(self::$dbList) && is_writable(self::$dbList[0])) {
                 self::$file_path = self::$dbList[0];
-                $ret['result'] = TRUE;
+                $ret['result'] = true;
                 $ret['msg'] = self::MSG_CONNECT_SUCCESS;
             } else {
                 $r = self::create();
@@ -245,7 +245,7 @@ class ConfDB
                 if (!$r) {
                     $ret['msg'] = self::ERR_NO_DB;
                 } else {
-                    $ret['result'] = TRUE;
+                    $ret['result'] = true;
                 }
             }
         }
@@ -259,7 +259,7 @@ class ConfDB
      */
     public static function create()
     {
-        $result = FALSE;
+        $result = false;
 
         if (!file_exists(self::$file_path)) {
             $db_info = [
@@ -281,9 +281,9 @@ class ConfDB
      */
     private static function getAll()
     {
-        $result = ['stat' => FALSE, 'response' => ''];
+        $result = ['stat' => false, 'response' => ''];
         $result['response'] = self::read();
-        $result['stat'] = TRUE;
+        $result['stat'] = true;
 
         return $result;
     }
@@ -300,19 +300,19 @@ class ConfDB
             $compress = gzdeflate($encode, 9);
             file_put_contents(self::$file_path, $compress);
 
-            return TRUE;
+            return true;
         } elseif (!file_exists(self::$file_path)) {
             if (!is_writable(dirname(self::$file_path))) {
-                return FALSE;
+                return false;
             } else {
                 $encode = json_encode($data);
                 $compress = gzdeflate($encode, 9);
                 file_put_contents(self::$file_path, $compress);
 
-                return TRUE;
+                return true;
             }
         } else {
-            return FALSE;
+            return false;
         }
     }
 
@@ -325,7 +325,7 @@ class ConfDB
         if (is_writable(self::$file_path)) {
             $origin = file_get_contents(self::$file_path);
             $uncompress = gzinflate($origin);
-            $decode = json_decode($uncompress, TRUE);
+            $decode = json_decode($uncompress, true);
 
             return $decode;
         }
