@@ -1,5 +1,6 @@
-Open Sesame[![Build Status](https://drone.io/github.com/liuxd/open-sesame/status.png)](https://drone.io/github.com/liuxd/open-sesame/latest)
+Open Sesame
 ============
+[![Build Status](https://drone.io/github.com/liuxd/open-sesame/status.png)](https://drone.io/github.com/liuxd/open-sesame/latest)
 
 ## 功能
 基于Web的帐号管理工具。
