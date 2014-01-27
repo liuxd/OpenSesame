@@ -8,16 +8,13 @@ class CGI
     public static function run(stdClass $o)
     {
         switch ($o->op_type) {
-            case Router::OP_PAGE: //渲染页面。
-                self::pageHandler($o);
+            case Router::OP_PAGE:self::pageHandler($o);
                 break;
 
-            case Router::OP_FORM: //表单处理。
-                self::formHandler($o);
+            case Router::OP_FORM:self::formHandler($o);
                 break;
 
-            case Router::OP_AJAX: //ajax请求。
-                self::ajaxHandler($o);
+            case Router::OP_AJAX:self::ajaxHandler($o);
                 break;
 
             default:break;
@@ -73,7 +70,6 @@ class CGI
 
         return array();
     }
-
 }
 
 # end of this file

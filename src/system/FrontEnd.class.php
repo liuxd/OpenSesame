@@ -37,7 +37,6 @@ class FrontEnd
             return $mime_types[$ext];
         }
     }
-
 }
 
 # end of this file

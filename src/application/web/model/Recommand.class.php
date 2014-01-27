@@ -20,7 +20,7 @@ class Recommand
 
     public static function getRecommand($site_list)
     {
-        uasort($site_list, function($a, $b) {
+        uasort($site_list, function ($a, $b) {
             if ($a == $b) {
                 return 0;
             }
@@ -45,7 +45,6 @@ class Recommand
 
         return $recomm;
     }
-
 }
 
 # end of this file

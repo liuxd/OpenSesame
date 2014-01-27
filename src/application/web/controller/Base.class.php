@@ -79,17 +79,17 @@ class Base
         $ip_check = Config::get('ip_check');
 
         //检查cookie是否OK。
-        $check_cookie = function() {
+        $check_cookie = function () {
             $cookie_name = md5(date('Y-m-d'));
             return isset($_COOKIE[$cookie_name]);
         };
 
         //身份验证后的跳转处理。
-        $redirect = function($auth)use($op) {
+        $redirect = function ($auth) use ($op) {
             //检验cookie
             if (!$auth && $op != 'welcome') {
                 Router::redirect(Router::genURL('welcome'));
-            } else if ($auth && $op == 'deny') {
+            } elseif ($auth && $op == 'deny') {
                 Router::redirect(Router::genURL('index'));
             } else {
                 return true;
@@ -144,7 +144,6 @@ class Base
 
         return false;
     }
-
 }
 
 # end of this file

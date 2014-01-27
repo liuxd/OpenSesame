@@ -30,4 +30,7 @@ foreach ($core_files as $core_file) {
     require __DIR__ . DS . $core_file;
 }
 
+new ClassLoader;
+set_error_handler('err');
+
 # end of this file

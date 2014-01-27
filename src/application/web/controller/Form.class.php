@@ -78,7 +78,6 @@ class Form extends Base
     {
         return isset($_POST[$name]) ? $_POST[$name] : $default;
     }
-
 }
 
 # end of this file

@@ -12,7 +12,6 @@ class Page extends Base
     /**
      * 首页
      */
-
     public function index()
     {
         $site_list = ConfDB::get(ConstCommon::SITE_LIST);
@@ -169,7 +168,6 @@ class Page extends Base
         $history_db = Config::get('db');
         ConfDB::connect($history_db['data']['history']);
     }
-
 }
 
 # end of this file

@@ -58,7 +58,8 @@ function see()
             break;
 
         case is_array($value):
-            echo '<b style="font-family:arial">array</b>(', count($value), ')<div style="margin:10px 20px;font-family:arial">';
+            echo '<b style="font-family:arial">array</b>(', count($value);
+            echo ')<div style="margin:10px 20px;font-family:arial">';
 
             foreach ($value as $kk => $vv) {
                 echo '<font color="#555">', $kk, '</font> => ', see($vv);

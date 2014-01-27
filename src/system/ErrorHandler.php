@@ -33,7 +33,4 @@ function err($errno, $errstr, $errfile, $errline)
     header('location: /');
 }
 
-# 设置自定义错误处理函数
-set_error_handler('err');
-
 # end of this file

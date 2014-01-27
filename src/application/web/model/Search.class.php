@@ -22,7 +22,6 @@ class Search
 
         return $result;
     }
-
 }
 
 # end of this file

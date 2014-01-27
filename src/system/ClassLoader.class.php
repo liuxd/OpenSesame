@@ -39,9 +39,6 @@ class ClassLoader
             return false;
         }
     }
-
 }
-
-new ClassLoader;
 
 # end of this file

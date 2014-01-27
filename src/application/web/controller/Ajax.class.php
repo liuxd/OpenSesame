@@ -17,7 +17,6 @@ class Ajax extends Base
     /**
      * 身份验证。
      */
-
     public function loginAuth()
     {
         $data = array(
@@ -99,7 +98,6 @@ class Ajax extends Base
 
         return $tomorrow;
     }
-
 }
 
 # end of this file

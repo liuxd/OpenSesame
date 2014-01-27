@@ -57,7 +57,6 @@ class Config
 
         return self::$ret;
     }
-
 }
 
 # end of this file
