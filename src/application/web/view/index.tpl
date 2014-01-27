@@ -12,13 +12,13 @@
         <a href="http://cn.gravatar.com/emails/" target="__blank"><img src="<?=$gravatar;?>" alt="liuxd" width="30" height="30" /></a>
         <input type="text" class="input-large" placeholder="网站名称" name="name">
         <input type="text" class="input-large" placeholder="网址" name="url">
-        <button type="submit" class="btn btn-success">提交</button>
+        <button type="submit" class="btn btn-success">添加</button>
         <a class="btn btn-danger" href="javascript:void(0)" id="logout_bt">退出</a>
     </form>
 </div>
 
 <div class="navbar-fixed-top" style="width : 50px">
-    <button type="button" class="btn btn-danger btn-small" id="add_pull" >添加</button>
+    <button type="button" class="btn btn-primary btn-small" id="add_pull" >+</button>
 </div>
 
 <!-- 搜索区 -->
