@@ -69,7 +69,6 @@ class Str
 
         return $output;
     }
-
 }
 
 # end of this file

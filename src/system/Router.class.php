@@ -64,7 +64,7 @@ class Router
 
     /**
      * 获得URL中的参数。
-     * @param string $name 参数名。默认为空。为空的情况下返回全部URL参数，否则返回指定参数的值。
+     * @param string $name 参数名。默认为空。
      * @param unknown $default 指定参数名时，该参数的默认值。
      * @return array or mix
      */
@@ -103,7 +103,7 @@ class Router
             $params['type'] = $type;
         }
 
-        array_map(function ($v){
+        array_map(function ($v) {
             return urlencode($v);
         }, $params);
 
@@ -174,7 +174,6 @@ class Router
 
         return $o;
     }
-
 }
 
 # end of this file

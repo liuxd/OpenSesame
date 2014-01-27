@@ -332,7 +332,6 @@ class ConfDB
 
         return [];
     }
-
 }
 
 # end of this file

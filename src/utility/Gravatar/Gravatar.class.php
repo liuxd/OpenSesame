@@ -18,7 +18,6 @@ class Gravatar
 
         return $url;
     }
-
 }
 
 # end of this file

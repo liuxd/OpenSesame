@@ -16,11 +16,9 @@ class CGI
 
             case Router::OP_AJAX:self::ajaxHandler($o);
                 break;
-
-            default:break;
         }
 
-        fastcgi_finish_request();
+        return fastcgi_finish_request();
     }
 
     //页面请求处理

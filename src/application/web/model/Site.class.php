@@ -19,7 +19,6 @@ class Site
 
         return $key;
     }
-
 }
 
 # end of this file
