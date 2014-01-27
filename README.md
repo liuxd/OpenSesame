@@ -1,8 +1,5 @@
-Open Sesame
+Open Sesame[![Build Status](https://drone.io/github.com/liuxd/open-sesame/status.png)](https://drone.io/github.com/liuxd/open-sesame/latest)
 ============
-[![Build Status](https://travis-ci.org/liuxd/open-sesame.png)](https://travis-ci.org/liuxd/open-sesame)
-[![Build Status](https://drone.io/github.com/liuxd/open-sesame/status.png)](https://drone.io/github.com/liuxd/open-sesame/latest)
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/d152c96f-dd40-465c-9ea3-0e34a1be3add/mini.png)](https://insight.sensiolabs.com/projects/d152c96f-dd40-465c-9ea3-0e34a1be3add)
 
 ## 功能
 基于Web的帐号管理工具。
