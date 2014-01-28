@@ -2,14 +2,16 @@
 /**
  * 框架入口。
  */
+use system as s;
+
 require __DIR__ . '/system/init.inc';
 
 $www = substr($_SERVER['REQUEST_URI'], 0, 8);
 
 if ($www === '/static/') {
-    FrontEnd::handle(WWW_PATH, 8);
+    s\FrontEnd::handle(WWW_PATH, 8);
 } else {
-    CGI::run(Router::route());
+    s\CGI::run(s\Router::route());
 }
 
 # end of this file

@@ -2,6 +2,8 @@
 /**
  * 响应前端文件请求。
  */
+namespace system;
+
 class FrontEnd
 {
 

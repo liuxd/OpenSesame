@@ -2,6 +2,10 @@
 /**
  * 作为CGI时的处理逻辑。
  */
+namespace system;
+
+use stdClass;
+
 class CGI
 {
 

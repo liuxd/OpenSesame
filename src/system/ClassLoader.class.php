@@ -2,6 +2,8 @@
 /**
  * 设置自定义类加载器
  */
+namespace system;
+
 class ClassLoader
 {
 
@@ -16,7 +18,13 @@ class ClassLoader
      */
     private function utility($class)
     {
-        $class_filename = UTIL_PATH . $class . DS . $class . '.class.php';
+        list($namespace, $classname) = explode('\\', $class);
+
+        if ($namespace !== 'utility') {
+            return false;
+        }
+
+        $class_filename = UTIL_PATH . $classname . DS . $classname . '.class.php';
 
         if (file_exists($class_filename)) {
             require $class_filename;
@@ -30,8 +38,13 @@ class ClassLoader
      */
     private function model($class)
     {
-        $app = isset($_GET['app']) ? $_GET['app'] : DEFAULT_APP;
-        $class_filename = APP_PATH . $app . DS . 'model' . DS . $class . '.class.php';
+        list($namespace, $classname) = explode('\\', $class);
+
+        if ($namespace !== 'model') {
+            return false;
+        }
+
+        $class_filename = APP_PATH . DEFAULT_APP . DS . 'model' . DS . $classname . '.class.php';
 
         if (file_exists($class_filename)) {
             require $class_filename;

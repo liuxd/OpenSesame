@@ -2,6 +2,8 @@
 /**
  * 模块相关常量。
  */
+namespace model;
+
 class ConstCommon
 {
     const SITE_LIST = 'site_list';

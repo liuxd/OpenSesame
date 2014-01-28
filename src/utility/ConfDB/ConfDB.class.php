@@ -2,8 +2,9 @@
 /**
  * 配置信息数据库操作类。
  * 以JSON格式保存数据。
- * @author liuxd
  */
+namespace utility;
+
 class ConfDB
 {
 

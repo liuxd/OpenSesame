@@ -2,6 +2,10 @@
 /**
  * 路由操作。实现URL地址与解析与封装。
  */
+namespace system;
+use stdClass;
+use controller;
+
 class Router
 {
 
@@ -125,7 +129,7 @@ class Router
             self::OP_AJAX => 'Ajax',
         ];
 
-        $class_name = ($type_list[$op_type]) ? $type_list[$op_type] : 'Page';
+        $class_name = ($type_list[$op_type]) ? 'controller\\' . $type_list[$op_type] : 'Page';
 
         return $class_name;
     }
@@ -160,7 +164,7 @@ class Router
         $o->op = self::op('index');
         $o->op_type = self::opType();
         $o->op_class_name = self::getOpClassName($o->op_type);
-        $o->op_file = $o->app_path . DS . 'controller' . DS . $o->op_class_name . '.class.php';
+        $o->op_file = $o->app_path . DS . str_replace('\\', '/', $o->op_class_name) . '.class.php';
         $o->tpl_path = $o->app_path . DS . 'view';
 
         require $o->app_path . DS . 'controller/Base.class.php';
