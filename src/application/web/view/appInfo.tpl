@@ -52,11 +52,16 @@
             <tr>
                 <td><?=$k;?></td>
                 <td>
-                    <span class="btn btn-danger info_del_bt" title='<?=$k;?>'>删除</span>
-                    <span class="btn btn-info info_up_bt"  title='<?=$k;?>' id='<?=$v['real'];?>'>修改</span>
-                    <span class="btn btn-success info_copy_bt" id='<?=$v['real'];?>'>复制</span>
+                    <span class="btn btn-danger info_del_bt" title='<?=$k?>'>删除</span>
+                    <span class="btn btn-info info_up_bt"  title='<?=$k?>' id='<?=$v['real']?>'>修改</span>
+                    <span class="btn btn-success info_copy_bt" id='<?=$v['real']?>'>复制</span>
                 </td>
-                <td><?=$v['display'];?></td>
+
+                <?php if (isset($v['link'])):?>
+                <td>使用 <b><a href="<?=$v['link']?>"><?=$v['site_name']?></a></b> 帐号登录</td>
+                <?php else: ?>
+                <td><?=$v['display']?></td>
+                <?php endif;?>
             </tr>
             <?php endforeach;?>
         </tbody>
