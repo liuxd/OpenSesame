@@ -8,6 +8,8 @@
  *     'data' => [], //接口返回数据。
  * ];
  */
+namespace system;
+
 class Config
 {
 

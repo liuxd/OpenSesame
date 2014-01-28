@@ -2,6 +2,8 @@
 /**
  * 帐号搜索逻辑。
  */
+namespace model;
+
 class Search
 {
 

@@ -4,6 +4,8 @@
  * 所有页面请求方法的返回值都是json。
  * @author liuxd
  */
+namespace controller;
+
 class Ajax extends Base
 {
 

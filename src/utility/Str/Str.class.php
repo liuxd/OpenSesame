@@ -1,8 +1,9 @@
 <?php
 /**
  * 字符串相关处理。
- * @author liuxd
  */
+namespace utility;
+
 class Str
 {
 

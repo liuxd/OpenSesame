@@ -2,6 +2,8 @@
 /**
  * Gravatar头像操作类。
  */
+namespace utility;
+
 class Gravatar
 {
 

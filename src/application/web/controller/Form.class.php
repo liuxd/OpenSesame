@@ -3,6 +3,8 @@
  * 处理页面请求。
  * 所有页面请求方法的返回值都是数组。
  */
+namespace controller;
+
 class Form extends Base
 {
 

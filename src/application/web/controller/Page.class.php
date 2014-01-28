@@ -4,6 +4,8 @@
  * 所有页面请求方法的返回值都是数组。
  * @author liuxd
  */
+namespace controller;
+
 class Page extends Base
 {
 

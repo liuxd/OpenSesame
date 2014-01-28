@@ -2,6 +2,8 @@
 /**
  * 密码管理器。
  */
+namespace controller;
+
 class Base
 {
 

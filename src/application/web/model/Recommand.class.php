@@ -2,6 +2,8 @@
 /**
  * 推荐逻辑
  */
+namespace model;
+
 class Recommand
 {
 

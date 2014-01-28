@@ -2,6 +2,8 @@
 /**
  * 封装网站帐号的逻辑
  */
+namespace model;
+
 class Site
 {
 

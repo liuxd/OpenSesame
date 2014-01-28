@@ -2,6 +2,8 @@
 /**
  * 设置自定义类加载器
  */
+namespace system;
+
 class ClassLoader
 {
 
