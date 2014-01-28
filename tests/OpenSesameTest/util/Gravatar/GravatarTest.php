@@ -1,6 +1,7 @@
 <?php
 namespace test;
 
+use PHPUnit_Framework_TestCase;
 use utility as u;
 
 class GravatarTest extends PHPUnit_Framework_TestCase
