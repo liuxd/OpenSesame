@@ -1,11 +1,3 @@
-<!-- footer -->
-<footer class="footer" id="footer">
-    <div class="controls-row span12 offset4">
-        <div class="span2">
-            &copy;<a href="https://github.com/liuxd?tab=repositories" target="_blank">刘喜东</a>
-        </div>
-    </div>
-</footer>
 
 <!--普通内容弹出框-->
 <div class="modal" id="popup" style="display:none">
