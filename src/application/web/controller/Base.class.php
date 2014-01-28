@@ -6,6 +6,7 @@ namespace controller;
 
 use system as s;
 use utility as u;
+use model as m;
 
 class Base
 {
@@ -49,7 +50,7 @@ class Base
         $data['host'] = 'http://' . $_SERVER['HTTP_HOST'] . '/';
 
         if (!empty($site_name)) {
-            $tmp = u\ConfDB::get(ConstCommon::SITE_LIST, $site_name);
+            $tmp = u\ConfDB::get(m\ConstCommon::SITE_LIST, $site_name);
 
             if ($tmp['stat']) {
                 $data['title_url'] = 'http://' . $tmp['response'];

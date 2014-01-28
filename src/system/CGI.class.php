@@ -4,6 +4,8 @@
  */
 namespace system;
 
+use stdClass;
+
 class CGI
 {
 

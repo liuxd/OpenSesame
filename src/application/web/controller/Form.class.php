@@ -5,6 +5,10 @@
  */
 namespace controller;
 
+use system as s;
+use model as m;
+use utility as u;
+
 class Form extends Base
 {
 
@@ -27,7 +31,7 @@ class Form extends Base
             $url_value = substr($url_value, 0, -1);
         }
 
-        ConfDB::up(ConstCommon::SITE_LIST, $name, $url_value);
+        u\ConfDB::up(m\ConstCommon::SITE_LIST, $name, $url_value);
 
         return array('op' => 'appInfo', 'params' => array('site_name' => $name));
     }
@@ -46,7 +50,7 @@ class Form extends Base
         }
 
         $value = base64_encode($value);
-        ConfDB::up($table, $key, $value);
+        u\ConfDB::up($table, $key, $value);
 
         return array('op' => 'appInfo', 'params' => array('site_name' => $table));
     }
@@ -63,9 +67,9 @@ class Form extends Base
             return array('op' => $op, 'params' => array('site_name' => $table));
         }
 
-        ConfDB::del($table, $key);
+        u\ConfDB::del($table, $key);
 
-        $op = ($table == ConstCommon::SITE_LIST) ? 'index' : 'appInfo';
+        $op = ($table == m\ConstCommon::SITE_LIST) ? 'index' : 'appInfo';
 
         return array('op' => $op, 'params' => array('site_name' => $table));
     }

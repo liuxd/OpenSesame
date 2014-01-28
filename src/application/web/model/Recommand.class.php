@@ -4,6 +4,8 @@
  */
 namespace model;
 
+use system as s;
+
 class Recommand
 {
 
@@ -13,7 +15,7 @@ class Recommand
 
         foreach ($rand_keys as $key) {
             $tmp['name'] = $key;
-            $tmp['url'] = Router::genURL('appInfo', Router::OP_PAGE, ['site_name' => $key]);
+            $tmp['url'] = s\Router::genURL('appInfo', s\Router::OP_PAGE, ['site_name' => $key]);
             $random_account_keys[] = $tmp;
         }
 
@@ -40,7 +42,7 @@ class Recommand
 
         while ($count < ConstCommon::RECOMMAND_ACCOUNT_NUM && $keys) {
             $tmp['name'] = array_shift($keys);
-            $tmp['url'] = Router::genURL('appInfo', Router::OP_PAGE, ['site_name' => $tmp['name']]);
+            $tmp['url'] = s\Router::genURL('appInfo', s\Router::OP_PAGE, ['site_name' => $tmp['name']]);
             $recomm[] = $tmp;
             $count++;
         }
