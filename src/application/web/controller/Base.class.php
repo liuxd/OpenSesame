@@ -4,6 +4,9 @@
  */
 namespace controller;
 
+use system as s;
+use utility as u;
+
 class Base
 {
 
@@ -15,8 +18,8 @@ class Base
             return array();
         }
 
-        Config::$app = Router::$app;
-        $msg = Config::get('msg_default');
+        s\Config::$app = s\Router::$app;
+        $msg = s\Config::get('msg_default');
 
         if (!$msg['result']) {
             echo $msg['msg'];
@@ -24,7 +27,7 @@ class Base
         }
 
         $this->msg_map = $msg['data'];
-        $op = Router::op('index');
+        $op = s\Router::op('index');
         $this->auth($op);
 
         $data = array();
@@ -34,19 +37,19 @@ class Base
             $data['error'] = $this->msg_map[$db_con['msg']];
         }
 
-        if (Router::opType() !== Router::OP_PAGE) {
+        if (s\Router::opType() !== s\Router::OP_PAGE) {
             return array();
         }
 
         $site_name = $this->get('site_name', '');
         $data['op'] = $op;
-        $data['index_url'] = Router::genURL('index');
-        $data['app'] = Router::$app;
+        $data['index_url'] = s\Router::genURL('index');
+        $data['app'] = s\Router::$app;
         $data['title_url'] = '';
         $data['host'] = 'http://' . $_SERVER['HTTP_HOST'] . '/';
 
         if (!empty($site_name)) {
-            $tmp = ConfDB::get(ConstCommon::SITE_LIST, $site_name);
+            $tmp = u\ConfDB::get(ConstCommon::SITE_LIST, $site_name);
 
             if ($tmp['stat']) {
                 $data['title_url'] = 'http://' . $tmp['response'];
@@ -64,7 +67,7 @@ class Base
      */
     public function get($name = '', $default = '')
     {
-        return Router::get($name, $default);
+        return s\Router::get($name, $default);
     }
 
     /**
@@ -78,7 +81,7 @@ class Base
             return true;
         }
 
-        $ip_check = Config::get('ip_check');
+        $ip_check = s\Config::get('ip_check');
 
         //检查cookie是否OK。
         $check_cookie = function () {
@@ -90,9 +93,9 @@ class Base
         $redirect = function ($auth) use ($op) {
             //检验cookie
             if (!$auth && $op != 'welcome') {
-                Router::redirect(Router::genURL('welcome'));
+                s\Router::redirect(Router::genURL('welcome'));
             } elseif ($auth && $op == 'deny') {
-                Router::redirect(Router::genURL('index'));
+                s\Router::redirect(Router::genURL('index'));
             } else {
                 return true;
             }
@@ -105,11 +108,11 @@ class Base
             if ($op == 'deny') {
                 return true;
             } else {
-                $allow_ip = Config::get('allow_ip');
+                $allow_ip = s\Config::get('allow_ip');
                 $is_auth = in_array(ip(), $allow_ip['data']);
 
                 if (!$is_auth) {
-                    Router::redirect(Router::genURL('deny'));
+                    s\Router::redirect(s\Router::genURL('deny'));
                 } else {
                     return $redirect($auth);
                 }
@@ -124,9 +127,9 @@ class Base
      */
     protected function connectMaster()
     {
-        $db = Config::get('db');
+        $db = s\Config::get('db');
         $this->db_file = $db['data']['master'];
-        $r = ConfDB::connect($this->db_file);
+        $r = u\ConfDB::connect($this->db_file);
         return $r;
     }
 
