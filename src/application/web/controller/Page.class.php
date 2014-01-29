@@ -160,7 +160,7 @@ class Page extends Base
     {
         $data = [
             'page_title' => '你中毒了！',
-            'auth_url' => s\Router::genURL('loginAuth', Router::OP_AJAX)
+            'auth_url' => s\Router::genURL('loginAuth', s\Router::OP_AJAX)
         ];
 
         return $data;

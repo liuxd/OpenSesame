@@ -94,9 +94,9 @@ class Base
         $redirect = function ($auth) use ($op) {
             //检验cookie
             if (!$auth && $op != 'welcome') {
-                s\Router::redirect(Router::genURL('welcome'));
+                s\Router::redirect(s\Router::genURL('welcome'));
             } elseif ($auth && $op == 'deny') {
-                s\Router::redirect(Router::genURL('index'));
+                s\Router::redirect(s\Router::genURL('index'));
             } else {
                 return true;
             }
