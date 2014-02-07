@@ -15,7 +15,9 @@ class FrontEnd
     public static function handle($path, $prefix_len)
     {
         $uri = $_SERVER['REQUEST_URI'];
-        $real_path = $path . substr($uri, $prefix_len);
+        $url = 'http://' . $_SERVER['HTTP_HOST'] . $uri;
+        $url_info = parse_url($url);
+        $real_path = $path . substr($url_info['path'], $prefix_len);
         $pathinfo = pathinfo($real_path);
         $mime_type = self::getMimeTypes($pathinfo['extension']);
         header('Content-Type: ' . $mime_type);
@@ -33,6 +35,7 @@ class FrontEnd
             'css' => 'text/css',
             'jpg' => 'image/jpeg',
             'png' => 'image/png',
+            'swf' => 'application/x-shockwave-flash'
         ];
 
         if (isset($mime_types[$ext])) {
