@@ -41,8 +41,8 @@
         });
     });
 
-    //单页copy按钮
-    $('.info_copy_bt').each(function() {
+    //单页查看按钮
+    $('.info_show_bt').each(function() {
         var value = $(this).attr('id');
 
         $($(this)).bind('click', function() {
@@ -51,6 +51,20 @@
             $('#popup').modal('show');
             content.select();
             content.attr('disabled', 'disabled');
+        });
+    });
+
+    //单页复制按钮
+    $('.info_copy_bt').each(function() {
+        var client = new ZeroClipboard($(this), {
+            moviePath: "/static/zeroclipboard/ZeroClipboard.swf"
+        });
+
+        client.on( "load", function(client) {
+            client.on( "complete", function(client, args) {
+                alert("已复制到剪贴板！");
+                $(this).attr('disabled', 'disabled');
+            });
         });
     });
 

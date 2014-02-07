@@ -54,7 +54,8 @@
                 <td>
                     <span class="btn btn-danger info_del_bt" title='<?=$k?>'>删除</span>
                     <span class="btn btn-info info_up_bt"  title='<?=$k?>' id='<?=$v['real']?>'>修改</span>
-                    <span class="btn btn-success info_copy_bt" id='<?=$v['real']?>'>复制</span>
+                    <span class="btn btn-success info_show_bt" id='<?=$v['real']?>'>查看</span>
+                    <span class="btn btn-primary info_copy_bt" id='copy-button' data-clipboard-text='<?=$v['real']?>'>复制</span>
                 </td>
 
                 <?php if (isset($v['link'])):?>
@@ -73,3 +74,4 @@
     <input type="hidden" name="table" value="<?=$site_name?>" />
     <input type="hidden" name="key" id="key" />
 </form>
+<script language="javascript" src="<?=$host?>static/zeroclipboard/ZeroClipboard.min.js"></script>
