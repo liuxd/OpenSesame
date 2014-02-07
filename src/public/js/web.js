@@ -57,12 +57,17 @@
     //单页复制按钮
     $('.info_copy_bt').each(function() {
         var client = new ZeroClipboard($(this), {
-            moviePath: "/static/zeroclipboard/ZeroClipboard.swf"
+            moviePath: '/static/zeroclipboard/ZeroClipboard.swf'
         });
 
-        client.on( "load", function(client) {
-            client.on( "complete", function(client, args) {
-                alert("已复制到剪贴板！");
+        client.on('load', function(client) {
+            client.on('complete', function(client, args) {
+                $('#pop_confirm').confirmModal({
+                    heading: '成功了！',
+                    body: '您要的东西已复制到剪贴板！',
+                    enter: '好的',
+                    close: '我知道了',
+                });
                 $(this).attr('disabled', 'disabled');
             });
         });
