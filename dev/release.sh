@@ -30,7 +30,7 @@ do
     php -w $php_file.bak > $php_file
 done
 
-git clean -df
+git clean -dfq
 
 cp $config_path/web.ini ./config/web.ini
 
@@ -43,5 +43,5 @@ mv open-sesame.phar $release_path
 
 # 恢复开发环境
 cd $cur/../src/
-git reset --hard
+git reset --hard -q
 cp config/web.ini.sample config/web.ini
