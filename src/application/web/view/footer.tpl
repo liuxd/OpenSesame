@@ -7,7 +7,7 @@
     </div>
 
     <div class="modal-body">
-        <p><input id="pop_content" type="text" value="" /></p>
+        <p><span id="pop_content"></span></p>
     </div>
 </div>
 

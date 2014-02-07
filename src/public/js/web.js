@@ -46,8 +46,7 @@
         var value = $(this).attr('id');
 
         $($(this)).bind('click', function() {
-            var content = $('#pop_content');
-            content.attr('value', value);
+            $('#pop_content').text(value);
             $('#popup').modal('show');
             content.select();
             content.attr('disabled', 'disabled');
@@ -62,12 +61,8 @@
 
         client.on('load', function(client) {
             client.on('complete', function(client, args) {
-                $('#pop_confirm').confirmModal({
-                    heading: '成功了！',
-                    body: '您要的东西已复制到剪贴板！',
-                    enter: '好的',
-                    close: '我知道了',
-                });
+                $('#pop_content').text('您要的东西已复制到剪贴板！');
+                $('#popup').modal('show');
                 $(this).attr('disabled', 'disabled');
             });
         });
