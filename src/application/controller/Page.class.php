@@ -64,7 +64,7 @@ class Page extends Base
         $key = trim($this->get('key'));
 
         if ($key === '') {
-            s\Router::redirect(Router::genURL('index'));
+            s\Router::redirect(s\Router::genURL('index'));
         }
 
         $result = m\Search::get($key);
