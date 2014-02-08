@@ -1,20 +1,11 @@
 #!/bin/bash
 
-# 正式环境使用的web.ini。
-config_path=`pwd`
-
-# 代码(phar包)要部署到的路径
-release_path=/Users/liuxd/Documents/web/
-
-# 原始代码路径
-code_path=/Users/liuxd/Documents/github.com/open-sesame/src
-
-############# 以上是配置区 #############
-
 # 检查 & 过滤
 base_str='No syntax errors detected in '
 cur=`pwd`
-cd ../src/
+code_path=$cur/src
+
+cd $code_path 
 
 find . -name "*.php" | while read php_file
 do
@@ -32,16 +23,15 @@ done
 
 git clean -dfq
 
-cp $config_path/web.ini ./config/web.ini
+cp $cur/web.ini $code_path/config/web.ini
 
 # 打包
 cd $cur
 php phar-packer.php --name=open-sesame --path=$code_path --init=index.php
 
-# 部署
-mv open-sesame.phar $release_path
-
 # 恢复开发环境
-cd $cur/../src/
+cd $code_path
 git reset --hard -q
 cp config/web.ini.sample config/web.ini
+
+echo "发布完成！"
