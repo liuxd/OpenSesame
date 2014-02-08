@@ -41,3 +41,13 @@ __Open Sesame__是什么意思呢？翻译成中文是
 + PHP
     + 版本：5.4.17+
     + 扩展：zlib
+
+## 部署
++ 下载 && 解压。
++ 修改`dev/release.sh`的前三个变量的值。
++ 拷贝`src/config/web.ini.sample`到release.sh里config_path指定的路径，命名`web.ini`。
++ 根据自己的需求修改web.ini的配置。
++ 拷贝`dev/open-sesame.conf`到nginx包含的配置目录下(include /path/*.conf 语句指定的路径)。
++ 修改open-sesame.conf里的路径。
++ 修改`/etc/hosts`
++ 启动nginx & php-fpm
