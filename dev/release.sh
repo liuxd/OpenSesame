@@ -23,8 +23,6 @@ done
 
 git clean -dfq
 
-cp $cur/web.ini $code_path/config/web.ini
-
 # 打包
 cd $cur
 php phar-packer.php --name=open-sesame --path=$code_path --init=index.php
@@ -32,6 +30,5 @@ php phar-packer.php --name=open-sesame --path=$code_path --init=index.php
 # 恢复开发环境
 cd $code_path
 git reset --hard -q
-cp config/web.ini.sample config/web.ini
 
 echo "发布完成！"
