@@ -38,6 +38,7 @@
         $($(this)).bind('click', function() {
             $('#field_name').attr('value', '邮箱');
             $('#field_value').attr('value', email);
+            $('#info_enter').click();
         });
     });
 
@@ -123,6 +124,7 @@
         }
 
         $('#field_value').attr('value', s);
+        $('#info_enter').click();
     });
 
     //生成默认密码按钮
@@ -130,6 +132,7 @@
         var v = $(this).attr('data');
         $('#field_name').attr('value', '密码');
         $('#field_value').attr('value', v);
+        $('#info_enter').click();
     });
 
     //退出按钮
