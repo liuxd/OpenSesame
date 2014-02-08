@@ -14,26 +14,6 @@ class Router
     const OP_FORM = 2;
     const OP_AJAX = 3;
 
-    public static $app = '';
-    private static $is_default = false;
-
-    /**
-     * 获得进入的app
-     * @param string $default_app 默认的app。
-     * @return string
-     */
-    public static function app($default = 'index')
-    {
-        if (self::get('app')) {
-            self::$app = self::get('app');
-        } else {
-            self::$app = $default;
-            self::$is_default = true;
-        }
-
-        return self::$app;
-    }
-
     /**
      * 获得动作文件的类型。可能的类型：1=页面请求，2=表单请求，3=ajax请求。
      * @return int
@@ -100,10 +80,6 @@ class Router
      */
     public static function genURL($op, $type = false, $params = [])
     {
-        if (!self::$is_default) {
-            $params['app'] = self::$app;
-        }
-
         if ($type && $type !== self::OP_PAGE) {
             $params['type'] = $type;
         }
@@ -159,16 +135,14 @@ class Router
     public static function route()
     {
         $o = new stdClass;
-        $o->app = self::app(DEFAULT_APP);
-        $o->app_path = APP_PATH . $o->app;
 
         $o->op = self::op('index');
         $o->op_type = self::opType();
         $o->op_class_name = self::getOpClassName($o->op_type);
-        $o->op_file = $o->app_path . DS . str_replace('\\', '/', $o->op_class_name) . '.class.php';
-        $o->tpl_path = $o->app_path . DS . 'view';
+        $o->op_file = APP_PATH . str_replace('\\', '/', $o->op_class_name) . '.class.php';
+        $o->tpl_path = APP_PATH. 'view';
 
-        require $o->app_path . DS . 'controller/Base.class.php';
+        require APP_PATH . 'controller/Base.class.php';
         require $o->op_file;
 
         $o->op_obj = new $o->op_class_name;

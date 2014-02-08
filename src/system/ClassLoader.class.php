@@ -44,7 +44,7 @@ class ClassLoader
             return false;
         }
 
-        $class_filename = APP_PATH . DEFAULT_APP . DS . 'model' . DS . $classname . '.class.php';
+        $class_filename = APP_PATH . 'model' . DS . $classname . '.class.php';
 
         if (file_exists($class_filename)) {
             require $class_filename;

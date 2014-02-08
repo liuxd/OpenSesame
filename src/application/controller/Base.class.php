@@ -19,7 +19,7 @@ class Base
             return array();
         }
 
-        s\Config::$app = s\Router::$app;
+        s\Config::$app = 'web';
         $msg = s\Config::get('msg_default');
 
         if (!$msg['result']) {
@@ -45,7 +45,6 @@ class Base
         $site_name = $this->get('site_name', '');
         $data['op'] = $op;
         $data['index_url'] = s\Router::genURL('index');
-        $data['app'] = s\Router::$app;
         $data['title_url'] = '';
         $data['host'] = 'http://' . $_SERVER['HTTP_HOST'] . '/';
 
