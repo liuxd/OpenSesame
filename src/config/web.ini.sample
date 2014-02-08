@@ -16,7 +16,7 @@ default_password=123456
 ;数据文件路径，要求有读写权限
 [db]
 ;记录访问历史的数据文件
-history=/Users/liuxd/pac_history_dev.db
+history=/tmp/pac_history_dev.db
 ;记录帐号信息的数据文件
 master=/Users/liuxd/password_dev.db
 
