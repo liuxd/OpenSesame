@@ -333,6 +333,23 @@ class ConfDB
 
         return [];
     }
+
+    public static function messageMap()
+    {
+        $ret = [
+            ERR_TABLENAME_MUST_STRING => '数据表名必须为字符串',
+            ERR_TABLE_NOT_EXISTS => '数据表不存在',
+            ERR_KEY_NOT_EXISTS => '该KEY不存在',
+            ERR_NOT_EMPTY => '值不能为空',
+            ERR_INFO_NO_MODIFY => '基本信息不能修改',
+            ERR_TABLENAME_NOT_EMPTY => '表名不能为空',
+            ERR_DB_NOT_WRITE => '数据库不可写',
+            ERR_NO_DB => '数据库不合法',
+            MSG_CONNECT_SUCCESS => '连接成功'
+            ];
+
+        return $ret;
+    }
 }
 
 # end of this file

@@ -20,14 +20,6 @@ class Base
         }
 
         s\Config::$app = 'web';
-        $msg = s\Config::get('msg_default');
-
-        if (!$msg['result']) {
-            echo $msg['msg'];
-            return array();
-        }
-
-        $this->msg_map = $msg['data'];
         $op = s\Router::op('index');
         $this->auth($op);
 
@@ -35,7 +27,7 @@ class Base
         $db_con = $this->connectMaster();
 
         if (!$db_con['result']) {
-            $data['error'] = $this->msg_map[$db_con['msg']];
+            $data['error'] = u\ConfDB::messageMap()[$db_con['msg']];
         }
 
         if (s\Router::opType() !== s\Router::OP_PAGE) {

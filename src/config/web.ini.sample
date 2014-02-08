@@ -1,27 +1,25 @@
+;是否开启IP检查
 ip_check='on'
+
+;用户最常用的密码，方便录入新帐号信息。
 default_password=123456
 
-[allow_ip]
-1=127.0.0.1
-
-[db]
-history=/Users/liuxd/pac_history_dev.db
-master=/Users/liuxd/password_dev.db
-
-[msg_default]
-1="Table name must be string."
-2="The table does not exist."
-3="The does not exist."
-4="It can not be empty."
-5="The base infomation can not be modified."
-6="Table name can not be empty."
-7="Db file is not writable."
-8="No db is available."
-9="Connect Success."
-
-[user]
-email=example@test.com
-
+;用户常用的邮箱列表，方便录入新帐号信息。
 [emails]
 1=email1@gmail.com
 2=email2@163.com
+
+;运行访问的IP白名单
+[allow_ip]
+1=127.0.0.1
+
+;数据文件路径，要求有读写权限
+[db]
+;记录访问历史的数据文件
+history=/Users/liuxd/pac_history_dev.db
+;记录帐号信息的数据文件
+master=/Users/liuxd/password_dev.db
+
+;使用用户的基本信息
+[user]
+email=example@test.com
