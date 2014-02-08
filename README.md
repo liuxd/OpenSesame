@@ -49,5 +49,6 @@ __Open Sesame__是什么意思呢？翻译成中文是
 + 根据自己的需求修改web.ini的配置。
 + 拷贝`dev/open-sesame.conf`到nginx包含的配置目录下(include /path/*.conf 语句指定的路径)。
 + 修改open-sesame.conf里的路径。
++ 执行`dev/release.sh`
 + 修改`/etc/hosts`
 + 启动nginx & php-fpm
