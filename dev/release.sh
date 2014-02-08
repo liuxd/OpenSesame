@@ -3,7 +3,7 @@
 # 检查 & 过滤
 base_str='No syntax errors detected in '
 cur=`pwd`
-code_path=$cur/src
+code_path=$cur/../src
 
 cd $code_path 
 
