@@ -1,3 +1,8 @@
+<footer>
+    <div class="alert alert-info navbar-fixed-bottom">
+        <?php echo '处理请求时间：', round(microtime(true) - $_SERVER['REQUEST_TIME_FLOAT'], 4);?>ms
+    </div>
+</footer>
 
 <!--普通内容弹出框-->
 <div class="modal" id="popup" style="display:none">
