@@ -1,6 +1,7 @@
 Open Sesame
 ============
 [![Build Status](https://drone.io/github.com/liuxd/open-sesame/status.png)](https://drone.io/github.com/liuxd/open-sesame/latest)
+[![wercker status](https://app.wercker.com/status/e235d5b6a0dc8cfaf7199fe18a074ded/m/ "wercker status")](https://app.wercker.com/project/bykey/e235d5b6a0dc8cfaf7199fe18a074ded)
 
 基于Web的帐号管理工具。
 
