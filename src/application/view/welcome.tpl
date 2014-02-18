@@ -68,7 +68,7 @@
             },
             success: function(data) {
                 if (data.result == 1) {
-                    window.location.href = '?';
+                    location.href = 'http://' + location.host;
                 }
             },
         });
