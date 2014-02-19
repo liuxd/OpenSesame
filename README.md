@@ -13,9 +13,6 @@ Open Sesame
     + 模式：php-fpm
 
 ## 安装步骤
-#### 0. 运行环境
-> nginx + php-fpm
-
 #### 1. 下载程序包
 到[下载地址](https://github.com/liuxd/open-sesame/releases)下载最新版本的`open-sesame.phar`，放到你的路径($path)。
 
@@ -28,7 +25,7 @@ Open Sesame
 #### 4. 运行环境
 + nginx + php-fpm
 + 拷贝[open-sesame.conf](https://raw.github.com/liuxd/open-sesame/master/dev/open-sesame.conf)到nginx配置文件包含的路径。
-+ 记得将里面的`root`修改为`open-sesame.phar`所在的路径。
++ 记得将里面的`root`变量的值修改为`open-sesame.phar`所在的路径。
 
 #### 5. 启动
 + 启动nginx & php-fpm
