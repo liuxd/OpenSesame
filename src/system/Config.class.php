@@ -33,7 +33,7 @@ class Config
             return self::$ret;
         }
 
-        $config_file = ROOT_PATH . self::$app . '.ini';
+        $config_file = realpath('./') . DS . self::$app . '.ini';
 
         if (!is_readable($config_file)) {
             $config_file = INI_PATH . self::$app . '.ini';
