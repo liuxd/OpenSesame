@@ -19,7 +19,6 @@ class Base
             return array();
         }
 
-        s\Config::$app = 'web';
         $op = s\Router::op('index');
         $this->auth($op);
 

@@ -12,8 +12,6 @@ namespace system;
 
 class Config
 {
-
-    public static $app;
     public static $ret = [];
 
     /**
@@ -28,15 +26,10 @@ class Config
             'data' => []
         ];
 
-        if (!isset(self::$app)) {
-            self::$ret['msg'] = '没有设定app！';
-            return self::$ret;
-        }
-
-        $config_file = realpath('./') . DS . self::$app . '.ini';
+        $config_file = realpath('./') . DS . 'config.ini';
 
         if (!is_readable($config_file)) {
-            $config_file = INI_PATH . self::$app . '.ini';
+            $config_file = realpath('./') . DS . 'config-dev.ini';
         }
 
         if (!is_readable($config_file)) {
