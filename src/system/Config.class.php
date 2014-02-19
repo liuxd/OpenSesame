@@ -29,25 +29,25 @@ class Config
         ];
 
         if (!isset(self::$app)) {
-            self::$ret['msg'] = 'App unconfigured!';
+            self::$ret['msg'] = '没有设定app！';
             return self::$ret;
         }
 
-        $config_file = '/tmp/' . self::$app . '.ini';
+        $config_file = ROOT_PATH . self::$app . '.ini';
 
         if (!is_readable($config_file)) {
             $config_file = INI_PATH . self::$app . '.ini';
         }
 
-        if (!file_exists($config_file)) {
-            self::$ret['msg'] = "Config file doesn't exist!";
+        if (!is_readable($config_file)) {
+            self::$ret['msg'] = "配置文件不存在：" . $config_file;
             return self::$ret;
         }
 
         $config_info = parse_ini_file($config_file, true);
 
         if (!isset($config_info[$key])) {
-            self::$ret['msg'] = "Config option doesn't exist!";
+            self::$ret['msg'] = "配置项不存在：" . $key;
             return self::$ret;
         }
 
