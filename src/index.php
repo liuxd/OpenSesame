@@ -5,7 +5,9 @@
 
 use system as s;
 
-require __DIR__ . '/system/init.inc';
+define('DS', DIRECTORY_SEPARATOR);
+
+require __DIR__ . DS . 'system' . DS . 'init.inc';
 
 if (substr($_SERVER['REQUEST_URI'], 0, 8) === '/static/') {
     s\FrontEnd::handle(WWW_PATH, 8);
