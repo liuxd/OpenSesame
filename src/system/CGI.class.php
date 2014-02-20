@@ -47,7 +47,7 @@ class CGI
         ob_start('ob_gzhandler');
 
         foreach ($o->tpls as $key => $tpl_file) {
-            $real_file = $o->tpl_path . DS . $tpl_file;
+            $real_file = $o->tpl_path . DS . strtolower($tpl_file);
 
             if (is_file($real_file) && file_exists($real_file)) {
                 require $real_file;
