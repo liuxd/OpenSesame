@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <title>Valar Morghulis</title>
         <link rel="shortcut icon" href="<?=$host?>static/img/web.png" />
+        <script language="javascript" src="<?=$host?>static/js/jquery.min.js"></script>
     </head>
     <body>
     <style>
