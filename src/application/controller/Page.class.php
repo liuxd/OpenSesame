@@ -159,9 +159,9 @@ class Page extends Base
     public function welcome()
     {
         $data = [
-            'page_title' => '你中毒了！',
             'auth_url' => s\Router::genURL('loginAuth', s\Router::OP_AJAX),
-            'footer' => ''
+            'footer' => '',
+            'header' => ''
         ];
 
         return $data;
