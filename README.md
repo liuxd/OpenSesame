@@ -17,7 +17,7 @@ Open Sesame
 到[下载地址](https://github.com/liuxd/open-sesame/releases)下载最新版本的`open-sesame.phar`，放到你的路径($path)。
 
 #### 2. 配置文件
-拷贝[配置模板](https://raw.github.com/liuxd/open-sesame/master/src/config/web.ini.sample)到`open-sesame.phar`相同目录下并取名`web.ini`。根据需求修改配置项。
+拷贝[配置模板](https://raw.github.com/liuxd/open-sesame/master/dev/config.ini.sample)到`open-sesame.phar`相同目录下并取名`config.ini`。根据需求修改配置项。
 
 #### 3. 修改hosts
 添加`127.0.0.1 www.open-sesame.com`
