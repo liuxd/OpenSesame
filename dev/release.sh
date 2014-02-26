@@ -17,7 +17,7 @@ do
         exit
     fi
 
-    cp -R $php_file{,.bak}
+    cp $php_file{,.bak}
     php -w $php_file.bak > $php_file
 done
 
