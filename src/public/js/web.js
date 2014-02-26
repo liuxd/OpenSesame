@@ -26,8 +26,8 @@
         var value = $(this).attr('id');
 
         $($(this)).bind('click', function() {
-            $('#field_name').attr('value', key);
-            $('#field_value').attr('value', value);
+            $('#field_name').prop('value', key);
+            $('#field_value').prop('value', value);
         });
     });
 
@@ -36,8 +36,8 @@
         var email = $(this).attr('data');
 
         $($(this)).bind('click', function() {
-            $('#field_name').attr('value', '邮箱');
-            $('#field_value').attr('value', email);
+            $('#field_name').prop('value', '邮箱');
+            $('#field_value').prop('value', email);
             $('#info_enter').click();
         });
     });
@@ -123,15 +123,15 @@
             field_name.attr('value', '密码');
         }
 
-        $('#field_value').attr('value', s);
+        $('#field_value').prop('value', s);
         $('#info_enter').click();
     });
 
     //生成默认密码按钮
     $('#pwd_bt_default').bind('click', function() {
         var v = $(this).attr('data');
-        $('#field_name').attr('value', '密码');
-        $('#field_value').attr('value', v);
+        $('#field_name').prop('value', '密码');
+        $('#field_value').prop('value', v);
         $('#info_enter').click();
     });
 
