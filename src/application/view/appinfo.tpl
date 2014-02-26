@@ -26,7 +26,7 @@
         <?php if($emails):?>
         <div class="btn-group">
             <a class="btn btn-success dropdown-toggle" data-toggle="dropdown" href="#">
-                选择邮箱
+                选择常用邮箱
                 <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
