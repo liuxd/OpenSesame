@@ -43,8 +43,8 @@
         <thead>
             <tr>
                 <th width="20%">名称</th>
-                <th width="20%">操作</th>
-                <th width="60%">内容</th>
+                <th width="30%">操作</th>
+                <th width="50%">内容</th>
             </tr>
         </thead>
         <tbody>

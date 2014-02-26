@@ -62,8 +62,7 @@
 
         client.on('load', function(client) {
             client.on('complete', function(client, args) {
-                $('#pop_content').text('您要的东西已复制到剪贴板！');
-                $('#popup').modal('show');
+                $(this).text('已复制');
                 $(this).attr('disabled', 'disabled');
             });
         });
