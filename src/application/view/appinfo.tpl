@@ -15,7 +15,7 @@
     <form action="<?=$form_action_add;?>" method="post" class="well form-inline" autocomplete="off">
         <input type="hidden" name="table" value="<?=$site_name;?>" />
         <input type="text" name="key" id="field_name" class="input_text" placeholder="名称" />
-        <input type="password" name="value" id="field_value" class="input_text" placeholder="内容" />
+        <input type="text" name="value" id="field_value" class="input_text" placeholder="内容" />
         <input type="submit" value="确定" class="btn btn-primary" id="info_enter" />
         <input type="button" value="生成随机密码" class="btn btn-inverse" id="pwd_bt" />
 
