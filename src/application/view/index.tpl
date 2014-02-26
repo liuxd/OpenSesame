@@ -28,7 +28,7 @@
 
             <!-- logo -->
             <h1 class="form-signin-heading span5 offset4 cw" style="font-family: 'Risque', cursive" title="<?=$site_total;?>" id="logo">
-                <img src='<?=$host?>static/img/web.png' width=90 height=90>
+                <img src='<?=$host?>static/img/web.png' width=90 height=90 id="icon">
                 Open Sesame
             </h1>
 
@@ -69,7 +69,7 @@
 </div>
 
 <script type="text/javascript">
-    $('#logo').jrumble().hover(
+    $('#icon').jrumble().hover(
             function() {
                 $(this).trigger('startRumble');
             },
