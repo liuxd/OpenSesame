@@ -17,7 +17,7 @@
         <input type="text" name="key" id="field_name" class="input_text" placeholder="名称" />
         <input type="text" name="value" id="field_value" class="input_text" placeholder="内容" />
         <input type="submit" value="确定" class="btn btn-primary" id="info_enter" />
-        <input type="button" value="生成随机密码" class="btn btn-inverse" id="pwd_bt" />
+        <input type="button" value="生成随机密码" class="btn btn-warning" id="pwd_bt" />
 
         <?php if($default_password):?>
         <input type="button" value="生成默认密码" class="btn btn-info" id="pwd_bt_default" data="<?=$default_password?>" />
