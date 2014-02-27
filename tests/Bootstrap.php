@@ -1,4 +1,3 @@
 <?php
 
-define('DS', DIRECTORY_SEPARATOR);
-require __DIR__ . '/../src/system/init.inc';
+require __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'system' . DIRECTORY_SEPARATOR . 'init.inc';

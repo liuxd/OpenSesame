@@ -5,6 +5,7 @@
  * @author liuxd
  */
 namespace controller;
+
 use model as m;
 
 class Ajax extends Base
