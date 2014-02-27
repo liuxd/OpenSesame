@@ -5,6 +5,7 @@
  * @author liuxd
  */
 namespace controller;
+use model as m;
 
 class Ajax extends Base
 {
@@ -74,6 +75,23 @@ class Ajax extends Base
         unlink(self::AUTH_FILE);
 
         return array();
+    }
+
+    /**
+     * 响应link功能。
+     */
+    public function linkAccount()
+    {
+        $key = trim($this->get('key'));
+        $result = m\Search::get($key);
+        $names = array_keys($result);
+        $ret = [];
+
+        foreach ($names as $v) {
+            $ret[] = ['name' => $v];
+        }
+
+        return $ret;
     }
 
     /**
