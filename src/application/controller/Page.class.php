@@ -128,6 +128,14 @@ class Page extends Base
             $emails = $emails_query['data'];
         }
 
+        $all = '[';
+
+        foreach ($site_list['response'] as $k => $v) {
+            $all .= "{name:\"$k\"},";
+        }
+
+        $all .= ']';
+
         $data = [
             'page_title' => $site_name,
             'site_name' => $site_name,
@@ -137,7 +145,8 @@ class Page extends Base
             'form_action_del' => s\Router::genURL('del', s\Router::OP_FORM),
             'app_url' => $app_url,
             'default_password' => $default_password,
-            'emails' => $emails
+            'emails' => $emails,
+            'site_list' => $all
         ];
 
         return $data;
