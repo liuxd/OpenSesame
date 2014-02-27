@@ -79,23 +79,6 @@ class Ajax extends Base
     }
 
     /**
-     * 响应link功能。
-     */
-    public function linkAccount()
-    {
-        $key = trim($this->get('key'));
-        $result = m\Search::get($key);
-        $names = array_keys($result);
-        $ret = [];
-
-        foreach ($names as $v) {
-            $ret[] = ['name' => $v];
-        }
-
-        return $ret;
-    }
-
-    /**
      * 销毁重要数据。
      */
     private function bomb()
