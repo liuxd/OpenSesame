@@ -36,7 +36,6 @@
             </ul>
         </div>
         <?php endif;?>
-        <input id="link_account" type="text" class="span2" placeholder="第三方帐号登录" autocomplete="off">
     </form>
 
     <?php if ($site_info['stat'] === true):?>
@@ -78,7 +77,7 @@
 <script language="javascript" src="<?=$host?>static/zeroclipboard/ZeroClipboard.min.js"></script>
 <script language="javascript" src="<?=$host?>static/bootstrap/js/plugin/bootstrap-typeahead.js"></script>
 <script language="javascript">
-$('#link_account').typeahead({
+$('#field_value').typeahead({
     source: <?=$site_list?>,
     display: 'name',
 });

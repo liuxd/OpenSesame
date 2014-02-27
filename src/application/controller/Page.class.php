@@ -131,7 +131,7 @@ class Page extends Base
         $all = '[';
 
         foreach ($site_list['response'] as $k => $v) {
-            $all .= "{name:\"$k\"},";
+            $all .= "{name:\"link:$k\"},";
         }
 
         $all .= ']';
