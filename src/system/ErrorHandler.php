@@ -29,7 +29,6 @@ function err($errno, $errstr, $errfile, $errline)
         echo '<div style="color: red"><b>', $m, '</b></div>';
     }
 
-    error_log('|' . implode('|', $msg) . PHP_EOL, 3, '/tmp/open-sesame.err.log');
     die;
 }
 
