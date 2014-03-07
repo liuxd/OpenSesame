@@ -1,5 +1,5 @@
-<script language="javascript" src="<?=$host?>static/js/jquery.jrumble.1.3.min.js"></script>
-<link rel="stylesheet" type="text/css" href="<?=$host?>static/css/index.css" ></link>
+<script language="javascript" src="<?=$host?>static/vendor/jquery/plugins/jquery.jrumble.1.3.min.js"></script>
+<link rel="stylesheet" type="text/css" href="<?=$host?>static/application/css/index.css" ></link>
 
 <!-- 报错信息 -->
 <?php if (isset($error)):?>
@@ -28,7 +28,7 @@
 
             <!-- logo -->
             <h1 class="form-signin-heading span5 offset4 cw" style="font-family: 'Risque', cursive" title="<?=$site_total;?>" id="logo">
-                <img src='<?=$host?>static/img/web.png' width=90 height=90 id="icon">
+                <img src='<?=$host?>static/application/img/web.png' width=90 height=90 id="icon">
                 Open Sesame
             </h1>
 

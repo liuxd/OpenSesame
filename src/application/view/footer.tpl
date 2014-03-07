@@ -17,9 +17,9 @@
 </div>
 
 <div id="pop_confirm"></div>
-<script language="javascript" src="<?=$host?>static/bootstrap/js/plugin/bootstrap-modal.js"></script>
-<script language="javascript" src="<?=$host?>static/bootstrap/js/plugin/bootstrap-confirm.js"></script>
-<script language="javascript" src="<?=$host?>static/bootstrap/js/plugin/bootstrap-dropdown.js"></script>
-<script language="javascript" src="<?=$host?>static/js/web.js"></script>
+<script language="javascript" src="<?=$host?>static/vendor/bootstrap/js/plugin/bootstrap-modal.js"></script>
+<script language="javascript" src="<?=$host?>static/vendor/bootstrap/js/plugin/bootstrap-confirm.js"></script>
+<script language="javascript" src="<?=$host?>static/vendor/bootstrap/js/plugin/bootstrap-dropdown.js"></script>
+<script language="javascript" src="<?=$host?>static/application/js/web.js"></script>
 </body>
 </html>

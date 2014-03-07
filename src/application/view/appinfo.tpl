@@ -74,8 +74,8 @@
     <input type="hidden" name="table" value="<?=$site_name?>" />
     <input type="hidden" name="key" id="key" />
 </form>
-<script language="javascript" src="<?=$host?>static/zeroclipboard/ZeroClipboard.min.js"></script>
-<script language="javascript" src="<?=$host?>static/bootstrap/js/plugin/bootstrap-typeahead.js"></script>
+<script language="javascript" src="<?=$host?>static/vendor/zeroclipboard/ZeroClipboard.min.js"></script>
+<script language="javascript" src="<?=$host?>static/vendor/bootstrap/js/plugin/bootstrap-typeahead.js"></script>
 <script language="javascript">
 $('#field_value').typeahead({
     source: <?=$site_list?>,
