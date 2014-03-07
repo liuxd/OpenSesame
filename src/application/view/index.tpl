@@ -1,4 +1,5 @@
 <script language="javascript" src="<?=$host?>static/vendor/jquery/plugins/jquery.jrumble.1.3.min.js"></script>
+<script language="javascript" src="<?=$host?>static/vendor/echo/echo.min.js"></script>
 <link rel="stylesheet" type="text/css" href="<?=$host?>static/application/css/index.css" ></link>
 
 <!-- 报错信息 -->
@@ -9,7 +10,7 @@
 <!-- 头部表单 -->
 <div class="navbar-fixed-top" id="add_input" style="display : none">
     <form class="well form-inline" action="<?=$form_action_add?>" method="post" autocomplete="off" >
-        <a href="http://cn.gravatar.com/emails/" target="__blank"><img src="<?=$gravatar;?>" alt="liuxd" width="30" height="30" /></a>
+        <a href="http://cn.gravatar.com/emails/" target="__blank"><img src="" alt="liuxd" width="30" height="30" data-echo="<?=$gravatar;?>" /></a>
         <input type="text" class="input-large" placeholder="网站名称" name="name">
         <input type="text" class="input-large" placeholder="网址" name="url">
         <button type="submit" class="btn btn-success">添加</button>
@@ -86,4 +87,9 @@
                 $(this).trigger('stopRumble');
             }
     );
+
+    Echo.init({
+        offset: 30,
+        throttle: 30
+    });
 </script>
