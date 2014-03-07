@@ -27,7 +27,7 @@
 
         $($(this)).bind('click', function() {
             $('#field_name').prop('value', key);
-            $('#field_value').prop('value', value);
+            $('#field_value').prop('value', value).focus();
         });
     });
 
