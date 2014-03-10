@@ -55,7 +55,7 @@
     //单页复制按钮
     $('.info_copy_bt').each(function() {
         var client = new ZeroClipboard($(this), {
-            moviePath: '/static/zeroclipboard/ZeroClipboard.swf'
+            moviePath: '/static/vendor/zeroclipboard/ZeroClipboard.swf'
         });
 
         client.on('load', function(client) {
