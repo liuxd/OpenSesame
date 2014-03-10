@@ -49,8 +49,6 @@
         $($(this)).bind('click', function() {
             $('#pop_content').text(value);
             $('#popup').modal('show');
-            content.select();
-            content.attr('disabled', 'disabled');
         });
     });
 
