@@ -13,5 +13,6 @@
 *.project
 *.lock
 src/vendor/
+dev/vendor/
 nbproject/
 *.phar
