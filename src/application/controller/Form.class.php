@@ -21,7 +21,7 @@ class Form extends Base
         $url = $this->post('url');
 
         if (empty($name) || empty($url)) {
-            return array('op' => 'index');
+            return ['op' => 'index'];
         }
 
         $url_info = parse_url($url);
@@ -33,7 +33,7 @@ class Form extends Base
 
         u\ConfDB::up(m\ConstCommon::SITE_LIST, $name, $url_value);
 
-        return array('op' => 'appInfo', 'params' => array('site_name' => $name));
+        return ['op' => 'appInfo', 'params' => ['site_name' => $name]];
     }
 
     /**
@@ -46,13 +46,13 @@ class Form extends Base
         $value = $this->post('value');
 
         if (empty($table) || empty($key) || empty($value)) {
-            return array('op' => 'appInfo', 'params' => array('site_name' => $table));
+            return ['op' => 'appInfo', 'params' => ['site_name' => $table]];
         }
 
         $value = base64_encode($value);
         u\ConfDB::up($table, $key, $value);
 
-        return array('op' => 'appInfo', 'params' => array('site_name' => $table));
+        return ['op' => 'appInfo', 'params' => ['site_name' => $table]];
     }
 
     /**
@@ -64,14 +64,14 @@ class Form extends Base
         $key = $this->post('key');
 
         if (empty($table) || empty($key)) {
-            return array('op' => $op, 'params' => array('site_name' => $table));
+            return ['op' => $op, 'params' => ['site_name' => $table]];
         }
 
         u\ConfDB::del($table, $key);
 
         $op = ($table == m\ConstCommon::SITE_LIST) ? 'index' : 'appInfo';
 
-        return array('op' => $op, 'params' => array('site_name' => $table));
+        return ['op' => $op, 'params' => ['site_name' => $table]];
     }
 
     /**

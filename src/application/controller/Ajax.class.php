@@ -23,10 +23,10 @@ class Ajax extends Base
      */
     public function loginAuth()
     {
-        $data = array(
+        $data = [
             'result' => self::AUTH_FAILED,
             'msg' => '',
-        );
+        ];
 
         $cookie_name = md5(date('Y-m-d'));
         $key = false;
@@ -75,7 +75,7 @@ class Ajax extends Base
         setcookie($cookie_name, '', $_SERVER['REQUEST_TIME'] - 3600, '/');
         unlink(self::AUTH_FILE);
 
-        return array();
+        return [];
     }
 
     /**

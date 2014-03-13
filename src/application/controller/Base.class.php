@@ -16,13 +16,13 @@ class Base
         $is_robot = $this->antiRobot();
 
         if ($is_robot) {
-            return array();
+            return [];
         }
 
         $op = s\Router::op('index');
         $this->auth($op);
 
-        $data = array();
+        $data = [];
         $db_con = $this->connectMaster();
 
         if (!$db_con['result']) {
@@ -30,7 +30,7 @@ class Base
         }
 
         if (s\Router::opType() !== s\Router::OP_PAGE) {
-            return array();
+            return [];
         }
 
         $site_name = $this->get('site_name', '');
