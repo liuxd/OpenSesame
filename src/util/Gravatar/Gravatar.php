@@ -2,7 +2,7 @@
 /**
  * Gravatar头像操作类。
  */
-namespace utility;
+namespace util;
 
 class Gravatar
 {

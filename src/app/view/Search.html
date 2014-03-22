@@ -7,7 +7,7 @@
 </div>
 
 <div class="container-fluid">
-    <?php if ($error):?>
+    <?php if (isset($error)):?>
     <div class="alert alert-error"><?=$error;?></div>
     <?php endif;?>
 
@@ -38,10 +38,9 @@
             <?php endforeach;?>
         </tbody>
     </table>
+    <?php endif;?>
 </div>
 
 <form action="<?=$form_action_del;?>" method="post" id="del">
-    <input type="hidden" name="table" value="<?=$table;?>" />
     <input type="hidden" name="key" id="key" />
 </form>
-<?php endif;?>

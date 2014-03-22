@@ -1,16 +1,25 @@
 <?php
 namespace controller;
 
+use core as c;
+
 class Search extends Base
 {
-    public function handle()
+    public function run()
     {
         $aData = [
-            'data' => ['title' => 'hahahahh'],
-            'html' => ['Search.html']
+            'page_title' => '',
+            'keyword' => 'sdf',
+            'total' => '',
+            'form_action_del' => '',
         ];
 
         return $aData;
+    }
+
+    protected function getBody()
+    {
+        return 'Search';
     }
 }
 

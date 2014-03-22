@@ -2,7 +2,7 @@
 /**
  * 字符串相关处理。
  */
-namespace utility;
+namespace util;
 
 class Str
 {
