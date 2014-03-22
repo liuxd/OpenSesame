@@ -2,6 +2,7 @@
 /**
  * 自定义函数
  */
+namespace core;
 
 function see()
 {

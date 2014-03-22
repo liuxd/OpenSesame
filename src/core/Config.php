@@ -8,49 +8,50 @@
  *     'data' => [], //接口返回数据。
  * ];
  */
-namespace system;
+namespace core;
 
 class Config
 {
-    public static $ret = [];
+    public static $aConfig = [];
 
     /**
      * 获得配置项。
-     * @param string $key
+     * @param string $sKey
+     * @return array
      */
-    public static function get($key)
+    public static function get($sKey)
     {
-        self::$ret = [
+        self::$aConfig = [
             'result' => false,
             'msg' => '',
             'data' => []
         ];
 
-        $config_file = realpath('./') . DS . 'config.ini';
+        $sConfigFile = realpath('./') . DS . 'config.ini';
 
-        if (!is_readable($config_file)) {
-            $config_file = realpath('./') . DS . 'config-dev.ini';
+        if (!is_readable($sConfigFile)) {
+            $sConfigFile = realpath('./') . DS . 'config-dev.ini';
         }
 
-        if (!is_readable($config_file)) {
-            self::$ret['msg'] = "配置文件不存在：" . $config_file;
-            return self::$ret;
+        if (!is_readable($sConfigFile)) {
+            self::$aConfig['msg'] = "配置文件不存在：" . $sConfigFile;
+            return self::$aConfig;
         }
 
-        $config_info = parse_ini_file($config_file, true);
+        $aConfigInfo = parse_ini_file($sConfigFile, true);
 
-        if (!isset($config_info[$key])) {
-            self::$ret['msg'] = "配置项不存在：" . $key;
-            return self::$ret;
+        if (!isset($aConfigInfo[$key])) {
+            self::$aConfig['msg'] = "配置项不存在：" . $sKey;
+            return self::$aConfig;
         }
 
-        self::$ret = [
+        self::$aConfig = [
             'result' => true,
             'msg' => '',
-            'data' => $config_info[$key]
+            'data' => $aConfigInfo[$sKey]
         ];
 
-        return self::$ret;
+        return self::$aConfig;
     }
 }
 

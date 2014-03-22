@@ -2,35 +2,36 @@
 /**
  * 响应前端文件请求。
  */
-namespace system;
+namespace core;
 
-class FrontEnd
+class Front
 {
 
     /**
      * 处理前端文件请求。
-     * @param string $path 前端文件所在路径。
-     * @param int $prefix_len 前端文件在URL中前缀的长度。
+     * @param string $sPath 前端文件所在路径。
+     * @param int $iPrefixLength 前端文件在URL中前缀的长度。
      */
-    public static function handle($path, $prefix_len)
+    public static function handle($sPath, $iPrefixLength)
     {
-        $uri = $_SERVER['REQUEST_URI'];
-        $url = 'http://' . $_SERVER['HTTP_HOST'] . $uri;
-        $url_info = parse_url($url);
-        $real_path = $path . substr($url_info['path'], $prefix_len);
-        $pathinfo = pathinfo($real_path);
-        $mime_type = self::getMimeTypes($pathinfo['extension']);
-        header('Content-Type: ' . $mime_type);
-        readfile($real_path);
+        $sURI = $_SERVER['REQUEST_URI'];
+        $sURL = 'http://' . $_SERVER['HTTP_HOST'] . $sURI;
+        $aURLDetail = parse_url($sURI);
+        $sRealPath = $sPath . substr($aURLDetail['path'], $iPrefixLength);
+        $aPathDetail = pathinfo($sRealPath);
+        $sMimeType = self::getMimeTypes($aPathDetail['extension']);
+        header('Content-Type: ' . $sMimeType);
+        readfile($sRealPath);
     }
 
     /**
      * 取得文件的mime type
-     * @param string $ext 文件扩展名。不包含"."
+     * @param string $sExt 文件扩展名。不包含"."
+     * @return string
      */
-    private static function getMimeTypes($ext)
+    private static function getMimeTypes($sExt)
     {
-        $mime_types = [
+        $aMimeMap = [
             'js' => 'application/x-javascript',
             'css' => 'text/css',
             'jpg' => 'image/jpeg',
@@ -38,8 +39,10 @@ class FrontEnd
             'swf' => 'application/x-shockwave-flash'
         ];
 
-        if (isset($mime_types[$ext])) {
-            return $mime_types[$ext];
+        if (isset($aMimeMap[$sExt])) {
+            return $aMimeMap[$sExt];
+        } else {
+            return '';
         }
     }
 }

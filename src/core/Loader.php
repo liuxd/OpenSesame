@@ -2,32 +2,32 @@
 /**
  * 设置自定义类加载器
  */
-namespace system;
+namespace core;
 
-class ClassLoader
+class Loader
 {
 
     public function __construct()
     {
-        spl_autoload_register([__CLASS__, 'utility']);
+        spl_autoload_register([__CLASS__, 'util']);
         spl_autoload_register([__CLASS__, 'model']);
     }
 
     /**
      * 加载框架工具类。
      */
-    private function utility($class)
+    private function util($sClass)
     {
-        list($namespace, $classname) = explode('\\', $class);
+        list($sNameSpace, $sClassName) = explode('\\', $sClass);
 
-        if ($namespace !== 'utility') {
+        if ($sNameSpace !== 'util') {
             return false;
         }
 
-        $class_filename = UTIL_PATH . $classname . DS . $classname . '.class.php';
+        $sClassFile = UTIL_PATH . $sClassName . DS . $sClassName . '.php';
 
-        if (file_exists($class_filename)) {
-            require $class_filename;
+        if (file_exists($sClassFile)) {
+            require $sClassFile;
         } else {
             return false;
         }
@@ -38,16 +38,16 @@ class ClassLoader
      */
     private function model($class)
     {
-        list($namespace, $classname) = explode('\\', $class);
+        list($sNameSpace, $sClassName) = explode('\\', $sClass);
 
-        if ($namespace !== 'model') {
+        if ($sNameSpace !== 'model') {
             return false;
         }
 
-        $class_filename = APP_PATH . 'model' . DS . $classname . '.class.php';
+        $sClassFile = APP_PATH . 'model' . DS . $sClassName . '.php';
 
-        if (file_exists($class_filename)) {
-            require $class_filename;
+        if (file_exists($sClassFile)) {
+            require $sClassFile;
         } else {
             return false;
         }

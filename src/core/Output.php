@@ -1,76 +1,53 @@
 <?php
 /**
- * 作为CGI时的处理逻辑。
+ * 数据输出处理。
  */
-namespace system;
+namespace core;
 
-use stdClass;
-
-class CGI
+class Output
 {
 
-    public static function run(stdClass $o)
+    /**
+     * 处理输出的主方法。
+     * @param array $data 输出的原始数据。
+     * @param string $type 输出的格式。
+     */
+    public static function handle($aData, $sType = 'html')
     {
-        switch ($o->op_type) {
-            case Router::OP_PAGE:self::pageHandler($o);
-                break;
+        $sHandlerName = $sType . 'Handler';
 
-            case Router::OP_FORM:self::formHandler($o);
-                break;
-
-            case Router::OP_AJAX:self::ajaxHandler($o);
-                break;
+        if (method_exists(__CLASS__, $sHandlerName)) {
+            self::$sHandlerName($aData);
         }
 
-        return fastcgi_finish_request();
+        fastcgi_finish_request();
     }
 
-    //页面请求处理
-    private static function pageHandler(stdClass $o)
+    /**
+     * 页面请求处理
+     * @param array $aData
+     */
+    private static function htmlHandler($aData)
     {
-        extract($o->ret);
+        extract($aData['data']);
 
-        $o->tpls = [
-            'header' => 'header.tpl',
-            'body' => $o->op . '.tpl',
-            'footer' => 'footer.tpl',
-        ];
-
-        if (isset($header)) {
-            $o->tpls['header'] = $header;
-        }
-
-        if (isset($footer)) {
-            $o->tpls['footer'] = $footer;
-        }
-
-        ob_start('ob_gzhandler');
-
-        foreach ($o->tpls as $key => $tpl_file) {
-            $real_file = $o->tpl_path . DS . strtolower($tpl_file);
-
-            if (is_file($real_file) && file_exists($real_file)) {
-                require $real_file;
+        foreach ($aData['html'] as $sHtml) {
+            if (!file_exists(APP_PATH . 'view' . DS . $sHtml)) {
+                trigger_error('页面模板未找到：' . $sHtml);
             }
+
+            require APP_PATH . 'view' . DS . $sHtml;
         }
     }
 
-    //表单请求处理
-    private static function formHandler(stdClass $o)
-    {
-        $op = $o->ret['op'];
-        $params = (isset($o->ret['params'])) ? $o->ret['params'] : [];
-        $url = Router::genURL($op, Router::OP_PAGE, $params);
-        Router::redirect($url);
-    }
-
-    //ajax请求
-    private static function ajaxHandler(stdClass $o)
+    /**
+     * 输出json。
+     * @param array $aData  待输出数据。
+     */
+    private static function ajaxHandler($aData)
     {
         header('Content-Type: application/json; charset=utf-8');
-        echo json_encode($o->ret);
-
-        return [];
+        echo json_encode($aData['data']);
     }
 }
 
