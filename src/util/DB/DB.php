@@ -11,133 +11,128 @@ use PDO;
 class DB
 {
 
-    public static $db = null;
+    public static $oDB = null;
 
     /**
      * 连接数据库
-     * @param string $dsn
-     * @param string $username
-     * @param string $password
-     * @param array $options
+     * @param string $sDSN
+     * @param string $sUserName
+     * @param string $sPassword
+     * @param array $aOptions
      * @return PDO
      */
-    public static function getInstance($dsn, $username = '', $password = '', $options = [])
+    public static function getInstance($sDSN, $sUserName= '', $sPassword= '', $aOptions = [])
     {
         if (is_null(self::$db)) {
-            self::$db = new PDO($dsn, $username, $password, $options);
-            self::$db->query('set names utf8');
-            self::$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            self::$oDB = new PDO($sDSN, $sUserName, $sPassword, $aOptions);
+            self::$oDB->query('set names utf8');
+            self::$oDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
 
-        return self::$db;
+        return self::$oDB;
     }
 
     /**
      * 查询一个列表的数据。
-     * @param string $sql
-     * @param array $p
+     * @param string $sSQL
+     * @param array $aParams
      * @return array 
      */
-    public static function getList($sql, $p = [])
+    public static function getList($sSQL, $aParams = [])
     {
-        $dbh = self::$db->prepare($sql);
-        $dbh->execute($p);
-        $ret = $dbh->fetchall(PDO::FETCH_ASSOC);
-
-        return $ret;
+        $o = self::$oDB->prepare($sSQL);
+        $o->execute($aParams);
+        return $o->fetchall(PDO::FETCH_ASSOC);
     }
 
     /**
      * 插入数据。
-     * @param array $info
-     * @param string $table
+     * @param array $aData
+     * @param string $sTable
      * @return int
      */
-    public static function add($info, $table)
+    public static function add($aData, $sTable)
     {
-        $ret = self::parseArray($info);
-        $sql = "insert into $table (" . $ret['keys'] . ") values (" . $ret['marks'] . ")";
-        $dbh = self::$db->prepare($sql);
-        $dbh->execute($ret['values']);
-        $id = self::$db->lastInsertId();
-
-        return $id;
+        $aParsedData = self::parseArray($aData);
+        $sSQL = "insert into $sTable (" . $aParsedData['keys'] . ") values (" . $aParsedData['marks'] . ")";
+        $o = self::$oDB->prepare($sSQL);
+        $o->execute($aParsedData['values']);
+        return self::$oDB->lastInsertId();
     }
 
     /**
      * 获得单条数据。
-     * @param string $sql
-     * @param array $p
+     * @param string $sSQL
+     * @param array $aParams
      * @return array 
      */
-    public static function getOne($sql, $p = [])
+    public static function getOne($sSQL, $aParams = [])
     {
-        $dbh = self::$db->prepare($sql);
-        $dbh->execute($p);
-        $ret = $dbh->fetch(PDO::FETCH_ASSOC);
-
-        return $ret;
+        $o = self::$oDB->prepare($sSQL);
+        $o->execute($aParams);
+        return $o->fetch(PDO::FETCH_ASSOC);
     }
 
     /**
      * 更新数据。
-     * @param string $table
-     * @param string $where
-     * @param array $info
+     * @param string $sTable
+     * @param string $sWhere
+     * @param array $aData
      * @return bool
      */
-    public static function update($table, $where, $info)
+    public static function update($sTable, $sWhere, $aData)
     {
-        $tmp = [];
+        $aTmp = [];
 
-        foreach ($info as $key => $value) {
-            $tmp[] = "$key=$value";
+        foreach ($aData as $key => $value) {
+            $aTmp[] = "$key=$value";
         }
 
-        $keys = implode(',', $tmp);
-        $sql = "update $table set $keys $where";
-        $ret = self::$db->exec($sql);
-
-        return $ret;
+        $skeys = implode(',', $aTmp);
+        $sSQL = "update $sTable set $sKeys $sWhere";
+        return self::$oDB->exec($sSQL);
     }
 
     /**
      * 导入指定sql文件。
-     * @param string $file
+     * @param string $sFile
      * @return bool
      */
-    public static function import($file)
+    public static function import($sFile)
     {
-        $sql = file_get_contents($file);
-        return self::$db->exec($sql);
+        return self::$oDB->exec(file_get_contents($sFile));
+    }
+
+    /**
+     * 执行SQL语句。
+     * @param string sSQL
+     * @return bool
+     */
+    public static function query($sSQL)
+    {
+        return self::$oDB->query($sSQL);
     }
 
     /**
      * 解析插入数据时的数组。
-     * @param array $info
+     * @param array $aData
      * @return type
      */
-    private static function parseArray($info)
+    private static function parseArray($aData)
     {
-        //keys
-        $keys_origin = array_map(function ($v) {
+        $sKeysOrigin = array_map(function ($v) {
                 return "`$v`";
-        }, array_keys($info));
+        }, array_keys($aData));
 
-        $keys = implode(',', $keys_origin);
+        $sKeys = implode(',', $sKeysOrigin);
+        $sMarks = implode(',', array_fill(0, count($sKeysOrigin), '?'));
+        $aValues = array_values($aData);
 
-        //marks
-        $marks = implode(',', array_fill(0, count($keys_origin), '?'));
-
-        //values
-        $values = array_values($info);
-        $ret = [
-            'keys' => $keys,
-            'marks' => $marks,
-            'values' => $values
+        return [
+            'keys' => $sKeys,
+            'marks' => $sMarks,
+            'values' => $aValues
         ];
-
-        return $ret;
     }
 }
 
