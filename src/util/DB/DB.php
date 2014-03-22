@@ -23,7 +23,7 @@ class DB
      */
     public static function getInstance($dsn, $username = '', $password = '', $options = [])
     {
-        if (is_null(self::$db)){
+        if (is_null(self::$db)) {
             self::$db = new PDO($dsn, $username, $password, $options);
             self::$db->query('set names utf8');
             self::$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -120,9 +120,9 @@ class DB
     private static function parseArray($info)
     {
         //keys
-        $keys_origin = array_map(function($v) {
+        $keys_origin = array_map(function ($v) {
                 return "`$v`";
-            }, array_keys($info));
+        }, array_keys($info));
 
         $keys = implode(',', $keys_origin);
 
@@ -139,7 +139,6 @@ class DB
 
         return $ret;
     }
-
 }
 
 # end of this file

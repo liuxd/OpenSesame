@@ -9,6 +9,7 @@ error_reporting(-1);
 mb_internal_encoding("UTF-8");
 
 $aCoreFiles = [
+    'Const.php',
     'Config.php',
     'Error.php',
     'Front.php',
@@ -19,8 +20,8 @@ $aCoreFiles = [
     'Router.php',
 ];
 
-foreach ($aCoreFiles as $sCoreFile){
-    require CORE_PATH . $sCoreFile;
+foreach ($aCoreFiles as $sCoreFile) {
+    require __DIR__ . DIRECTORY_SEPARATOR . $sCoreFile;
 }
 
 new Loader;
