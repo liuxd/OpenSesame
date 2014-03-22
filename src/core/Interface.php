@@ -5,7 +5,6 @@ interface IController
 {
     public function before();
     public function handle();
-    public function getType();
     public function after();
 }
 

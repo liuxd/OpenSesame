@@ -14,16 +14,15 @@ define('WWW_PATH', ROOT_PATH . 'www' . DS);
 
 require CORE_PATH . 'Bootstrap.php';
 
-if (substr($_SERVER['REQUEST_URI'], 0, 8) === '/static/') {
+$sURI = $_SERVER['REQUEST_URI'];
+
+if (c\Router::isStatic($sURI)) {
     c\FrontEnd::handle(WWW_PATH, 8);
 } else {
-    $oController = c\Router::route($_SERVER['REQUEST_URI'], APP_PATH);
+    $oController = c\Router::route($sURI, APP_PATH);
     $oController->before();
-    $aData = $oController->handle();
-    $sType = $oController->getType();
+    c\Output::handle($oController->handle(), $oController->outputType);
     $oController->after();
-
-    c\Output::handle($aData, $sType);
 }
 
 # end of this file

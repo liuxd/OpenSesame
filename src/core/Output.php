@@ -6,6 +6,8 @@ namespace core;
 
 class Output
 {
+    const TYPE_HTML = 'html';
+    const TYPE_JSON = 'json';
 
     /**
      * 处理输出的主方法。
@@ -18,6 +20,8 @@ class Output
 
         if (method_exists(__CLASS__, $sHandlerName)) {
             self::$sHandlerName($aData);
+        } else {
+            trigger_error('非法输出格式：' . $sType);
         }
 
         fastcgi_finish_request();
@@ -31,12 +35,13 @@ class Output
     {
         extract($aData['data']);
 
-        foreach ($aData['html'] as $sHtml) {
-            if (!file_exists(APP_PATH . 'view' . DS . $sHtml)) {
-                trigger_error('页面模板未找到：' . $sHtml);
+        foreach ($aData[self::TYPE_HTML] as $sHtml) {
+            $sHtmlPath = APP_PATH . 'view' . DS . $sHtml . '.html';
+
+            if (file_exists($sHtmlPath)) {
+                require $sHtmlPath;
             }
 
-            require APP_PATH . 'view' . DS . $sHtml;
         }
     }
 
@@ -44,7 +49,7 @@ class Output
      * 输出json。
      * @param array $aData  待输出数据。
      */
-    private static function ajaxHandler($aData)
+    private static function jsonHandler($aData)
     {
         header('Content-Type: application/json; charset=utf-8');
         echo json_encode($aData['data']);

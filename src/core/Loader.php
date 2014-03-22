@@ -36,7 +36,7 @@ class Loader
     /**
      * 加载应用业务相关的model。
      */
-    private function model($class)
+    private function model($sClass)
     {
         list($sNameSpace, $sClassName) = explode('\\', $sClass);
 
