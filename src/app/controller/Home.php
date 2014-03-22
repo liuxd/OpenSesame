@@ -3,7 +3,7 @@ namespace controller;
 
 class Home extends Base
 {
-    public function exec()
+    public function run()
     {
         $this->outputType = 'json';
         return ['title' => 'liuxd'];

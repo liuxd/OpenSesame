@@ -3,6 +3,11 @@
  * 一个简单的PDO封装。
  * @author liuxd
  */
+
+namespace util;
+
+use PDO;
+
 class DB
 {
 
@@ -16,7 +21,7 @@ class DB
      * @param array $options
      * @return PDO
      */
-    public static function getInstance($dsn, $username, $password, $options = [])
+    public static function getInstance($dsn, $username = '', $password = '', $options = [])
     {
         if (is_null(self::$db)){
             self::$db = new PDO($dsn, $username, $password, $options);

@@ -17,7 +17,7 @@ require CORE_PATH . 'Bootstrap.php';
 $sURI = $_SERVER['REQUEST_URI'];
 
 if (c\Router::isStatic($sURI)) {
-    c\FrontEnd::handle(WWW_PATH, 8);
+    c\Front::handle(WWW_PATH, 8);
 } else {
     $oController = c\Router::route($sURI, APP_PATH);
     $oController->before();

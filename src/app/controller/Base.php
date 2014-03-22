@@ -3,6 +3,7 @@
 namespace controller;
 
 use core as c;
+use util as u;
 
 class Base implements c\IController
 {
@@ -10,7 +11,10 @@ class Base implements c\IController
 
     public function handle()
     {
-        $aData['data'] = $this->exec();
+        $aConfig = c\Config::get('dsn');
+        u\DB::getInstance($aConfig['data']);
+        $aData['data'] = $this->run();
+        $aData['data']['host'] = 'http://' . $_SERVER['HTTP_HOST'] . '/';
 
         if ($this->outputType === c\Output::TYPE_HTML) {
             $aData[c\Output::TYPE_HTML] = [
@@ -30,7 +34,7 @@ class Base implements c\IController
 
     public function before()
     {
-        // @todo
+        return true;
     }
 
     public function after()

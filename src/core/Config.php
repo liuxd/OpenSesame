@@ -12,7 +12,7 @@ namespace core;
 
 class Config
 {
-    public static $aConfig = [];
+    public static $aConfig = null;
 
     /**
      * 获得配置项。
@@ -21,11 +21,33 @@ class Config
      */
     public static function get($sKey)
     {
-        self::$aConfig = [
+        $aResult = [
             'result' => false,
             'msg' => '',
             'data' => []
         ];
+
+        $aConfigInfo = self::read();
+
+        if (!isset($aConfigInfo[$sKey])) {
+            $aResult['msg'] = "配置项不存在：" . $sKey;
+            return $aResult;
+        }
+
+        $aResult = [
+            'result' => true,
+            'msg' => '',
+            'data' => $aConfigInfo[$sKey]
+        ];
+
+        return $aResult;
+    }
+
+    private static function read()
+    {
+        if (!is_null(self::$aConfig)) {
+            return self::$aConfig;
+        }
 
         $sConfigFile = realpath('./') . DS . 'config.ini';
 
@@ -34,22 +56,10 @@ class Config
         }
 
         if (!is_readable($sConfigFile)) {
-            self::$aConfig['msg'] = "配置文件不存在：" . $sConfigFile;
-            return self::$aConfig;
+            trigger_error("配置文件不存在：" . $sConfigFile);
         }
 
-        $aConfigInfo = parse_ini_file($sConfigFile, true);
-
-        if (!isset($aConfigInfo[$key])) {
-            self::$aConfig['msg'] = "配置项不存在：" . $sKey;
-            return self::$aConfig;
-        }
-
-        self::$aConfig = [
-            'result' => true,
-            'msg' => '',
-            'data' => $aConfigInfo[$sKey]
-        ];
+        self::$aConfig = parse_ini_file($sConfigFile, true);
 
         return self::$aConfig;
     }
