@@ -77,7 +77,7 @@
                 enter: '删除',
                 close: '我再想想',
                 callback: function() {
-                    $('#key').attr('value', value);
+                    $('#field_id').attr('value', value);
                     $('#del').submit();
                 }
             });

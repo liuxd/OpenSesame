@@ -16,8 +16,19 @@ class Account
      */
     public function getAccountDetail($iAccountID)
     {
-        $sSQL = 'SELECT * FROM ' . self::TABLE_NAME . ' WHERE rowid = ?  AND valid=' . self::STATUS_VALID . ' Limit 1';
+        $sSQL = 'SELECT *, rowid FROM ' . self::TABLE_NAME . ' WHERE rowid = ?  AND valid=' . self::STATUS_VALID . ' Limit 1';
         return u\DB::getOne($sSQL, [$iAccountID]);
+    }
+
+    /**
+     * 获得一个帐号的所有记录。
+     * @param int $iAccountID 帐号ID。
+     * @return array
+     */
+    public function getAccountFields($iAccountID)
+    {
+        $sSQL = 'SELECT *, rowid FROM ' . self::TABLE_NAME . ' WHERE parent=?  AND valid=' . self::STATUS_VALID;
+        return u\DB::getList($sSQL, [$iAccountID]);
     }
 
     /**
@@ -64,7 +75,7 @@ class Account
             'valid' => self::STATUS_VALID
         ];
 
-        return u\DB::add($aData);
+        return u\DB::add($aData, self::TABLE_NAME);
     }
 
     /**
