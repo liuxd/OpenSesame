@@ -1,6 +1,6 @@
 (function() {
     var w = window, l = location;
-    var url_index = '/', url_logout = '/logout/?type=3', url_list = '/appList/?';
+    var url_index = '/', url_list = '/Search/?';
 
     //列表页删除按钮
     $('.list_del_bt').each(function() {
@@ -13,7 +13,7 @@
                 enter: '是的',
                 close: '手抖了',
                 callback: function() {
-                    $('#key').attr('value', value);
+                    $('#account_id').attr('value', value);
                     $('#del').submit();
                 }
             });
@@ -90,7 +90,7 @@
         var url = url_list;
 
         if (key) {
-            url += 'key=' + key;
+            url += 'q=' + key;
             l.href = url;
         }
     });

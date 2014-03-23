@@ -1,6 +1,8 @@
 <?php
 namespace model;
 
+use util as u;
+
 class Search
 {
     /**
@@ -8,10 +10,14 @@ class Search
      * @param string $sKeyword 搜索关键字。
      * @return array
      */
-    public function search($sKeyword)
+    public function handle($sKeyword)
     {
-        $sSQL = 'SELECT * FROM ' . Account::TABLE_NAME . ' WHERE name like "%?%" OR value like "%?%"';
-        return u\DB::getInstance($sSQL, [$sKeyword, $sKeyword]);
+        $sSQL = 'SELECT *, rowid 
+            FROM ' . Account::TABLE_NAME . ' 
+            WHERE parent=0 
+            AND valid=' . Account::STATUS_VALID . ' 
+            AND (name like ? OR value like ?)';
+        return u\DB::getList($sSQL, ['%' . $sKeyword . '%', '%' . $sKeyword . '%']);
     }
 }
 

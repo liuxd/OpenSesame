@@ -29,6 +29,16 @@ class Base implements c\IController
         return $aData;
     }
 
+    protected function get($sName)
+    {
+        return (isset($_GET[$sName])) ? $_GET[$sName] : '';
+    }
+
+    protected function post($sName)
+    {
+        return (isset($_POST[$sName])) ? $_POST[$sName] : '';
+    }
+
     public function getOutputType()
     {
         return $this->outputType;
@@ -44,12 +54,12 @@ class Base implements c\IController
         return true;
     }
 
-    private function getHeader()
+    protected function getHeader()
     {
         return 'Header';
     }
 
-    private function getFooter()
+    protected function getFooter()
     {
         return 'Footer';
     }
