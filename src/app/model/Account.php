@@ -84,6 +84,16 @@ class Account
     }
 
     /**
+     * 获得总数。
+     * @return int
+     */
+    public function getTotal()
+    {
+        $sSQL = 'SELECT count(*) as total FROM ' . self::TABLE_NAME . ' WHERE valid=' . self::STATUS_VALID . ' Limit 1';
+        return u\DB::getOne($sSQL)['total'];
+    }
+
+    /**
      * 创建表结构。
      */
     public function createTable()

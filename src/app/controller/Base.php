@@ -4,6 +4,7 @@ namespace controller;
 
 use core as c;
 use util as u;
+use model as m;
 
 class Base implements c\IController
 {
@@ -13,6 +14,7 @@ class Base implements c\IController
     {
         $aConfig = c\Config::get('dsn');
         u\DB::getInstance($aConfig['data']);
+
         $aData['data'] = $this->run();
         $aData['data']['host'] = 'http://' . $_SERVER['HTTP_HOST'] . '/';
 

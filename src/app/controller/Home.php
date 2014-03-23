@@ -3,6 +3,7 @@ namespace controller;
 
 use core as c;
 use util as u;
+use model as m;
 
 class Home extends Base
 {
@@ -13,7 +14,7 @@ class Home extends Base
             'page_title' => 'Open Sesame',    
             'form_action_add' => c\Router::genURL('Add'),
             'gravatar' => u\Gravatar::getGravatarURL($sEmail, 30),
-            'site_total' => 0
+            'site_total' => (new m\Account)->getTotal()
         ];
 
         return $aData;
