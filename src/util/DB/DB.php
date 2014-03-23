@@ -1,7 +1,6 @@
 <?php
 /**
  * 一个简单的PDO封装。
- * @author liuxd
  */
 
 namespace util;
@@ -21,9 +20,9 @@ class DB
      * @param array $aOptions
      * @return PDO
      */
-    public static function getInstance($sDSN, $sUserName= '', $sPassword= '', $aOptions = [])
+    public static function getInstance($sDSN = '', $sUserName= '', $sPassword= '', $aOptions = [])
     {
-        if (is_null(self::$db)) {
+        if (is_null(self::$oDB)) {
             self::$oDB = new PDO($sDSN, $sUserName, $sPassword, $aOptions);
             self::$oDB->query('set names utf8');
             self::$oDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -88,7 +87,7 @@ class DB
             $aTmp[] = "$key=$value";
         }
 
-        $skeys = implode(',', $aTmp);
+        $sKeys = implode(',', $aTmp);
         $sSQL = "update $sTable set $sKeys $sWhere";
         return self::$oDB->exec($sSQL);
     }
