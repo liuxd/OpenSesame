@@ -9,9 +9,14 @@ use model as m;
 class Base implements c\IController
 {
     public $outputType = c\Output::TYPE_HTML;
+    public $bAuth = true;
 
     public function handle()
     {
+        if ($this->bAuth && !(new m\Secure())->checkIp()) {
+            c\Router::redirect(c\Router::genURL('Deny'));
+        }
+
         $aConfig = c\Config::get('dsn');
         u\DB::getInstance($aConfig['data']);
 

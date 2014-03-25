@@ -4,6 +4,8 @@ namespace controller;
 
 class Deny extends Base
 {
+    public $bAuth = false;
+
     public function run()
     {
         return ['page_title' => '禁止入内'];
