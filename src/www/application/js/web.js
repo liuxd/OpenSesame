@@ -14,7 +14,7 @@
                 close: '手抖了',
                 callback: function() {
                     $('#account_id').attr('value', value);
-                    $('#del').submit();
+                    $('#del_account').submit();
                 }
             });
         });
@@ -80,7 +80,7 @@
                 close: '我再想想',
                 callback: function() {
                     $('#field_id').attr('value', value);
-                    $('#del').submit();
+                    $('#del_field').submit();
                 }
             });
         });

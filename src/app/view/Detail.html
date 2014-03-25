@@ -68,7 +68,8 @@
     </table>
 </div>
 
-<form action="<?=$form_action_del;?>" method="post" id="del">
+<form action="<?=$form_action_del;?>" method="post" id="del_field">
+    <input type="hidden" name="account_id" value="<?=$app['rowid'];?>" />
     <input type="hidden" name="id" id="field_id" />
 </form>
 <script language="javascript" src="<?=$host?>static/vendor/zeroclipboard/ZeroClipboard.min.js"></script>
