@@ -57,8 +57,8 @@
                     <span class="btn btn-primary info_copy_bt" id='copy-button' data-clipboard-text='<?=$field['value']?>'>复制</span>
                 </td>
 
-                <?php if (isset($v['link'])):?>
-                <td>使用 <b><a href="<?=$v['link']?>"><?=$v['site_name']?></a></b> 帐号登录</td>
+                <?php if (isset($field['link'])):?>
+                <td>使用 <b><a href="<?=$field['link']?>"><?=$field['linkname']?></a></b> 帐号登录</td>
                 <?php else: ?>
                 <td><?=$field['display']?></td>
                 <?php endif;?>

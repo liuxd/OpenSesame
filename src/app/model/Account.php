@@ -2,6 +2,7 @@
 namespace model;
 
 use util as u;
+use core as c;
 
 class Account
 {
@@ -34,7 +35,19 @@ class Account
     public function getAccountFields($iAccountID)
     {
         $sSQL = 'SELECT *, rowid FROM ' . self::TABLE_NAME . ' WHERE parent=?  AND valid=' . self::STATUS_VALID;
-        return u\DB::getList($sSQL, [$iAccountID]);
+        $aResult = u\DB::getList($sSQL, [$iAccountID]);
+
+        foreach ($aResult as $k => $v) {
+            if (substr($v['value'], 0, 5) === 'link:') {
+                $sSQLAccount = 'SELECT rowid FROM ' . self::TABLE_NAME . ' WHERE valid=' . self::STATUS_VALID . ' AND name=? LIMIT 1';
+                $sLinkAccount = substr($v['value'], 5);
+                $aAccountID = u\DB::getOne($sSQLAccount, [$sLinkAccount]);
+                $aResult[$k]['link'] = c\Router::genURL('Detail', ['id' => $aAccountID['rowid']]);
+                $aResult[$k]['linkname'] = $sLinkAccount;
+            }
+        }
+
+        return $aResult;
     }
 
     /**
