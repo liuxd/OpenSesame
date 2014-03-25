@@ -134,24 +134,6 @@
         $('#info_enter').click();
     });
 
-    //退出按钮
-    $('#logout_bt').bind('click', function() {
-        $('#pop_confirm').confirmModal({
-            heading: '主人',
-            body: '您慢走。',
-            enter: '好',
-            close: '等等吧',
-            callback: function() {
-                $.ajax({
-                    url: url_logout,
-                    success: function() {
-                        l.reload();
-                    }
-                });
-            }
-        });
-    });
-
     //显示添加网站的表单
     $('#add_pull').bind('click', function() {
         $(this).hide();
