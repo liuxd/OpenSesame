@@ -3,14 +3,9 @@ Open Sesame
 [![Build Status](https://drone.io/github.com/liuxd/open-sesame/status.png)](https://drone.io/github.com/liuxd/open-sesame/latest)
 [![wercker status](https://app.wercker.com/status/e235d5b6a0dc8cfaf7199fe18a074ded/s/ "wercker status")](https://app.wercker.com/project/bykey/e235d5b6a0dc8cfaf7199fe18a074ded)
 
-基于Web的帐号管理工具。
-
 ## 环境需求
-+ Nginx
-+ PHP
-    + 版本：5.4.17+
-    + 扩展：zlib
-    + 模式：php-fpm
++ nginx
++ php-fpm
 
 ## 安装步骤
 #### 1. 下载程序包
