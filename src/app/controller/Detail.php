@@ -20,7 +20,7 @@ class Detail extends Base
         $aEmails = $oUser->getEmails();
 
         foreach ($aFields as $k => $v) {
-            $aFields[$k]['display'] = u\Str::partCover($v['value'], 3, 3);
+            $aFields[$k]['display'] = u\Str::partCover($v['value'], 2, 1);
         }
 
         $aAccountAll = $oAccount->getAllAccount();
