@@ -25,7 +25,7 @@ class Search extends Base
             'page_title' => '搜索结果',
             'keyword' => $sKeyword,
             'total' => count($aList),
-            'form_action_del' => c\Router::genURL('Delete'),
+            'form_action_del' => c\Router::genURL('DeleteAccount'),
             'site_list' => $aOutput
         ];
 
