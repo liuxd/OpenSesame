@@ -68,6 +68,18 @@
     </table>
 </div>
 
+<!--修改帐号属性-->
+<div class="modal" id="popup" style="display:none">
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal">×</a>
+        <h3>你要的东西在这里</h3>
+    </div>
+
+    <div class="modal-body">
+        <p><span id="pop_content"></span></p>
+    </div>
+</div>
+
 <form action="<?=$form_action_del;?>" method="post" id="del_field">
     <input type="hidden" name="account_id" value="<?=$app['rowid'];?>" />
     <input type="hidden" name="id" id="field_id" />

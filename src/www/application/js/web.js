@@ -24,10 +24,9 @@
     $('.info_up_bt').each(function() {
         var key = $(this).attr('title');
         var value = $(this).attr('id');
-            console.log(key);
-            console.log(value);
 
         $($(this)).bind('click', function() {
+            ('#popup').modal();return;
             $('#field_name').prop('value', key);
             $('#field_value').prop('value', value).focus();
         });
