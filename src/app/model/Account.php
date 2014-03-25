@@ -13,7 +13,7 @@ class Account
     public function getAllAccount()
     {
         $sSQL = 'SELECT *, rowid FROM ' . self::TABLE_NAME . ' WHERE valid=' . self::STATUS_VALID . ' AND parent=0';
-        return u\DB::getList($sSQL);   
+        return u\DB::getList($sSQL);
     }
 
     /**
@@ -23,7 +23,11 @@ class Account
      */
     public function getAccountDetail($iAccountID)
     {
-        $sSQL = 'SELECT *, rowid FROM ' . self::TABLE_NAME . ' WHERE rowid = ?  AND valid=' . self::STATUS_VALID . ' Limit 1';
+        $sSQL = 'SELECT *, rowid 
+            FROM ' . self::TABLE_NAME . ' 
+            WHERE rowid = ?  
+            AND valid=' . self::STATUS_VALID . '
+            Limit 1';
         return u\DB::getOne($sSQL, [$iAccountID]);
     }
 
@@ -39,7 +43,11 @@ class Account
 
         foreach ($aResult as $k => $v) {
             if (substr($v['value'], 0, 5) === 'link:') {
-                $sSQLAccount = 'SELECT rowid FROM ' . self::TABLE_NAME . ' WHERE valid=' . self::STATUS_VALID . ' AND name=? LIMIT 1';
+                $sSQLAccount = 'SELECT rowid 
+                    FROM ' . self::TABLE_NAME . '
+                    WHERE valid=' . self::STATUS_VALID . ' 
+                    AND name=? 
+                    LIMIT 1';
                 $sLinkAccount = substr($v['value'], 5);
                 $aAccountID = u\DB::getOne($sSQLAccount, [$sLinkAccount]);
                 $aResult[$k]['link'] = c\Router::genURL('Detail', ['id' => $aAccountID['rowid']]);
@@ -108,7 +116,7 @@ class Account
     {
         $aData = [
             'name' => $sName,
-            'value' => $sValue    
+            'value' => $sValue
         ];
         return u\DB::update(self::TABLE_NAME, 'WHERE rowid = ' . $iFieldID, $aData);
     }
@@ -128,7 +136,7 @@ class Account
      */
     public function createTable()
     {
-        u\DB::getInstance()->query('create table account (name text, value text, parent interger, valid interger)');    
+        u\DB::getInstance()->query('create table account (name text, value text, parent interger, valid interger)');
     }
 }
 

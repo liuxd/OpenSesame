@@ -20,7 +20,7 @@ class DB
      * @param array $aOptions
      * @return PDO
      */
-    public static function getInstance($sDSN = '', $sUserName= '', $sPassword= '', $aOptions = [])
+    public static function getInstance($sDSN = '', $sUserName = '', $sPassword = '', $aOptions = [])
     {
         if (is_null(self::$oDB)) {
             self::$oDB = new PDO($sDSN, $sUserName, $sPassword, $aOptions);
