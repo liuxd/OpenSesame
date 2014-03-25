@@ -52,7 +52,7 @@
                 <td><?=$field['name'];?></td>
                 <td>
                     <span class="btn btn-danger info_del_bt" title='<?=$field['rowid']?>'>删除</span>
-                    <span class="btn btn-info info_up_bt"  title='<?=$field['name']?>' id='<?=$field['value']?>'>修改</span>
+                    <span class="btn btn-info info_up_bt" data='<?=$field['rowid']?>' title='<?=$field['name']?>' id='<?=$field['value']?>'>修改</span>
                     <span class="btn btn-success info_show_bt" id='<?=$field['value']?>'>查看</span>
                     <span class="btn btn-primary info_copy_bt" id='copy-button' data-clipboard-text='<?=$field['value']?>'>复制</span>
                 </td>
@@ -68,7 +68,7 @@
     </table>
 </div>
 
-<!--修改帐号属性-->
+<!--查看属性-->
 <div class="modal" id="popup" style="display:none">
     <div class="modal-header">
         <a class="close" data-dismiss="modal">×</a>
@@ -77,6 +77,28 @@
 
     <div class="modal-body">
         <p><span id="pop_content"></span></p>
+    </div>
+</div>
+
+<!--修改属性-->
+<div class="modal" id="modify" style="display:none">
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal">×</a>
+        <h3>修改属性</h3>
+    </div>
+
+    <div class="modal-body">
+        <form action="<?=$form_action_update;?>" method="post" id="del_field">
+            <input type="hidden" name="account_id" value="<?=$app['rowid'];?>" />
+            <input type="hidden" name="field_id" id="field_id" />
+            <div class="input-prepend">
+                <span class="add-on">名字</span>
+                <input class="span2" type="text" name="field_name" id="field_name_up" />
+                <span class="add-on">内容</span>
+                <input class="span2" type="text" name="field_value" id="field_value_up" />
+                <button class="btn btn-warning" type="submit">确定</button>
+            </div>
+        </form>
     </div>
 </div>
 

@@ -22,13 +22,15 @@
 
     //单页modify按钮
     $('.info_up_bt').each(function() {
-        var key = $(this).attr('title');
+        var field = $(this).attr('title');
         var value = $(this).attr('id');
+        var id = $(this).attr('data');
 
         $($(this)).bind('click', function() {
-            ('#popup').modal();return;
-            $('#field_name').prop('value', key);
-            $('#field_value').prop('value', value).focus();
+            $('#field_name_up').prop('value', field);
+            $('#field_value_up').prop('value', value);
+            $('#field_id').prop('value', id);
+            $('#modify').modal('show');
         });
     });
 

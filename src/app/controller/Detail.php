@@ -36,6 +36,7 @@ class Detail extends Base
             'fields' => $aFields,
             'form_action_add' => c\Router::genURL('AddField'),
             'form_action_del' => c\Router::genURL('DeleteField'),
+            'form_action_update' => c\Router::genURL('Update'),
             'site_list' => json_encode($aSiteList),
             'default_password' => $sDefaultPassword['data'],
             'emails' => $aEmails['data']
