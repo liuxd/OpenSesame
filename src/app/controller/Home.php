@@ -14,7 +14,8 @@ class Home extends Base
             'page_title' => 'Open Sesame',    
             'form_action_add' => c\Router::genURL('AddAccount'),
             'gravatar' => u\Gravatar::getGravatarURL($sEmail, 30),
-            'site_total' => (new m\Account)->getTotal()
+            'site_total' => (new m\Account)->getTotal(),
+            'recomm' => (new m\Recommand)->get(4)
         ];
 
         return $aData;
