@@ -52,9 +52,9 @@
                 <td><?=$field['name'];?></td>
                 <td>
                     <span class="btn btn-danger info_del_bt" title='<?=$field['rowid']?>'>删除</span>
-                    <span class="btn btn-info info_up_bt"  title='<?=$field['name']?>' id='<?=$field['name']?>'>修改</span>
-                    <span class="btn btn-success info_show_bt" id='<?=$field['name']?>'>查看</span>
-                    <span class="btn btn-primary info_copy_bt" id='copy-button' data-clipboard-text='<?=$field['name']?>'>复制</span>
+                    <span class="btn btn-info info_up_bt"  title='<?=$field['name']?>' id='<?=$field['value']?>'>修改</span>
+                    <span class="btn btn-success info_show_bt" id='<?=$field['value']?>'>查看</span>
+                    <span class="btn btn-primary info_copy_bt" id='copy-button' data-clipboard-text='<?=$field['value']?>'>复制</span>
                 </td>
 
                 <?php if (isset($v['link'])):?>

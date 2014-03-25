@@ -9,6 +9,12 @@ class Account
     const STATUS_VALID = 1;
     const STATUS_UNVALID = 0;
 
+    public function getAllAccount()
+    {
+        $sSQL = 'SELECT *, rowid FROM ' . self::TABLE_NAME . ' WHERE valid=' . self::STATUS_VALID . ' AND parent=0';
+        return u\DB::getList($sSQL);   
+    }
+
     /**
      * 获得一个帐号的详细信息。
      * @param int $iAccountID 帐号ID。
