@@ -15,6 +15,10 @@ class Detail extends Base
         $aDetail = $oAccount->getAccountDetail($iAccountID);
         $aFields = $oAccount->getAccountFields($iAccountID);
 
+        $oUser = new m\User;
+        $sDefaultPassword = $oUser->getDefaultPassword();
+        $aEmails = $oUser->getEmails();
+
         foreach ($aFields as $k => $v) {
             $aFields[$k]['display'] = u\Str::partCover($v['value'], 3, 3);
         }
@@ -32,7 +36,9 @@ class Detail extends Base
             'fields' => $aFields,
             'form_action_add' => c\Router::genURL('Add'),
             'form_action_del' => c\Router::genURL('Delete'),
-            'site_list' => json_encode($aSiteList)
+            'site_list' => json_encode($aSiteList),
+            'default_password' => $sDefaultPassword['data'],
+            'emails' => $aEmails['data']
         ];
 
         return $aData;

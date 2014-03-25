@@ -19,11 +19,11 @@
         <input type="submit" value="确定" class="btn btn-primary" id="info_enter" />
         <input type="button" value="生成随机密码" class="btn btn-warning" id="pwd_bt" />
 
-        <?php if(isset($default_password)):?>
+        <?php if(!empty($default_password)):?>
         <input type="button" value="生成默认密码" class="btn btn-info" id="pwd_bt_default" data="<?=$default_password?>" />
         <?php endif;?>
 
-        <?php if(isset($emails)):?>
+        <?php if(!empty($emails)):?>
         <div class="btn-group">
             <a class="btn btn-success dropdown-toggle" data-toggle="dropdown" href="#">
                 选择常用邮箱
