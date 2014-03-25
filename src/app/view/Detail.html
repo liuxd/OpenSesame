@@ -88,9 +88,9 @@
     </div>
 
     <div class="modal-body">
-        <form action="<?=$form_action_update;?>" method="post" id="del_field">
+        <form action="<?=$form_action_update;?>" method="post">
             <input type="hidden" name="account_id" value="<?=$app['rowid'];?>" />
-            <input type="hidden" name="field_id" id="field_id" />
+            <input type="hidden" name="field_id" id="field_id_up" />
             <div class="input-prepend">
                 <span class="add-on">名字</span>
                 <input class="span2" type="text" name="field_name" id="field_name_up" />

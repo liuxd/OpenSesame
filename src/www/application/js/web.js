@@ -29,7 +29,7 @@
         $($(this)).bind('click', function() {
             $('#field_name_up').prop('value', field);
             $('#field_value_up').prop('value', value);
-            $('#field_id').prop('value', id);
+            $('#field_id_up').prop('value', id);
             $('#modify').modal('show');
         });
     });

@@ -10,6 +10,7 @@ class DeleteField extends Base
     {
         $iID = $this->post('id');
         $iAccountID = $this->post('account_id');
+
         (new m\Account)->del($iID);
         c\Router::redirect(c\Router::genURL('Detail', ['id' => $iAccountID]));
     }

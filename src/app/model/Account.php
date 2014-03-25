@@ -43,11 +43,8 @@ class Account
 
         foreach ($aResult as $k => $v) {
             if (substr($v['value'], 0, 5) === 'link:') {
-                $sSQLAccount = 'SELECT rowid 
-                    FROM ' . self::TABLE_NAME . '
-                    WHERE valid=' . self::STATUS_VALID . ' 
-                    AND name=? 
-                    LIMIT 1';
+                $sSQLAccount = 'SELECT rowid FROM ' . self::TABLE_NAME;
+                $sSQLAccount .= ' WHERE valid=' . self::STATUS_VALID . ' AND name=?  LIMIT 1';
                 $sLinkAccount = substr($v['value'], 5);
                 $aAccountID = u\DB::getOne($sSQLAccount, [$sLinkAccount]);
                 $aResult[$k]['link'] = c\Router::genURL('Detail', ['id' => $aAccountID['rowid']]);
@@ -65,7 +62,7 @@ class Account
      */
     public function del($iRowID)
     {
-        return u\DB::update(self::TABLE_NAME, 'WHERE rowid = ' . $iRowID, ['valid' => self::STATUS_UNVALID]);
+        return u\DB::update(self::TABLE_NAME, ' WHERE rowid = ' . $iRowID, ['valid' => self::STATUS_UNVALID]);
     }
 
     /**
