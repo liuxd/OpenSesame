@@ -119,12 +119,13 @@ class Account
     }
 
     /**
-     * 获得总数。
+     * 获得账号总数。
      * @return int
      */
     public function getTotal()
     {
-        $sSQL = 'SELECT count(*) as total FROM ' . self::TABLE_NAME . ' WHERE valid=' . self::STATUS_VALID . ' Limit 1';
+        $sSQL = 'SELECT count(*) as total FROM ' . self::TABLE_NAME;
+        $sSQL .= ' WHERE valid=' . self::STATUS_VALID . ' AND parent=0 Limit 1';
         return u\DB::getOne($sSQL)['total'];
     }
 
