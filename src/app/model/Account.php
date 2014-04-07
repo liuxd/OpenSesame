@@ -73,6 +73,19 @@ class Account
      */
     public function addAccount($sName, $sURL)
     {
+        $sSQLCheck = 'SELECT rowid FROM ' . self::TABLE_NAME;
+        $sSQLCheck .= ' WHERE name=? AND parent=0 AND valid=' . self::STATUS_UNVALID . ' LIMIT 1';
+        $aResult = u\DB::getOne($sSQLCheck, [$sName]);
+
+        if ($aResult) {
+            $iRowID = $aResult['rowid'];
+            $aData = [
+                'valid' => self::STATUS_VALID,
+            ];
+            u\DB::update(self::TABLE_NAME, 'WHERE rowid = ' . $iRowID, $aData);
+            return $iRowID;
+        }
+
         $aData = [
             'name' => $sName,
             'value' => $sURL,
