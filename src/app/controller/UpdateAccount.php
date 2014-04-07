@@ -4,16 +4,15 @@ namespace controller;
 use core as c;
 use model as m;
 
-class UpdateField extends Base
+class UpdateAccount extends Base
 {
     public function run()
     {
-        $sFieldName = $this->post('field_name');
-        $sFieldValue = $this->post('field_value');
-        $iRowID = $this->post('field_id');
+        $sAccountName = $this->post('account_name');
+        $sAccountURL = $this->post('account_url');
         $iAccountID = $this->post('account_id');
 
-        (new m\Account)->update($sFieldName, $sFieldValue, $iRowID);
+        (new m\Account)->update($sAccountName, parse_url($sAccountURL)['host'], $iAccountID);
         c\Router::redirect(c\Router::genURL('Detail', ['id' => $iAccountID]));
     }
 }

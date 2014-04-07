@@ -116,19 +116,19 @@ class Account
     }
 
     /**
-     * 更新一条记录。
+     * 更新一条数据。可以是帐号，也可以是一个帐号的属性。
      * @param string $sName 名称。
      * @param string $sValue 值。
-     * @param int $iFieldID 属性的主键。
+     * @param int $iRowID 主键。
      * @return bool
      */
-    public function updateField($sName, $sValue, $iFieldID)
+    public function update($sName, $sValue, $iRowID)
     {
         $aData = [
             'name' => $sName,
             'value' => $sValue
         ];
-        return u\DB::update(self::TABLE_NAME, 'WHERE rowid = ' . $iFieldID, $aData);
+        return u\DB::update(self::TABLE_NAME, 'WHERE rowid = ' . $iRowID, $aData);
     }
 
     /**

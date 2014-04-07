@@ -89,7 +89,7 @@
     </div>
 
     <div class="modal-body">
-        <form action="<?=$form_action_update;?>" method="post">
+        <form action="<?=$form_action_updatefield;?>" method="post">
             <input type="hidden" name="account_id" value="<?=$app['rowid'];?>" />
             <input type="hidden" name="field_id" id="field_id_up" />
             <div class="input-prepend">
@@ -111,13 +111,13 @@
     </div>
 
     <div class="modal-body">
-        <form action="<?=$form_action_update;?>" method="post">
+        <form action="<?=$form_action_updateaccount;?>" method="post">
             <input type="hidden" name="account_id" value="<?=$app['rowid'];?>" />
             <div class="input-prepend">
                 <span class="add-on">名称</span>
-                <input class="span2" type="text" name="account_name" />
+                <input class="span2" type="text" name="account_name" value="<?=$app['name'];?>" />
                 <span class="add-on">网址</span>
-                <input class="span2" type="text" name="account_url" />
+                <input class="span2" type="text" name="account_url" value="<?=$app['value'];?>" />
                 <button class="btn btn-warning" type="submit">确定</button>
             </div>
         </form>
