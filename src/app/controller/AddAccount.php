@@ -10,8 +10,8 @@ class AddAccount extends Base
     {
         $sName = $this->post('name');
         $sURL = $this->post('url');
-        (new m\Account)->addAccount($sName, $sURL);
-        c\Router::redirect(c\Router::genURL('Home'));
+        $iAccountID = (new m\Account)->addAccount($sName, $sURL);
+        c\Router::redirect(c\Router::genURL('Detail', ['id' => $iAccountID]));
     }
 }
 
