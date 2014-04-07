@@ -2,6 +2,7 @@
     <div class="navbar-inner">
         <div class="container">
             <a class="brand" href="http://<?=$app['value'];?>" target="_blank" id="home_url"><?=$page_title;?></a>
+            <input type="button" value="修改" class="btn btn-danger" id="account_base_bt" />
         </div>
     </div>
 </div>
@@ -96,6 +97,27 @@
                 <input class="span2" type="text" name="field_name" id="field_name_up" />
                 <span class="add-on">内容</span>
                 <input class="span2" type="text" name="field_value" id="field_value_up" />
+                <button class="btn btn-warning" type="submit">确定</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!--修改帐号基本信息-->
+<div class="modal" id="modify-base" style="display:none">
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal">×</a>
+        <h3>修改帐号基本属性</h3>
+    </div>
+
+    <div class="modal-body">
+        <form action="<?=$form_action_update;?>" method="post">
+            <input type="hidden" name="account_id" value="<?=$app['rowid'];?>" />
+            <div class="input-prepend">
+                <span class="add-on">名称</span>
+                <input class="span2" type="text" name="account_name" />
+                <span class="add-on">网址</span>
+                <input class="span2" type="text" name="account_url" />
                 <button class="btn btn-warning" type="submit">确定</button>
             </div>
         </form>

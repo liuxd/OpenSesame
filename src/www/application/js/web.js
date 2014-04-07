@@ -34,6 +34,11 @@
         });
     });
 
+    //单页修改基本信息按钮
+    $('#account_base_bt').bind('click', function() {
+        $('#modify-base').modal('show');
+    });
+
     //单页选择邮箱
     $('.emails').each(function() {
         var email = $(this).attr('data');

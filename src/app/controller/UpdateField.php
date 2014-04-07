@@ -4,7 +4,7 @@ namespace controller;
 use core as c;
 use model as m;
 
-class Update extends Base
+class UpdateField extends Base
 {
     public function run()
     {
