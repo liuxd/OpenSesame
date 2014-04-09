@@ -6,7 +6,6 @@ namespace core;
 
 date_default_timezone_set('Asia/Shanghai');
 error_reporting(-1);
-mb_internal_encoding("UTF-8");
 
 $aCoreFiles = [
     'Const.php',
