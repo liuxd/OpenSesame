@@ -44,6 +44,8 @@ class Str
      */
     public static function partCover($str, $start_length, $end_length, $star_limit = 20, $symbol = '*')
     {
+
+
         $limit = $start_length + $end_length - 1;
 
         if (!isset($str{$limit})) {
@@ -64,8 +66,14 @@ class Str
             $i++;
         }
 
-        $head = mb_substr($str, 0, 2);
-        $tail = mb_substr($str, -1);
+        $head = '';
+        $tail = '';
+
+        if (extension_loaded('mb_string')) {
+            $head = mb_substr($str, 0, 2);
+            $tail = mb_substr($str, -1);
+        }
+
         $output = $head . $star . $tail;
 
         return $output;
