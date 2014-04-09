@@ -13,7 +13,9 @@ class Base implements c\IController
 
     public function handle()
     {
-        if ($this->bAuth && !(new m\Secure())->checkIp()) {
+        $aIPPower = c\Config::get('ip_check')['data'];
+
+        if ($aIPPower === 'on' && $this->bAuth && !(new m\Secure())->checkIp()) {
             c\Router::redirect(c\Router::genURL('Deny'));
         }
 
