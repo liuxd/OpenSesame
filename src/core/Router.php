@@ -49,9 +49,6 @@ class Router
         $sAction = ($aTmp[1]) ? : 'Home';
         $sControllerName = 'controller\\' . $sAction;
         $sControllerFile = $sAppPath . str_replace('\\', '/', $sControllerName) . '.php';
-        $aData = [];
-
-        require APP_PATH . 'controller/Base.php';
         require $sControllerFile;
 
         return new $sControllerName;

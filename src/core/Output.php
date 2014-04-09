@@ -23,10 +23,6 @@ class Output
         } else {
             trigger_error('非法输出格式：' . $sType);
         }
-
-        if (php_sapi_name() === 'cgi-fcgi') {
-            fastcgi_finish_request();
-        }
     }
 
     /**
