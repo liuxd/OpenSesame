@@ -6,9 +6,7 @@
 use core as c;
 
 require 'core' . DIRECTORY_SEPARATOR . 'Bootstrap.php';
-
-$sURI = $_SERVER['REQUEST_URI'];
-$oController = c\Router::route($sURI, APP_PATH);
+$oController = c\Router::route($_SERVER['REQUEST_URI'], APP_PATH);
 $oController->before();
 c\Output::handle($oController->handle(), $oController->outputType);
 $oController->after();
