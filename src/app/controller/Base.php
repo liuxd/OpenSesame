@@ -23,7 +23,7 @@ class Base implements c\IController
         u\DB::getInstance($aConfig['data']);
 
         $aData['data'] = $this->run();
-        $aData['data']['host'] = 'http://' . $_SERVER['HTTP_HOST'] . '/';
+        $aData['data']['host'] = c\Config::get('static_host')['data'];
 
         if ($this->outputType === c\Output::TYPE_HTML) {
             $aData[c\Output::TYPE_HTML] = [
