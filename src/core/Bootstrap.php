@@ -11,7 +11,6 @@ $aCoreFiles = [
     'Const.php',
     'Config.php',
     'Error.php',
-    'Front.php',
     'Function.php',
     'Interface.php',
     'Loader.php',

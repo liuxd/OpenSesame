@@ -9,16 +9,6 @@ use controller;
 class Router
 {
     /**
-     * 判断是否是前端文件。
-     * @param string $sURI 请求参数。
-     * @return bool
-     */
-    public static function isStatic($sURI)
-    {
-        return substr($_SERVER['REQUEST_URI'], 0, 8) === '/static/';
-    }
-
-    /**
      * 拼装URL。
      * @param string $sAction 请求动作。
      * @param array $aParams 传递的参数。
