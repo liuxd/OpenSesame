@@ -1,6 +1,6 @@
 <?php
 /**
- * 自定义函数
+ * Functions.
  */
 namespace core;
 
@@ -22,7 +22,7 @@ function see()
     $echo = function ($value, $color, $type) {
         $len = '';
 
-        if ($type === 'string') {
+        if (extension_loaded('mb_string') && $type === 'string') {
             $len = '(' . mb_strlen($value, 'UTF-8') . ')';
         }
 

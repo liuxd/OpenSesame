@@ -1,6 +1,6 @@
 <?php
 /**
- * 数据输出处理。
+ * Handle output.
  */
 namespace core;
 
@@ -10,9 +10,9 @@ class Output
     const TYPE_JSON = 'json';
 
     /**
-     * 处理输出的主方法。
-     * @param array $data 输出的原始数据。
-     * @param string $type 输出的格式。
+     * The entrance method.
+     * @param array $data Data to output.
+     * @param string $type Output pettern.
      */
     public static function handle($aData, $sType = 'html')
     {
@@ -21,12 +21,12 @@ class Output
         if (method_exists(__CLASS__, $sHandlerName)) {
             self::$sHandlerName($aData);
         } else {
-            trigger_error('非法输出格式：' . $sType);
+            trigger_error('Invalid pattern : ' . $sType);
         }
     }
 
     /**
-     * 页面请求处理
+     * Page handler.
      * @param array $aData
      */
     private static function htmlHandler($aData)
@@ -44,8 +44,8 @@ class Output
     }
 
     /**
-     * 输出json。
-     * @param array $aData  待输出数据。
+     * Output JSON data.
+     * @param array $aData Data to output.
      */
     private static function jsonHandler($aData)
     {

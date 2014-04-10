@@ -1,6 +1,6 @@
 <?php
 /**
- * 框架初始化。
+ * Initialize the framework.
  */
 namespace core;
 

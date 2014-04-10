@@ -1,6 +1,6 @@
 <?php
 /**
- * 路由操作。实现URL地址与解析与封装。
+ * Router.
  */
 namespace core;
 
@@ -9,9 +9,9 @@ use controller;
 class Router
 {
     /**
-     * 拼装URL。
-     * @param string $sAction 请求动作。
-     * @param array $aParams 传递的参数。
+     * Generate URL.
+     * @param string $sAction The request's action
+     * @param array $aParams URL params.
      */
     public static function genURL($sAction, $aParams = [])
     {
@@ -25,9 +25,9 @@ class Router
     }
 
     /**
-     * 页面跳转。
-     * @param string $sURL
-     * @param int $iStatusCode
+     * Page redirection.
+     * @param string $sURL Target URL.
+     * @param int $iStatusCode HTTP code.
      */
     public static function redirect($sURL, $iStatusCode = 0)
     {
@@ -39,9 +39,9 @@ class Router
     }
 
     /**
-     * 解析URL。
-     * @param string $sURI 请求的URI。
-     * @param string $sAppPath 应用程序路径。
+     * URL parser.
+     * @param string $sURI The request uri.
+     * @param string $sAppPath The application's path.
      */
     public static function route($sURI, $sAppPath)
     {

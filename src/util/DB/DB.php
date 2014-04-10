@@ -1,6 +1,6 @@
 <?php
 /**
- * 一个简单的PDO封装。
+ * DB controller.
  */
 
 namespace util;
@@ -13,7 +13,7 @@ class DB
     public static $oDB = null;
 
     /**
-     * 连接数据库
+     * Connect to database.
      * @param string $sDSN
      * @param string $sUserName
      * @param string $sPassword
@@ -32,7 +32,7 @@ class DB
     }
 
     /**
-     * 查询一个列表的数据。
+     * Get list.
      * @param string $sSQL
      * @param array $aParams
      * @return array 
@@ -45,7 +45,7 @@ class DB
     }
 
     /**
-     * 插入数据。
+     * Insert a record.
      * @param array $aData
      * @param string $sTable
      * @return int
@@ -60,7 +60,7 @@ class DB
     }
 
     /**
-     * 获得单条数据。
+     * Get one record.
      * @param string $sSQL
      * @param array $aParams
      * @return array 
@@ -73,7 +73,7 @@ class DB
     }
 
     /**
-     * 更新数据。
+     * Update data.
      * @param string $sTable
      * @param string $sWhere
      * @param array $aData
@@ -94,7 +94,7 @@ class DB
     }
 
     /**
-     * 导入指定sql文件。
+     * Import sql file.
      * @param string $sFile
      * @return bool
      */
@@ -104,7 +104,7 @@ class DB
     }
 
     /**
-     * 执行SQL语句。
+     * Excute a sql.
      * @param string sSQL
      * @return bool
      */
@@ -114,7 +114,7 @@ class DB
     }
 
     /**
-     * 解析插入数据时的数组。
+     * Parse data inserted.
      * @param array $aData
      * @return type
      */

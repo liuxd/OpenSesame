@@ -1,6 +1,6 @@
 <?php
 /**
- * 设置自定义类加载器
+ * Class loader.
  */
 namespace core;
 
@@ -14,7 +14,7 @@ class Loader
     }
 
     /**
-     * 加载框架工具类。
+     * Load utility.
      */
     private function util($sClass)
     {
@@ -34,7 +34,7 @@ class Loader
     }
 
     /**
-     * 加载应用业务相关的model。
+     * Load model.
      */
     private function model($sClass)
     {

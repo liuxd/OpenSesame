@@ -1,11 +1,12 @@
 <?php
 /**
- * 配置信息管理。
- * 接口规范：所有对外接口统一格式：
+ * Controll configure information.
+ *
+ * Pattern:
  * [
- *     'result' => false, //接口执行是否成功。
- *     'msg' => '', //接口执行失败的原因。
- *     'data' => [], //接口返回数据。
+ *     'result' => false,
+ *     'msg' => '',
+ *     'data' => [],
  * ];
  */
 namespace core;
@@ -15,7 +16,7 @@ class Config
     public static $aConfig = null;
 
     /**
-     * 获得配置项。
+     * Get a option.
      * @param string $sKey
      * @return array
      */
@@ -30,7 +31,7 @@ class Config
         $aConfigInfo = self::read();
 
         if (!isset($aConfigInfo[$sKey])) {
-            $aResult['msg'] = "配置项不存在：" . $sKey;
+            $aResult['msg'] = "Option does not exist : " . $sKey;
             return $aResult;
         }
 
@@ -43,6 +44,10 @@ class Config
         return $aResult;
     }
 
+    /**
+     * Get all configure information.
+     * @return array
+     */
     private static function read()
     {
         if (!is_null(self::$aConfig)) {
@@ -56,7 +61,7 @@ class Config
         }
 
         if (!is_readable($sConfigFile)) {
-            trigger_error("配置文件不存在：" . $sConfigFile);
+            trigger_error("Configure file does not exist : " . $sConfigFile);
         }
 
         self::$aConfig = parse_ini_file($sConfigFile, true);
