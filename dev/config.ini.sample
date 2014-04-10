@@ -1,6 +1,3 @@
-;是否开启IP检查
-ip_check='on'
-
 ;数据库dsn
 dsn=sqlite:/tmp/pass.db
 
