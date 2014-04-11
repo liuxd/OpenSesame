@@ -5,17 +5,13 @@ dsn=sqlite:/tmp/pass.db
 default_password=123456
 
 ;前端文件域名
-static_host=http://localhost:8001/www
+static_host=http://localhost:8000/www
 
 ;用户常用的邮箱列表，方便录入新帐号信息。
 [often_emails]
 1=email1@gmail.com
 2=email2@163.com
 
-;运行访问的IP白名单
-[allow_ip]
-1=127.0.0.1
-
 ;使用用户的基本信息
 [user]
-email=liuxidong1984@gmail.com
+email=email@gmail.com
