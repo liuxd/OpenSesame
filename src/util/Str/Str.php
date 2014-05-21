@@ -69,7 +69,7 @@ class Str
         $head = '';
         $tail = '';
 
-        if (extension_loaded('mb_string')) {
+        if (extension_loaded('mbstring')) {
             $head = mb_substr($str, 0, 2);
             $tail = mb_substr($str, -1);
         }

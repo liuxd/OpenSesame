@@ -22,7 +22,7 @@ function see()
     $echo = function ($value, $color, $type) {
         $len = '';
 
-        if (extension_loaded('mb_string') && $type === 'string') {
+        if (extension_loaded('mbstring') && $type === 'string') {
             $len = '(' . mb_strlen($value, 'UTF-8') . ')';
         }
 
