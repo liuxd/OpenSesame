@@ -8,6 +8,7 @@ class Output
 {
     const TYPE_HTML = 'html';
     const TYPE_JSON = 'json';
+    const TYPE_PJAX = 'pjax';
 
     /**
      * The entrance method.
@@ -40,6 +41,20 @@ class Output
                 require $sHtmlPath;
             }
 
+        }
+    }
+
+    /**
+     * Pjax handler.
+     * @param array $aData
+     */
+    private static function pjaxHandler($aData)
+    {
+        extract($aData['data']);
+        $sHtmlPath = APP_PATH . 'view' . DS . $aData[self::TYPE_PJAX] . '.html';
+
+        if (file_exists($sHtmlPath)) {
+            require $sHtmlPath;
         }
     }
 

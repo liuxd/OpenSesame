@@ -12,12 +12,20 @@ class Controller implements IController
     {
         $aData['data'] = $this->run();
 
+        if ($this->get('gm_type') === Output::TYPE_PJAX) {
+            $this->outputType = Output::TYPE_PJAX;
+        }
+
         if ($this->outputType === Output::TYPE_HTML) {
             $aData[Output::TYPE_HTML] = [
                     'header' => $this->getHeader(),
                     'body' => $this->getBody(),
                     'footer' => $this->getFooter(),
             ];
+        }
+
+        if ($this->outputType === Output::TYPE_PJAX) {
+            $aData[Output::TYPE_PJAX] = $this->getBody();
         }
 
         return $aData;
