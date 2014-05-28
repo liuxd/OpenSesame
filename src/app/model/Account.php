@@ -44,6 +44,8 @@ class Account
         $aResult = u\DB::getList($sSQL, [$iAccountID]);
 
         foreach ($aResult as $k => $v) {
+            $aResult[$k]['value'] = $this->decrypt($v['value']);
+
             if (substr($v['value'], 0, 5) === 'link:') {
                 $sSQLAccount = 'SELECT rowid FROM ' . self::TABLE_NAME;
                 $sSQLAccount .= ' WHERE valid=' . self::STATUS_VALID . ' AND name=?  LIMIT 1';
@@ -109,7 +111,7 @@ class Account
     {
         $aData = [
             'name' => $sName,
-            'value' => $sValue,
+            'value' => $this->encrypt($sValue),
             'parent' => $iAccountID,
             'valid' => self::STATUS_VALID
         ];
@@ -128,7 +130,7 @@ class Account
     {
         $aData = [
             'name' => $sName,
-            'value' => $sValue
+            'value' => $this->encrypt($sValue)
         ];
         return u\DB::update(self::TABLE_NAME, 'WHERE rowid = ' . $iRowID, $aData);
     }
@@ -159,7 +161,6 @@ class Account
      */
     public function encrypt($p_sString)
     {
-        $p_sString = '中a国bcadf)人;(';
         $sTmp1 = u\Str::utf8Strrev($p_sString);
         $sTmp2 = u\Str::strSplit($sTmp1);
         $sTmp3 = '';
@@ -183,7 +184,6 @@ class Account
      */
     public function decrypt($p_sString)
     {
-        $p_sString = 'bTRSKDI7Y+S6ulEpY2Z2ZERhQWMyYmflm71GYUzkuK1DOUtteg==';
         $sTmp1 = base64_decode($p_sString);
         $sTmp2 = substr($sTmp1, self::ENCRYPT_SALT_PREFIX_LENGTH, -self::ENCRYPT_SALT_SUFFIX_LENGTH);
         $aTmp3 = u\Str::strSplit($sTmp2);
