@@ -9,6 +9,8 @@ class Account
     const TABLE_NAME = 'account';
     const STATUS_VALID = 1;
     const STATUS_UNVALID = 0;
+    const ENCRYPT_SALT_PREFIX_LENGTH = 3;
+    const ENCRYPT_SALT_SUFFIX_LENGTH = 4;
 
     public function getAllAccount()
     {
@@ -81,7 +83,7 @@ class Account
             $iRowID = $aResult['rowid'];
             $aData = [
                 'valid' => self::STATUS_VALID,
-            ];
+                ];
             u\DB::update(self::TABLE_NAME, 'WHERE rowid = ' . $iRowID, $aData);
             return $iRowID;
         }
@@ -148,6 +150,55 @@ class Account
     public function createTable()
     {
         u\DB::getInstance()->query('create table account (name text, value text, parent interger, valid interger)');
+    }
+
+    /**
+     * 加密。
+     * @param string $p_sString 待加密的字符串。
+     * @return string
+     */
+    public function encrypt($p_sString)
+    {
+        $p_sString = '中a国bcadf)人;(';
+        $sTmp1 = u\Str::utf8Strrev($p_sString);
+        $sTmp2 = u\Str::strSplit($sTmp1);
+        $sTmp3 = '';
+
+        foreach ($sTmp2 as $sChar) {
+            $sTmp3 .= $sChar;
+            $sTmp3 .= u\Str::random(1);
+        }
+
+        $sPrefix = u\Str::random(self::ENCRYPT_SALT_PREFIX_LENGTH);
+        $sSuffix = u\Str::random(self::ENCRYPT_SALT_SUFFIX_LENGTH);
+        $sResult = base64_encode($sPrefix . $sTmp3 . $sSuffix);
+
+        return $sResult;
+    }
+
+    /**
+     * 解密。
+     * @param string $p_sString 待解密的字符串。
+     * @return string
+     */
+    public function decrypt($p_sString)
+    {
+        $p_sString = 'bTRSKDI7Y+S6ulEpY2Z2ZERhQWMyYmflm71GYUzkuK1DOUtteg==';
+        $sTmp1 = base64_decode($p_sString);
+        $sTmp2 = substr($sTmp1, self::ENCRYPT_SALT_PREFIX_LENGTH, -self::ENCRYPT_SALT_SUFFIX_LENGTH);
+        $aTmp3 = u\Str::strSplit($sTmp2);
+        $iLen = count($aTmp3);
+        $sTmp4 = '';
+
+        for ($i = 0; $i <= $iLen; $i += 2) {
+            if (isset($aTmp3[$i])) {
+                $sTmp4 .= $aTmp3[$i];
+            }
+        }
+
+        $sResult = u\Str::utf8Strrev($sTmp4);
+
+        return $sResult;
     }
 }
 
