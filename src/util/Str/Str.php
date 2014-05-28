@@ -78,6 +78,39 @@ class Str
 
         return $output;
     }
+
+    /**
+     * str_split加强版。
+     * @param string $p_sString 待处理字符串。
+     * @param int $iLen 每步切的长度。
+     * @return string
+     */
+    public static function strSplit($p_sString, $iLen = 1, $sEncoding = 'UTF-8')
+    {
+        $iStrlen = mb_strlen($p_sString, 'UTF-8');
+
+        if ($iStrlen > $iLen || !$iLen) {
+            for ($i = 0; $i < $iStrlen; $i++) {
+                $aRet[] = mb_substr($p_sString, 0, $iLen, $sEncoding);
+                $p_sString = mb_substr($p_sString, $iLen, $iStrlen, $sEncoding);
+            }
+        } else {
+            $aRet = array($p_sString);
+        }
+
+        return $aRet;
+    }
+
+    /**
+     * utf8字符串的反转。
+     * @param string $p_sString 待翻转字符串。
+     * @return string
+     */
+    public static function utf8Strrev($p_sString)
+    {
+        preg_match_all('/./us', $p_sString, $aTmp);
+        return implode('', array_reverse($aTmp[0]));
+    }
 }
 
 # end of this file
