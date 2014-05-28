@@ -13,6 +13,11 @@ class Detail extends Base
         $iAccountID = $this->get('id');
         $oAccount = new m\Account;
         $aDetail = $oAccount->getAccountDetail($iAccountID);
+
+        if (empty($aDetail)) {
+            c\Router::redirect(c\Router::genURL('Home'));
+        }
+
         $aFields = $oAccount->getAccountFields($iAccountID);
 
         $oUser = new m\User;
