@@ -9,10 +9,10 @@ class UpdateAccount extends Base
     public function run()
     {
         $sAccountName = $this->post('account_name');
-        $sAccountURL = $this->post('account_url');
+        $sAccountURL = 'http://' . $this->post('account_url');
         $iAccountID = $this->post('account_id');
 
-        (new m\Account)->update($sAccountName, parse_url($sAccountURL)['host'], $iAccountID);
+        (new m\Account)->update($sAccountName, parse_url($sAccountURL)['host'], $iAccountID, false);
         c\Router::redirect(c\Router::genURL('Detail', ['id' => $iAccountID]));
     }
 }

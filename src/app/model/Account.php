@@ -126,11 +126,11 @@ class Account
      * @param int $iRowID 主键。
      * @return bool
      */
-    public function update($sName, $sValue, $iRowID)
+    public function update($sName, $sValue, $iRowID, $bEncrypt = true)
     {
         $aData = [
             'name' => $sName,
-            'value' => $this->encrypt($sValue)
+            'value' => $bEncrypt ? $this->encrypt($sValue) : $sValue
         ];
         return u\DB::update(self::TABLE_NAME, 'WHERE rowid = ' . $iRowID, $aData);
     }
