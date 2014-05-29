@@ -44,12 +44,12 @@ class Account
         $aResult = u\DB::getList($sSQL, [$iAccountID]);
 
         foreach ($aResult as $k => $v) {
-            $aResult[$k]['value'] = $this->decrypt($v['value']);
+            $aResult[$k]['value'] = $sRealValue = $this->decrypt($v['value']);
 
-            if (substr($v['value'], 0, 5) === 'link:') {
+            if (substr($sRealValue, 0, 5) === 'link:') {
                 $sSQLAccount = 'SELECT rowid FROM ' . self::TABLE_NAME;
                 $sSQLAccount .= ' WHERE valid=' . self::STATUS_VALID . ' AND name=?  LIMIT 1';
-                $sLinkAccount = substr($v['value'], 5);
+                $sLinkAccount = substr($sRealValue, 5);
                 $aAccountID = u\DB::getOne($sSQLAccount, [$sLinkAccount]);
                 $aResult[$k]['link'] = c\Router::genURL('Detail', ['id' => $aAccountID['rowid']]);
                 $aResult[$k]['linkname'] = $sLinkAccount;
