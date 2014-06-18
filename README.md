@@ -3,6 +3,7 @@ Open Sesame
 
 ## 需求
 > 最基本的PHP环境即可（PHP5.4+）
+> 需要扩展：mbstring
 
 ## 安装
 
