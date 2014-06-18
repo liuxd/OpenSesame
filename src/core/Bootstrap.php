@@ -26,9 +26,6 @@ foreach ($aCoreFiles as $sCoreFile) {
 require APP_PATH . 'controller/Base.php';
 new Loader;
 set_error_handler('err');
-
-if (extension_loaded('mbstring')) {
-    mb_internal_encoding("UTF-8");
-}
+mb_internal_encoding("UTF-8");
 
 # end of this file
