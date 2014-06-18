@@ -69,10 +69,8 @@ class Str
         $head = '';
         $tail = '';
 
-        if (extension_loaded('mbstring')) {
-            $head = mb_substr($str, 0, 2);
-            $tail = mb_substr($str, -1);
-        }
+        $head = mb_substr($str, 0, 2);
+        $tail = mb_substr($str, -1);
 
         $output = $head . $star . $tail;
 
