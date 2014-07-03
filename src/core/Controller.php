@@ -28,6 +28,11 @@ class Controller implements IController
             $aData[Output::TYPE_PJAX] = $this->getBody();
         }
 
+        if (isset($_GET['debug'])) {
+            see($aData);
+            die;
+        }
+
         return $aData;
     }
 

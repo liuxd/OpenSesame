@@ -46,7 +46,7 @@ class Router
     public static function route($sURI, $sAppPath)
     {
         $aTmp = explode('/', $sURI);
-        $sAction = ($aTmp[1]) ? : 'Home';
+        $sAction = ($aTmp[1] && $aTmp[1]{0} !== '?') ? $aTmp[1] : 'Home';
         $sControllerName = 'controller\\' . $sAction;
         $sControllerFile = $sAppPath . str_replace('\\', '/', $sControllerName) . '.php';
         require $sControllerFile;
