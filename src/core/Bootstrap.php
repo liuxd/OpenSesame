@@ -28,4 +28,9 @@ new Loader;
 set_error_handler('err');
 mb_internal_encoding("UTF-8");
 
+$oController = Router::route($_SERVER['REQUEST_URI'], APP_PATH);
+$oController->before();
+Output::handle($oController->handle(), $oController->outputType);
+$oController->after();
+
 # end of this file

@@ -11,6 +11,10 @@ class Loader
     {
         spl_autoload_register([__CLASS__, 'util']);
         spl_autoload_register([__CLASS__, 'model']);
+        
+        if (file_exists(VENDOR_PATH . 'autoload.php')) {
+            require VENDOR_PATH . 'autoload.php';
+        }
     }
 
     /**
