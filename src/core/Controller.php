@@ -38,12 +38,12 @@ class Controller implements IController
 
     protected function get($sName)
     {
-        return (isset($_GET[$sName])) ? $_GET[$sName] : '';
+        return (isset($_GET[$sName])) ? trim($_GET[$sName]) : '';
     }
 
     protected function post($sName)
     {
-        return (isset($_POST[$sName])) ? $_POST[$sName] : '';
+        return (isset($_POST[$sName])) ? trim($_POST[$sName]) : '';
     }
 
     public function getOutputType()
