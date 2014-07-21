@@ -49,7 +49,14 @@ class Router
         $sAction = ($aTmp[1] && $aTmp[1]{0} !== '?') ? $aTmp[1] : 'Home';
         $sControllerName = 'controller\\' . $sAction;
         $sControllerFile = $sAppPath . str_replace('\\', '/', $sControllerName) . '.php';
-        require $sControllerFile;
+
+        if (file_exists($sControllerFile)) {
+            require $sControllerFile;
+        } else {
+            $sControllerFile = $sAppPath . 'controller/NotFound.php';
+            require $sControllerFile;
+            $sControllerName = 'controller\\NotFound';
+        }
 
         return new $sControllerName;
     }
