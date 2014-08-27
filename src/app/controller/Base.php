@@ -15,7 +15,7 @@ class Base extends c\Controller
         $aConfig = c\Config::get('dsn');
         u\DB::getInstance($aConfig['data']);
         $aData = parent::handle();
-        $aData['data']['host'] = c\Config::get('static_host')['data'];
+        $aData['data']['host'] = "http://{$_SERVER['HTTP_HOST']}/www";
 
         return $aData;
     }
