@@ -1,6 +1,8 @@
 Open Sesame
 ============
 
+> PHP + SQLite开发的帐号管理工具。用PHP的内置服务器就可启动。
+
 ## 需求
 + PHP5.4+
 	+ mbstring
