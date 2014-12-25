@@ -2,6 +2,16 @@
     var w = window, l = location;
     var url_index = '/', url_list = '/Search/?';
 
+    function create_password(l) {
+        var x = '23456789abcdefghijkmnpqrstuvwxyz()', s = '';
+
+        for (var i = 0; i < l; i++) {
+            s += x.charAt(Math.ceil(Math.random() * 100000) % x.length);
+        }
+
+        return s;
+    }
+
     //列表页删除按钮
     $('.list_del_bt').each(function() {
         var value = $(this).attr('id');
@@ -116,20 +126,21 @@
 
     //生成密码按钮
     $('#pwd_bt').bind('click', function() {
-        var l = 14;
-        var x = '23456789abcdefghijkmnpqrstuvwxyz()', s = '';
         var field_name = $('#field_name');
-
-        for (var i = 0; i < l; i++) {
-            s += x.charAt(Math.ceil(Math.random() * 100000) % x.length);
-        }
+        password = create_password(14);
 
         if (field_name.val() === '') {
             field_name.attr('value', '密码');
         }
 
-        $('#field_value').prop('value', s);
+        $('#field_value').prop('value', password);
         $('#info_enter').click();
+    });
+
+    //弹出框生成密码按钮
+    $('#modify_pwd').bind('click', function() {
+        password = create_password(14);
+        $('#field_value_up').prop('value', password);
     });
 
     //生成默认密码按钮
