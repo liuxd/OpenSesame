@@ -21,7 +21,7 @@ class Detail extends Base
         $aFields = $oAccount->getAccountFields($iAccountID);
 
         $oUser = new m\User;
-        $sDefaultPassword = $oUser->getDefaultPassword();
+        $aDefaultPassword = $oUser->getDefaultPassword();
         $aEmails = $oUser->getEmails();
 
         foreach ($aFields as $k => $v) {
@@ -44,7 +44,7 @@ class Detail extends Base
             'form_action_updatefield' => c\Router::genURL('UpdateField'),
             'form_action_updateaccount' => c\Router::genURL('UpdateAccount'),
             'site_list' => json_encode($aSiteList),
-            'default_password' => $sDefaultPassword['data'],
+            'default_password' => $aDefaultPassword['data'],
             'emails' => $aEmails['data']
         ];
 

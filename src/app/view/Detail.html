@@ -21,7 +21,17 @@
         <input type="button" value="生成随机密码" class="btn btn-warning" id="pwd_bt" />
 
         <?php if(!empty($default_password)):?>
-        <input type="button" value="生成默认密码" class="btn btn-info" id="pwd_bt_default" data="<?=$default_password?>" />
+        <div class="btn-group">
+            <a class="btn btn-success dropdown-toggle" data-toggle="dropdown" href="#">
+                生成常用密码
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <?php foreach ($default_password as $password):?>
+                <li><a class="default_password" href="#" data="<?=$password?>"><?=$password?></a></li>
+                <?php endforeach;?>
+            </ul>
+        </div>
         <?php endif;?>
 
         <?php if(!empty($emails)):?>

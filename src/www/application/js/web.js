@@ -60,6 +60,17 @@
         });
     });
 
+    //单页选择常用密码
+    $('.default_password').each(function() {
+        var default_password = $(this).attr('data');
+
+        $($(this)).bind('click', function() {
+            $('#field_name').prop('value', '密码');
+            $('#field_value').prop('value', default_password);
+            $('#info_enter').click();
+        });
+    });
+
     //单页查看按钮
     $('.info_show_bt').each(function() {
         var value = $(this).attr('id');
@@ -141,14 +152,6 @@
     $('#modify_pwd').bind('click', function() {
         password = create_password(14);
         $('#field_value_up').prop('value', password);
-    });
-
-    //生成默认密码按钮
-    $('#pwd_bt_default').bind('click', function() {
-        var v = $(this).attr('data');
-        $('#field_name').prop('value', '密码');
-        $('#field_value').prop('value', v);
-        $('#info_enter').click();
     });
 
     //显示添加网站的表单

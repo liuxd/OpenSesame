@@ -8,7 +8,7 @@ class User
 {
     /**
      * 获得用户的默认使用的密码。
-     * @return string
+     * @return array
      */
     public function getDefaultPassword()
     {

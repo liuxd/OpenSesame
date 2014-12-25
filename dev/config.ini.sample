@@ -2,7 +2,9 @@
 dsn=sqlite:/tmp/pass.db
 
 ;用户最常用的密码，方便录入新帐号信息。
-default_password=123456
+[default_password]
+1=123456
+2=abcderf
 
 ;用户常用的邮箱列表，方便录入新帐号信息。
 [often_emails]
