@@ -36,6 +36,8 @@ class Router
         } else {
             header('Location:' . $sURL);
         }
+
+        exit;
     }
 
     /**
