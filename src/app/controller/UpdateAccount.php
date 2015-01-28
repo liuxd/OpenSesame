@@ -9,7 +9,7 @@ class UpdateAccount extends Base
     public function run()
     {
         $sAccountName = $this->post('account_name');
-        $sAccountURL = 'http://' . $this->post('account_url');
+        $sAccountURL = 'http://' . parse_url($this->post('account_url'))['host'];
         $iAccountID = $this->post('account_id');
 
         (new m\Account)->update($sAccountName, parse_url($sAccountURL)['host'], $iAccountID, false);
