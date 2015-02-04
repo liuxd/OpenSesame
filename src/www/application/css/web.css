@@ -9,7 +9,7 @@ body {
 }
 
 input, button, select, textarea {
-    font-family: 'Monaco', cursive;
+    font-family: 'Monaco', cursive, 微软雅黑;
 }
 
 .footer {
