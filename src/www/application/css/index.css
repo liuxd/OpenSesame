@@ -1,10 +1,10 @@
 body, .footer {
     background: #444 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAB9JREFUeNpi/P//PwM6YGLAAuCCmpqacC2MRGsHCDAA+fIHfeQbO8kAAAAASUVORK5CYII=);
-    font-family: Monaco, Arial;
+    font-family: Monaco, Arial, 微软雅黑;
 }
 
 input, button, select, textarea {
-    font-family: Monaco, Arial;
+    font-family: Monaco, Arial, 微软雅黑;
 }
 
 .cw, a {
@@ -73,7 +73,7 @@ a:hover {
     height: 20px;
     padding: 10px 5px;
     float: left;
-    font: bold 15px Monaco, Arial;;
+    font: bold 15px Monaco, Arial, 微软雅黑;
     border: 0;
     background: #eee;
     -moz-border-radius: 3px 0 0 3px;
@@ -116,7 +116,7 @@ a:hover {
     cursor: pointer;
     height: 40px;
     width: 110px;
-    font: bold 15px/40px Monaco, Arial;;
+    font: bold 15px/40px Monaco, Arial, 微软雅黑;
     color: #fff;
     text-transform: uppercase;
     background: #d83c3c;
