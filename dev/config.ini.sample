@@ -10,7 +10,3 @@ dsn=sqlite:/tmp/pass.db
 [often_emails]
 1=email1@gmail.com
 2=email2@163.com
-
-;使用用户的基本信息
-[user]
-email=email@gmail.com

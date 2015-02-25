@@ -9,11 +9,9 @@ class Home extends Base
 {
     public function run()
     {
-        $sEmail = c\Config::get('user')['data']['email'];
         $aData = [
             'page_title' => 'Open Sesame',
             'form_action_add' => c\Router::genURL('AddAccount'),
-            'gravatar' => u\Gravatar::getGravatarURL($sEmail, 30),
             'site_total' => (new m\Account)->getTotal(),
             'recomm' => (new m\Recommand)->get(4)
         ];
