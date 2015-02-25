@@ -65,7 +65,10 @@
         var default_password = $(this).attr('data');
 
         $($(this)).bind('click', function() {
-            $('#field_name').prop('value', '密码');
+            if ($('#field_name').val() === '') {
+                $('#field_name').prop('value', '密码');
+            }
+
             $('#field_value').prop('value', default_password);
             $('#info_enter').click();
         });
