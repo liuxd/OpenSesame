@@ -45,8 +45,6 @@ class Str
      */
     public static function partCover($str, $start_length, $end_length, $star_limit = 20, $symbol = '*')
     {
-
-
         $limit = $start_length + $end_length - 1;
 
         if (!isset($str{$limit})) {
