@@ -26,9 +26,10 @@ class Str
 
         $i = 0;
         $output = '';
+        $total = strlen($all) - 1;
 
         while ($i < $length) {
-            $output .= $all{rand(0, 61)};
+            $output .= $all{rand(0, $total)};
             $i++;
         }
 
@@ -69,8 +70,8 @@ class Str
         $head = '';
         $tail = '';
 
-        $head = mb_substr($str, 0, 2);
-        $tail = mb_substr($str, -1);
+        $head = mb_substr($str, 0, $start_length);
+        $tail = mb_substr($str, -$end_length);
 
         $output = $head . $star . $tail;
 
