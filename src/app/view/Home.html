@@ -3,11 +3,11 @@
 
 <!-- 报错信息 -->
 <?php if (isset($error)):?>
-<div class="alert alert-error" style="margin: 20px"><?=$error;?></div>
+<div class="alert alert-error error"><?=$error;?></div>
 <?php endif;?>
 
 <!-- 头部表单 -->
-<div class="navbar-fixed-top" id="add_input" style="display : none">
+<div class="navbar-fixed-top" id="add_input">
     <form class="well form-inline" action="<?=$form_action_add?>" method="post" autocomplete="off" >
         <input type="text" class="input-large" placeholder="网站名称" name="name">
         <input type="text" class="input-large" placeholder="网址" name="url">
@@ -15,17 +15,17 @@
     </form>
 </div>
 
-<div class="navbar-fixed-top" style="width : 50px">
+<div class="navbar-fixed-top">
     <button type="button" class="btn btn-primary btn-small" id="add_pull" >+</button>
 </div>
 
 <!-- 搜索区 -->
 <div class="container-fluid">
     <div class="row-fluid">
-        <div style="margin:10%">
+        <div id="search_area">
 
             <!-- logo -->
-            <h1 class="form-signin-heading span5 offset4 cw" style="font-family: 'Risque', cursive" title="<?=$site_total;?>" id="logo">
+            <h1 class="form-signin-heading span5 offset4 cw" id="logo" title="<?=$site_total;?>" id="logo">
                 <img src='<?=$host?>/application/img/web.png' width=90 height=90 id="icon">
                 Open Sesame
             </h1>
@@ -38,7 +38,7 @@
                 </div>
             </div>
 
-            <h4 class="controls-row span9 offset3 cw" style="margin-top: 30px">推荐</h4>
+            <h4 class="controls-row span9 offset3 cw" id="recommand">推荐</h4>
 
             <!-- 推荐帐号 -->
             <div class="controls-row span8 offset3">

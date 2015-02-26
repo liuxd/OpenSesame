@@ -8,7 +8,7 @@
 </div>
 
 <?php if (isset($error)):?>
-<div class="alert alert-error" style="margin: 0 20px 20px 20px"><?=$error;?></div>
+<div class="alert alert-error"><?=$error;?></div>
 <?php endif;?>
 
 <div class="container-fluid">
@@ -80,7 +80,7 @@
 </div>
 
 <!--查看属性-->
-<div class="modal" id="popup" style="display:none">
+<div class="modal" id="popup">
     <div class="modal-header">
         <a class="close" data-dismiss="modal">×</a>
         <h3>你要的东西在这里</h3>
@@ -92,7 +92,7 @@
 </div>
 
 <!--修改属性-->
-<div class="modal" id="modify" style="display:none">
+<div class="modal" id="modify">
     <div class="modal-header">
         <a class="close" data-dismiss="modal">×</a>
         <h3>修改属性 <button id="modify_pwd" class="btn btn-danger" type="button">生成密码</button></h3>
@@ -114,7 +114,7 @@
 </div>
 
 <!--修改帐号基本信息-->
-<div class="modal" id="modify-base" style="display:none">
+<div class="modal" id="modify-base">
     <div class="modal-header">
         <a class="close" data-dismiss="modal">×</a>
         <h3>修改帐号基本属性</h3>

@@ -157,3 +157,23 @@ a:hover {
     border: 0;
     padding: 0;
 }
+
+.error {
+    margin: 20px;
+}
+
+#add_input {
+    display: none;
+}
+
+#search_area {
+    margin: 10%;
+}
+
+#logo {
+    font-family: 'Risque', cursive;
+}
+
+#recommand {
+    margin-top: 30px;
+}
