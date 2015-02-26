@@ -33,7 +33,7 @@
             <!-- 搜索框+按钮 -->
             <div class="controls-row span9 offset3">
                 <div class="form-wrapper cf">
-                    <input type="text" name="site" id="search" autocomplete="off" placeholder="骚年，你想知道什么？" x-webkit-speech lang="zh-CN" x-webkit-grammar="bUIltin:search" />
+                    <input type="text" name="site" id="search" autocomplete="off" placeholder="骚年，你想知道什么？" />
                     <button id="search_bt">芝麻开门</button>
                 </div>
             </div>
@@ -70,9 +70,4 @@
                 $(this).trigger('stopRumble');
             }
     );
-
-    Echo.init({
-        offset: 30,
-        throttle: 30
-    });
 </script>

@@ -85,7 +85,7 @@ class Account
             $iRowID = $aResult['rowid'];
             $aData = [
                 'valid' => self::STATUS_VALID,
-                ];
+            ];
             u\DB::update(self::TABLE_NAME, 'WHERE rowid = ' . $iRowID, $aData);
             return $iRowID;
         }
