@@ -11,6 +11,7 @@ class Account
     const STATUS_UNVALID = 0;
     const ENCRYPT_SALT_PREFIX_LENGTH = 3;
     const ENCRYPT_SALT_SUFFIX_LENGTH = 4;
+    const COMPRESS_LEVEL = 9;
 
     public function getAllAccount()
     {
@@ -44,7 +45,8 @@ class Account
         $aResult = u\DB::getList($sSQL, [$iAccountID]);
 
         foreach ($aResult as $k => $v) {
-            $aResult[$k]['value'] = $sRealValue = $this->decrypt($v['value']);
+            $aResult[$k]['value'] = $sRealValue = $this->decrypt(gzinflate($v['value']));
+            $aResult[$k]['name'] =gzinflate($v['name']);
 
             if (substr($sRealValue, 0, 5) === 'link:') {
                 $sSQLAccount = 'SELECT rowid FROM ' . self::TABLE_NAME;
@@ -110,8 +112,8 @@ class Account
     public function addField($sName, $sValue, $iAccountID)
     {
         $aData = [
-            'name' => $sName,
-            'value' => $this->encrypt($sValue),
+            'name' => gzdeflate($sName, self::COMPRESS_LEVEL),
+            'value' => gzdeflate($this->encrypt($sValue), self::COMPRESS_LEVEL),
             'parent' => $iAccountID,
             'valid' => self::STATUS_VALID
         ];
