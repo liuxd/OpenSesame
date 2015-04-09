@@ -46,7 +46,7 @@ class Account
 
         foreach ($aResult as $k => $v) {
             $aResult[$k]['value'] = $sRealValue = $this->decrypt(gzinflate($v['value']));
-            $aResult[$k]['name'] =gzinflate($v['name']);
+            $aResult[$k]['name'] = base64_decode(gzinflate($v['name']));
 
             if (substr($sRealValue, 0, 5) === 'link:') {
                 $sSQLAccount = 'SELECT rowid FROM ' . self::TABLE_NAME;
@@ -112,7 +112,7 @@ class Account
     public function addField($sName, $sValue, $iAccountID)
     {
         $aData = [
-            'name' => gzdeflate($sName, self::COMPRESS_LEVEL),
+            'name' => gzdeflate(base64_encode($sName), self::COMPRESS_LEVEL),
             'value' => gzdeflate($this->encrypt($sValue), self::COMPRESS_LEVEL),
             'parent' => $iAccountID,
             'valid' => self::STATUS_VALID
@@ -130,9 +130,10 @@ class Account
      */
     public function update($sName, $sValue, $iRowID, $bEncrypt = true)
     {
+        $name= $bEncrypt ? base64_encode($sName) : $sName;
         $value = $bEncrypt ? $this->encrypt($sValue) : $sValue;
         $aData = [
-            'name' => gzdeflate($sName, self::COMPRESS_LEVEL),
+            'name' => gzdeflate($name, self::COMPRESS_LEVEL),
             'value' => gzdeflate($value, self::COMPRESS_LEVEL)
         ];
         return u\DB::update(self::TABLE_NAME, 'WHERE rowid = ' . $iRowID, $aData);
