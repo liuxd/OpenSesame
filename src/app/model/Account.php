@@ -130,9 +130,10 @@ class Account
      */
     public function update($sName, $sValue, $iRowID, $bEncrypt = true)
     {
+        $value = $bEncrypt ? $this->encrypt($sValue) : $sValue;
         $aData = [
-            'name' => $sName,
-            'value' => $bEncrypt ? $this->encrypt($sValue) : $sValue
+            'name' => gzdeflate($sName, self::COMPRESS_LEVEL),
+            'value' => gzdeflate($value, self::COMPRESS_LEVEL)
         ];
         return u\DB::update(self::TABLE_NAME, 'WHERE rowid = ' . $iRowID, $aData);
     }
