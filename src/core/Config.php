@@ -54,10 +54,10 @@ class Config
             return self::$aConfig;
         }
 
-        $sConfigFile = realpath('./') . DS . 'config.ini';
+        $sConfigFile = ROOT_PATH . 'config.ini';
 
         if (!is_readable($sConfigFile)) {
-            $sConfigFile = realpath('./') . DS . 'config-dev.ini';
+            $sConfigFile = ROOT_PATH . 'config-dev.ini';
         }
 
         if (!is_readable($sConfigFile)) {
