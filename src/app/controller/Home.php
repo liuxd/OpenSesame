@@ -9,10 +9,17 @@ class Home extends Base
 {
     public function run()
     {
+        $oAccount = new m\Account;
+        $iTotal = $oAccount->getTotal();
+
+        if ($iTotal === false) {
+            $oAccount->createTable();
+        }
+
         $aData = [
             'page_title' => 'Open Sesame',
             'form_action_add' => c\Router::genURL('AddAccount'),
-            'site_total' => (new m\Account)->getTotal(),
+            'site_total' => $iTotal,
             'recomm' => (new m\Recommand)->get(4)
         ];
 

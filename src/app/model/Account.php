@@ -143,7 +143,9 @@ class Account
     {
         $sSQL = 'SELECT count(*) as total FROM ' . self::TABLE_NAME;
         $sSQL .= ' WHERE valid=' . self::STATUS_VALID . ' AND parent=0 Limit 1';
-        return u\DB::getOne($sSQL)['total'];
+        $aResult = u\DB::getOne($sSQL);
+        $mResult = ($aResult === false) ? false : $aResult['total'];
+        return $mResult;
     }
 
     /**

@@ -67,7 +67,12 @@ class DB
      */
     public static function getOne($sSQL, $aParams = [])
     {
-        $o = self::$oDB->prepare($sSQL);
+        try {
+            $o = self::$oDB->prepare($sSQL);
+        } catch (\Exception $e) {
+            return false;
+        }
+
         $o->execute($aParams);
         return $o->fetch(PDO::FETCH_ASSOC);
     }
