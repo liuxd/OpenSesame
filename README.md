@@ -6,6 +6,7 @@ Open Sesame
 ## 需求
 + PHP5.4+
 	+ mbstring
+    + zlib
 
 ## 安装
 
