@@ -89,13 +89,14 @@ class DB
         $aTmp = [];
 
         foreach ($aData as $key => $value) {
-            $aTmp[] = "$key='$value'";
+            $aTmp[] = "$key=?";
         }
 
         $sKeys = implode(',', $aTmp);
         $sSQL = "update $sTable set $sKeys $sWhere";
-
-        return self::$oDB->exec($sSQL);
+        $aParsedData = self::parseArray($aData);
+        $o = self::$oDB->prepare($sSQL);
+        return $o->execute($aParsedData['values']);
     }
 
     /**
