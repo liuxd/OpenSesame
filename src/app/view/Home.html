@@ -38,9 +38,10 @@
                 </div>
             </div>
 
+            <?php if (!empty($recomm)):?>
+            <!-- 推荐帐号 -->
             <h4 class="controls-row span9 offset3 cw" id="recommand">推荐</h4>
 
-            <!-- 推荐帐号 -->
             <div class="controls-row span8 offset3">
                 <?php foreach($recomm as $key => $value):?>
                 <div class="span2 recommand">
@@ -48,6 +49,7 @@
                 </div>
                 <?php endforeach;?>
             </div>
+            <?php endif;?>
         </div>
     </div>
 </div>
