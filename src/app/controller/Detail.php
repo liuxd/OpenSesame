@@ -36,7 +36,7 @@ class Detail extends Base
         }
 
         $aData = [
-            'page_title' => $aDetail['name'],
+            'page_title' => 'Open Sesame - ' . $aDetail['name'],
             'app' => $aDetail,
             'fields' => $aFields,
             'form_action_add' => c\Router::genURL('AddField'),
