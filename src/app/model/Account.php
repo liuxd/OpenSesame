@@ -122,13 +122,29 @@ class Account
     }
 
     /**
-     * 更新一条数据。可以是帐号，也可以是一个帐号的属性。
+     * 可以是帐号。
      * @param string $sName 名称。
      * @param string $sValue 值。
      * @param int $iRowID 主键。
      * @return bool
      */
-    public function update($sName, $sValue, $iRowID, $bEncrypt = true)
+    public function updateAccount($sName, $sValue, $iRowID, $bEncrypt = true)
+    {
+        $aData = [
+            'name' => $sName,
+            'value' => $sValue
+        ];
+        return u\DB::update(self::TABLE_NAME, 'WHERE rowid = ' . $iRowID, $aData);
+    }
+
+    /**
+     * 更新一个帐号的属性。
+     * @param string $sName 名称。
+     * @param string $sValue 值。
+     * @param int $iRowID 主键。
+     * @return bool
+     */
+    public function updateField($sName, $sValue, $iRowID, $bEncrypt = true)
     {
         $name= $bEncrypt ? base64_encode($sName) : $sName;
         $value = $bEncrypt ? $this->encrypt($sValue) : $sValue;

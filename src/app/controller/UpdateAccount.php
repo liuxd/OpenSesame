@@ -12,7 +12,7 @@ class UpdateAccount extends Base
         $sAccountURL = 'http://' . parse_url($this->post('account_url'))['host'];
         $iAccountID = $this->post('account_id');
 
-        (new m\Account)->update($sAccountName, parse_url($sAccountURL)['host'], $iAccountID, false);
+        (new m\Account)->updateAccount($sAccountName, parse_url($sAccountURL)['host'], $iAccountID, false);
         c\Router::redirect(c\Router::genURL('Detail', ['id' => $iAccountID]));
     }
 }

@@ -13,7 +13,7 @@ class UpdateField extends Base
         $iRowID = $this->post('field_id');
         $iAccountID = $this->post('account_id');
 
-        (new m\Account)->update($sFieldName, $sFieldValue, $iRowID);
+        (new m\Account)->updateField($sFieldName, $sFieldValue, $iRowID);
         c\Router::redirect(c\Router::genURL('Detail', ['id' => $iAccountID]));
     }
 }
