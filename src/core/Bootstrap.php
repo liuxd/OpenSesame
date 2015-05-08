@@ -4,6 +4,13 @@
  */
 namespace core;
 
+if (php_sapi_name() === 'cli') {
+    echo 'Open Sesame 4.2.1', PHP_EOL;
+    echo 'Powered by liuxd', PHP_EOL;
+    echo 'Fork me on github: https://github.com/liuxd', PHP_EOL;
+    die;
+}
+
 date_default_timezone_set('Asia/Shanghai');
 error_reporting(-1);
 
