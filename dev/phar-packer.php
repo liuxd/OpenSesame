@@ -1,3 +1,4 @@
+#!/usr/bin/env php
 <?php
 /**
  * 将PHP项目文件夹打包程“.phar”格式的压缩包。
@@ -13,7 +14,7 @@ $opts = getopt('', $longopts);
  
 $name = (isset($opts['name'])) ? $opts['name'] . '.phar' : '';
 $path = (isset($opts['path'])) ? $opts['path'] : '';
-$init = (isset($opts['init'])) ? $opts['init'] : '';
+$init = (isset($opts['init'])) ? $opts['init'] : 'index.php';
  
 if (empty($name) && empty($path) && empty($init)) {
 echo <<<HELP
@@ -25,13 +26,12 @@ eg : php phar-packer.php --name=test --path=/project/to/ --init=index.php
 --path    the path of the project.
 --init    the init file.
  
- 
 HELP;
 echo PHP_EOL;
 return;
 }
  
-if (empty($name) || empty($path) || empty($init)) {
+if (empty($name) || empty($path)) {
     echo 'Options invalid!' . PHP_EOL;
     return;
 }
