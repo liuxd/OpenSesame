@@ -44,15 +44,16 @@ class Router
      * URL parser.
      * @param string $sURI The request uri.
      * @param string $sAppPath The application's path.
+     * @param string $sStatic The front end file's url parameter name.
      */
-    public static function route($sURI, $sAppPath)
+    public static function route($sURI, $sAppPath, $sStaticName = 'static')
     {
-        if (isset($_GET['static'])) {
-            $sFile = WWW_PATH . $_GET['static'];
+        if (isset($_GET[$sStaticName])) {
+            $sFile = WWW_PATH . $_GET[$sStaticName];
             $aFileInfo = pathinfo($sFile);
             self::sendMimeType($aFileInfo['extension']);
             readFile($sFile);
-            die;
+            return false;
         }
 
         $aTmp = explode('/', $sURI);
