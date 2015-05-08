@@ -8,8 +8,6 @@ use model as m;
 
 class Base extends c\Controller
 {
-    public $bAuth = true;
-
     public function handle()
     {
         $aConfig = c\Config::get('dsn');
