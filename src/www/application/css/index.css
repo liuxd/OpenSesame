@@ -35,7 +35,7 @@ a:hover {
     font-family: 'Risque';
     font-style: normal;
     font-weight: 400;
-    src: local('Risque'), local('Risque-Regular'), url(../../vendor/google-font/risque/a8AGA5XaSxGdEu0gkNB0cg.woff) format('woff');
+    src: local('Risque'), local('Risque-Regular'), url(?static=/vendor/google-font/risque/a8AGA5XaSxGdEu0gkNB0cg.woff) format('woff');
 }
 
 .cf:before, .cf:after{
