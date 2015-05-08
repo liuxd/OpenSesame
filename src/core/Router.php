@@ -91,8 +91,13 @@ class Router
         $aFileInfo = pathinfo($sFile);
 
         if (isset($aFileInfo['extension'])) {
-            $sMimeType = $aMimeTypeList[$aFileInfo['extension']];
-            header('Content-Type:' . $sMimeType);
+            $aFileExt = $aFileInfo['extension'];
+            $sMimeType = isset($aMimeTypeList[$aFileExt]) ? $aMimeTypeList[$aFileExt] : '';
+
+            if ($sMimeType !== '') {
+                header('Content-Type:' . $sMimeType);
+            }
+
             readFile($sFile);
         }
 
