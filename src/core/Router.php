@@ -47,6 +47,14 @@ class Router
      */
     public static function route($sURI, $sAppPath)
     {
+        if (isset($_GET['static'])) {
+            $sFile = WWW_PATH . $_GET['static'];
+            $aFileInfo = pathinfo($sFile);
+            self::sendMimeType($aFileInfo['extension']);
+            readFile($sFile);
+            die;
+        }
+
         $aTmp = explode('/', $sURI);
         $sAction = ($aTmp[1] && $aTmp[1]{0} !== '?') ? $aTmp[1] : 'Home';
         $sControllerName = 'controller\\' . $sAction;
@@ -61,6 +69,24 @@ class Router
         }
 
         return new $sControllerName;
+    }
+
+    /**
+     * Send mime type according to the file extension name.
+     * @param string $sFileExt The extension name of this static file.
+     */
+    public static function sendMimeType($sFileExt)
+    {
+        $aMimeTypeList = [
+            'js' => 'text/javascript',
+            'css' => 'text/css',
+            'jpg' => 'image/jpeg',
+            'png' => 'image/x-png',
+            'swf' => 'application/x-shockwave-flash'
+        ];
+
+        $sMimeType = $aMimeTypeList[$sFileExt];
+        header('Content-Type:' . $sMimeType);
     }
 }
 
