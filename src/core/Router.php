@@ -44,18 +44,10 @@ class Router
      * URL parser.
      * @param string $sURI The request uri.
      * @param string $sAppPath The application's path.
-     * @param string $sStatic The front end file's url parameter name.
+     * @return Controller
      */
-    public static function route($sURI, $sAppPath, $sStaticName = 'static')
+    public static function route($sURI, $sAppPath)
     {
-        if (isset($_GET[$sStaticName])) {
-            $sFile = WWW_PATH . $_GET[$sStaticName];
-            $aFileInfo = pathinfo($sFile);
-            self::sendMimeType($aFileInfo['extension']);
-            readFile($sFile);
-            return false;
-        }
-
         $aTmp = explode('/', $sURI);
         $sAction = ($aTmp[1] && $aTmp[1]{0} !== '?') ? $aTmp[1] : 'Home';
         $sControllerName = 'controller\\' . $sAction;
@@ -73,11 +65,21 @@ class Router
     }
 
     /**
-     * Send mime type according to the file extension name.
-     * @param string $sFileExt The extension name of this static file.
+     * Response the front end files.
+     * @param string $sStaticName The front end file's url parameter name.
      */
-    public static function sendMimeType($sFileExt)
+    public static function responseFrontEndFiles($sStaticName)
     {
+        if (!isset($_GET[$sStaticName])) {
+            return false;
+        }
+
+        $sFile = WWW_PATH . $_GET[$sStaticName];
+
+        if (!file_exists($sFile)) {
+            return false;
+        }
+
         $aMimeTypeList = [
             'js' => 'text/javascript',
             'css' => 'text/css',
@@ -86,8 +88,15 @@ class Router
             'swf' => 'application/x-shockwave-flash'
         ];
 
-        $sMimeType = $aMimeTypeList[$sFileExt];
-        header('Content-Type:' . $sMimeType);
+        $aFileInfo = pathinfo($sFile);
+
+        if (isset($aFileInfo['extension'])) {
+            $sMimeType = $aMimeTypeList[$aFileInfo['extension']];
+            header('Content-Type:' . $sMimeType);
+            readFile($sFile);
+        }
+
+        die;
     }
 }
 
