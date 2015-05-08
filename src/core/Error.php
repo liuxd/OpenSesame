@@ -3,7 +3,7 @@
  * Error Handler.
  */
 
-function err($iError, $sErrStr, $sErrFile, $sErrLine)
+function errHandler($iError, $sErrStr, $sErrFile, $sErrLine)
 {
     $aMsg[] = 'NO : ' . $iError. PHP_EOL;
     $aMsg[] = 'Message : ' . strip_tags($sErrStr) . PHP_EOL;
