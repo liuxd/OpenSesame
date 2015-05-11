@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 phpcs='vendor/squizlabs/php_codesniffer/scripts/phpcs'
 
