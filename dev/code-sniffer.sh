@@ -11,3 +11,5 @@ $phpcs ../src/app --standard=PSR2
 $phpcs ../src/core --standard=PSR2
 $phpcs ../src/util --standard=PSR2
 $phpcs ../src/index.php --standard=PSR2
+
+echo 'Finished!'

@@ -4,7 +4,7 @@
  */
 
 // Just for CLI mode.
-if (php_sapi_name() === 'cli') {
+if (PHP_SAPI === 'cli') {
     echo 'Open Sesame 4.2.2', PHP_EOL;
     echo 'Powered by liuxd', PHP_EOL;
     echo 'Fork me on github: https://github.com/liuxd', PHP_EOL;
@@ -32,7 +32,5 @@ $sOutputType = $oController->getOutputType();
 // Output the result data.
 \core\Output::handle($aData, $sOutputType);
 
-// Run after hook.
-$oController->after();
-
+// Run after hook.  $oController->after(); 
 # end of this file
