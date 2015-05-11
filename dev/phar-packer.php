@@ -16,7 +16,7 @@ $name = (isset($opts['name'])) ? $opts['name'] . '.phar' : '';
 $path = (isset($opts['path'])) ? $opts['path'] : '';
 $init = (isset($opts['init'])) ? $opts['init'] : 'index.php';
  
-if (empty($name) && empty($path) && empty($init)) {
+if (empty($name) && empty($path)) {
 echo <<<HELP
 phar packer 1.0
  
