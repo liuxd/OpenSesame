@@ -18,7 +18,7 @@
     php phar-packer.php --name=os --path=../src/
     nohup php -S 0.0.0.0:8000 os.phar > /dev/null &
 
-可以访问<localhost:8000>了。
+可以访问<http://localhost:8000>了。
 
 ## 开发
 
@@ -28,8 +28,9 @@
 + 例子：<http://localhost:8000?debug=1>
 
 #### - 代码规范 -
-+ 说明：本项目完全遵循`PSR-1`、`PSR-2`规范。
-+ 扫描：在`dev/`目录下运行`composer.phar install`可以安装代码扫描工具。运行`./code-sniffer.sh`可以扫描本项目PHP代码。
++ 说明：本项目PHP代码完全遵循`PSR-1`、`PSR-2`规范。
++ 安装：在`dev/`目录下运行`composer.phar install`安装代码扫描工具。
++ 运行：`./code-sniffer.sh`可以扫描本项目PHP代码。
 
 #### - 打包发布 -
 + 需求：由于要打包成`phar`格式的程序包，所以需要将`php.ini`的`phar.readonly`设置为`Off`。
