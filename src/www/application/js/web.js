@@ -127,17 +127,6 @@
         }
     });
 
-    //语音搜索
-    $('#search').bind('webkitspeechchange', function() {
-        var key = $('#search').val().replace(/\s+/g, "");
-        var url = url_list;
-
-        if (key) {
-            url += '&key=' + key;
-            l.href = url;
-        }
-    });
-
     //生成密码按钮
     $('#pwd_bt').bind('click', function() {
         var field_name = $('#field_name');
