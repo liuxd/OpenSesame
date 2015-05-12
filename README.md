@@ -1,7 +1,9 @@
-Open Sesame
+[Open Sesame](http://liuxd.github.io/open-sesame)
 ============
 
-> 使用`PHP`和`SQLite`开发的帐号管理工具。用PHP的内置服务器就可启动。
+## 概述
++ 使用`PHP`和`SQLite`开发的帐号管理工具。
++ 用PHP的内置服务器就可启动。
 
 ## 需求
 + PHP5.4+
