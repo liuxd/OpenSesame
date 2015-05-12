@@ -33,6 +33,6 @@ $sOutputType = $oController->getOutputType();
 \core\Output::handle($aData, $sOutputType);
 
 // Run after hook.  $oController->after(); 
-$oController->before();
+$oController->after();
 
 # end of this file
