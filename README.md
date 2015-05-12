@@ -18,7 +18,7 @@
     php phar-packer.php --name=os --path=../src/
     nohup php -S 0.0.0.0:8000 os.phar > /dev/null &
 
-可以访问`localhost:8000`了。
+可以访问<localhost:8000>了。
 
 ## 开发
 
