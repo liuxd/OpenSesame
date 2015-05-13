@@ -1,15 +1,16 @@
 #!/usr/bin/env bash
 
-phpcs='vendor/squizlabs/php_codesniffer/scripts/phpcs'
+cd ../src
 
-$phpcs ../src/app --standard=PSR1
-$phpcs ../src/core --standard=PSR1
-$phpcs ../src/util --standard=PSR1
-$phpcs ../src/index.php --standard=PSR1
+# The path of code sniffer.
+phpcs='../dev/vendor/squizlabs/php_codesniffer/scripts/phpcs'
 
-$phpcs ../src/app --standard=PSR2
-$phpcs ../src/core --standard=PSR2
-$phpcs ../src/util --standard=PSR2
-$phpcs ../src/index.php --standard=PSR2
+for target in app core util index.php;do
+    for mode in PSR1 PSR2;do
+        sniffer="$phpcs -p --colors --tab-width=4 --encoding=utf8 $target --standard=$mode"
+        echo $sniffer
+        $sniffer
+    done
+done
 
 echo 'Finished!'
