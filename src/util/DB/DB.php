@@ -35,7 +35,7 @@ class DB
      * Get list.
      * @param string $sSQL
      * @param array $aParams
-     * @return array 
+     * @return array
      */
     public static function getList($sSQL, $aParams = [])
     {
@@ -63,7 +63,7 @@ class DB
      * Get one record.
      * @param string $sSQL
      * @param array $aParams
-     * @return array 
+     * @return array
      */
     public static function getOne($sSQL, $aParams = [])
     {
