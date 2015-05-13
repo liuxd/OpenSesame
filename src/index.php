@@ -32,7 +32,7 @@ $sOutputType = $oController->getOutputType();
 // Output the result data.
 \core\Output::handle($aData, $sOutputType);
 
-// Run after hook.  $oController->after(); 
+// Run after hook.
 $oController->after();
 
 # end of this file
