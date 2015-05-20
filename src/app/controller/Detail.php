@@ -28,6 +28,8 @@ class Detail extends Base
             $aFields[$k]['display'] = u\Str::partCover($v['value'], 2, 1);
         }
 
+        sort($aFields);
+
         $aAccountAll = $oAccount->getAllAccount();
         $aSiteList = [];
 
