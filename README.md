@@ -1,6 +1,8 @@
 [Open Sesame](http://liuxd.github.io/open-sesame)
 ============
 
+[![Join the chat at https://gitter.im/liuxd/open-sesame](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/liuxd/open-sesame?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ## 概述
 + 使用`PHP`和`SQLite`开发的帐号管理工具。
 + 用PHP的内置服务器就可启动。
