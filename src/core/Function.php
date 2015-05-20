@@ -4,6 +4,9 @@
  */
 namespace core;
 
+/**
+ * Show variables with good style.
+ */
 function see()
 {
     $cnt = func_num_args();
@@ -71,7 +74,10 @@ function see()
     }
 }
 
-function ip()
+/**
+ * Get client IP.
+ */
+function getClientIP()
 {
     $sIP = '';
 
@@ -85,6 +91,18 @@ function ip()
     }
 
     return $sIP;
+}
+
+/**
+ * Echo message in CLI mode.
+ */
+function cecho()
+{
+    $aValues = func_get_args();
+
+    foreach ($aValues as $sValue) {
+        echo $sValue, PHP_EOL;
+    }
 }
 
 # end of this file
