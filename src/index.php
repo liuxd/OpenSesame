@@ -5,7 +5,7 @@
 
 // Just for CLI mode.
 if (PHP_SAPI === 'cli') {
-    echo 'Open Sesame 4.2.2', PHP_EOL;
+    echo 'Open Sesame 4.3.0', PHP_EOL;
     echo 'Powered by liuxd', PHP_EOL;
     echo 'Fork me on github: https://github.com/liuxd', PHP_EOL;
     die;
