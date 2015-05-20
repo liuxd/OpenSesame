@@ -7,7 +7,6 @@ namespace core;
 
 require 'core/Bootstrap.php';
 
-// Just for CLI mode.
 if (PHP_SAPI === 'cli') {
     cecho('Open Sesame 4.3.0');
     cecho('Powered by liuxd');
