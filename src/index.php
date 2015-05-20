@@ -8,7 +8,7 @@ namespace core;
 require 'core/Bootstrap.php';
 
 if (PHP_SAPI === 'cli') {
-    cecho('Open Sesame 4.3.0');
+    cecho('Open Sesame 4.3.1');
     cecho('Powered by liuxd');
     cecho('Fork me on github: https://github.com/liuxd');
 } else {
