@@ -26,6 +26,12 @@ class DB
             self::$oDB = new PDO($sDSN, $sUserName, $sPassword, $aOptions);
             self::$oDB->query('set names utf8');
             self::$oDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            if (!empty($aOptions)) {
+                foreach ($aOptions as $sKey => $sValue) {
+                    self::$oDB->setAttribute($sKey, $sValue);
+                }
+            }
         }
 
         return self::$oDB;
