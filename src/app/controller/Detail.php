@@ -30,6 +30,16 @@ class Detail extends Base
 
         sort($aFields);
 
+        $aFieldNames = array_map(function ($v) {
+            foreach ($v as $key => $value) {
+                if ($key !== 'name') {
+                    unset($v[$key]);
+                }
+            }
+
+            return $v;
+        }, $aFields);
+
         $aAccountAll = $oAccount->getAllAccount();
         $aSiteList = [];
 
@@ -46,6 +56,7 @@ class Detail extends Base
             'form_action_updatefield' => c\Router::genURL('UpdateField'),
             'form_action_updateaccount' => c\Router::genURL('UpdateAccount'),
             'site_list' => json_encode($aSiteList),
+            'field_names' => json_encode($aFieldNames),
             'default_password' => $aDefaultPassword['data'],
             'emails' => $aEmails['data']
         ];
