@@ -11,7 +11,7 @@ error_reporting(-1);
 $aCoreFiles = [
     'Const',
     'Config',
-    'Error',
+    'Handlers',
     'Function',
     'Interface',
     'Loader',
@@ -25,6 +25,7 @@ foreach ($aCoreFiles as $sCoreFile) {
 }
 
 new Loader;
-set_error_handler('errHandler');
+
+set_error_handler('Handler::errHandler');
 
 # end of this file
