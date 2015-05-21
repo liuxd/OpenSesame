@@ -25,6 +25,7 @@ foreach ($aCoreFiles as $sCoreFile) {
 }
 
 new Loader;
-set_error_handler('Handler::errHandler');
+set_error_handler('\core\Handlers::errorHandler');
+set_exception_handler('\core\Handlers::exceptionHandler');
 
 # end of this file
