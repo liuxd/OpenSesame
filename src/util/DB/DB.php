@@ -18,23 +18,22 @@ class DB
      * @param string $sUserName
      * @param string $sPassword
      * @param array $aOptions
-     * @return PDO
      */
-    public static function getInstance($sDSN = '', $sUserName = '', $sPassword = '', $aOptions = [])
+    public static function connect($sDSN = '', $sUserName = '', $sPassword = '', $aOptions = [])
     {
-        if (is_null(self::$oDB)) {
-            self::$oDB = new PDO($sDSN, $sUserName, $sPassword, $aOptions);
-            self::$oDB->query('set names utf8');
-            self::$oDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-            if (!empty($aOptions)) {
-                foreach ($aOptions as $sKey => $sValue) {
-                    self::$oDB->setAttribute($sKey, $sValue);
-                }
-            }
+        if (!is_null(self::$oDB)) {
+            return false;
         }
 
-        return self::$oDB;
+        self::$oDB = new PDO($sDSN, $sUserName, $sPassword, $aOptions);
+        self::$oDB->query('set names utf8');
+        self::$oDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        if (!empty($aOptions)) {
+            foreach ($aOptions as $sKey => $sValue) {
+                self::$oDB->setAttribute($sKey, $sValue);
+            }
+        }
     }
 
     /**
