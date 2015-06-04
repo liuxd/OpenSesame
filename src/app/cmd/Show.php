@@ -3,12 +3,29 @@
 namespace cmd;
 
 use core as c;
+use model as m;
+use util as u;
 
 class Show
 {
     public function run()
     {
-        // @todo do something you like.
+        $aConfig = c\Config::get('dsn');
+        u\DB::connect($aConfig['data']);
+
+        global $argv;
+        $iAccountID = $argv[2];
+        $oAccount = new m\Account;
+
+        $aDetail = $oAccount->getAccountDetail($iAccountID);
+        $aFields = $oAccount->getAccountFields($iAccountID);
+
+        c\cecho($aDetail['name'], 'error');
+
+        foreach ($aFields as $aField) {
+            $sMsg = str_pad($aField['name'], 15) . $aField['value'];
+            c\cecho($sMsg, 'notice');
+        }
     }
 }
 
