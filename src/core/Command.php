@@ -49,6 +49,40 @@ class {$controller_name} extends Base
 EOF;
         file_put_contents(APP_PATH . 'controller' . DS . $controller_name . '.php', $template);
     }
+
+    /**
+     * Create cmd.
+     */
+    public static function createCmd()
+    {
+        global $argv;
+        $cmd = $argv[2];
+        $cmd_folder = APP_PATH . 'cmd';
+
+        if (!is_dir($cmd_folder)) {
+            mkdir($cmd_folder);
+        }
+
+        $template = <<<EOF
+<?php
+
+namespace cmd;
+
+use core as c;
+
+class {$cmd}
+{
+    public function run()
+    {
+        // @todo do something you like.
+    }
+}
+
+# end of this file
+
+EOF;
+        file_put_contents(APP_PATH . 'cmd' . DS . $cmd . '.php', $template);
+    }
 }
 
 # end of this file.

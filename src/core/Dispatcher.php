@@ -19,6 +19,17 @@ function dispatch_cli($argv)
     if (Command::$cmd() !== false) {
         return true;
     }
+
+    $sCmdFile = APP_PATH . 'cmd' . DS . $cmd . '.php';
+
+    if (!file_exists($sCmdFile)) {
+        cecho('Invalid Command : ' . $cmd, 'error');
+    } else {
+        require $sCmdFile;
+        $classname = "\cmd\\" . $cmd;
+        $oCmd = new $classname;
+        $oCmd->run();
+    }
 }
 
 /**
