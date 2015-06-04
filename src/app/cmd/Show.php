@@ -23,7 +23,7 @@ class Show
         c\cecho($aDetail['name'], 'error');
 
         foreach ($aFields as $aField) {
-            $sMsg = str_pad($aField['name'], 15) . $aField['value'];
+            $sMsg = $aField['name'] . ' ---- ' . $aField['value'];
             c\cecho($sMsg, 'notice');
         }
     }
