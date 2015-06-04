@@ -94,15 +94,68 @@ function getClientIP()
 }
 
 /**
- * Echo message in CLI mode.
+ * Colorful echo.
+ * @param string $string The string you want to show.
+ * @param string $style Color theme.It can be:notic, info, error, system.
  */
-function cecho()
+function cecho($string, $style = 'info')
 {
-    $aValues = func_get_args();
-
-    foreach ($aValues as $sValue) {
-        echo $sValue, PHP_EOL;
+    if (PHP_SAPI !== 'cli') {
+        echo $string, "\n";
+        return;
     }
+
+    $colors = [
+        'info' => '1',
+        'notice' => '32',
+        'error' => '31',
+        'system' => '34',
+    ];
+
+    $string = addslashes($string);
+    $cmd = "echo \"\033[{$colors[$style]}m$string\033[0m\n\"";
+    $out = array();
+    exec($cmd, $out);
+
+    if (isset($out[0])) {
+        echo $out[0], "\n";
+    }
+}
+
+/**
+ * Run command in background.
+ * @param string $cmd The command to run.
+ * @param string $out The command's output file.
+ * @param string $pid The command's pid file.
+ */
+function exb($cmd, $out, $pid)
+{
+    $sig = sprintf('%s > %s 2>&1 & echo $! > %s', $cmd, $out, $pid);
+    exec($sig);
+}
+
+/**
+ * Get the size of terminal.
+ * @return array
+ */
+function get_console_size()
+{
+    $output = array();
+    exec('stty size', $output);
+
+    if (!isset($output[0])) {
+        return array(
+            'height' => 20,
+            'width' => 20,
+        );
+    }
+
+    $size = explode(' ', $output[0]);
+
+    return [
+        'height' => $size[0],
+        'width' => $size[1],
+    ];
 }
 
 # end of this file
