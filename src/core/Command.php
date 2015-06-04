@@ -77,7 +77,7 @@ class Command
     public static function createCmd()
     {
         global $argv;
-        $sCmdName = $argv[2];
+        $sCmdName = ucfirst($argv[2]);
 
         $sTemplateFile = CORE_PATH . 'template' . DS . 'cmd.template';
         $sTemplateOrigin = file_get_contents($sTemplateFile);
