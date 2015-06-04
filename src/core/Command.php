@@ -79,7 +79,7 @@ class Command
         global $argv;
         $sCmdName = $argv[2];
 
-        $sTemplateFile = CORE_PATH . 'template' . DS . 'controller.template';
+        $sTemplateFile = CORE_PATH . 'template' . DS . 'cmd.template';
         $sTemplateOrigin = file_get_contents($sTemplateFile);
         $sTemplate = str_replace('{$cmd}', $sCmdName, $sTemplateOrigin);
         $sCmdFile = APP_PATH . 'cmd' . DS . $sCmdName . '.php';
