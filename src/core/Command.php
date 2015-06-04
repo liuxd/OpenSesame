@@ -46,30 +46,29 @@ class Command
     public static function createController()
     {
         global $argv;
-        $controller_name = $argv[2];
+        $sControllerName = $argv[2];
 
-        $template = <<<EOF
-<?php
-namespace controller;
+        $sTemplateFile = CORE_PATH . 'template' . DS . 'controller.template';
+        $sTemplateOrigin = file_get_contents($sTemplateFile);
+        $sTemplate = str_replace('{$controller}', $sControllerName, $sTemplateOrigin);
+        $sControllerFile = APP_PATH . 'controller' . DS . $sControllerName . '.php';
 
-use core as c;
-use model as m;
+        if (file_exists($sControllerFile)) {
+            cecho('The controller has existed.', 'error');
+            die;
+        }
 
-class {$controller_name} extends Base
-{
-    public function run()
-    {
-    }
-}
+        $bResult = file_put_contents($sControllerFile, $sTemplate);
 
-# end of this file
+        if ($bResult) {
+            $sMsg = 'Success!';
+            $sMsgTheme = 'notice';
+        } else {
+            $sMsg = 'Failed!';
+            $sMsgTheme = 'error';
+        }
 
-EOF;
-        $file = APP_PATH . 'controller' . DS . $controller_name . '.php';
-        $result = file_put_contents($file, $template);
-        $msg = $result ? 'Success!' : 'Fail to create file :' . $file;
-        $msg_theme = $result ? 'notice' : 'error';
-        cecho($msg, $msg_theme);
+        cecho($sMsg, $sMsgTheme);
     }
 
     /**
@@ -78,36 +77,35 @@ EOF;
     public static function createCmd()
     {
         global $argv;
-        $cmd = $argv[2];
-        $cmd_folder = APP_PATH . 'cmd';
+        $sCmdName = $argv[2];
 
-        if (!is_dir($cmd_folder)) {
-            mkdir($cmd_folder);
+        $sTemplateFile = CORE_PATH . 'template' . DS . 'controller.template';
+        $sTemplateOrigin = file_get_contents($sTemplateFile);
+        $sTemplate = str_replace('{$cmd}', $sCmdName, $sTemplateOrigin);
+        $sCmdFile = APP_PATH . 'cmd' . DS . $sCmdName . '.php';
+
+        if (file_exists($sCmdFile)) {
+            cecho('The cmd has existed.', 'error');
+            die;
         }
 
-        $template = <<<EOF
-<?php
+        $sCmdPath = APP_PATH . 'cmd';
 
-namespace cmd;
+        if (!is_dir($sCmdFile)) {
+            mkdir($sCmdPath);
+        }
 
-use core as c;
+        $bResult = file_put_contents($sCmdFile, $sTemplate);
 
-class {$cmd}
-{
-    public function run()
-    {
-        // @todo do something you like.
-    }
-}
+        if ($bResult) {
+            $sMsg = 'Success!';
+            $sMsgTheme = 'notice';
+        } else {
+            $sMsg = 'Failed!';
+            $sMsgTheme = 'error';
+        }
 
-# end of this file
-
-EOF;
-        $file = APP_PATH . 'cmd' . DS . $cmd . '.php';
-        $result = file_put_contents($file, $template);
-        $msg = $result ? 'Success!' : 'Fail to create file :' . $file;
-        $msg_theme = $result ? 'notice' : 'error';
-        cecho($msg, $msg_theme);
+        cecho($sMsg, $sMsgTheme);
     }
 }
 

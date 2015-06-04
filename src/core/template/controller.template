@@ -1,0 +1,14 @@
+<?php
+namespace controller;
+
+use core as c;
+use model as m;
+
+class {$controller} extends Base
+{
+    public function run()
+    {
+    }
+}
+
+# end of this file
