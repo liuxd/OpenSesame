@@ -9,6 +9,24 @@ class Command
 {
     public static function __callStatic($method, $params)
     {
+        if (strpos($method, '-') !== false) {
+            // Put create-cmd to createCmd.
+            $aNamePiece = explode('-', $method);
+            $first = array_shift($aNamePiece);
+
+            $aNamePieceUpperFirst = array_map(function ($piece) {
+                return ucfirst($piece);
+            }, $aNamePiece);
+
+            array_unshift($aNamePieceUpperFirst, $first);
+            $realMethod = implode('', $aNamePieceUpperFirst);
+
+            if (method_exists(__CLASS__, $realMethod)) {
+                self::$realMethod($params);
+                return true;
+            }
+        }
+
         return false;
     }
 
