@@ -20,13 +20,14 @@ function dispatch_cli($argv)
         return true;
     }
 
-    $sCmdFile = APP_PATH . 'cmd' . DS . $cmd . '.php';
+    $sCmdClass = ucfirst($cmd);
+    $sCmdFile = APP_PATH . 'cmd' . DS . $sCmdClass . '.php';
 
     if (!file_exists($sCmdFile)) {
         cecho('Invalid Command : ' . $cmd, 'error');
     } else {
         require $sCmdFile;
-        $classname = "\cmd\\" . $cmd;
+        $classname = "\cmd\\" . $sCmdClass;
         $oCmd = new $classname;
         $oCmd->run();
     }
