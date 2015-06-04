@@ -7,12 +7,18 @@ namespace core;
 
 /**
  * Dispater for CLI mode.
+ * @param array $argv The params of command line.
+ * @return bool
  */
-function dispatch_cli()
+function dispatch_cli($argv)
 {
-    cecho('Open Sesame 4.3.2');
-    cecho('Powered by liuxd');
-    cecho('Fork me on github: https://github.com/liuxd');
+    $cmd = isset($argv[1]) ? $argv[1] : 'help';
+    require CORE_PATH . 'Command.php';
+
+    // Check framework commands.
+    if (Command::$cmd() !== false) {
+        return true;
+    }
 }
 
 /**
