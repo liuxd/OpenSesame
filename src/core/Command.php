@@ -21,6 +21,34 @@ class Command
         cecho('Powered by liuxd');
         cecho('Fork me on github: https://github.com/liuxd');
     }
+
+    /**
+     * Create controller.
+     */
+    public static function createController()
+    {
+        global $argv;
+        $controller_name = $argv[2];
+
+        $template = <<<EOF
+<?php
+namespace controller;
+
+use core as c;
+use model as m;
+
+class {$controller_name} extends Base
+{
+    public function run()
+    {
+    }
+}
+
+# end of this file
+
+EOF;
+        file_put_contents(APP_PATH . 'controller' . DS . $controller_name . '.php', $template);
+    }
 }
 
 # end of this file.
