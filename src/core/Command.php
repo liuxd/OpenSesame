@@ -91,7 +91,7 @@ class Command
 
         $sCmdPath = APP_PATH . 'cmd';
 
-        if (!is_dir($sCmdFile)) {
+        if (!is_dir($sCmdPath)) {
             mkdir($sCmdPath);
         }
 
