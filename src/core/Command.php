@@ -65,7 +65,11 @@ class {$controller_name} extends Base
 # end of this file
 
 EOF;
-        file_put_contents(APP_PATH . 'controller' . DS . $controller_name . '.php', $template);
+        $file = APP_PATH . 'controller' . DS . $controller_name . '.php';
+        $result = file_put_contents($file, $template);
+        $msg = $result ? 'Success!' : 'Fail to create file :' . $file;
+        $msg_theme = $result ? 'notice' : 'error';
+        cecho($msg, $msg_theme);
     }
 
     /**
@@ -99,7 +103,11 @@ class {$cmd}
 # end of this file
 
 EOF;
-        file_put_contents(APP_PATH . 'cmd' . DS . $cmd . '.php', $template);
+        $file = APP_PATH . 'cmd' . DS . $cmd . '.php';
+        $result = file_put_contents($file, $template);
+        $msg = $result ? 'Success!' : 'Fail to create file :' . $file;
+        $msg_theme = $result ? 'notice' : 'error';
+        cecho($msg, $msg_theme);
     }
 }
 
