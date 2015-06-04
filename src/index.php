@@ -6,20 +6,8 @@
 namespace core;
 
 require 'core/Bootstrap.php';
+require 'core/Dispatcher.php';
 
-if (PHP_SAPI === 'cli') {
-    cecho('Open Sesame 4.3.2');
-    cecho('Powered by liuxd');
-    cecho('Fork me on github: https://github.com/liuxd');
-} else {
-    require APP_PATH . 'controller/Base.php';
-    Router::responseFrontEndFiles('static');
-    $oController = Router::route($_SERVER['REQUEST_URI'], APP_PATH);
-    $oController->before();
-    $aData = $oController->handle();
-    $sOutputType = $oController->getOutputType();
-    Output::handle($aData, $sOutputType);
-    $oController->after();
-}
+PHP_SAPI === 'cli' ? dispatch_cli() : dispatch_cgi();
 
 # end of this file
