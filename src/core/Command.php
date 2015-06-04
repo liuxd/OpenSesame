@@ -35,7 +35,7 @@ class Command
      */
     public static function help()
     {
-        cecho('Open Sesame 4.3.2');
+        cecho('Open Sesame 4.4.0');
         cecho('Powered by liuxd');
         cecho('Fork me on github: https://github.com/liuxd');
     }
