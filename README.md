@@ -22,6 +22,14 @@
 
 可以访问<http://localhost:8000>了。
 
+## 使用
+本软件有两种模式：`服务器模式`、`命令行模式`
+
++ __服务器模式。__一目了然不解释。
++ __命令行模式。__
+
+[![asciicast](https://asciinema.org/a/b0rkuneybbvfwjjptv8yj9aor.png)](https://asciinema.org/a/b0rkuneybbvfwjjptv8yj9aor)
+
 ## 开发
 
 #### - 调试模式 -
