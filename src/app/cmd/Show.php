@@ -10,10 +10,16 @@ class Show
 {
     public function run()
     {
+        global $argv;
+
+        if (!isset($argv[2])) {
+            c\cecho('What is the account id?', 'error');
+            die;
+        }
+
         $aConfig = c\Config::get('dsn');
         u\DB::connect($aConfig['data']);
 
-        global $argv;
         $iAccountID = $argv[2];
         $oAccount = new m\Account;
 

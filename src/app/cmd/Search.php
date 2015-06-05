@@ -10,10 +10,16 @@ class Search
 {
     public function run()
     {
+        global $argv;
+
+        if (!isset($argv[2])) {
+            c\cecho('What is the keyword?', 'error');
+            die;
+        }
+
         $aConfig = c\Config::get('dsn');
         u\DB::connect($aConfig['data']);
 
-        global $argv;
         $sKeyword = $argv[2];
         $aList = (new m\Search)->handle($sKeyword);
 
