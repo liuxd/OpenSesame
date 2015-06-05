@@ -6,7 +6,7 @@
     <title>Open Sesame by liuxd</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
     <script src="javascripts/scale.fix.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
@@ -33,6 +33,8 @@
         <h1>
 <a id="open-sesame" class="anchor" href="#open-sesame" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="http://liuxd.github.io/open-sesame">Open Sesame</a>
 </h1>
+
+<p><a href="https://gitter.im/liuxd/open-sesame?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/Join%20Chat.svg" alt="Join the chat at https://gitter.im/liuxd/open-sesame"></a></p>
 
 <h2>
 <a id="概述" class="anchor" href="#%E6%A6%82%E8%BF%B0" aria-hidden="true"><span class="octicon octicon-link"></span></a>概述</h2>
@@ -68,6 +70,20 @@ nohup php -S 0.0.0.0:8000 os.phar &gt; /dev/null &amp;
 <p>可以访问<a href="http://localhost:8000">http://localhost:8000</a>了。</p>
 
 <h2>
+<a id="使用" class="anchor" href="#%E4%BD%BF%E7%94%A8" aria-hidden="true"><span class="octicon octicon-link"></span></a>使用</h2>
+
+<p>本软件有两种模式：<code>服务器模式</code>、<code>命令行模式</code></p>
+
+<ul>
+<li>
+<strong>服务器模式</strong> - 一目了然不解释。</li>
+<li>
+<strong>命令行模式</strong> - 见VCR：</li>
+</ul>
+
+<p><a href="https://asciinema.org/a/b0rkuneybbvfwjjptv8yj9aor"><img src="https://asciinema.org/a/b0rkuneybbvfwjjptv8yj9aor.png" alt="asciicast"></a></p>
+
+<h2>
 <a id="开发" class="anchor" href="#%E5%BC%80%E5%8F%91" aria-hidden="true"><span class="octicon octicon-link"></span></a>开发</h2>
 
 <h4>
@@ -96,6 +112,16 @@ nohup php -S 0.0.0.0:8000 os.phar &gt; /dev/null &amp;
 <li>需求：由于要打包成<code>phar</code>格式的程序包，所以需要将<code>php.ini</code>的<code>phar.readonly</code>设置为<code>Off</code>。</li>
 <li>打包：使用<code>dev/phar-packer.php</code>进行打包。</li>
 <li>举例：<code>./phar-packer.php --name=opensesame --path=../src</code>
+</li>
+</ul>
+
+<h4>
+<a id="--发新版本--" class="anchor" href="#--%E5%8F%91%E6%96%B0%E7%89%88%E6%9C%AC--" aria-hidden="true"><span class="octicon octicon-link"></span></a>- 发新版本 -</h4>
+
+<ul>
+<li>工具：<code>dev/release.sh</code>
+</li>
+<li>举例：<code>./release.sh v5.0.1</code>
 </li>
 </ul>
       </section>
