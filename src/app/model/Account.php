@@ -29,6 +29,7 @@ class Account
         $sSQL = 'SELECT *, rowid
             FROM ' . self::TABLE_NAME . '
             WHERE rowid = ?
+            AND parent = 0
             AND valid=' . self::STATUS_VALID . '
             Limit 1';
         return u\DB::getOne($sSQL, [$iAccountID]);
