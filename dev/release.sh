@@ -35,6 +35,6 @@ git tag $ver
 git push origin master
 git push --tags
 
-_echo '发布成功：'$ver
+_cecho '发布成功：'$ver
 
 # end of this file.
