@@ -25,8 +25,8 @@
 ## 使用
 本软件有两种模式：`服务器模式`、`命令行模式`
 
-+ __服务器模式。__一目了然不解释。
-+ __命令行模式。__
++ __服务器模式__ - 一目了然不解释。
++ __命令行模式__ - 见VCR：
 
 [![asciicast](https://asciinema.org/a/b0rkuneybbvfwjjptv8yj9aor.png)](https://asciinema.org/a/b0rkuneybbvfwjjptv8yj9aor)
 
@@ -46,3 +46,7 @@
 + 需求：由于要打包成`phar`格式的程序包，所以需要将`php.ini`的`phar.readonly`设置为`Off`。
 + 打包：使用`dev/phar-packer.php`进行打包。
 + 举例：`./phar-packer.php --name=opensesame --path=../src`
+
+#### - 发新版本 -
++ 工具：`dev/release.sh`
++ 举例：`./release.sh v5.0.1`
