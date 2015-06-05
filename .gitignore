@@ -16,3 +16,4 @@ src/vendor/
 dev/vendor/
 nbproject/
 *.phar
+VERSION
