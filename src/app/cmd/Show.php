@@ -24,6 +24,12 @@ class Show
         $oAccount = new m\Account;
 
         $aDetail = $oAccount->getAccountDetail($iAccountID);
+
+        if (empty($aDetail)) {
+            c\cecho('Invalid Account ID', 'error');
+            die;
+        }
+
         $aFields = $oAccount->getAccountFields($iAccountID);
 
         c\cecho($aDetail['name'], 'error');
