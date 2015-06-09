@@ -24,7 +24,7 @@ class Search
         $aList = (new m\Search)->handle($sKeyword);
 
         foreach ($aList as $aAccount) {
-            $sMsg = str_pad($aAccount['rowid'], 8) . $aAccount['name'];
+            $sMsg = str_pad($aAccount['rowid'], 8) . $aAccount['name'] . ' - http://' . $aAccount['value'];
             c\cecho($sMsg, 'notice');
         }
     }
