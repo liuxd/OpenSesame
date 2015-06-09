@@ -5,47 +5,50 @@
 
 namespace core;
 
-/**
- * Dispater for CLI mode.
- * @param array $argv The params of command line.
- * @return bool
- */
-function dispatch_cli($argv)
+class Dispatcher
 {
-    $cmd = isset($argv[1]) ? $argv[1] : 'help';
-    require CORE_PATH . 'Command.php';
+    /**
+     * Dispater for CLI mode.
+     * @param array $argv The params of command line.
+     * @return bool
+     */
+    public static function handleCLI($argv)
+    {
+        $cmd = isset($argv[1]) ? $argv[1] : 'help';
+        require CORE_PATH . 'Command.php';
 
-    // Check framework commands.
-    if (Command::$cmd() !== false) {
-        return true;
+        // Check framework commands.
+        if (Command::$cmd() !== false) {
+            return true;
+        }
+
+        $sCmdClass = ucfirst($cmd);
+        $sCmdFile = APP_PATH . 'cmd' . DS . $sCmdClass . '.php';
+
+        if (!file_exists($sCmdFile)) {
+            cecho('Invalid Command : ' . $cmd, 'error');
+        } else {
+            require $sCmdFile;
+            $classname = "\cmd\\" . $sCmdClass;
+            $oCmd = new $classname;
+            $oCmd->run();
+        }
     }
 
-    $sCmdClass = ucfirst($cmd);
-    $sCmdFile = APP_PATH . 'cmd' . DS . $sCmdClass . '.php';
-
-    if (!file_exists($sCmdFile)) {
-        cecho('Invalid Command : ' . $cmd, 'error');
-    } else {
-        require $sCmdFile;
-        $classname = "\cmd\\" . $sCmdClass;
-        $oCmd = new $classname;
-        $oCmd->run();
+    /**
+     * Dispatcher for CGI mode.
+     */
+    public static function handleCGI()
+    {
+        require APP_PATH . 'controller/Base.php';
+        Router::responseFrontEndFiles('static');
+        $oController = Router::route($_SERVER['REQUEST_URI'], APP_PATH);
+        $oController->before();
+        $aData = $oController->handle();
+        $sOutputType = $oController->getOutputType();
+        Output::handle($aData, $sOutputType);
+        $oController->after();
     }
-}
-
-/**
- * Dispatcher for CGI mode.
- */
-function dispatch_cgi()
-{
-    require APP_PATH . 'controller/Base.php';
-    Router::responseFrontEndFiles('static');
-    $oController = Router::route($_SERVER['REQUEST_URI'], APP_PATH);
-    $oController->before();
-    $aData = $oController->handle();
-    $sOutputType = $oController->getOutputType();
-    Output::handle($aData, $sOutputType);
-    $oController->after();
 }
 
 # end of this file.
