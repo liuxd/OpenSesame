@@ -12,9 +12,14 @@ class Router
      * Generate URL.
      * @param string $sAction The request's action
      * @param array $aParams URL params.
+     * @return string
      */
     public static function genURL($sAction, $aParams = [])
     {
+        if (!isset($_SERVER['HTTP_HOST'])) {
+            return '';
+        }
+
         array_map(function ($v) {
             return urlencode($v);
         }, $aParams);
