@@ -23,9 +23,12 @@ function _cecho {
     echo -e "\033["$color"m$1\033[0m"
 }
 
+cur=`dirname $0`
+cd $cur
 
 if [ $# -eq 0 ];then
     _cecho '请输入版本号' error
+    exit
 fi
 
 cd ..
