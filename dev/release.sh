@@ -23,6 +23,11 @@ function _cecho {
     echo -e "\033["$color"m$1\033[0m"
 }
 
+
+if [ $# -eq 0 ];then
+    _cecho '请输入版本号' error
+fi
+
 cd ..
 
 ver=$1
