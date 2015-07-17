@@ -13,8 +13,8 @@ class Search
         global $argv;
 
         if (!isset($argv[2])) {
-            c\cecho('What is the keyword?', 'error');
-            die;
+            c\cecho('搜索词呢？', 'error');
+            return false;
         }
 
         $aConfig = c\Config::get('dsn');

@@ -13,8 +13,8 @@ class Show
         global $argv;
 
         if (!isset($argv[2])) {
-            c\cecho('What is the account id?', 'error');
-            die;
+            c\cecho('帐号ID是多少？', 'error');
+            return false;
         }
 
         $aConfig = c\Config::get('dsn');
@@ -26,8 +26,8 @@ class Show
         $aDetail = $oAccount->getAccountDetail($iAccountID);
 
         if (empty($aDetail)) {
-            c\cecho('Invalid Account ID', 'error');
-            die;
+            c\cecho('非法ID', 'error');
+            return false;
         }
 
         $aFields = $oAccount->getAccountFields($iAccountID);
