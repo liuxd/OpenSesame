@@ -10,7 +10,8 @@ use PDO;
 class DB
 {
 
-    public static $oDB = null;
+    private static $oCurrentDB = null;
+    private static $aPool = [];
 
     /**
      * Connect to database.
@@ -18,21 +19,44 @@ class DB
      * @param string $sUserName
      * @param string $sPassword
      * @param array $aOptions
+     * @param string $sName
      */
-    public static function connect($sDSN = '', $sUserName = '', $sPassword = '', $aOptions = [])
+    public static function connect($sDSN = '', $sUserName = '', $sPassword = '', $aOptions = [], $sName = 'default')
     {
-        if (!is_null(self::$oDB)) {
-            return false;
+        $connetDB = function () use ($sDSN, $sUserName, $sPassword, $aOptions) {
+            $oDB = new PDO($sDSN, $sUserName, $sPassword, $aOptions);
+            $oDB->query('set names utf8');
+            $oDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            if (!empty($aOptions)) {
+                foreach ($aOptions as $sKey => $sValue) {
+                    $oDB->setAttribute($sKey, $sValue);
+                }
+            }
+
+            return $oDB;
+        };
+
+        if (!isset(self::$aPool[$sName])) {
+            $oDB = $connetDB();
+            self::$aPool[$sName] = $oDB;
         }
 
-        self::$oDB = new PDO($sDSN, $sUserName, $sPassword, $aOptions);
-        self::$oDB->query('set names utf8');
-        self::$oDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        self::$oCurrentDB = self::$aPool[$sName];
+    }
 
-        if (!empty($aOptions)) {
-            foreach ($aOptions as $sKey => $sValue) {
-                self::$oDB->setAttribute($sKey, $sValue);
-            }
+    /**
+     * Switch to another DB.
+     * @param string $sName The connection name you set.
+     * @return PDO or false
+     */
+    public static function switchDB($sName)
+    {
+        if (!isset(self::$aPool[$sName])) {
+            return false;
+        } else {
+            self::$oCurrentDB = self::$aPool[$sName];
+            return self::$oCurrentDB;
         }
     }
 
@@ -44,7 +68,7 @@ class DB
      */
     public static function getList($sSQL, $aParams = [])
     {
-        $o = self::$oDB->prepare($sSQL);
+        $o = self::$oCurrentDB->prepare($sSQL);
         $o->execute($aParams);
         return $o->fetchall(PDO::FETCH_ASSOC);
     }
@@ -59,9 +83,9 @@ class DB
     {
         $aParsedData = self::parseArray($aData);
         $sSQL = "insert into $sTable (" . $aParsedData['keys'] . ") values (" . $aParsedData['marks'] . ")";
-        $o = self::$oDB->prepare($sSQL);
+        $o = self::$oCurrentDB->prepare($sSQL);
         $o->execute($aParsedData['values']);
-        return self::$oDB->lastInsertId();
+        return self::$oCurrentDB->lastInsertId();
     }
 
     /**
@@ -73,7 +97,7 @@ class DB
     public static function getOne($sSQL, $aParams = [])
     {
         try {
-            $o = self::$oDB->prepare($sSQL);
+            $o = self::$oCurrentDB->prepare($sSQL);
         } catch (\Exception $e) {
             return false;
         }
@@ -100,7 +124,7 @@ class DB
         $sKeys = implode(',', $aTmp);
         $sSQL = "update $sTable set $sKeys $sWhere";
         $aParsedData = self::parseArray($aData);
-        $o = self::$oDB->prepare($sSQL);
+        $o = self::$oCurrentDB->prepare($sSQL);
         return $o->execute($aParsedData['values']);
     }
 
@@ -111,7 +135,7 @@ class DB
      */
     public static function import($sFile)
     {
-        return self::$oDB->exec(file_get_contents($sFile));
+        return self::$oCurrentDB->exec(file_get_contents($sFile));
     }
 
     /**
@@ -121,7 +145,7 @@ class DB
      */
     public static function query($sSQL)
     {
-        return self::$oDB->query($sSQL);
+        return self::$oCurrentDB->query($sSQL);
     }
 
     /**
