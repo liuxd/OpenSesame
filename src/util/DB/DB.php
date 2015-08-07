@@ -20,6 +20,7 @@ class DB
      * @param string $sPassword
      * @param array $aOptions
      * @param string $sName
+     * @return PDO
      */
     public static function connect($sDSN = '', $sUserName = '', $sPassword = '', $aOptions = [], $sName = 'default')
     {
@@ -43,6 +44,7 @@ class DB
         }
 
         self::$oCurrentDB = self::$aPool[$sName];
+        return self::$oCurrentDB;
     }
 
     /**
