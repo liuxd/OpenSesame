@@ -78,6 +78,12 @@ class Command
     public static function createCmd()
     {
         global $argv;
+
+        if (!isset($argv[2])) {
+            cecho('Pleate input your command name', 'error');
+            die;
+        }
+
         $sCmdName = ucfirst($argv[2]);
 
         $sTemplateFile = CORE_PATH . 'template' . DS . 'cmd.template';
