@@ -28,20 +28,19 @@ class CheckSite
         }
     }
 
-    public static function check($url, $timeout = 3, $conn_timeout = 2)
+    public function check($sURL, $iTimeout = 3, $iConnTimeout = 2)
     {
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
-        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $conn_timeout);
-        curl_setopt($ch, CURLOPT_HEADER, true);
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-        $file_contents = curl_exec($ch);
-        $info = curl_getinfo($ch);
-        curl_close($ch);
+        $rResource = curl_init();
+        curl_setopt($rResource, CURLOPT_URL, $sURL);
+        curl_setopt($rResource, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($rResource, CURLOPT_TIMEOUT, $iTimeout);
+        curl_setopt($rResource, CURLOPT_CONNECTTIMEOUT, $iConnTimeout);
+        curl_setopt($rResource, CURLOPT_FOLLOWLOCATION, 1);
+        curl_exec($rResource);
+        $aReturnStatus = curl_getinfo($rResource);
+        curl_close($rResource);
 
-        return $info['http_code'];
+        return $aReturnStatus['http_code'];
     }
 }
 
