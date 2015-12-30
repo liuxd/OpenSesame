@@ -47,11 +47,12 @@ class Search
 
         $iNumber = (int)$iNumber;
 
-        if ($iNumber > 0) {
+        if ($iNumber > 0 && isset($aNumberMapping[$iNumber])) {
             $iAccountID = $aNumberMapping[$iNumber];
             $oAccount = new m\Account;
             $aDetail = $oAccount->getAccountDetail($iAccountID);
             $aFields = $oAccount->getAccountFields($iAccountID);
+
             c\cecho($aDetail['name'], 'error');
 
             foreach ($aFields as $aField) {
