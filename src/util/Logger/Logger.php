@@ -68,4 +68,5 @@ class Logger
         $this->clearBuffer();
     }
 }
+
 # end of this file
