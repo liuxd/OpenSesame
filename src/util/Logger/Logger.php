@@ -11,6 +11,7 @@ class Logger
     private $iBufferSize = 0;
     private $iBufferCnt = 0;
     private $aBuffer = array();
+
     /**
      * @param string $sLogPath Log files path.
      * @param string $iBufferSize The buffer's capacity.
@@ -26,6 +27,7 @@ class Logger
         $this->iBufferSize = (int)$iBufferSize;
         return true;
     }
+
     /**
      * Add a log.
      * @param unkonwn $mLogInfo Log message.can be string, int, float or array.
@@ -44,6 +46,7 @@ class Logger
             $this->clearBuffer();
         }
     }
+
     /**
      * Clear the buffer data to log file.
      * @return bool
@@ -63,6 +66,7 @@ class Logger
         }
         return $bResult;
     }
+
     public function __destruct()
     {
         $this->clearBuffer();
