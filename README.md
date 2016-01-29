@@ -1,16 +1,14 @@
 [Open Sesame](http://liuxd.github.io/open-sesame)
 ============
 
-[![Join the chat at https://gitter.im/liuxd/open-sesame](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/liuxd/open-sesame?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
 ## 概述
 + 使用`PHP`和`SQLite`开发的帐号管理工具。
 + 用PHP的内置服务器就可启动。
 
 ## 需求
 + PHP5.4+
-	+ mbstring
-    + zlib
+  + mbstring
+  + zlib
 
 ## 安装
 
@@ -41,6 +39,10 @@
 + 说明：本项目PHP代码完全遵循`PSR-1`、`PSR-2`规范。
 + 安装：在`dev/`目录下运行`composer.phar install`安装代码扫描工具。
 + 运行：`./code-sniffer.sh`可以扫描本项目PHP代码。
+
+#### - 辅助工具 -
++ 创建新的命令程序：php index.php createCmd {$command_name}
++ 创建新的控制器：php index.php createController {$controller_name}
 
 #### - 打包发布 -
 + 需求：由于要打包成`phar`格式的程序包，所以需要将`php.ini`的`phar.readonly`设置为`Off`。
