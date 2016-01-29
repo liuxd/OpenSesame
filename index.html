@@ -1,43 +1,30 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en-us">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta charset="UTF-8">
     <title>Open Sesame by liuxd</title>
-
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-light.css">
-    <script src="javascripts/scale.fix.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
   <body>
-    <div class="wrapper">
-      <header>
-        <h1 class="header">Open Sesame</h1>
-        <p class="header">帐号管理工具。</p>
+    <section class="page-header">
+      <h1 class="project-name">Open Sesame</h1>
+      <h2 class="project-tagline">帐号管理工具。</h2>
+      <a href="https://github.com/liuxd/open-sesame" class="btn">View on GitHub</a>
+      <a href="https://github.com/liuxd/open-sesame/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/liuxd/open-sesame/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-        <ul>
-          <li class="download"><a class="buttons" href="https://github.com/liuxd/open-sesame/zipball/master">Download ZIP</a></li>
-          <li class="download"><a class="buttons" href="https://github.com/liuxd/open-sesame/tarball/master">Download TAR</a></li>
-          <li><a class="buttons github" href="https://github.com/liuxd/open-sesame">View On GitHub</a></li>
-        </ul>
-
-        <p class="header">This project is maintained by <a class="header name" href="https://github.com/liuxd">liuxd</a></p>
-
-
-      </header>
-      <section>
-        <h1>
-<a id="open-sesame" class="anchor" href="#open-sesame" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="http://liuxd.github.io/open-sesame">Open Sesame</a>
+    <section class="main-content">
+      <h1>
+<a id="open-sesame" class="anchor" href="#open-sesame" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><a href="http://liuxd.github.io/open-sesame">Open Sesame</a>
 </h1>
 
-<p><a href="https://gitter.im/liuxd/open-sesame?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/Join%20Chat.svg" alt="Join the chat at https://gitter.im/liuxd/open-sesame"></a></p>
-
 <h2>
-<a id="概述" class="anchor" href="#%E6%A6%82%E8%BF%B0" aria-hidden="true"><span class="octicon octicon-link"></span></a>概述</h2>
+<a id="概述" class="anchor" href="#%E6%A6%82%E8%BF%B0" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>概述</h2>
 
 <ul>
 <li>使用<code>PHP</code>和<code>SQLite</code>开发的帐号管理工具。</li>
@@ -45,7 +32,7 @@
 </ul>
 
 <h2>
-<a id="需求" class="anchor" href="#%E9%9C%80%E6%B1%82" aria-hidden="true"><span class="octicon octicon-link"></span></a>需求</h2>
+<a id="需求" class="anchor" href="#%E9%9C%80%E6%B1%82" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>需求</h2>
 
 <ul>
 <li>PHP5.4+
@@ -58,7 +45,7 @@
 </ul>
 
 <h2>
-<a id="安装" class="anchor" href="#%E5%AE%89%E8%A3%85" aria-hidden="true"><span class="octicon octicon-link"></span></a>安装</h2>
+<a id="安装" class="anchor" href="#%E5%AE%89%E8%A3%85" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>安装</h2>
 
 <pre><code>git clone git@github.com:open-sesame/open-sesame.git
 cp dev/config.ini.sample src/config.ini # 根据自己需求修改 src/config.ini
@@ -70,7 +57,7 @@ nohup php -S 0.0.0.0:8000 os.phar &gt; /dev/null &amp;
 <p>可以访问<a href="http://localhost:8000">http://localhost:8000</a>了。</p>
 
 <h2>
-<a id="使用" class="anchor" href="#%E4%BD%BF%E7%94%A8" aria-hidden="true"><span class="octicon octicon-link"></span></a>使用</h2>
+<a id="使用" class="anchor" href="#%E4%BD%BF%E7%94%A8" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>使用</h2>
 
 <p>本软件有两种模式：<code>服务器模式</code>、<code>命令行模式</code></p>
 
@@ -84,10 +71,10 @@ nohup php -S 0.0.0.0:8000 os.phar &gt; /dev/null &amp;
 <p><a href="https://asciinema.org/a/b0rkuneybbvfwjjptv8yj9aor"><img src="https://asciinema.org/a/b0rkuneybbvfwjjptv8yj9aor.png" alt="asciicast"></a></p>
 
 <h2>
-<a id="开发" class="anchor" href="#%E5%BC%80%E5%8F%91" aria-hidden="true"><span class="octicon octicon-link"></span></a>开发</h2>
+<a id="开发" class="anchor" href="#%E5%BC%80%E5%8F%91" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>开发</h2>
 
 <h4>
-<a id="--调试模式--" class="anchor" href="#--%E8%B0%83%E8%AF%95%E6%A8%A1%E5%BC%8F--" aria-hidden="true"><span class="octicon octicon-link"></span></a>- 调试模式 -</h4>
+<a id="--调试模式--" class="anchor" href="#--%E8%B0%83%E8%AF%95%E6%A8%A1%E5%BC%8F--" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>- 调试模式 -</h4>
 
 <ul>
 <li>方法：在页面URL中增加参数：<code>debug</code>。随便设定一个非空值即可进入调试模式。</li>
@@ -97,7 +84,7 @@ nohup php -S 0.0.0.0:8000 os.phar &gt; /dev/null &amp;
 </ul>
 
 <h4>
-<a id="--代码规范--" class="anchor" href="#--%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83--" aria-hidden="true"><span class="octicon octicon-link"></span></a>- 代码规范 -</h4>
+<a id="--代码规范--" class="anchor" href="#--%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83--" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>- 代码规范 -</h4>
 
 <ul>
 <li>说明：本项目PHP代码完全遵循<code>PSR-1</code>、<code>PSR-2</code>规范。</li>
@@ -106,7 +93,15 @@ nohup php -S 0.0.0.0:8000 os.phar &gt; /dev/null &amp;
 </ul>
 
 <h4>
-<a id="--打包发布--" class="anchor" href="#--%E6%89%93%E5%8C%85%E5%8F%91%E5%B8%83--" aria-hidden="true"><span class="octicon octicon-link"></span></a>- 打包发布 -</h4>
+<a id="--辅助工具--" class="anchor" href="#--%E8%BE%85%E5%8A%A9%E5%B7%A5%E5%85%B7--" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>- 辅助工具 -</h4>
+
+<ul>
+<li>创建新的命令程序：php index.php createCmd {$command_name}</li>
+<li>创建新的控制器：php index.php createController {$controller_name}</li>
+</ul>
+
+<h4>
+<a id="--打包发布--" class="anchor" href="#--%E6%89%93%E5%8C%85%E5%8F%91%E5%B8%83--" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>- 打包发布 -</h4>
 
 <ul>
 <li>需求：由于要打包成<code>phar</code>格式的程序包，所以需要将<code>php.ini</code>的<code>phar.readonly</code>设置为<code>Off</code>。</li>
@@ -116,7 +111,7 @@ nohup php -S 0.0.0.0:8000 os.phar &gt; /dev/null &amp;
 </ul>
 
 <h4>
-<a id="--发新版本--" class="anchor" href="#--%E5%8F%91%E6%96%B0%E7%89%88%E6%9C%AC--" aria-hidden="true"><span class="octicon octicon-link"></span></a>- 发新版本 -</h4>
+<a id="--发新版本--" class="anchor" href="#--%E5%8F%91%E6%96%B0%E7%89%88%E6%9C%AC--" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>- 发新版本 -</h4>
 
 <ul>
 <li>工具：<code>dev/release.sh</code>
@@ -124,12 +119,15 @@ nohup php -S 0.0.0.0:8000 os.phar &gt; /dev/null &amp;
 <li>举例：<code>./release.sh v5.0.1</code>
 </li>
 </ul>
-      </section>
-      <footer>
-        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/liuxd/open-sesame">Open Sesame</a> is maintained by <a href="https://github.com/liuxd">liuxd</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
       </footer>
-    </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-		
+
+    </section>
+
+  
   </body>
 </html>
