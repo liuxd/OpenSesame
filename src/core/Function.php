@@ -71,6 +71,14 @@ function see()
 
             echo '</div>';
             break;
+
+        case is_object($value):
+            see(get_object_vars($value));
+            break;
+
+        case is_resource($value):
+            var_dump($value);
+            break;
     }
 }
 
