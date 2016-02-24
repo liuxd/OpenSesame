@@ -39,6 +39,11 @@ class Command
         cecho('Open Sesame ' . $sVersion);
         cecho('Powered by liuxd');
         cecho('Fork me on github: https://github.com/liuxd');
+        cecho('');
+        cecho('Sub Commands:');
+        cecho('    Search     -    Search account with [ Keyword ].');
+        cecho('    Show       -    Show information by [ Account ID ].');
+        cecho('    CheckSite  -    Check all website.');
     }
 
     /**
