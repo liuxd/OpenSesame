@@ -13,6 +13,8 @@ class Account
     const ENCRYPT_SALT_SUFFIX_LENGTH = 4;
     const COMPRESS_LEVEL = 9;
 
+    private $sSecretKey = '';
+
     public function getAllAccount()
     {
         $sSQL = 'SELECT *, rowid FROM ' . self::TABLE_NAME . ' WHERE valid=' . self::STATUS_VALID . ' AND parent=0';
@@ -223,6 +225,58 @@ class Account
         $sResult = u\Str::utf8Strrev($sTmp4);
 
         return $sResult;
+    }
+
+    /**
+     * 设置秘钥。
+     * @param string $sSecretKey
+     */
+    public function setSecretKey($sSecretKey)
+    {
+        $this->sSecretKey = trim($sSecretKey);
+    }
+
+    /**
+     * 获得秘钥。
+     * @return string
+     */
+    public function getSecretKey()
+    {
+        return $this->sSecretKey;
+    }
+
+    /**
+     * AES算法加密。
+     * @param string $sData
+     * @return string
+     */
+    public function encodeAES($sData)
+    {
+        $td = mcrypt_module_open(MCRYPT_RIJNDAEL_256,'',MCRYPT_MODE_CBC,'');
+        $iv = mcrypt_create_iv(mcrypt_enc_get_iv_size($td),MCRYPT_RAND);
+        mcrypt_generic_init($td,$this->sSecretKey,$iv);
+        $encrypted = mcrypt_generic($td,$sData);
+        mcrypt_generic_deinit($td);
+
+        return $iv . $encrypted;
+    }
+
+    /**
+     * AES算法解密。
+     * @param string $sData
+     * @return string
+     */
+    public function decodeAES($sData)
+    {
+        $td = mcrypt_module_open(MCRYPT_RIJNDAEL_256,'',MCRYPT_MODE_CBC,'');
+        $iv = mb_substr($data,0,32,'latin1');
+        mcrypt_generic_init($td,$this->sSecretKey,$iv);
+        $data = mb_substr($sData,32,mb_strlen($sData,'latin1'),'latin1');
+        $data = mdecrypt_generic($td,$data);
+        mcrypt_generic_deinit($td);
+        mcrypt_module_close($td);
+
+        return trim($data);
     }
 }
 
