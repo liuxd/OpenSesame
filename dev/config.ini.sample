@@ -1,6 +1,9 @@
 ;数据库dsn
 dsn=sqlite:/tmp/pass.db
 
+;数据加密的秘钥。32位以内的字符串。
+secret_key="abcd"
+
 ;用户最常用的密码，方便录入新帐号信息。
 [default_password]
 1=123456

@@ -9,9 +9,9 @@ class Account
     const TABLE_NAME = 'account';
     const STATUS_VALID = 1;
     const STATUS_UNVALID = 0;
-    const ENCRYPT_SALT_PREFIX_LENGTH = 3;
-    const ENCRYPT_SALT_SUFFIX_LENGTH = 4;
     const COMPRESS_LEVEL = 9;
+
+    public static $sSecretKey = '';
 
     public function getAllAccount()
     {
@@ -179,50 +179,37 @@ class Account
     }
 
     /**
-     * 加密。
-     * @param string $p_sString 待加密的字符串。
+     * AES算法加密。
+     * @param string $sData
      * @return string
      */
-    public function encrypt($p_sString)
+    public function encrypt($sData)
     {
-        $sTmp1 = u\Str::utf8Strrev($p_sString);
-        $sTmp2 = u\Str::strSplit($sTmp1);
-        $sTmp3 = '';
+        $td = mcrypt_module_open(MCRYPT_RIJNDAEL_256, '', MCRYPT_MODE_CBC, '');
+        $iv = mcrypt_create_iv(mcrypt_enc_get_iv_size($td), MCRYPT_RAND);
+        mcrypt_generic_init($td, self::$sSecretKey, $iv);
+        $encrypted = mcrypt_generic($td, $sData);
+        mcrypt_generic_deinit($td);
 
-        foreach ($sTmp2 as $sChar) {
-            $sTmp3 .= $sChar;
-            $sTmp3 .= u\Str::random(1);
-        }
-
-        $sPrefix = u\Str::random(self::ENCRYPT_SALT_PREFIX_LENGTH);
-        $sSuffix = u\Str::random(self::ENCRYPT_SALT_SUFFIX_LENGTH);
-        $sResult = base64_encode($sPrefix . $sTmp3 . $sSuffix);
-
-        return $sResult;
+        return $iv . $encrypted;
     }
 
     /**
-     * 解密。
-     * @param string $p_sString 待解密的字符串。
+     * AES算法解密。
+     * @param string $sData
      * @return string
      */
-    public function decrypt($p_sString)
+    public function decrypt($sData)
     {
-        $sTmp1 = base64_decode($p_sString);
-        $sTmp2 = substr($sTmp1, self::ENCRYPT_SALT_PREFIX_LENGTH, -self::ENCRYPT_SALT_SUFFIX_LENGTH);
-        $aTmp3 = u\Str::strSplit($sTmp2);
-        $iLen = count($aTmp3);
-        $sTmp4 = '';
+        $td = mcrypt_module_open(MCRYPT_RIJNDAEL_256, '', MCRYPT_MODE_CBC, '');
+        $iv = mb_substr($sData, 0, 32, 'latin1');
+        mcrypt_generic_init($td, self::$sSecretKey, $iv);
+        $data = mb_substr($sData, 32, mb_strlen($sData, 'latin1'), 'latin1');
+        $data = mdecrypt_generic($td, $data);
+        mcrypt_generic_deinit($td);
+        mcrypt_module_close($td);
 
-        for ($i = 0; $i <= $iLen; $i += 2) {
-            if (isset($aTmp3[$i])) {
-                $sTmp4 .= $aTmp3[$i];
-            }
-        }
-
-        $sResult = u\Str::utf8Strrev($sTmp4);
-
-        return $sResult;
+        return trim($data);
     }
 }
 
