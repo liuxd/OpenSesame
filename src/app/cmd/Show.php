@@ -20,6 +20,9 @@ class Show
         $aConfig = c\Config::get('dsn');
         u\DB::connect($aConfig['data']);
 
+        $aConfigKey = c\Config::get('secret_key');
+        m\Account::$sSecretKey = $aConfigKey['data'];
+
         $iAccountID = $argv[2];
         $oAccount = new m\Account;
 
