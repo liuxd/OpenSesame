@@ -12,8 +12,13 @@ class Base extends c\Controller
     {
         $aConfig = c\Config::get('dsn');
         u\DB::connect($aConfig['data']);
+
+        $aConfigKey = c\Config::get('secret_key');
+        m\Account::$sSecretKey = $aConfigKey['data'];
+
         $aData = parent::handle();
         $aData['data']['host'] = "http://{$_SERVER['HTTP_HOST']}/?static=";
+
 
         return $aData;
     }

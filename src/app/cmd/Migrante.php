@@ -6,6 +6,9 @@ use core as c;
 use model as m;
 use util as u;
 
+/**
+ * 从v4到v5的数据迁移。
+ */
 class Migrante
 {
     public function run()
@@ -16,9 +19,29 @@ class Migrante
         $aConfigKey = c\Config::get('key_path');
         $oAccount = new m\Account;
 
-        $oAccount->setSecretKey(file_get_contents($aConfigKey['data']));
+        $aConfigKey = c\Config::get('secret_key');
+        m\Account::$sSecretKey = $aConfigKey['data'];
 
-        var_dump($oAccount->getSecretKey());
+        $sSQL = 'SELECT *, rowid FROM account WHERE valid=1 AND parent = 0';
+        $rows = u\DB::getList($sSQL);
+
+        foreach ($rows as $k => $row) {
+            $rows[$k]['fields'] = $oAccount->getAccountFields($row['rowid']);
+        }
+
+        // print_r($rows);
+
+        $aConfig = c\Config::get('dsn_new');
+        u\DB::connect($aConfig['data'], '', '', [], 'new_db');
+        $oAccount->createTable();
+
+        foreach ($rows as $row) {
+            $iAccountID = $oAccount->addAccount($row['name'], $row['value']);
+
+            foreach ($row['fields'] as $v) {
+                $oAccount->addField($v['name'], $v['value'], $iAccountID);
+            }
+        }
     }
 }
 
