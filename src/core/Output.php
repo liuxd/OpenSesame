@@ -40,7 +40,6 @@ class Output
             if (file_exists($sHtmlPath)) {
                 require $sHtmlPath;
             }
-
         }
     }
 
