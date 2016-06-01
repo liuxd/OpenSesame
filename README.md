@@ -1,4 +1,4 @@
-[Open Sesame](http://liuxd.github.io/open-sesame)
+[Open Sesame](http://liuxd.github.io/OpenSesame)
 ============
 
 ## 概述
@@ -14,7 +14,7 @@
 
 ## 安装
 
-    git clone git@github.com:open-sesame/open-sesame.git
+    git clone git@github.com:open-sesame/OpenSesame.git
     cp dev/config.ini.sample src/config.ini # 根据自己需求修改 src/config.ini
     cd open-sesame/dev
     php phar-packer.php --name=os --path=../src/
