@@ -2,7 +2,7 @@ title: Open Sesame
 description: Account information management tool.
 google_analytics: 
 show_downloads: true
-theme: jekyll-theme-dinky
+theme: jekyll-theme-midnight
 
 gems:
   - jekyll-mentions
