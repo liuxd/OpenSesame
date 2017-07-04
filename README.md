@@ -15,7 +15,7 @@
 ## Installation
 
     git clone git@github.com:open-sesame/OpenSesame.git
-    cp dev/config.ini.sample src/config.ini # 根据自己需求修改 src/config.ini
+    cp dev/config.ini.sample src/config.ini
     cd open-sesame/dev
     php phar-packer.php --name=os --path=../src/
     nohup php -S 0.0.0.0:8000 os.phar > /dev/null &
