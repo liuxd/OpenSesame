@@ -2,7 +2,7 @@ title: Open Sesame
 description: 帐号管理工具。
 google_analytics: 
 show_downloads: true
-theme: jekyll-theme-tactile
+theme: jekyll-theme-dinky
 
 gems:
   - jekyll-mentions
