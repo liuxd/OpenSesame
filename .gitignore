@@ -1,10 +1,4 @@
 *.swp
-*.php~
-*.tpl~
-*.inc~
-*.js~
-*.css~
-*.ini~
 *.tmp
 *.db
 *.ini
