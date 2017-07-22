@@ -15,6 +15,10 @@ class Handlers
      */
     public static function errorHandler($iError, $sErrStr, $sErrFile, $sErrLine)
     {
+        if (!SHOW_ERROR) {
+            return true;
+        }
+
         $aMsg[] = 'NO : ' . $iError. PHP_EOL;
         $aMsg[] = 'Message : ' . strip_tags($sErrStr) . PHP_EOL;
         $aMsg[] = 'File : ' . $sErrFile. PHP_EOL;
@@ -43,6 +47,10 @@ class Handlers
      */
     public static function exceptionHandler($exception)
     {
+        if (!SHOW_ERROR) {
+            return true;
+        }
+
         $aMsg[] = 'Code : ' . $exception->getCode() . PHP_EOL;
         $aMsg[] = 'Message : ' . $exception->getMessage() . PHP_EOL;
         $aMsg[] = 'File : ' . $exception->getFile() . PHP_EOL;
