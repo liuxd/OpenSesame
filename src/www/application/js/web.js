@@ -79,23 +79,19 @@
         var value = $(this).attr('id');
 
         $($(this)).bind('click', function() {
+            $('#pop_name').text('查看');
             $('#pop_content').text(value);
             $('#popup').modal('show');
         });
     });
 
     //单页复制按钮
-    $('.info_copy_bt').each(function() {
-        var client = new ZeroClipboard($(this), {
-            moviePath: '?static=/vendor/zeroclipboard/ZeroClipboard.swf'
-        });
+    var clipboard = new Clipboard('.info_copy_bt');
 
-        client.on('load', function(client) {
-            client.on('complete', function(client, args) {
-                $(this).text('已复制');
-                $(this).attr('disabled', 'disabled');
-            });
-        });
+    clipboard.on('success', function(e) {
+        $('#pop_name').text('Bingo!');
+        $('#pop_content').text('复制成功！');
+        $('#popup').modal('show');
     });
 
     //单页删除按钮
