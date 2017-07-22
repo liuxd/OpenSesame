@@ -9,9 +9,9 @@
 <!-- 头部表单 -->
 <div class="navbar-fixed-top" id="add_input">
     <form class="well form-inline" action="<?=$form_action_add?>" method="post" autocomplete="off" >
-        <input type="text" class="input-large" placeholder="网站名称" name="name">
-        <input type="text" class="input-large" placeholder="网址" name="url">
-        <button type="submit" class="btn btn-success">添加</button>
+        <input type="text" class="input-large" placeholder="Website Name" name="name">
+        <input type="text" class="input-large" placeholder="URL" name="url">
+        <button type="submit" class="btn btn-success">Add</button>
     </form>
 </div>
 
@@ -33,14 +33,14 @@
             <!-- 搜索框+按钮 -->
             <div class="controls-row span9 offset3">
                 <div class="form-wrapper cf">
-                    <input type="text" name="site" id="search" autocomplete="off" placeholder="需要点儿什么？" />
-                    <button id="search_bt">芝麻开门</button>
+                    <input type="text" name="site" id="search" autocomplete="off" placeholder="What would you like ?" />
+                    <button id="search_bt">Try</button>
                 </div>
             </div>
 
             <?php if (!empty($recomm)):?>
             <!-- 推荐帐号 -->
-            <h4 class="controls-row span9 offset3 cw" id="recommand">别忘了还有这些...</h4>
+            <h4 class="controls-row span9 offset3 cw" id="recommand">Something like...</h4>
 
             <div class="controls-row span8 offset3">
                 <?php foreach($recomm as $key => $value):?>

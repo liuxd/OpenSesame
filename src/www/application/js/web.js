@@ -18,10 +18,10 @@
 
         $($(this)).bind('click', function() {
             $('#pop_confirm').confirmModal({
-                heading: '主人',
-                body: '您想清楚了吗？',
-                enter: '是的',
-                close: '手抖了',
+                heading: 'Boss',
+                body: 'Are you sure?',
+                enter: 'Yes',
+                close: 'No',
                 callback: function() {
                     $('#account_id').attr('value', value);
                     $('#del_account').submit();
@@ -79,7 +79,7 @@
         var value = $(this).attr('id');
 
         $($(this)).bind('click', function() {
-            $('#pop_name').text('查看');
+            $('#pop_name').text('CHECK');
             $('#pop_content').text(value);
             $('#popup').modal('show');
         });
@@ -90,7 +90,7 @@
 
     clipboard.on('success', function(e) {
         $('#pop_name').text('Bingo!');
-        $('#pop_content').text('复制成功！');
+        $('#pop_content').text('Copy successfully!');
         $('#popup').modal('show');
     });
 
@@ -100,10 +100,10 @@
 
         $($(this)).bind('click', function() {
             $('#pop_confirm').confirmModal({
-                heading: '主人',
-                body: '您三思啊！',
-                enter: '删除',
-                close: '我再想想',
+                heading: 'Boss',
+                body: 'Are you sure?',
+                enter: 'Kill it!',
+                close: 'NO NO NO',
                 callback: function() {
                     $('#field_id').attr('value', value);
                     $('#del_field').submit();
