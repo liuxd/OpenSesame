@@ -11,7 +11,14 @@ class Base
     public function __construct()
     {
         $aConfig = c\Config::get('dsn');
-        u\DB::connect($aConfig['data']);
+
+        if ($aConfig['result']) {
+            u\DB::connect($aConfig['data']);
+        } else {
+            $tmp = str_replace('phar://', 'sqlite:', __DIR__);
+            $dsn = str_replace('opensesame.phar/app/cmd', '084', $tmp);
+            u\DB::connect($dsn);
+        }
 
         $aConfigKey = c\Config::get('secret_key');
         m\Account::$sSecretKey = $aConfigKey['data'];
