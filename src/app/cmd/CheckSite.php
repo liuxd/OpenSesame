@@ -6,13 +6,10 @@ use core as c;
 use util as u;
 use model as m;
 
-class CheckSite
+class CheckSite extends Base
 {
     public function run()
     {
-        $aConfig = c\Config::get('dsn');
-        u\DB::connect($aConfig['data']);
-
         $sSQL = 'SELECT rowid,name,value
             FROM ' . m\Account::TABLE_NAME . '
             WHERE parent=0

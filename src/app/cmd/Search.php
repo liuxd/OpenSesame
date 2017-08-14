@@ -6,7 +6,7 @@ use core as c;
 use model as m;
 use util as u;
 
-class Search
+class Search extends Base
 {
     public function run()
     {
@@ -16,12 +16,6 @@ class Search
             c\cecho('搜索词呢？', 'error');
             return false;
         }
-
-        $aConfig = c\Config::get('dsn');
-        u\DB::connect($aConfig['data']);
-
-        $aConfigKey = c\Config::get('secret_key');
-        m\Account::$sSecretKey = $aConfigKey['data'];
 
         $sKeyword = $argv[2];
         $aList = (new m\Search)->handle($sKeyword);
