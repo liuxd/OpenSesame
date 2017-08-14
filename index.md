@@ -26,7 +26,7 @@ Then visit <http://localhost:8000>.
 Two modes : `Web Page`、`Command Line`
 
 + __Web Page__ - As you can see.
-![screenshot.png](https://github.com/liuxd/OpenSesame/blob/master/screenshot.png)
+![screenshot.png](https://raw.githubusercontent.com/liuxd/OpenSesame/master/screenshot.png)
 
 + __Command Line__ - As followed :
 
