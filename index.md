@@ -26,6 +26,8 @@ Then visit <http://localhost:8000>.
 Two modes : `Web Page`、`Command Line`
 
 + __Web Page__ - As you can see.
+![screenshot.png](screenshot.png)
+
 + __Command Line__ - As followed :
 
 [![asciicast](https://asciinema.org/a/b0rkuneybbvfwjjptv8yj9aor.png)](https://asciinema.org/a/b0rkuneybbvfwjjptv8yj9aor)
