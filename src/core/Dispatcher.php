@@ -22,6 +22,9 @@ class Dispatcher
             return true;
         }
 
+        require APP_PATH . 'cmd' . DS . 'Base.php';
+
+
         $sCmdClass = ucfirst($cmd);
         $sCmdFile = APP_PATH . 'cmd' . DS . $sCmdClass . '.php';
 
