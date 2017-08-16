@@ -1,12 +1,12 @@
 <script language="javascript" src="<?=$host?>/vendor/jquery/plugins/jquery.jrumble.1.3.min.js"></script>
 <link rel="stylesheet" type="text/css" href="<?=$host?>/application/css/index.css" ></link>
 
-<!-- 报错信息 -->
+<!-- Error -->
 <?php if (isset($error)):?>
 <div class="alert alert-error error"><?=$error;?></div>
 <?php endif;?>
 
-<!-- 头部表单 -->
+<!-- Head form -->
 <div class="navbar-fixed-top" id="add_input">
     <form class="well form-inline" action="<?=$form_action_add?>" method="post" autocomplete="off" >
         <input type="text" class="input-large" placeholder="Website Name" name="name">
@@ -19,7 +19,7 @@
     <button type="button" class="btn btn-info btn-small" id="add_pull" >+</button>
 </div>
 
-<!-- 搜索区 -->
+<!-- Search area -->
 <div class="container-fluid">
     <div class="row-fluid">
         <div id="search_area">
@@ -30,7 +30,7 @@
                 Open Sesame
             </h1>
 
-            <!-- 搜索框+按钮 -->
+            <!-- Search Button -->
             <div class="controls-row span9 offset3">
                 <div class="form-wrapper cf">
                     <input type="text" name="site" id="search" autocomplete="off" placeholder="What would you like ?" />
@@ -39,7 +39,7 @@
             </div>
 
             <?php if (!empty($recomm)):?>
-            <!-- 推荐帐号 -->
+            <!-- Recommendation Information -->
             <h4 class="controls-row span9 offset3 cw" id="recommand">Something like...</h4>
 
             <div class="controls-row span8 offset3">

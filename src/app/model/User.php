@@ -7,7 +7,7 @@ use core as c;
 class User
 {
     /**
-     * 获得用户的默认使用的密码。
+     * Get the default password.
      * @return array
      */
     public function getDefaultPassword()
@@ -16,7 +16,7 @@ class User
     }
 
     /**
-     * 获得用户的邮箱列表。
+     * Get the email list.
      * @return array
      */
     public function getEmails()

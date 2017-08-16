@@ -12,7 +12,7 @@
         return s;
     }
 
-    //列表页删除按钮
+    // Delete button on list page.
     $('.list_del_bt').each(function() {
         var value = $(this).attr('id');
 
@@ -30,7 +30,7 @@
         });
     });
 
-    //单页modify按钮
+    // Modify button on detail page.
     $('.info_up_bt').each(function() {
         var field = $(this).attr('title');
         var value = $(this).attr('id');
@@ -44,12 +44,12 @@
         });
     });
 
-    //单页修改基本信息按钮
+    // Button on detail page to show basic information.
     $('#account_base_bt').bind('click', function() {
         $('#modify-base').modal('show');
     });
 
-    //单页选择邮箱
+    // Choose email
     $('.emails').each(function() {
         var email = $(this).attr('data');
 
@@ -60,7 +60,7 @@
         });
     });
 
-    //单页选择常用密码
+    // Choose password
     $('.default_password').each(function() {
         var default_password = $(this).attr('data');
 
@@ -74,7 +74,7 @@
         });
     });
 
-    //单页查看按钮
+    // Check button
     $('.info_show_bt').each(function() {
         var value = $(this).attr('id');
 
@@ -85,7 +85,7 @@
         });
     });
 
-    //单页复制按钮
+    // Copy button
     var clipboard = new Clipboard('.info_copy_bt');
 
     clipboard.on('success', function(e) {
@@ -94,7 +94,7 @@
         $('#popup').modal('show');
     });
 
-    //单页删除按钮
+    // Delete button on detail page
     $('.info_del_bt').each(function() {
         var value = $(this).attr('title');
 
@@ -112,7 +112,7 @@
         });
     });
 
-    //搜索按钮
+    // Search button
     $('#search_bt').bind('click', function() {
         var key = $('#search').val();
         var url = url_list;
@@ -123,7 +123,7 @@
         }
     });
 
-    //生成密码按钮
+    // Password generating button
     $('#pwd_bt').bind('click', function() {
         var field_name = $('#field_name');
         password = create_password(14);
@@ -136,19 +136,19 @@
         $('#info_enter').click();
     });
 
-    //弹出框生成密码按钮
+    // Popup to generate password
     $('#modify_pwd').bind('click', function() {
         password = create_password(14);
         $('#field_value_up').prop('value', password);
     });
 
-    //显示添加网站的表单
+    // Show the Add button
     $('#add_pull').bind('click', function() {
         $(this).hide();
         $('#add_input').slideDown();
     });
 
-    //键盘事件
+    // Keyboard event
     var key_combo = [
         {
             keys: '`',
@@ -176,6 +176,5 @@
     ];
     keypress.register_many(key_combo);
 
-    //首页搜索框自动获得焦点。
     $('#search').focus();
 })();

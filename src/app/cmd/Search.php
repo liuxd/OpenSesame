@@ -13,7 +13,7 @@ class Search extends Base
         global $argv;
 
         if (!isset($argv[2])) {
-            c\cecho('搜索词呢？', 'error');
+            c\cecho('What is the keyword?', 'error');
             return false;
         }
 
@@ -29,7 +29,7 @@ class Search extends Base
             c\cecho($sMsg, 'notice');
         }
 
-        c\cecho("你要搜索啥？（请输入行首序号）");
+        c\cecho("What do you want? (Enter the NO.)");
         $iNumber = trim(fread(STDIN, 5));
 
         if (empty($iNumber)) {
@@ -38,7 +38,7 @@ class Search extends Base
 
         while (!empty($iNumber) && !is_numeric($iNumber)) {
             c\cecho('What are you 弄啥累', 'error');
-            c\cecho("你要搜索啥？（请输入行首序号）");
+            c\cecho("What do you want? (Enter the NO.)");
             $iNumber = trim(fread(STDIN, 5));
         }
 

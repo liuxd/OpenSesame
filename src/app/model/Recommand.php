@@ -7,17 +7,17 @@ use core as c;
 class Recommand
 {
     /**
-     * 推荐帐号。
-     * @param int $iSize 推荐个数。
+     * Recommedations.
+     * @param int $iSize
      * @return array
      */
     public function get($iSize)
     {
-        $sSQL = 'SELECT rowid, name, value 
-            FROM ' . Account::TABLE_NAME . ' 
-            WHERE valid=1 
-            AND parent=0 
-            ORDER BY RANDOM() 
+        $sSQL = 'SELECT rowid, name, value
+            FROM ' . Account::TABLE_NAME . '
+            WHERE valid=1
+            AND parent=0
+            ORDER BY RANDOM()
             LIMIT ' . $iSize;
 
         $ret = u\DB::getList($sSQL);

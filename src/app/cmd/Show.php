@@ -13,7 +13,7 @@ class Show extends Base
         global $argv;
 
         if (!isset($argv[2])) {
-            c\cecho('帐号ID是多少？', 'error');
+            c\cecho('What is the Account ID?', 'error');
             return false;
         }
 
@@ -23,7 +23,7 @@ class Show extends Base
         $aDetail = $oAccount->getAccountDetail($iAccountID);
 
         if (empty($aDetail)) {
-            c\cecho('非法ID', 'error');
+            c\cecho('Invalid ID', 'error');
             return false;
         }
 

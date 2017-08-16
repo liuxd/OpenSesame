@@ -20,8 +20,8 @@ class Account
     }
 
     /**
-     * 获得一个帐号的详细信息。
-     * @param int $iAccountID 帐号ID。
+     * Get the detail of an account.
+     * @param int $iAccountID Account ID.
      * @return array
      */
     public function getAccountDetail($iAccountID)
@@ -36,8 +36,8 @@ class Account
     }
 
     /**
-     * 获得一个帐号的所有记录。
-     * @param int $iAccountID 帐号ID。
+     * Get all fields for an account.
+     * @param int $iAccountID Account ID.
      * @return array
      */
     public function getAccountFields($iAccountID)
@@ -63,8 +63,8 @@ class Account
     }
 
     /**
-     * 删除帐号或者一个帐号属性。
-     * @param int $iRowID 主键。
+     * Delete an account or a field.
+     * @param int $iRowID
      * @return bool
      */
     public function del($iRowID)
@@ -73,9 +73,9 @@ class Account
     }
 
     /**
-     * 添加一个新的帐号。
-     * @param string $sName 帐号名称。
-     * @param string $sURL 帐号的URL。
+     * Add a new account.
+     * @param string $sName Account name.
+     * @param string $sURL Account URL.
      * @return int
      */
     public function addAccount($sName, $sURL)
@@ -104,11 +104,11 @@ class Account
     }
 
     /**
-     * 给一个帐号添加一个记录。
-     * @param string $sName 名称。
-     * @param string $sValue 值。
-     * @param int $iAccountID 帐号ID。
-     * @return int 主键
+     * Add a field to an account.
+     * @param string $sName
+     * @param string $sValue
+     * @param int $iAccountID
+     * @return int
      */
     public function addField($sName, $sValue, $iAccountID)
     {
@@ -123,10 +123,10 @@ class Account
     }
 
     /**
-     * 可以是帐号。
-     * @param string $sName 名称。
-     * @param string $sValue 值。
-     * @param int $iRowID 主键。
+     * Update an account.
+     * @param string $sName
+     * @param string $sValue
+     * @param int $iRowID
      * @return bool
      */
     public function updateAccount($sName, $sValue, $iRowID, $bEncrypt = true)
@@ -139,10 +139,10 @@ class Account
     }
 
     /**
-     * 更新一个帐号的属性。
-     * @param string $sName 名称。
-     * @param string $sValue 值。
-     * @param int $iRowID 主键。
+     * Update a field for an account.
+     * @param string $sName
+     * @param string $sValue
+     * @param int $iRowID
      * @return bool
      */
     public function updateField($sName, $sValue, $iRowID, $bEncrypt = true)
@@ -157,7 +157,7 @@ class Account
     }
 
     /**
-     * 获得账号总数。
+     * Get the total of account.
      * @return int
      */
     public function getTotal()
@@ -170,7 +170,7 @@ class Account
     }
 
     /**
-     * 创建表结构。
+     * Create the table.
      */
     public function createTable()
     {
@@ -179,7 +179,7 @@ class Account
     }
 
     /**
-     * AES算法加密。
+     * The encrypt function.
      * @param string $sData
      * @return string
      */
@@ -195,7 +195,7 @@ class Account
     }
 
     /**
-     * AES算法解密。
+     * The decrypt function.
      * @param string $sData
      * @return string
      */

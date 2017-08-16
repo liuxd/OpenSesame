@@ -22,7 +22,7 @@ class Search extends Base
         }
 
         $aData = [
-            'page_title' => '搜索结果',
+            'page_title' => 'Search Result',
             'keyword' => $sKeyword,
             'total' => count($aList),
             'form_action_del' => c\Router::genURL('DeleteAccount'),
