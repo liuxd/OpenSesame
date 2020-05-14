@@ -44,6 +44,7 @@ class Command
         cecho('    Search     -    Search account with [ Keyword ].');
         cecho('    Show       -    Show information by [ Account ID ].');
         cecho('    CheckSite  -    Check all website.');
+        cecho('    Export     -    Export all data.');
     }
 
     /**
